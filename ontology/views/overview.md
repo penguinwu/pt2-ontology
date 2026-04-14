@@ -1,13 +1,13 @@
 # PT2 Domain Ontology — Overview
 
-**Version:** 0.6.1 | **Entities:** 272 | **Relationships:** 310 | **Entity Types:** 13
+**Version:** 0.7.0 | **Entities:** 276 | **Relationships:** 310 | **Entity Types:** 13
 
 ## Entity Types
 
 | Type | Count | Description |
 |------|-------|-------------|
 | cause | 110 | Root cause (21 categories + 89 leaf subcauses from 9,277 issues) |
-| component | 39 | Software component or subsystem |
+| component | 43 | Software component or subsystem (17 with STO owners, 19 with GitHub labels) |
 | config | 28 | Configuration flag or setting |
 | failure_mode | 17 | Category of things that can go wrong |
 | resolution | 14 | Fix or workaround |
