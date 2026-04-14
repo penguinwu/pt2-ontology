@@ -1,0 +1,191 @@
+[
+  {
+    "id": "recompile_limit",
+    "name": "recompile_limit",
+    "description": "Maximum number of recompilations before dynamo gives up on a frame (default: 8)",
+    "aliases": [
+      "cache_size_limit",
+      "TORCHDYNAMO_RECOMPILE_LIMIT"
+    ]
+  },
+  {
+    "id": "accumulated_recompile_limit",
+    "name": "accumulated_recompile_limit",
+    "description": "Safeguard to prevent horrible recompilations across all frames (default: 256)",
+    "aliases": [
+      "accumulated_cache_size_limit"
+    ]
+  },
+  {
+    "id": "capture_scalar_outputs",
+    "name": "capture_scalar_outputs",
+    "description": "Capture scalar outputs (e.g., from .item()) in the graph instead of graph breaking (requires dynamic_shapes)",
+    "aliases": [
+      "TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS"
+    ]
+  },
+  {
+    "id": "capture_dynamic_output_shape_ops",
+    "name": "capture_dynamic_output_shape_ops",
+    "description": "Capture ops with dynamic output shapes (nonzero, unique) instead of graph breaking",
+    "aliases": [
+      "TORCHDYNAMO_CAPTURE_DYNAMIC_OUTPUT_SHAPE_OPS"
+    ]
+  },
+  {
+    "id": "suppress_errors",
+    "name": "suppress_errors",
+    "description": "Suppress errors in torch._dynamo.optimize and force fallback to eager (may lose optimization opportunities)",
+    "aliases": [
+      "TORCHDYNAMO_SUPPRESS_ERRORS"
+    ]
+  },
+  {
+    "id": "inline_inbuilt_nn_modules",
+    "name": "inline_inbuilt_nn_modules",
+    "description": "Inline built-in nn modules for regional compilation (deprecated: always True, 27% compile time reduction)",
+    "aliases": [
+      "TORCHDYNAMO_INLINE_INBUILT_NN_MODULES"
+    ]
+  },
+  {
+    "id": "verbose",
+    "name": "verbose",
+    "description": "Print full stack traces on warnings and errors for debugging",
+    "aliases": [
+      "TORCHDYNAMO_VERBOSE"
+    ]
+  },
+  {
+    "id": "repro_level",
+    "name": "repro_level",
+    "description": "Compiler debug info level: 1=dumps original graph on fail, 2=minifier launcher, 3=always minifier, 4=accuracy fails (default: 2)",
+    "aliases": [
+      "TORCHDYNAMO_REPRO_LEVEL"
+    ]
+  },
+  {
+    "id": "repro_after",
+    "name": "repro_after",
+    "description": "Run minifier at specific stage: None=off, 'dynamo'=TorchDynamo graphs, 'aot'=AOT Autograd graphs",
+    "aliases": [
+      "TORCHDYNAMO_REPRO_AFTER"
+    ]
+  },
+  {
+    "id": "torch_logs",
+    "name": "TORCH_LOGS",
+    "description": "Configure logging for dynamo, aot, inductor (e.g., TORCH_LOGS=\"dynamo,aot,inductor\" or TORCH_LOGS=\"graph_breaks\")",
+    "aliases": [
+      "torch._logging.set_logs"
+    ]
+  },
+  {
+    "id": "torch_compile_debug",
+    "name": "TORCH_COMPILE_DEBUG",
+    "description": "Enable detailed inductor debug output and trace logging"
+  },
+  {
+    "id": "specialize_int",
+    "name": "specialize_int",
+    "description": "Specialize on int inputs when dynamic_shapes is True (default: False, mostly for export)"
+  },
+  {
+    "id": "specialize_float",
+    "name": "specialize_float",
+    "description": "Specialize on float inputs (default: False, backends inconsistently support float codegen)"
+  },
+  {
+    "id": "assume_static_by_default",
+    "name": "assume_static_by_default",
+    "description": "Only allocate symbols for shapes marked dynamic via mark_dynamic (default: True)"
+  },
+  {
+    "id": "guard_nn_modules",
+    "name": "guard_nn_modules",
+    "description": "Assume nn.Module contents are mutable and add guards (default: True, opposite of freezing)"
+  },
+  {
+    "id": "optimize_ddp",
+    "name": "optimize_ddp",
+    "description": "Optimize DDP module: 'ddp_optimizer' (split graph for overlap), 'python_reducer', 'no_optimization' (default: ddp_optimizer)"
+  },
+  {
+    "id": "allow_rnn",
+    "name": "allow_rnn",
+    "description": "Disable graph breaking on RNN ops (YMMV with backends, default: False)"
+  },
+  {
+    "id": "trace_numpy",
+    "name": "trace_numpy",
+    "description": "Trace through NumPy operations instead of graph breaking (default: True)"
+  },
+  {
+    "id": "enable_compiler_collectives",
+    "name": "enable_compiler_collectives",
+    "description": "Use collectives during compilation to sync dynamic shape decisions across ranks (requires SPMD, prevents NCCL hangs)",
+    "aliases": [
+      "TORCH_COMPILER_COLLECTIVES"
+    ]
+  },
+  {
+    "id": "torch_compile_dynamic_sources",
+    "name": "TORCH_COMPILE_DYNAMIC_SOURCES",
+    "description": "Specify dynamic inputs upfront (e.g., L['x'],L['y']) to reduce compile time, 'mandatory' for performance"
+  },
+  {
+    "id": "max_autotune_gemm",
+    "name": "max_autotune_gemm",
+    "description": "Enable slow autotuning for GEMM operations only (default: False)",
+    "aliases": [
+      "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM"
+    ]
+  },
+  {
+    "id": "fallback_random",
+    "name": "fallback_random",
+    "description": "Fallback to eager for random/dropout ops (slow but useful for debugging, default: False)"
+  },
+  {
+    "id": "force_disable_caches",
+    "name": "force_disable_caches",
+    "description": "Disable all caching mechanisms (fx_graph_cache, autotune_cache) for debugging",
+    "aliases": [
+      "TORCHINDUCTOR_FORCE_DISABLE_CACHES"
+    ]
+  },
+  {
+    "id": "cpp_wrapper",
+    "name": "cpp_wrapper",
+    "description": "Use C++ wrapper instead of Python wrapper for inductor (incompatible with disable_cpp_codegen)",
+    "aliases": [
+      "TORCHINDUCTOR_CPP_WRAPPER"
+    ]
+  },
+  {
+    "id": "fx_graph_cache",
+    "name": "fx_graph_cache",
+    "description": "Use FX AOT graph codegen cache to speed up compilation (default: True)",
+    "aliases": [
+      "TORCHINDUCTOR_FX_GRAPH_CACHE"
+    ]
+  },
+  {
+    "id": "emulate_precision_casts",
+    "name": "emulate_precision_casts",
+    "description": "Emulate precision casts in inductor to match eager mode numerics",
+    "aliases": [
+      "TORCHINDUCTOR_EMULATE_PRECISION_CASTS"
+    ]
+  },
+  {
+    "id": "dynamic_shapes_flag",
+    "name": "dynamic",
+    "description": "torch.compile flag to enable dynamic shapes (dynamic=True) or force static shapes (dynamic=False)"
+  },
+  {
+    "id": "fullgraph_flag",
+    "name": "fullgraph",
+    "description": "torch.compile flag to require no graph breaks (fullgraph=True) or allow them (fullgraph=False)"
+  }
+]

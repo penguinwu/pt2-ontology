@@ -1,0 +1,220 @@
+[
+  {
+    "from": "j1_first_compile",
+    "type": "routes_to",
+    "to": "j4_graph_breaks",
+    "condition": "graph break errors"
+  },
+  {
+    "from": "j1_first_compile",
+    "type": "routes_to",
+    "to": "j5_dynamic_shapes",
+    "condition": "recompilation warnings"
+  },
+  {
+    "from": "j1_first_compile",
+    "type": "routes_to",
+    "to": "j8_custom_ops",
+    "condition": "custom op failures"
+  },
+  {
+    "from": "j2_perf_diagnosis",
+    "type": "routes_to",
+    "to": "j4_graph_breaks",
+    "condition": "graph breaks causing slowdown"
+  },
+  {
+    "from": "j2_perf_diagnosis",
+    "type": "routes_to",
+    "to": "j5_dynamic_shapes",
+    "condition": "shape recompilation"
+  },
+  {
+    "from": "j2_perf_diagnosis",
+    "type": "routes_to",
+    "to": "j6_compile_time",
+    "condition": "compilation overhead"
+  },
+  {
+    "from": "j2_perf_diagnosis",
+    "type": "routes_to",
+    "to": "j7_perf_optimization",
+    "condition": "wants more speedup"
+  },
+  {
+    "from": "j3_correctness",
+    "type": "routes_to",
+    "to": "j4_graph_breaks",
+    "condition": "graph break causes incorrect behavior"
+  },
+  {
+    "from": "j1_first_compile",
+    "type": "enters_via",
+    "to": "crash"
+  },
+  {
+    "from": "j1_first_compile",
+    "type": "enters_via",
+    "to": "graph_break"
+  },
+  {
+    "from": "j2_perf_diagnosis",
+    "type": "enters_via",
+    "to": "perf_regression"
+  },
+  {
+    "from": "j2_perf_diagnosis",
+    "type": "enters_via",
+    "to": "perf_improvement"
+  },
+  {
+    "from": "j2_perf_diagnosis",
+    "type": "enters_via",
+    "to": "silent_slowdown"
+  },
+  {
+    "from": "j3_correctness",
+    "type": "enters_via",
+    "to": "wrong_output"
+  },
+  {
+    "from": "j3_correctness",
+    "type": "enters_via",
+    "to": "numerical_issue"
+  },
+  {
+    "from": "j3_correctness",
+    "type": "enters_via",
+    "to": "accuracy_mismatch"
+  },
+  {
+    "from": "j4_graph_breaks",
+    "type": "enters_via",
+    "to": "graph_break"
+  },
+  {
+    "from": "j4_graph_breaks",
+    "type": "enters_via",
+    "to": "dynamo_unsupported"
+  },
+  {
+    "from": "j5_dynamic_shapes",
+    "type": "enters_via",
+    "to": "recompilation"
+  },
+  {
+    "from": "j5_dynamic_shapes",
+    "type": "enters_via",
+    "to": "recompile_warning"
+  },
+  {
+    "from": "j6_compile_time",
+    "type": "enters_via",
+    "to": "slow_compile"
+  },
+  {
+    "from": "j6_compile_time",
+    "type": "enters_via",
+    "to": "compile_timeout"
+  },
+  {
+    "from": "j6_compile_time",
+    "type": "enters_via",
+    "to": "compile_oom"
+  },
+  {
+    "from": "j7_perf_optimization",
+    "type": "enters_via",
+    "to": "perf_improvement"
+  },
+  {
+    "from": "j8_custom_ops",
+    "type": "enters_via",
+    "to": "graph_break"
+  },
+  {
+    "from": "j8_custom_ops",
+    "type": "enters_via",
+    "to": "crash"
+  },
+  {
+    "from": "j9_export",
+    "type": "enters_via",
+    "to": "export_failure"
+  },
+  {
+    "from": "j4_graph_breaks",
+    "type": "involves",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "j4_graph_breaks",
+    "type": "involves",
+    "to": "guards"
+  },
+  {
+    "from": "j5_dynamic_shapes",
+    "type": "involves",
+    "to": "dynamic_shapes"
+  },
+  {
+    "from": "j5_dynamic_shapes",
+    "type": "involves",
+    "to": "guards"
+  },
+  {
+    "from": "j6_compile_time",
+    "type": "involves",
+    "to": "compilation_cache"
+  },
+  {
+    "from": "j6_compile_time",
+    "type": "involves",
+    "to": "torchinductor"
+  },
+  {
+    "from": "j7_perf_optimization",
+    "type": "involves",
+    "to": "torchinductor"
+  },
+  {
+    "from": "j7_perf_optimization",
+    "type": "involves",
+    "to": "max_autotune"
+  },
+  {
+    "from": "j7_perf_optimization",
+    "type": "involves",
+    "to": "triton_heuristics"
+  },
+  {
+    "from": "j7_perf_optimization",
+    "type": "involves",
+    "to": "inductor_scheduler"
+  },
+  {
+    "from": "j8_custom_ops",
+    "type": "involves",
+    "to": "custom_ops"
+  },
+  {
+    "from": "j8_custom_ops",
+    "type": "involves",
+    "to": "higher_order_ops"
+  },
+  {
+    "from": "j8_custom_ops",
+    "type": "involves",
+    "to": "flexattention"
+  },
+  {
+    "from": "j9_export",
+    "type": "involves",
+    "to": "export"
+  },
+  {
+    "from": "j9_export",
+    "type": "involves",
+    "to": "aot_inductor"
+  }
+]

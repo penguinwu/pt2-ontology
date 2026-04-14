@@ -1,0 +1,1347 @@
+[
+  {
+    "id": "unsupported_op",
+    "name": "Unsupported Operation",
+    "description": "PyTorch op or Python construct not supported by dynamo"
+  },
+  {
+    "id": "data_dependent_control",
+    "name": "Data-Dependent Control Flow",
+    "description": "Branching on tensor values (e.g., if x.item() > 0)"
+  },
+  {
+    "id": "dynamic_shapes_issue",
+    "name": "Dynamic Shapes Complexity",
+    "description": "Shape expressions too complex for symbolic reasoning"
+  },
+  {
+    "id": "inplace_mutation",
+    "name": "In-Place Mutation",
+    "description": "In-place ops that violate functional semantics"
+  },
+  {
+    "id": "tensor_subclass",
+    "name": "Tensor Subclass",
+    "description": "Custom tensor subclasses with non-standard behavior"
+  },
+  {
+    "id": "custom_autograd",
+    "name": "Custom Autograd Function",
+    "description": "User-defined torch.autograd.Function not traceable"
+  },
+  {
+    "id": "third_party_lib",
+    "name": "Third-Party Library Call",
+    "description": "Calls to libraries dynamo cannot trace into"
+  },
+  {
+    "id": "guard_mismatch",
+    "name": "Guard Mismatch",
+    "description": "Input doesn't match cached guards \u2014 triggers recompile"
+  },
+  {
+    "id": "backend_bug",
+    "name": "Backend Bug",
+    "description": "Bug in inductor, triton, or other compilation backend"
+  },
+  {
+    "id": "decomposition_gap",
+    "name": "Missing Decomposition",
+    "description": "Op lacks a decomposition into supported primitives"
+  },
+  {
+    "id": "distributed_interaction",
+    "name": "Distributed Interaction",
+    "description": "Compile conflicts with DDP, FSDP, or tensor parallel"
+  },
+  {
+    "id": "non_compliant_custom_op",
+    "name": "Non-Compliant Custom Operator",
+    "description": "Custom op not registered via torch.library or missing FakeTensor/meta kernel"
+  },
+  {
+    "id": "suboptimal_heuristics",
+    "name": "Suboptimal Inductor Heuristics",
+    "description": "Default triton config heuristics (tile sizes, num_warps) produce suboptimal kernel performance"
+  },
+  {
+    "id": "excessive_logging",
+    "name": "Excessive Logging/Debug Overhead",
+    "description": "Debug logging (e.g., everstore uploads, graph dumps) causing compile time bloat"
+  },
+  {
+    "id": "abi_incompatibility",
+    "name": "ABI Incompatibility",
+    "description": "Custom op libraries (flash attention, xformers) not ABI-compatible with PyTorch version"
+  },
+  {
+    "id": "automatic_dynamic_shapes",
+    "name": "Automatic Dynamic Shapes",
+    "description": "Dynamo's automatic shape dynamism causing unexpected recompilation or suboptimal code"
+  },
+  {
+    "id": "cause_shape_wobble",
+    "name": "shape_wobble",
+    "description": "Input shapes change across iterations, triggering automatic_dynamic_shapes recompilation",
+    "aliases": [
+      "changing shapes",
+      "variable shapes"
+    ]
+  },
+  {
+    "id": "cause_unspecialized_int",
+    "name": "unspecialized_int",
+    "description": "Int members on nn.Module change values (e.g., step count) causing recompilation without allow_unspec_int_on_nn_module",
+    "aliases": [
+      "changing int attributes"
+    ]
+  },
+  {
+    "id": "cause_dynamic_output_shape",
+    "name": "dynamic_output_shape",
+    "description": "Ops like nonzero/unique have data-dependent output shapes, causing graph break without capture_dynamic_output_shape_ops",
+    "aliases": [
+      "data-dependent shape"
+    ]
+  },
+  {
+    "id": "cause_scalar_return",
+    "name": "scalar_return",
+    "description": "Operations return scalar types (e.g., .item()) which cause graph break without capture_scalar_outputs",
+    "aliases": [
+      "scalar output"
+    ]
+  },
+  {
+    "id": "cause_fancy_compile_wrapper",
+    "name": "fancy_compile_wrapper",
+    "description": "Custom compile wrappers that jam config options cause silent graph breaks (anti-pattern)",
+    "aliases": [
+      "custom wrapper",
+      "config wrapper"
+    ]
+  },
+  {
+    "id": "custom_backend_config",
+    "name": "Custom Backend Config",
+    "description": "Subcause of fancy compile wrapper (evidence from 938 issues)",
+    "evidence_count": 938,
+    "example_issues": [
+      90352,
+      90844,
+      91095,
+      93468,
+      93492
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "config_int_attribute",
+    "name": "Config Int Attribute",
+    "description": "Subcause of unspecialized int (evidence from 889 issues)",
+    "evidence_count": 889,
+    "example_issues": [
+      93727,
+      93729,
+      93730,
+      93735,
+      93748
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "cache_miss_recompile",
+    "name": "Cache Miss Recompile",
+    "description": "Subcause of guard mismatch (evidence from 444 issues)",
+    "evidence_count": 444,
+    "example_issues": [
+      93722,
+      93730,
+      93754,
+      93761,
+      93774
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "numpy_call",
+    "name": "Numpy Call",
+    "description": "Subcause of third party lib (evidence from 428 issues)",
+    "evidence_count": 428,
+    "example_issues": [
+      82135,
+      93658,
+      93659,
+      93766,
+      93778
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_introspection",
+    "name": "Unsupported Introspection",
+    "description": "Subcause of unsupported op (evidence from 405 issues)",
+    "evidence_count": 405,
+    "example_issues": [
+      90352,
+      93526,
+      93599,
+      93672,
+      93721
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "fake_tensor_mode",
+    "name": "Fake Tensor Mode",
+    "description": "Subcause of tensor subclass (evidence from 329 issues)",
+    "evidence_count": 329,
+    "example_issues": [
+      81607,
+      81608,
+      84308,
+      93688,
+      93711
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_builtin_getattr",
+    "name": "Unsupported Builtin Getattr",
+    "description": "Subcause of unsupported op (evidence from 327 issues)",
+    "evidence_count": 327,
+    "example_issues": [
+      93525,
+      93640,
+      93654,
+      93676,
+      93796
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_system_module",
+    "name": "Unsupported System Module",
+    "description": "Subcause of unsupported op (evidence from 286 issues)",
+    "evidence_count": 286,
+    "example_issues": [
+      90831,
+      91101,
+      92941,
+      93935,
+      95939
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "huggingface_transformers",
+    "name": "Huggingface Transformers",
+    "description": "Subcause of third party lib (evidence from 274 issues)",
+    "evidence_count": 274,
+    "example_issues": [
+      93632,
+      93731,
+      93750,
+      93767,
+      93773
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_context_manager",
+    "name": "Unsupported Context Manager",
+    "description": "Subcause of unsupported op (evidence from 267 issues)",
+    "evidence_count": 267,
+    "example_issues": [
+      84308,
+      93533,
+      93668,
+      93781,
+      93782
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "item_method",
+    "name": "Item Method",
+    "description": "Subcause of scalar return (evidence from 258 issues)",
+    "evidence_count": 258,
+    "example_issues": [
+      93515,
+      93558,
+      93705,
+      95770,
+      97339
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "custom_compile_mode",
+    "name": "Custom Compile Mode",
+    "description": "Subcause of fancy compile wrapper (evidence from 255 issues)",
+    "evidence_count": 255,
+    "example_issues": [
+      91542,
+      93262,
+      93492,
+      93495,
+      93498
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "shape_query_to_scalar",
+    "name": "Shape Query To Scalar",
+    "description": "Subcause of scalar return (evidence from 212 issues)",
+    "evidence_count": 212,
+    "example_issues": [
+      93656,
+      93658,
+      93659,
+      93686,
+      93689
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "vision_library",
+    "name": "Vision Library",
+    "description": "Subcause of third party lib (evidence from 169 issues)",
+    "evidence_count": 169,
+    "example_issues": [
+      93751,
+      93757,
+      93767,
+      93777,
+      93787
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "conditional_tensor_operation",
+    "name": "Conditional Tensor Operation",
+    "description": "Subcause of data dependent control (evidence from 164 issues)",
+    "evidence_count": 164,
+    "example_issues": [
+      90559,
+      93562,
+      93690,
+      93723,
+      93805
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "collective_ops_issue",
+    "name": "Collective Ops Issue",
+    "description": "Subcause of distributed interaction (evidence from 157 issues)",
+    "evidence_count": 157,
+    "example_issues": [
+      92941,
+      93173,
+      93378,
+      93566,
+      93649
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "torch_dispatch_protocol",
+    "name": "Torch Dispatch Protocol",
+    "description": "Subcause of tensor subclass (evidence from 140 issues)",
+    "evidence_count": 140,
+    "example_issues": [
+      81607,
+      93654,
+      93668,
+      93723,
+      93805
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "triton_crash",
+    "name": "Triton Crash",
+    "description": "Subcause of backend bug (evidence from 138 issues)",
+    "evidence_count": 138,
+    "example_issues": [
+      91827,
+      93434,
+      93435,
+      93544,
+      93647
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_numpy_api",
+    "name": "Unsupported Numpy Api",
+    "description": "Subcause of unsupported op (evidence from 133 issues)",
+    "evidence_count": 133,
+    "example_issues": [
+      91101,
+      92670,
+      93558,
+      93658,
+      93766
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_property_decorator",
+    "name": "Unsupported Property Decorator",
+    "description": "Subcause of unsupported op (evidence from 130 issues)",
+    "evidence_count": 130,
+    "example_issues": [
+      91101,
+      91102,
+      93748,
+      97691,
+      100386
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "module_int_member",
+    "name": "Module Int Member",
+    "description": "Subcause of unspecialized int (evidence from 130 issues)",
+    "evidence_count": 130,
+    "example_issues": [
+      86427,
+      93042,
+      93180,
+      93357,
+      95846
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_generator",
+    "name": "Unsupported Generator",
+    "description": "Subcause of unsupported op (evidence from 126 issues)",
+    "evidence_count": 126,
+    "example_issues": [
+      93477,
+      93599,
+      93737,
+      93781,
+      93796
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "custom_autograd_function",
+    "name": "Custom Autograd Function",
+    "description": "Subcause of custom autograd (evidence from 112 issues)",
+    "evidence_count": 112,
+    "example_issues": [
+      90507,
+      91101,
+      91102,
+      91469,
+      93721
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ddp_compile_conflict",
+    "name": "Ddp Compile Conflict",
+    "description": "Subcause of distributed interaction (evidence from 92 issues)",
+    "evidence_count": 92,
+    "example_issues": [
+      93612,
+      93641,
+      93668,
+      93672,
+      93773
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_functools",
+    "name": "Unsupported Functools",
+    "description": "Subcause of unsupported op (evidence from 89 issues)",
+    "evidence_count": 89,
+    "example_issues": [
+      93358,
+      93659,
+      93698,
+      94851,
+      95445
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "fsdp_compile_conflict",
+    "name": "Fsdp Compile Conflict",
+    "description": "Subcause of distributed interaction (evidence from 86 issues)",
+    "evidence_count": 86,
+    "example_issues": [
+      93288,
+      93432,
+      93546,
+      93688,
+      93756
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "custom_op_registration",
+    "name": "Custom Op Registration",
+    "description": "Subcause of non compliant custom op (evidence from 86 issues)",
+    "evidence_count": 86,
+    "example_issues": [
+      105157,
+      123470,
+      125869,
+      126201,
+      127561
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "inplace_arithmetic",
+    "name": "Inplace Arithmetic",
+    "description": "Subcause of inplace mutation (evidence from 82 issues)",
+    "evidence_count": 82,
+    "example_issues": [
+      90507,
+      90844,
+      91310,
+      92129,
+      93363
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "excessive_memory_usage",
+    "name": "Excessive Memory Usage",
+    "description": "Subcause of suboptimal heuristics (evidence from 81 issues)",
+    "evidence_count": 81,
+    "example_issues": [
+      93543,
+      93569,
+      93583,
+      93699,
+      93807
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_random_module",
+    "name": "Unsupported Random Module",
+    "description": "Subcause of unsupported op (evidence from 80 issues)",
+    "evidence_count": 80,
+    "example_issues": [
+      93740,
+      95161,
+      95425,
+      96118,
+      98561
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_autocast",
+    "name": "Unsupported Autocast",
+    "description": "Subcause of unsupported op (evidence from 72 issues)",
+    "evidence_count": 72,
+    "example_issues": [
+      93358,
+      93435,
+      93657,
+      93694,
+      93711
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "torch_function_protocol",
+    "name": "Torch Function Protocol",
+    "description": "Subcause of tensor subclass (evidence from 65 issues)",
+    "evidence_count": 65,
+    "example_issues": [
+      90527,
+      90882,
+      93453,
+      93723,
+      93748
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "inplace_copy",
+    "name": "Inplace Copy",
+    "description": "Subcause of inplace mutation (evidence from 65 issues)",
+    "evidence_count": 65,
+    "example_issues": [
+      91310,
+      92925,
+      93497,
+      93654,
+      93685
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "inductor_wrong_output",
+    "name": "Inductor Wrong Output",
+    "description": "Subcause of backend bug (evidence from 63 issues)",
+    "evidence_count": 63,
+    "example_issues": [
+      93538,
+      96604,
+      108963,
+      109105,
+      111133
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unbacked_symint",
+    "name": "Unbacked Symint",
+    "description": "Subcause of dynamic shapes issue (evidence from 63 issues)",
+    "evidence_count": 63,
+    "example_issues": [
+      93466,
+      96033,
+      110136,
+      111950,
+      112347
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "dtensor_subclass",
+    "name": "Dtensor Subclass",
+    "description": "Subcause of tensor subclass (evidence from 61 issues)",
+    "evidence_count": 61,
+    "example_issues": [
+      114405,
+      114411,
+      116430,
+      116712,
+      117670
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_jit_script",
+    "name": "Unsupported Jit Script",
+    "description": "Subcause of unsupported op (evidence from 56 issues)",
+    "evidence_count": 56,
+    "example_issues": [
+      90923,
+      93530,
+      93689,
+      93702,
+      93742
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "item_in_condition",
+    "name": "Item In Condition",
+    "description": "Subcause of data dependent control (evidence from 56 issues)",
+    "evidence_count": 56,
+    "example_issues": [
+      98928,
+      107277,
+      129877,
+      135161,
+      136306
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "cuda_backend_error",
+    "name": "Cuda Backend Error",
+    "description": "Subcause of backend bug (evidence from 53 issues)",
+    "evidence_count": 53,
+    "example_issues": [
+      92691,
+      93394,
+      93599,
+      93638,
+      93647
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "nonzero_op",
+    "name": "Nonzero Op",
+    "description": "Subcause of dynamic output shape (evidence from 49 issues)",
+    "evidence_count": 49,
+    "example_issues": [
+      94414,
+      96033,
+      102841,
+      105534,
+      109861
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "where_op",
+    "name": "Where Op",
+    "description": "Subcause of dynamic output shape (evidence from 45 issues)",
+    "evidence_count": 45,
+    "example_issues": [
+      92941,
+      93374,
+      104146,
+      106580,
+      117807
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "slow_compilation",
+    "name": "Slow Compilation",
+    "description": "Subcause of suboptimal heuristics (evidence from 43 issues)",
+    "evidence_count": 43,
+    "example_issues": [
+      90844,
+      93795,
+      93857,
+      95501,
+      95660
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "tolist_method",
+    "name": "Tolist Method",
+    "description": "Subcause of scalar return (evidence from 42 issues)",
+    "evidence_count": 42,
+    "example_issues": [
+      93344,
+      93501,
+      103054,
+      114231,
+      114483
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unique_op",
+    "name": "Unique Op",
+    "description": "Subcause of dynamic output shape (evidence from 36 issues)",
+    "evidence_count": 36,
+    "example_issues": [
+      93624,
+      93774,
+      96173,
+      102375,
+      105075
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "saved_tensor_hooks",
+    "name": "Saved Tensor Hooks",
+    "description": "Subcause of custom autograd (evidence from 33 issues)",
+    "evidence_count": 33,
+    "example_issues": [
+      91101,
+      91102,
+      104792,
+      106388,
+      106389
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "ragged_tensor_shapes",
+    "name": "Ragged Tensor Shapes",
+    "description": "Subcause of dynamic shapes issue (evidence from 32 issues)",
+    "evidence_count": 32,
+    "example_issues": [
+      93652,
+      93786,
+      93804,
+      94167,
+      106064
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "inplace_initialization",
+    "name": "Inplace Initialization",
+    "description": "Subcause of inplace mutation (evidence from 31 issues)",
+    "evidence_count": 31,
+    "example_issues": [
+      120478,
+      121184,
+      121367,
+      127561,
+      127572
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "numerical_accuracy",
+    "name": "Numerical Accuracy",
+    "description": "Subcause of backend bug (evidence from 30 issues)",
+    "evidence_count": 30,
+    "example_issues": [
+      93433,
+      93671,
+      93691,
+      93708,
+      93777
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "shape_specialization_needed",
+    "name": "Shape Specialization Needed",
+    "description": "Subcause of dynamic shapes issue (evidence from 30 issues)",
+    "evidence_count": 30,
+    "example_issues": [
+      91901,
+      92286,
+      93068,
+      93380,
+      93829
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "inplace_fill",
+    "name": "Inplace Fill",
+    "description": "Subcause of inplace mutation (evidence from 26 issues)",
+    "evidence_count": 26,
+    "example_issues": [
+      93437,
+      93780,
+      93805,
+      98265,
+      103139
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "pillow_call",
+    "name": "Pillow Call",
+    "description": "Subcause of third party lib (evidence from 25 issues)",
+    "evidence_count": 25,
+    "example_issues": [
+      93019,
+      93658,
+      93659,
+      96287,
+      98045
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "custom_op_implementation",
+    "name": "Custom Op Implementation",
+    "description": "Subcause of non compliant custom op (evidence from 25 issues)",
+    "evidence_count": 25,
+    "example_issues": [
+      111950,
+      120441,
+      122129,
+      124918,
+      127821
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_itertools",
+    "name": "Unsupported Itertools",
+    "description": "Subcause of unsupported op (evidence from 22 issues)",
+    "evidence_count": 22,
+    "example_issues": [
+      93744,
+      93790,
+      103139,
+      107232,
+      107682
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_einops",
+    "name": "Unsupported Einops",
+    "description": "Subcause of unsupported op (evidence from 22 issues)",
+    "evidence_count": 22,
+    "example_issues": [
+      90375,
+      92925,
+      93699,
+      93905,
+      94598
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "dtensor_compile_conflict",
+    "name": "Dtensor Compile Conflict",
+    "description": "Subcause of distributed interaction (evidence from 22 issues)",
+    "evidence_count": 22,
+    "example_issues": [
+      114405,
+      116712,
+      118219,
+      118596,
+      118600
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "unsupported_collections",
+    "name": "Unsupported Collections",
+    "description": "Subcause of unsupported op (evidence from 20 issues)",
+    "evidence_count": 20,
+    "example_issues": [
+      98668,
+      100320,
+      106125,
+      111713,
+      114674
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "topk_ops",
+    "name": "Topk Ops",
+    "description": "Subcause of dynamic output shape (evidence from 18 issues)",
+    "evidence_count": 18,
+    "example_issues": [
+      93849,
+      104025,
+      104653,
+      105569,
+      108830
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "sparse_tensor_subclass",
+    "name": "Sparse Tensor Subclass",
+    "description": "Subcause of tensor subclass (evidence from 17 issues)",
+    "evidence_count": 17,
+    "example_issues": [
+      91951,
+      93662,
+      113232,
+      117188,
+      118856
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "index_assignment",
+    "name": "Index Assignment",
+    "description": "Subcause of inplace mutation (evidence from 17 issues)",
+    "evidence_count": 17,
+    "example_issues": [
+      97976,
+      105533,
+      120923,
+      123589,
+      126027
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "scipy_call",
+    "name": "Scipy Call",
+    "description": "Subcause of third party lib (evidence from 15 issues)",
+    "evidence_count": 15,
+    "example_issues": [
+      93431,
+      93633,
+      93677,
+      98510,
+      115953
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "parallelism_conflict",
+    "name": "Parallelism Conflict",
+    "description": "Subcause of distributed interaction (evidence from 15 issues)",
+    "evidence_count": 15,
+    "example_issues": [
+      107824,
+      108780,
+      108840,
+      113895,
+      116430
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "inplace_scatter",
+    "name": "Inplace Scatter",
+    "description": "Subcause of inplace mutation (evidence from 14 issues)",
+    "evidence_count": 14,
+    "example_issues": [
+      93421,
+      99616,
+      105822,
+      114686,
+      126614
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "auto_dynamic_enabled",
+    "name": "Auto Dynamic Enabled",
+    "description": "Subcause of automatic dynamic shapes (evidence from 14 issues)",
+    "evidence_count": 14,
+    "example_issues": [
+      118213,
+      118260,
+      118758,
+      118798,
+      120080
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "opencv_call",
+    "name": "Opencv Call",
+    "description": "Subcause of third party lib (evidence from 11 issues)",
+    "evidence_count": 11,
+    "example_issues": [
+      93431,
+      93778,
+      99605,
+      115534,
+      127188
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "codegen_error",
+    "name": "Codegen Error",
+    "description": "Subcause of backend bug (evidence from 10 issues)",
+    "evidence_count": 10,
+    "example_issues": [
+      93009,
+      93434,
+      93435,
+      95082,
+      104759
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "pandas_call",
+    "name": "Pandas Call",
+    "description": "Subcause of third party lib (evidence from 9 issues)",
+    "evidence_count": 9,
+    "example_issues": [
+      106546,
+      111113,
+      122088,
+      133079,
+      135675
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "masked_select_op",
+    "name": "Masked Select Op",
+    "description": "Subcause of dynamic output shape (evidence from 8 issues)",
+    "evidence_count": 8,
+    "example_issues": [
+      96467,
+      99726,
+      105534,
+      109871,
+      145874
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "dynamic_padding",
+    "name": "Dynamic Padding",
+    "description": "Subcause of shape wobble (evidence from 8 issues)",
+    "evidence_count": 8,
+    "example_issues": [
+      101014,
+      107200,
+      123855,
+      169760,
+      175831
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "inplace_resize",
+    "name": "Inplace Resize",
+    "description": "Subcause of inplace mutation (evidence from 7 issues)",
+    "evidence_count": 7,
+    "example_issues": [
+      93780,
+      93805,
+      97921,
+      104020,
+      110699
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "primtorch_lowering_gap",
+    "name": "Primtorch Lowering Gap",
+    "description": "Subcause of decomposition gap (evidence from 6 issues)",
+    "evidence_count": 6,
+    "example_issues": [
+      82048,
+      93760,
+      99804,
+      108204,
+      108205
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "nested_tensor_subclass",
+    "name": "Nested Tensor Subclass",
+    "description": "Subcause of tensor subclass (evidence from 6 issues)",
+    "evidence_count": 6,
+    "example_issues": [
+      114374,
+      126025,
+      128013,
+      134873,
+      146707
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "double_backward_issue",
+    "name": "Double Backward Issue",
+    "description": "Subcause of custom autograd (evidence from 5 issues)",
+    "evidence_count": 5,
+    "example_issues": [
+      91469,
+      116746,
+      155426,
+      167729,
+      174165
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "variable_sequence_length",
+    "name": "Variable Sequence Length",
+    "description": "Subcause of shape wobble (evidence from 5 issues)",
+    "evidence_count": 5,
+    "example_issues": [
+      94167,
+      148752,
+      149533,
+      169290,
+      178260
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "control_flow_ops",
+    "name": "Control Flow Ops",
+    "description": "Subcause of data dependent control (evidence from 5 issues)",
+    "evidence_count": 5,
+    "example_issues": [
+      101255,
+      113914,
+      115122,
+      123155,
+      138689
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "loop_over_tensor_value",
+    "name": "Loop Over Tensor Value",
+    "description": "Subcause of data dependent control (evidence from 5 issues)",
+    "evidence_count": 5,
+    "example_issues": [
+      110077,
+      128889,
+      137009,
+      155690,
+      162817
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "opcheck_validation_failure",
+    "name": "Opcheck Validation Failure",
+    "description": "Subcause of non compliant custom op (evidence from 5 issues)",
+    "evidence_count": 5,
+    "example_issues": [
+      119159,
+      124512,
+      126871,
+      142410,
+      144514
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "unsupported_async",
+    "name": "Unsupported Async",
+    "description": "Subcause of unsupported op (evidence from 4 issues)",
+    "evidence_count": 4,
+    "example_issues": [
+      93738,
+      150319,
+      166582,
+      170488
+    ],
+    "confidence": "low",
+    "validation_note": "entity verified in source; issue curation has false positives"
+  },
+  {
+    "id": "slow_triton_kernel",
+    "name": "Slow Triton Kernel",
+    "description": "Subcause of suboptimal heuristics (evidence from 4 issues)",
+    "evidence_count": 4,
+    "example_issues": [
+      99807,
+      120667,
+      121367,
+      177146
+    ],
+    "confidence": "low",
+    "validation_note": "entity verified in source; issue curation has false positives"
+  },
+  {
+    "id": "assume_static_false",
+    "name": "Assume Static False",
+    "description": "Subcause of automatic dynamic shapes (evidence from 4 issues)",
+    "evidence_count": 4,
+    "example_issues": [
+      101151,
+      104515,
+      137527,
+      168937
+    ],
+    "confidence": "low",
+    "validation_note": "entity verified in source; issue curation has false positives"
+  },
+  {
+    "id": "stride_specialization",
+    "name": "Stride Specialization",
+    "description": "Subcause of dynamic shapes issue (evidence from 4 issues)",
+    "evidence_count": 4,
+    "example_issues": [
+      137179,
+      153204,
+      158058,
+      165385
+    ],
+    "confidence": "low",
+    "validation_note": "entity verified in source; issue curation has false positives"
+  },
+  {
+    "id": "shape_guard_failure",
+    "name": "Shape Guard Failure",
+    "description": "Subcause of guard mismatch (evidence from 3 issues)",
+    "evidence_count": 3,
+    "example_issues": [
+      93453,
+      113875,
+      143463
+    ],
+    "confidence": "low",
+    "validation_note": "entity verified in source; issue curation has false positives"
+  },
+  {
+    "id": "missing_aten_decomposition",
+    "name": "Missing Aten Decomposition",
+    "description": "Subcause of decomposition gap (evidence from 3 issues)",
+    "evidence_count": 3,
+    "example_issues": [
+      115883,
+      133057,
+      177505
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "cpp_custom_op_registration",
+    "name": "Cpp Custom Op Registration",
+    "description": "Subcause of non compliant custom op (evidence from 3 issues)",
+    "evidence_count": 3,
+    "example_issues": [
+      123603,
+      141013,
+      156322
+    ],
+    "confidence": "low",
+    "validation_note": "entity verified in source; issue curation has false positives"
+  },
+  {
+    "id": "sklearn_call",
+    "name": "Sklearn Call",
+    "description": "Subcause of third party lib (evidence from 3 issues)",
+    "evidence_count": 3,
+    "example_issues": [
+      146990,
+      148003,
+      169178
+    ],
+    "confidence": "low",
+    "validation_note": "entity verified in source; issue curation has false positives"
+  },
+  {
+    "id": "quantized_tensor_subclass",
+    "name": "Quantized Tensor Subclass",
+    "description": "Subcause of tensor subclass (evidence from 2 issues)",
+    "evidence_count": 2,
+    "example_issues": [
+      93642,
+      136287
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "poor_autotuning",
+    "name": "Poor Autotuning",
+    "description": "Subcause of suboptimal heuristics (evidence from 1 issues)",
+    "evidence_count": 1,
+    "example_issues": [
+      93475
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "batch_size_change",
+    "name": "Batch Size Change",
+    "description": "Subcause of shape wobble (evidence from 1 issues)",
+    "evidence_count": 1,
+    "example_issues": [
+      96274
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "lowering_failure",
+    "name": "Lowering Failure",
+    "description": "Subcause of decomposition gap (evidence from 1 issues)",
+    "evidence_count": 1,
+    "example_issues": [
+      111952
+    ],
+    "confidence": "low",
+    "validation_note": "entity verified in source; issue curation has false positives"
+  },
+  {
+    "id": "explicit_mutation",
+    "name": "Explicit Mutation",
+    "description": "Subcause of inplace mutation (evidence from 1 issues)",
+    "evidence_count": 1,
+    "example_issues": [
+      120802
+    ],
+    "confidence": "medium"
+  }
+]

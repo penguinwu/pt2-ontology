@@ -1,0 +1,257 @@
+[
+  {
+    "from": "torchdynamo",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "torchinductor",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "aot_autograd",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "aot_inductor",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "fx_graph",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "guards",
+    "type": "is_component_of",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "dynamic_shapes",
+    "type": "is_component_of",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "export",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "pt2_cudagraph",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "compilation_cache",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "custom_ops",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "higher_order_ops",
+    "type": "is_component_of",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "flexattention",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "cutedsl_backend",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "max_autotune",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "compiled_optimizer",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "pt2_debug_observability",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "compiled_tensor_subclass",
+    "type": "is_component_of",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "custom_fx_passes",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "pattern_matcher",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "fake_tensor",
+    "type": "is_component_of",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "functionalization",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "torchinductor",
+    "type": "depends_on",
+    "to": "triton"
+  },
+  {
+    "from": "torchinductor",
+    "type": "depends_on",
+    "to": "fx_graph"
+  },
+  {
+    "from": "torchdynamo",
+    "type": "depends_on",
+    "to": "guards"
+  },
+  {
+    "from": "torchdynamo",
+    "type": "depends_on",
+    "to": "fake_tensor"
+  },
+  {
+    "from": "aot_autograd",
+    "type": "depends_on",
+    "to": "fx_graph"
+  },
+  {
+    "from": "aot_autograd",
+    "type": "depends_on",
+    "to": "functionalization"
+  },
+  {
+    "from": "aot_inductor",
+    "type": "depends_on",
+    "to": "torchinductor"
+  },
+  {
+    "from": "flexattention",
+    "type": "depends_on",
+    "to": "triton"
+  },
+  {
+    "from": "pattern_matcher",
+    "type": "depends_on",
+    "to": "fx_graph"
+  },
+  {
+    "from": "pt2_cudagraph",
+    "type": "depends_on",
+    "to": "torchinductor"
+  },
+  {
+    "from": "inductor_scheduler",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "triton_heuristics",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "coordinate_descent_tuning",
+    "type": "is_component_of",
+    "to": "max_autotune"
+  },
+  {
+    "from": "selective_checkpointing",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "simplefsdp",
+    "type": "is_component_of",
+    "to": "compiler_toolkit"
+  },
+  {
+    "from": "compiler_toolkit",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "graph_partitioner",
+    "type": "is_component_of",
+    "to": "torch_compile"
+  },
+  {
+    "from": "tlparse",
+    "type": "is_component_of",
+    "to": "pt2_debug_observability"
+  },
+  {
+    "from": "compile_profiler",
+    "type": "is_component_of",
+    "to": "pt2_debug_observability"
+  },
+  {
+    "from": "compute_comm_overlap",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "combo_kernels",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "fusion_optimization",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "inductor_on_demand",
+    "type": "is_component_of",
+    "to": "torchinductor"
+  },
+  {
+    "from": "op_flex_attention",
+    "type": "is_component_of",
+    "to": "higher_order_ops"
+  },
+  {
+    "from": "op_flex_attention",
+    "type": "is_component_of",
+    "to": "flexattention"
+  },
+  {
+    "from": "op_checkpoint",
+    "type": "is_component_of",
+    "to": "higher_order_ops"
+  },
+  {
+    "from": "op_cond",
+    "type": "is_component_of",
+    "to": "higher_order_ops"
+  },
+  {
+    "from": "op_while_loop",
+    "type": "is_component_of",
+    "to": "higher_order_ops"
+  },
+  {
+    "from": "op_map",
+    "type": "is_component_of",
+    "to": "higher_order_ops"
+  }
+]

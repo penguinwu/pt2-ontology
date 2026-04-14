@@ -1,0 +1,48 @@
+[
+  {
+    "id": "kernel_fusion",
+    "name": "Kernel Fusion",
+    "description": "Fusing multiple ops into a single kernel to reduce memory bandwidth and launch overhead",
+    "aliases": [
+      "fusion",
+      "fused kernel",
+      "op fusion"
+    ]
+  },
+  {
+    "id": "compute_comm_reorder",
+    "name": "Compute/Comm Reordering",
+    "description": "Reordering compute and communication ops in the graph for better overlap in distributed training",
+    "aliases": [
+      "comm reordering",
+      "compute/comm overlap",
+      "bucketing reordering"
+    ]
+  },
+  {
+    "id": "persistent_reduction",
+    "name": "Persistent Reduction",
+    "description": "Inductor optimization where small reductions are computed without looping \u2014 entire reduction fits in shared memory",
+    "aliases": [
+      "persistent reduction",
+      "persistent kernel"
+    ]
+  },
+  {
+    "id": "outer_reduction",
+    "name": "Outer Reduction",
+    "description": "Reduction where the reduction dimension is non-contiguous \u2014 requires specific heuristics for tile sizes",
+    "aliases": [
+      "outer reduction",
+      "non-contiguous reduction"
+    ]
+  },
+  {
+    "id": "optimization_guard_cpp",
+    "name": "cpp_guards",
+    "description": "C++ guard manager enabled by default for faster guard evaluation (enable_cpp_guard_manager)",
+    "aliases": [
+      "C++ guard evaluation"
+    ]
+  }
+]

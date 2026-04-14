@@ -1,0 +1,77 @@
+[
+  {
+    "id": "dynamo_unsupported",
+    "name": "torch._dynamo.exc.Unsupported",
+    "description": "Dynamo explicitly doesn't support this construct"
+  },
+  {
+    "id": "torch_runtime_error",
+    "name": "TorchRuntimeError",
+    "description": "Runtime error from compiled code"
+  },
+  {
+    "id": "backend_compiler_failed",
+    "name": "BackendCompilerFailed",
+    "description": "Backend (inductor/triton) failed to compile the graph"
+  },
+  {
+    "id": "recompile_warning",
+    "name": "Recompilation Warning",
+    "description": "torch._dynamo hit recompilation limit"
+  },
+  {
+    "id": "accuracy_mismatch",
+    "name": "Accuracy Mismatch",
+    "description": "Numerical differences between compiled and eager"
+  },
+  {
+    "id": "numerical_drift",
+    "name": "Numerical Drift",
+    "description": "Subtle precision differences \u2014 may or may not be acceptable depending on tolerance"
+  },
+  {
+    "id": "silent_slowdown",
+    "name": "Silent Performance Degradation",
+    "description": "No error but compiled code is slower than eager"
+  },
+  {
+    "id": "segfault",
+    "name": "Segfault / CUDA Error",
+    "description": "Low-level crash during compiled execution"
+  },
+  {
+    "id": "compile_timeout",
+    "name": "Compile Timeout",
+    "description": "Compilation exceeds job timeout threshold (e.g., 10min or 30min training job timeout)"
+  },
+  {
+    "id": "inductor_oom",
+    "name": "Inductor OOM During Compilation",
+    "description": "Inductor runs out of memory while compiling the graph (distinct from runtime OOM)"
+  },
+  {
+    "id": "symptom_multiple_cache_entries",
+    "name": "multiple_cache_entries",
+    "description": "Frame cache shows many entries (approaching recompile_limit) indicating guard specialization",
+    "aliases": [
+      "cache explosion"
+    ]
+  },
+  {
+    "id": "symptom_extended_debug_output",
+    "name": "extended_debug_output",
+    "description": "TORCH_LOGS output shows graph breaks, guard failures, or shape constraint violations",
+    "aliases": [
+      "debug trace",
+      "verbose logging"
+    ]
+  },
+  {
+    "id": "symptom_perf_regression_dynamic",
+    "name": "perf_regression_dynamic",
+    "description": "Dynamic shapes run 9x slower than static due to missing divisibility hints (known gap)",
+    "aliases": [
+      "dynamic slowdown"
+    ]
+  }
+]

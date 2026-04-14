@@ -1,0 +1,77 @@
+[
+  {
+    "id": "op_nonzero",
+    "name": "nonzero",
+    "description": "Op with dynamic output shape that requires capture_dynamic_output_shape_ops to avoid graph break",
+    "aliases": [
+      "torch.nonzero",
+      "aten.nonzero"
+    ]
+  },
+  {
+    "id": "op_unique",
+    "name": "unique",
+    "description": "Op with dynamic output shape that requires capture_dynamic_output_shape_ops to avoid graph break",
+    "aliases": [
+      "torch.unique",
+      "aten.unique"
+    ]
+  },
+  {
+    "id": "op_item",
+    "name": "item",
+    "description": "Tensor method returning a scalar (e.g., x.item()) that requires capture_scalar_outputs to avoid graph break",
+    "aliases": [
+      "Tensor.item"
+    ]
+  },
+  {
+    "id": "op_sdpa",
+    "name": "scaled_dot_product_attention",
+    "description": "Scaled dot product attention op with special variable handling in dynamo",
+    "aliases": [
+      "torch.nn.functional.scaled_dot_product_attention",
+      "F.scaled_dot_product_attention"
+    ]
+  },
+  {
+    "id": "op_flex_attention",
+    "name": "flex_attention",
+    "description": "Flexible attention higher-order op requiring special compilation handling",
+    "aliases": [
+      "torch.ops.higher_order.flex_attention"
+    ]
+  },
+  {
+    "id": "op_checkpoint",
+    "name": "checkpoint",
+    "description": "Activation checkpoint higher-order op (torch.utils.checkpoint.checkpoint)",
+    "aliases": [
+      "torch.utils.checkpoint.checkpoint"
+    ]
+  },
+  {
+    "id": "op_cond",
+    "name": "cond",
+    "description": "Conditional higher-order op for control flow (torch.cond)",
+    "aliases": [
+      "torch.cond"
+    ]
+  },
+  {
+    "id": "op_while_loop",
+    "name": "while_loop",
+    "description": "While loop higher-order op for control flow (torch.while_loop)",
+    "aliases": [
+      "torch.while_loop"
+    ]
+  },
+  {
+    "id": "op_map",
+    "name": "map",
+    "description": "Map higher-order op (torch.ops.higher_order.map)",
+    "aliases": [
+      "torch.ops.higher_order.map"
+    ]
+  }
+]

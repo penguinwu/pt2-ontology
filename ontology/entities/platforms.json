@@ -1,0 +1,72 @@
+[
+  {
+    "id": "nvidia_gpu",
+    "name": "NVIDIA GPU (CUDA)",
+    "category": "hardware",
+    "is_default": true,
+    "description": "NVIDIA GPUs via CUDA — the assumed baseline for all PT2 issues"
+  },
+  {
+    "id": "amd_gpu",
+    "name": "AMD GPU (ROCm)",
+    "category": "hardware",
+    "is_default": false,
+    "description": "AMD GPUs via ROCm backend — community-maintained, separate oncall"
+  },
+  {
+    "id": "intel_xpu",
+    "name": "Intel XPU",
+    "category": "hardware",
+    "is_default": false,
+    "description": "Intel discrete accelerators — CPU-adjacent, Intel-maintained"
+  },
+  {
+    "id": "google_tpu",
+    "name": "Google TPU",
+    "category": "hardware",
+    "is_default": false,
+    "description": "Google TPUs via TorchXLA/TorchAX backend"
+  },
+  {
+    "id": "intel_cpu",
+    "name": "Intel CPU",
+    "category": "hardware",
+    "is_default": false,
+    "description": "CPU-only execution path (Intel) — no GPU accelerator"
+  },
+  {
+    "id": "arm_cpu",
+    "name": "ARM CPU",
+    "category": "hardware",
+    "is_default": false,
+    "description": "ARM architecture CPUs — includes Apple Silicon CPU path and server ARM"
+  },
+  {
+    "id": "apple_mps",
+    "name": "Apple MPS (Metal)",
+    "category": "hardware",
+    "is_default": false,
+    "description": "Apple Metal Performance Shaders — limited PT2 support"
+  },
+  {
+    "id": "linux",
+    "name": "Linux",
+    "category": "os",
+    "is_default": true,
+    "description": "Linux — the assumed baseline OS for all PT2 issues"
+  },
+  {
+    "id": "windows",
+    "name": "Windows",
+    "category": "os",
+    "is_default": false,
+    "description": "Windows — less tested, known path separator and multiprocessing issues"
+  },
+  {
+    "id": "macos",
+    "name": "macOS",
+    "category": "os",
+    "is_default": false,
+    "description": "macOS — limited GPU support (MPS only), CPU path works"
+  }
+]

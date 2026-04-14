@@ -1,0 +1,177 @@
+[
+  {
+    "from": "graph_break",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects",
+    "to": "guards"
+  },
+  {
+    "from": "crash",
+    "type": "affects",
+    "to": "torchinductor"
+  },
+  {
+    "from": "wrong_output",
+    "type": "affects",
+    "to": "torchinductor"
+  },
+  {
+    "from": "export_failure",
+    "type": "affects",
+    "to": "export"
+  },
+  {
+    "from": "cudagraph_oom",
+    "type": "affects",
+    "to": "pt2_cudagraph"
+  },
+  {
+    "from": "cache_miss",
+    "type": "affects",
+    "to": "compilation_cache"
+  },
+  {
+    "from": "perf_improvement",
+    "type": "affects",
+    "to": "torchinductor"
+  },
+  {
+    "from": "perf_improvement",
+    "type": "affects",
+    "to": "max_autotune"
+  },
+  {
+    "from": "recompile_limit",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "accumulated_recompile_limit",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "capture_scalar_outputs",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "capture_dynamic_output_shape_ops",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "suppress_errors",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "inline_inbuilt_nn_modules",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "verbose",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "repro_level",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "repro_after",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "torch_logs",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "specialize_int",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "specialize_float",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "assume_static_by_default",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "guard_nn_modules",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "optimize_ddp",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "allow_rnn",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "trace_numpy",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "enable_compiler_collectives",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "torch_compile_dynamic_sources",
+    "type": "affects",
+    "to": "torchdynamo"
+  },
+  {
+    "from": "max_autotune_gemm",
+    "type": "affects",
+    "to": "torchinductor"
+  },
+  {
+    "from": "fallback_random",
+    "type": "affects",
+    "to": "torchinductor"
+  },
+  {
+    "from": "force_disable_caches",
+    "type": "affects",
+    "to": "torchinductor"
+  },
+  {
+    "from": "cpp_wrapper",
+    "type": "affects",
+    "to": "torchinductor"
+  },
+  {
+    "from": "fx_graph_cache",
+    "type": "affects",
+    "to": "torchinductor"
+  },
+  {
+    "from": "emulate_precision_casts",
+    "type": "affects",
+    "to": "torchinductor"
+  },
+  {
+    "from": "torch_compile_debug",
+    "type": "affects",
+    "to": "torchinductor"
+  }
+]

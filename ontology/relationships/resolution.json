@@ -1,0 +1,213 @@
+[
+  {
+    "from": "graph_break",
+    "type": "fixed_by",
+    "to": "code_rewrite",
+    "fix_type": "user_adaptation",
+    "detail": "Rewrite code pattern to be compile-friendly (fundamental limitation)"
+  },
+  {
+    "from": "graph_break",
+    "type": "fixed_by",
+    "to": "op_replacement",
+    "fix_type": "user_adaptation",
+    "detail": "Swap unsupported op for supported equivalent"
+  },
+  {
+    "from": "graph_break",
+    "type": "fixed_by",
+    "to": "skip_compile",
+    "fix_type": "user_workaround",
+    "detail": "Exclude region from compilation — avoids problem, doesn't solve it"
+  },
+  {
+    "from": "recompilation",
+    "type": "fixed_by",
+    "to": "config_change",
+    "fix_type": "compiler_fix",
+    "detail": "Adjust dynamic shapes, recompile_limit, or guard config"
+  },
+  {
+    "from": "wrong_output",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "fix_type": "upstream_fix",
+    "detail": "Bug in compiler — needs PyTorch PR"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "fixed_by",
+    "to": "config_change",
+    "fix_type": "compiler_fix",
+    "detail": "e.g., emulate_precision_casts, fallback_random"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "fix_type": "upstream_fix",
+    "detail": "Precision bug in codegen — needs PyTorch PR"
+  },
+  {
+    "from": "crash",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "fix_type": "upstream_fix",
+    "detail": "Internal compiler error — needs PyTorch PR"
+  },
+  {
+    "from": "crash",
+    "type": "fixed_by",
+    "to": "version_upgrade",
+    "fix_type": "upstream_fix",
+    "detail": "Bug already fixed in newer PyTorch version"
+  },
+  {
+    "from": "perf_regression",
+    "type": "fixed_by",
+    "to": "config_change",
+    "fix_type": "compiler_fix",
+    "detail": "Tune mode, backend options, or disable problematic optimizations"
+  },
+  {
+    "from": "slow_compile",
+    "type": "fixed_by",
+    "to": "config_change",
+    "fix_type": "compiler_fix",
+    "detail": "Enable caching, reduce graph size, tune compile options"
+  },
+  {
+    "from": "export_failure",
+    "type": "fixed_by",
+    "to": "code_rewrite",
+    "fix_type": "user_adaptation",
+    "detail": "Rewrite model to meet export constraints (fundamental requirement)"
+  },
+  {
+    "from": "cudagraph_oom",
+    "type": "fixed_by",
+    "to": "config_change",
+    "fix_type": "compiler_fix",
+    "detail": "Adjust cudagraph pool size or disable cudagraphs"
+  },
+  {
+    "from": "cache_miss",
+    "type": "fixed_by",
+    "to": "config_change",
+    "fix_type": "compiler_fix",
+    "detail": "Adjust cache config or declare dynamic sources upfront"
+  },
+  {
+    "from": "perf_improvement",
+    "type": "fixed_by",
+    "to": "config_change",
+    "fix_type": "compiler_fix",
+    "detail": "Enable max-autotune, tune inductor flags"
+  },
+  {
+    "from": "perf_improvement",
+    "type": "fixed_by",
+    "to": "code_rewrite",
+    "fix_type": "user_adaptation",
+    "detail": "Restructure model for better fusion/codegen"
+  },
+  {
+    "from": "suboptimal_heuristics",
+    "type": "fixed_by",
+    "to": "config_change",
+    "fix_type": "compiler_fix",
+    "detail": "Override inductor heuristics via config namespace"
+  },
+  {
+    "from": "non_compliant_custom_op",
+    "type": "fixed_by",
+    "to": "code_rewrite",
+    "fix_type": "user_adaptation",
+    "detail": "Register op via torch.library with FakeTensor kernel"
+  },
+  {
+    "from": "failure_silent_incorrectness",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "fix_type": "upstream_fix",
+    "detail": "Correctness bug — needs PyTorch PR"
+  },
+  {
+    "from": "failure_dynamic_shape_error",
+    "type": "fixed_by",
+    "to": "config_change",
+    "fix_type": "compiler_fix",
+    "detail": "Adjust dynamic shapes config or add constraints"
+  },
+
+  {
+    "from": "cause_shape_wobble",
+    "type": "resolved_by",
+    "to": "resolution_use_dynamic_sources",
+    "fix_type": "compiler_fix",
+    "detail": "Declare dynamic sources upfront to avoid recompilation"
+  },
+  {
+    "from": "cause_shape_wobble",
+    "type": "resolved_by",
+    "to": "resolution_reset_dynamo",
+    "fix_type": "compiler_fix",
+    "detail": "Reset cache before benchmarking"
+  },
+  {
+    "from": "cause_unspecialized_int",
+    "type": "resolved_by",
+    "to": "resolution_allow_unspec_int",
+    "fix_type": "compiler_fix",
+    "detail": "Set allow_unspec_int_on_nn_module=True"
+  },
+  {
+    "from": "cause_dynamic_output_shape",
+    "type": "resolved_by",
+    "to": "resolution_enable_capture_ops",
+    "fix_type": "compiler_fix",
+    "detail": "Set capture_dynamic_output_shape_ops=True"
+  },
+  {
+    "from": "cause_scalar_return",
+    "type": "resolved_by",
+    "to": "resolution_enable_capture_ops",
+    "fix_type": "compiler_fix",
+    "detail": "Set capture_scalar_outputs=True"
+  },
+  {
+    "from": "graph_break",
+    "type": "resolved_by",
+    "to": "resolution_use_fullgraph",
+    "fix_type": "compiler_fix",
+    "detail": "Use fullgraph=True to identify all graph breaks"
+  },
+  {
+    "from": "graph_break",
+    "type": "resolved_by",
+    "to": "resolution_use_torch_logs",
+    "fix_type": "compiler_fix",
+    "detail": "Set TORCH_LOGS=graph_breaks to find break locations"
+  },
+  {
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "resolution_use_torch_logs",
+    "fix_type": "compiler_fix",
+    "detail": "Set TORCH_LOGS=recompiles,guards to find trigger"
+  },
+  {
+    "from": "crash",
+    "type": "resolved_by",
+    "to": "resolution_switch_backend",
+    "fix_type": "compiler_fix",
+    "detail": "Isolate crash to dynamo vs inductor via backend ablation"
+  },
+  {
+    "from": "wrong_output",
+    "type": "resolved_by",
+    "to": "resolution_switch_backend",
+    "fix_type": "compiler_fix",
+    "detail": "Isolate correctness issue to dynamo vs inductor"
+  }
+]

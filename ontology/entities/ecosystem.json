@@ -1,0 +1,70 @@
+[
+  {
+    "id": "torchtitan",
+    "name": "TorchTitan",
+    "description": "Reference implementation for large-scale LLM training with native PyTorch APIs",
+    "aliases": [
+      "torchtitan",
+      "torch titan"
+    ]
+  },
+  {
+    "id": "vllm",
+    "name": "vLLM",
+    "description": "Popular open-source LLM inference engine \u2014 key PT2 frontier integration target",
+    "aliases": [
+      "vllm",
+      "vLLM"
+    ]
+  },
+  {
+    "id": "torchbench",
+    "name": "TorchBench",
+    "description": "PyTorch benchmarking suite for evaluating compile performance across models",
+    "aliases": [
+      "torchbench",
+      "torch bench"
+    ]
+  },
+  {
+    "id": "helion",
+    "name": "Helion",
+    "description": "Next-gen kernel DSL \u2014 Python-native language for writing GPU kernels, compiles through Triton",
+    "aliases": [
+      "helion",
+      "helion dsl"
+    ]
+  },
+  {
+    "id": "quack",
+    "name": "Quack (CuteDSL)",
+    "description": "Tri Dao's hyperoptimized CuteDSL kernel library \u2014 used as performance reference target",
+    "aliases": [
+      "quack",
+      "cute dsl quack"
+    ]
+  },
+  {
+    "id": "torchtune",
+    "name": "torchtune",
+    "description": "PyTorch-native fine-tuning framework for LLMs",
+    "aliases": [
+      "torchtune",
+      "torch tune"
+    ]
+  },
+  {
+    "id": "executorch",
+    "name": "ExecuTorch",
+    "description": "PyTorch deployment framework for edge/mobile \u2014 consumes Export/AOTI output",
+    "aliases": [
+      "executorch",
+      "exec torch"
+    ]
+  },
+  {
+    "id": "ecosystem_sglang",
+    "name": "SGLang",
+    "description": "LLM serving framework integrating torch.compile for inference speedup"
+  }
+]

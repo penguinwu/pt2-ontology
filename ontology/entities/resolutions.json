@@ -1,0 +1,93 @@
+[
+  {
+    "id": "config_change",
+    "name": "Configuration Change",
+    "description": "Adjust compile flags (fullgraph, dynamic, backend options)"
+  },
+  {
+    "id": "code_rewrite",
+    "name": "Code Pattern Change",
+    "description": "Rewrite user code to be compile-friendly"
+  },
+  {
+    "id": "op_replacement",
+    "name": "Op Replacement",
+    "description": "Swap unsupported op for a supported equivalent"
+  },
+  {
+    "id": "upstream_fix",
+    "name": "Upstream Fix (PR)",
+    "description": "Fix in PyTorch repo \u2014 add support, fix bug, add decomp"
+  },
+  {
+    "id": "skip_compile",
+    "name": "Skip Compilation",
+    "description": "Mark function/region as not-to-compile"
+  },
+  {
+    "id": "version_upgrade",
+    "name": "Version Upgrade",
+    "description": "Issue fixed in a newer PyTorch version"
+  },
+  {
+    "id": "workaround",
+    "name": "Workaround",
+    "description": "Temporary fix that avoids the issue without solving root cause"
+  },
+  {
+    "id": "resolution_use_torch_logs",
+    "name": "use_torch_logs",
+    "description": "Set TORCH_LOGS=graph_breaks,guards,recompiles to diagnose compilation issues",
+    "aliases": [
+      "enable logging"
+    ]
+  },
+  {
+    "id": "resolution_use_fullgraph",
+    "name": "use_fullgraph",
+    "description": "Set fullgraph=True to force error on graph breaks and identify source",
+    "aliases": [
+      "enforce no breaks"
+    ]
+  },
+  {
+    "id": "resolution_use_dynamic_sources",
+    "name": "use_dynamic_sources",
+    "description": "Specify TORCH_COMPILE_DYNAMIC_SOURCES=L['x'],L['y'] upfront to reduce recompilation",
+    "aliases": [
+      "declare dynamic inputs"
+    ]
+  },
+  {
+    "id": "resolution_enable_capture_ops",
+    "name": "enable_capture_ops",
+    "description": "Set capture_scalar_outputs=True and capture_dynamic_output_shape_ops=True to avoid graph breaks",
+    "aliases": [
+      "capture scalars and dynamic shapes"
+    ]
+  },
+  {
+    "id": "resolution_switch_backend",
+    "name": "switch_backend",
+    "description": "Switch backend to 'eager' or 'aot_eager' to isolate whether issue is in dynamo vs inductor",
+    "aliases": [
+      "bisect backend"
+    ]
+  },
+  {
+    "id": "resolution_reset_dynamo",
+    "name": "reset_dynamo",
+    "description": "Call torch._dynamo.reset() before benchmarking to clear automatic_dynamic contamination",
+    "aliases": [
+      "clear cache"
+    ]
+  },
+  {
+    "id": "resolution_allow_unspec_int",
+    "name": "allow_unspec_int",
+    "description": "Set allow_unspec_int_on_nn_module=True to prevent recompilation on changing int attributes",
+    "aliases": [
+      "unspecialize ints"
+    ]
+  }
+]

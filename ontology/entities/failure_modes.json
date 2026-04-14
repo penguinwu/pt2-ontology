@@ -1,0 +1,112 @@
+[
+  {
+    "id": "graph_break",
+    "name": "Graph Break",
+    "description": "Dynamo cannot trace through a code pattern \u2014 splits the graph",
+    "severity": "medium"
+  },
+  {
+    "id": "recompilation",
+    "name": "Excessive Recompilation",
+    "description": "Too many guard mismatches cause repeated compilation",
+    "severity": "high"
+  },
+  {
+    "id": "compile_oom",
+    "name": "Compilation OOM",
+    "description": "Out of memory during compilation (not runtime)",
+    "severity": "high"
+  },
+  {
+    "id": "runtime_oom",
+    "name": "Runtime OOM",
+    "description": "Out of memory when executing compiled code",
+    "severity": "high"
+  },
+  {
+    "id": "cudagraph_oom",
+    "name": "CUDAGraph OOM",
+    "description": "Out of memory specific to CUDA graph capture/replay \u2014 common with large models",
+    "severity": "high"
+  },
+  {
+    "id": "slow_compile",
+    "name": "Slow Compilation",
+    "description": "Compilation takes excessively long (minutes to hours)",
+    "severity": "medium"
+  },
+  {
+    "id": "compilation_hang",
+    "name": "Compilation Hang",
+    "description": "Compilation process hangs indefinitely \u2014 distinct from slow compile",
+    "severity": "high"
+  },
+  {
+    "id": "wrong_output",
+    "name": "Incorrect Output",
+    "description": "Compiled code produces different results than eager mode",
+    "severity": "critical"
+  },
+  {
+    "id": "numerical_issue",
+    "name": "Numerical Issue",
+    "description": "Numerical drift or precision differences between compiled and eager \u2014 distinct from wrong output. May be bitwise parity requirement or acceptable drift threshold.",
+    "severity": "medium"
+  },
+  {
+    "id": "crash",
+    "name": "Internal Error / Crash",
+    "description": "Unhandled exception during compilation or execution",
+    "severity": "high"
+  },
+  {
+    "id": "perf_regression",
+    "name": "Performance Regression",
+    "description": "Compiled code runs slower than eager mode",
+    "severity": "medium"
+  },
+  {
+    "id": "export_failure",
+    "name": "Export Failure",
+    "description": "torch.export cannot capture the model graph",
+    "severity": "medium"
+  },
+  {
+    "id": "backward_failure",
+    "name": "Backward Pass Failure",
+    "description": "Compilation succeeds for forward but fails during backward",
+    "severity": "high"
+  },
+  {
+    "id": "cache_miss",
+    "name": "Compile Cache Miss",
+    "description": "Expected cache hit doesn't happen \u2014 triggers unnecessary recompilation",
+    "severity": "medium"
+  },
+  {
+    "id": "perf_improvement",
+    "name": "Performance Improvement",
+    "description": "Compiled code is faster than eager but user wants more speedup \u2014 suboptimal fusion, kernel selection, or missed optimization opportunities. Distinct from perf_regression (slower than eager).",
+    "severity": "medium"
+  },
+  {
+    "id": "failure_silent_incorrectness",
+    "name": "silent_incorrectness",
+    "description": "Compiled code produces wrong results without error (e.g., garbage tokens in LLM output)",
+    "aliases": [
+      "correctness bug",
+      "silent corruption"
+    ],
+    "severity": "critical"
+  },
+  {
+    "id": "failure_dynamic_shape_error",
+    "name": "dynamic_shape_error",
+    "description": "Errors related to unbacked symints, shape inference, or symbolic shape constraints",
+    "aliases": [
+      "unbacked symint error",
+      "shape constraint violation"
+    ],
+    "severity": "high"
+  }
+]

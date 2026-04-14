@@ -1,0 +1,32 @@
+[
+  {
+    "id": "inductor_backend",
+    "name": "inductor",
+    "description": "Default backend \u2014 generates Triton GPU kernels and C++ CPU kernels"
+  },
+  {
+    "id": "eager_backend",
+    "name": "eager",
+    "description": "Debug backend \u2014 runs captured graph in eager mode"
+  },
+  {
+    "id": "aot_eager_backend",
+    "name": "aot_eager",
+    "description": "Debug backend \u2014 AOTAutograd + eager execution"
+  },
+  {
+    "id": "cudagraphs_backend",
+    "name": "cudagraphs",
+    "description": "CUDA graphs backend for reduced kernel launch overhead"
+  },
+  {
+    "id": "cutedsl_backend",
+    "name": "cutedsl",
+    "description": "CuteDSL-based kernel generation backend for inductor"
+  },
+  {
+    "id": "max_autotune_backend",
+    "name": "max-autotune",
+    "description": "Autotuning backend that benchmarks multiple implementations to select fastest"
+  }
+]

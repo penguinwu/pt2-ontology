@@ -1,0 +1,7 @@
+# Temporary files
+*.validated.json
+/tmp/
+__pycache__/
+
+# Old monolithic backup (replaced by modular files)
+ontology/skeleton.json

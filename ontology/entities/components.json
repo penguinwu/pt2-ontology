@@ -1,0 +1,395 @@
+[
+  {
+    "id": "torch_compile",
+    "name": "torch.compile",
+    "description": "Top-level compilation API \u2014 entry point for PT2",
+    "aliases": [
+      "compile",
+      "torch compile",
+      "pt2"
+    ]
+  },
+  {
+    "id": "torchdynamo",
+    "name": "TorchDynamo",
+    "description": "Python bytecode analysis and graph capture engine",
+    "aliases": [
+      "dynamo",
+      "torch._dynamo"
+    ]
+  },
+  {
+    "id": "torchinductor",
+    "name": "TorchInductor",
+    "description": "Default compiler backend \u2014 generates Triton/C++ kernels",
+    "aliases": [
+      "inductor",
+      "torch._inductor"
+    ]
+  },
+  {
+    "id": "aot_autograd",
+    "name": "AOTAutograd",
+    "description": "Ahead-of-time autograd tracing for backward pass capture",
+    "aliases": [
+      "aot autograd",
+      "aotautograd",
+      "functorch.compile"
+    ]
+  },
+  {
+    "id": "aot_inductor",
+    "name": "AOT Inductor",
+    "description": "Ahead-of-time compilation for deployment \u2014 generates standalone artifacts",
+    "aliases": [
+      "aoti",
+      "aot inductor",
+      "torch._export.aot_compile"
+    ]
+  },
+  {
+    "id": "fx_graph",
+    "name": "FX Graph / FX IR",
+    "description": "Intermediate representation used between dynamo and backends",
+    "aliases": [
+      "fx",
+      "torch.fx",
+      "fx ir",
+      "graph ir"
+    ]
+  },
+  {
+    "id": "triton",
+    "name": "Triton",
+    "description": "GPU kernel language used by inductor backend",
+    "aliases": [
+      "openai triton",
+      "triton kernels"
+    ]
+  },
+  {
+    "id": "export",
+    "name": "torch.export",
+    "description": "Model export for deployment \u2014 produces ExportedProgram",
+    "aliases": [
+      "export",
+      "torch export",
+      "pt2 export"
+    ]
+  },
+  {
+    "id": "guards",
+    "name": "Guard System",
+    "description": "Validates assumptions about tensor shapes, dtypes, values for cache reuse",
+    "aliases": [
+      "guards",
+      "guard",
+      "shape guards",
+      "dynamo guards"
+    ]
+  },
+  {
+    "id": "dynamic_shapes",
+    "name": "Dynamic Shapes",
+    "description": "System for handling variable-length dimensions without recompilation",
+    "aliases": [
+      "dynamic shapes",
+      "symbolic shapes",
+      "symint"
+    ]
+  },
+  {
+    "id": "pt2_cudagraph",
+    "name": "PT2 CUDAGraph",
+    "description": "CUDA graph capture and replay integration with torch.compile",
+    "aliases": [
+      "cudagraph",
+      "cuda graphs",
+      "cudagraph trees"
+    ]
+  },
+  {
+    "id": "compilation_cache",
+    "name": "Compilation Cache",
+    "description": "Caching system for compiled artifacts (FXGraphCache, Triton cache, remote cache)",
+    "aliases": [
+      "fxgraphcache",
+      "triton cache",
+      "compile cache",
+      "remote cache"
+    ]
+  },
+  {
+    "id": "custom_ops",
+    "name": "Custom Ops",
+    "description": "User-defined operators registered with torch.library for compile compatibility",
+    "aliases": [
+      "custom ops",
+      "torch.library",
+      "custom operator"
+    ]
+  },
+  {
+    "id": "higher_order_ops",
+    "name": "Higher Order Ops",
+    "description": "Ops that take functions as arguments (e.g., torch.cond, torch.vmap, checkpoint)",
+    "aliases": [
+      "higher order ops",
+      "hop",
+      "control flow ops",
+      "torch.cond"
+    ]
+  },
+  {
+    "id": "flexattention",
+    "name": "FlexAttention",
+    "description": "Flexible attention API compiled through inductor for custom attention patterns",
+    "aliases": [
+      "flex attention",
+      "flex_attention",
+      "torch.nn.attention.flex_attention"
+    ]
+  },
+  {
+    "id": "cutedsl_backend",
+    "name": "Inductor CuteDSL Backend",
+    "description": "CuteDSL-based kernel generation backend for inductor",
+    "aliases": [
+      "cutedsl",
+      "cute dsl",
+      "cutlass backend"
+    ]
+  },
+  {
+    "id": "max_autotune",
+    "name": "Max-Autotune",
+    "description": "Autotuning system that benchmarks multiple kernel implementations to select the fastest",
+    "aliases": [
+      "max autotune",
+      "max-autotune",
+      "autotuner"
+    ]
+  },
+  {
+    "id": "compiled_optimizer",
+    "name": "Compiled Optimizer",
+    "description": "torch.compile applied to optimizer step for fused parameter updates",
+    "aliases": [
+      "compiled optimizer",
+      "compiled optim"
+    ]
+  },
+  {
+    "id": "pt2_debug_observability",
+    "name": "PT2 Debuggability & Observability",
+    "description": "Logging, minifier, debug tools, compile profiling, graph visualization",
+    "aliases": [
+      "torch._logging",
+      "minifier",
+      "compile profiler",
+      "debug tools"
+    ]
+  },
+  {
+    "id": "compiled_tensor_subclass",
+    "name": "Compiled Tensor Subclass",
+    "description": "Support for tensor subclasses (DTensor, NF4Tensor, etc.) through compilation",
+    "aliases": [
+      "compiled tensor subclass",
+      "tensor subclass compile"
+    ]
+  },
+  {
+    "id": "custom_fx_passes",
+    "name": "Custom FX Passes",
+    "description": "User-defined or built-in FX graph transformation passes",
+    "aliases": [
+      "fx passes",
+      "custom passes",
+      "graph passes"
+    ]
+  },
+  {
+    "id": "pattern_matcher",
+    "name": "Pattern Matcher",
+    "description": "Inductor's pattern matching system for graph-level optimizations (fusion, lowering)",
+    "aliases": [
+      "pattern matcher",
+      "pattern matching",
+      "inductor patterns"
+    ]
+  },
+  {
+    "id": "fake_tensor",
+    "name": "Fake Tensor",
+    "description": "Meta-device tensor proxy used during tracing to track shapes without data",
+    "aliases": [
+      "fake tensor",
+      "faketensor",
+      "meta tensor",
+      "torch._subclasses.fake_tensor"
+    ]
+  },
+  {
+    "id": "functionalization",
+    "name": "Functionalization",
+    "description": "Pass that converts in-place and view ops to functional equivalents for tracing",
+    "aliases": [
+      "functionalization",
+      "functionalize"
+    ]
+  },
+  {
+    "id": "decompositions",
+    "name": "Decompositions",
+    "description": "Operator decomposition layer \u2014 breaks complex ops into simpler primitives for backend consumption",
+    "aliases": [
+      "decompositions",
+      "decomps",
+      "op decomposition"
+    ]
+  },
+  {
+    "id": "inductor_scheduler",
+    "name": "Inductor Scheduler",
+    "description": "Schedules and fuses kernels in the inductor backend \u2014 decides what to fuse, reorder, and overlap",
+    "aliases": [
+      "scheduler",
+      "inductor scheduler",
+      "fusion decisions"
+    ]
+  },
+  {
+    "id": "triton_heuristics",
+    "name": "Triton Heuristics",
+    "description": "Heuristic system for selecting Triton kernel configs (tile sizes, num_warps, RBLOCK, XBLOCK)",
+    "aliases": [
+      "triton heuristics",
+      "autotune configs",
+      "tile size heuristics",
+      "triton_heuristics.py"
+    ]
+  },
+  {
+    "id": "coordinate_descent_tuning",
+    "name": "Coordinate Descent Tuning",
+    "description": "Advanced autotuning that searches the config space via coordinate descent for optimal kernel performance",
+    "aliases": [
+      "coordinate descent",
+      "coord descent tuning",
+      "CDT"
+    ]
+  },
+  {
+    "id": "selective_checkpointing",
+    "name": "Selective Activation Checkpointing",
+    "description": "Fine-grained activation checkpointing integrated with torch.compile to reduce memory",
+    "aliases": [
+      "selective checkpointing",
+      "selective AC",
+      "activation checkpointing",
+      "checkpoint"
+    ]
+  },
+  {
+    "id": "simplefsdp",
+    "name": "SimpleFSDP",
+    "description": "Compiler-friendly version of FSDP designed for full graph capture and compiler toolkit workflows",
+    "aliases": [
+      "simplefsdp",
+      "simple fsdp",
+      "compiler-friendly fsdp"
+    ]
+  },
+  {
+    "id": "compiler_toolkit",
+    "name": "Compiler Toolkit",
+    "description": "Toolkit-style usage of compiler stack \u2014 AOT full joint-graph capture with user-controlled passes, regional inductor, bucketing",
+    "aliases": [
+      "compiler toolkit",
+      "toolkit",
+      "compiler as toolkit"
+    ]
+  },
+  {
+    "id": "graph_partitioner",
+    "name": "Graph Partitioner",
+    "description": "Partitions captured graphs into subgraphs for regional compilation, CUDAGraph splitting, etc.",
+    "aliases": [
+      "graph partitioner",
+      "partitioner"
+    ]
+  },
+  {
+    "id": "standalone_compile",
+    "name": "Standalone Compile",
+    "description": "torch._inductor.standalone_compile \u2014 simplified compile entry point for specific use cases like vLLM",
+    "aliases": [
+      "standalone compile",
+      "standalone_compile"
+    ]
+  },
+  {
+    "id": "tlparse",
+    "name": "tlparse",
+    "description": "Log parsing and visualization tool for torch.compile debug logs",
+    "aliases": [
+      "tlparse",
+      "tl parse",
+      "log parser"
+    ]
+  },
+  {
+    "id": "compile_profiler",
+    "name": "Compile Time Profiler",
+    "description": "Profiling infrastructure for compile time breakdown \u2014 identifying where compile time is spent",
+    "aliases": [
+      "compile profiler",
+      "compile time breakdown",
+      "dynamo_timed"
+    ]
+  },
+  {
+    "id": "compute_comm_overlap",
+    "name": "Compute/Comm Overlap",
+    "description": "Inductor passes for reordering compute and communication ops to overlap them in distributed training",
+    "aliases": [
+      "compute comm overlap",
+      "comm overlap",
+      "compute/comm reordering",
+      "bucketing reordering"
+    ]
+  },
+  {
+    "id": "combo_kernels",
+    "name": "Combo Kernels",
+    "description": "Inductor technique for combining multiple small kernels into a single kernel to reduce launch overhead",
+    "aliases": [
+      "combo kernels",
+      "combo kernel",
+      "combined kernels"
+    ]
+  },
+  {
+    "id": "fusion_optimization",
+    "name": "Fusion Optimization",
+    "description": "Inductor fusion strategies \u2014 horizontal fusion, vertical fusion, and fusion policies for combining operations",
+    "aliases": [
+      "fusion optimization",
+      "fusion policy",
+      "horizontal fusion",
+      "vertical fusion"
+    ]
+  },
+  {
+    "id": "inductor_on_demand",
+    "name": "Inductor On Demand",
+    "description": "Applying inductor compilation to specific annotated regions rather than the full graph \u2014 formerly 'regional compilation'",
+    "aliases": [
+      "inductor on demand",
+      "regional inductor",
+      "regional compilation",
+      "regional compile"
+    ]
+  }
+]

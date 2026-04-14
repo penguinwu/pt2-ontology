@@ -1,0 +1,1457 @@
+[
+  {
+    "from": "unsupported_op",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "data_dependent_control",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "third_party_lib",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "custom_autograd",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "guard_mismatch",
+    "type": "causes",
+    "to": "recompilation"
+  },
+  {
+    "from": "dynamic_shapes_issue",
+    "type": "causes",
+    "to": "recompilation"
+  },
+  {
+    "from": "dynamic_shapes_issue",
+    "type": "causes",
+    "to": "slow_compile"
+  },
+  {
+    "from": "backend_bug",
+    "type": "causes",
+    "to": "crash"
+  },
+  {
+    "from": "backend_bug",
+    "type": "causes",
+    "to": "wrong_output"
+  },
+  {
+    "from": "backend_bug",
+    "type": "causes",
+    "to": "numerical_issue"
+  },
+  {
+    "from": "inplace_mutation",
+    "type": "causes",
+    "to": "wrong_output"
+  },
+  {
+    "from": "decomposition_gap",
+    "type": "causes",
+    "to": "export_failure"
+  },
+  {
+    "from": "tensor_subclass",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "distributed_interaction",
+    "type": "causes",
+    "to": "crash"
+  },
+  {
+    "from": "distributed_interaction",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "guard_mismatch",
+    "type": "causes",
+    "to": "cache_miss"
+  },
+  {
+    "from": "dynamo_unsupported",
+    "type": "is_symptom_of",
+    "to": "graph_break"
+  },
+  {
+    "from": "backend_compiler_failed",
+    "type": "is_symptom_of",
+    "to": "crash"
+  },
+  {
+    "from": "recompile_warning",
+    "type": "is_symptom_of",
+    "to": "recompilation"
+  },
+  {
+    "from": "accuracy_mismatch",
+    "type": "is_symptom_of",
+    "to": "wrong_output"
+  },
+  {
+    "from": "numerical_drift",
+    "type": "is_symptom_of",
+    "to": "numerical_issue"
+  },
+  {
+    "from": "silent_slowdown",
+    "type": "is_symptom_of",
+    "to": "perf_regression"
+  },
+  {
+    "from": "segfault",
+    "type": "is_symptom_of",
+    "to": "crash"
+  },
+  {
+    "from": "torch_runtime_error",
+    "type": "is_symptom_of",
+    "to": "crash"
+  },
+  {
+    "from": "non_compliant_custom_op",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "suboptimal_heuristics",
+    "type": "causes",
+    "to": "perf_improvement"
+  },
+  {
+    "from": "excessive_logging",
+    "type": "causes",
+    "to": "slow_compile"
+  },
+  {
+    "from": "abi_incompatibility",
+    "type": "causes",
+    "to": "crash"
+  },
+  {
+    "from": "automatic_dynamic_shapes",
+    "type": "causes",
+    "to": "recompilation"
+  },
+  {
+    "from": "automatic_dynamic_shapes",
+    "type": "causes",
+    "to": "perf_improvement"
+  },
+  {
+    "from": "compile_timeout",
+    "type": "is_symptom_of",
+    "to": "slow_compile"
+  },
+  {
+    "from": "compile_timeout",
+    "type": "is_symptom_of",
+    "to": "compilation_hang"
+  },
+  {
+    "from": "inductor_oom",
+    "type": "is_symptom_of",
+    "to": "compile_oom"
+  },
+  {
+    "from": "cause_shape_wobble",
+    "type": "causes",
+    "to": "recompilation"
+  },
+  {
+    "from": "cause_unspecialized_int",
+    "type": "causes",
+    "to": "recompilation"
+  },
+  {
+    "from": "cause_dynamic_output_shape",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "cause_scalar_return",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "cause_fancy_compile_wrapper",
+    "type": "causes",
+    "to": "graph_break"
+  },
+  {
+    "from": "symptom_multiple_cache_entries",
+    "type": "is_symptom_of",
+    "to": "recompilation"
+  },
+  {
+    "from": "symptom_perf_regression_dynamic",
+    "type": "is_symptom_of",
+    "to": "perf_regression"
+  },
+  {
+    "from": "j4_graph_breaks",
+    "type": "diagnosed_by",
+    "to": "torch_logs",
+    "detail": "TORCH_LOGS=graph_breaks"
+  },
+  {
+    "from": "j4_graph_breaks",
+    "type": "diagnosed_by",
+    "to": "fullgraph_flag",
+    "detail": "fullgraph=True to find all breaks"
+  },
+  {
+    "from": "j5_dynamic_shapes",
+    "type": "diagnosed_by",
+    "to": "torch_logs",
+    "detail": "TORCH_LOGS=recompiles,guards,dynamic"
+  },
+  {
+    "from": "j6_compile_time",
+    "type": "diagnosed_by",
+    "to": "compile_profiler",
+    "detail": "TORCH_COMPILE_CPROFILE=1"
+  },
+  {
+    "from": "j6_compile_time",
+    "type": "diagnosed_by",
+    "to": "torch_compile_debug",
+    "detail": "TORCH_COMPILE_DEBUG=1"
+  },
+  {
+    "from": "j7_perf_optimization",
+    "type": "diagnosed_by",
+    "to": "torch_logs",
+    "detail": "TORCH_LOGS=fusion,output_code,perf_hints"
+  },
+  {
+    "from": "j3_correctness",
+    "type": "diagnosed_by",
+    "to": "repro_level",
+    "detail": "minifier for minimal repro"
+  },
+  {
+    "from": "j3_correctness",
+    "type": "diagnosed_by",
+    "to": "tlparse"
+  },
+  {
+    "from": "j1_first_compile",
+    "type": "diagnosed_by",
+    "to": "tlparse",
+    "detail": "TORCH_TRACE + tlparse for first overview"
+  },
+  {
+    "from": "cause_shape_wobble",
+    "type": "is_subcause_of",
+    "to": "automatic_dynamic_shapes"
+  },
+  {
+    "from": "cause_unspecialized_int",
+    "type": "is_subcause_of",
+    "to": "guard_mismatch"
+  },
+  {
+    "from": "cause_dynamic_output_shape",
+    "type": "is_subcause_of",
+    "to": "data_dependent_control"
+  },
+  {
+    "from": "cause_scalar_return",
+    "type": "is_subcause_of",
+    "to": "data_dependent_control"
+  },
+  {
+    "from": "cause_fancy_compile_wrapper",
+    "type": "is_subcause_of",
+    "to": "unsupported_op"
+  },
+  {
+    "from": "non_compliant_custom_op",
+    "type": "is_subcause_of",
+    "to": "custom_autograd"
+  },
+  {
+    "from": "abi_incompatibility",
+    "type": "is_subcause_of",
+    "to": "third_party_lib"
+  },
+  {
+    "from": "automatic_dynamic_shapes",
+    "type": "is_subcause_of",
+    "to": "guard_mismatch"
+  },
+  {
+    "from": "j2_perf_diagnosis",
+    "type": "diagnosed_by",
+    "to": "torch_logs",
+    "detail": "TORCH_LOGS=graph_break_count,compilation_metrics"
+  },
+  {
+    "from": "j2_perf_diagnosis",
+    "type": "diagnosed_by",
+    "to": "tlparse",
+    "detail": "TORCH_TRACE + tlparse for full compilation report"
+  },
+  {
+    "from": "j5_dynamic_shapes",
+    "type": "diagnosed_by",
+    "to": "torch_compile_debug",
+    "detail": "TORCH_COMPILE_DEBUG=1 for detailed shape analysis"
+  },
+  {
+    "from": "j6_compile_time",
+    "type": "diagnosed_by",
+    "to": "torch_logs",
+    "detail": "TORCH_LOGS=inductor for compilation pipeline details"
+  },
+  {
+    "from": "j3_correctness",
+    "type": "diagnosed_by",
+    "to": "resolution_switch_backend",
+    "detail": "backend='eager'/'aot_eager' to isolate compiler layer"
+  },
+  {
+    "from": "j7_perf_optimization",
+    "type": "diagnosed_by",
+    "to": "torch_compile_debug",
+    "detail": "TORCHINDUCTOR_PROFILE=1 for kernel bandwidth estimates"
+  },
+  {
+    "from": "custom_backend_config",
+    "type": "is_subcause_of",
+    "to": "cause_fancy_compile_wrapper",
+    "evidence_count": 938,
+    "example_issues": [
+      90352,
+      90844,
+      91095,
+      93468,
+      93492
+    ]
+  },
+  {
+    "from": "config_int_attribute",
+    "type": "is_subcause_of",
+    "to": "cause_unspecialized_int",
+    "evidence_count": 889,
+    "example_issues": [
+      93727,
+      93729,
+      93730,
+      93735,
+      93748
+    ]
+  },
+  {
+    "from": "cache_miss_recompile",
+    "type": "is_subcause_of",
+    "to": "guard_mismatch",
+    "evidence_count": 444,
+    "example_issues": [
+      93722,
+      93730,
+      93754,
+      93761,
+      93774
+    ]
+  },
+  {
+    "from": "numpy_call",
+    "type": "is_subcause_of",
+    "to": "third_party_lib",
+    "evidence_count": 428,
+    "example_issues": [
+      82135,
+      93658,
+      93659,
+      93766,
+      93778
+    ]
+  },
+  {
+    "from": "unsupported_introspection",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 405,
+    "example_issues": [
+      90352,
+      93526,
+      93599,
+      93672,
+      93721
+    ]
+  },
+  {
+    "from": "fake_tensor_mode",
+    "type": "is_subcause_of",
+    "to": "tensor_subclass",
+    "evidence_count": 329,
+    "example_issues": [
+      81607,
+      81608,
+      84308,
+      93688,
+      93711
+    ]
+  },
+  {
+    "from": "unsupported_builtin_getattr",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 327,
+    "example_issues": [
+      93525,
+      93640,
+      93654,
+      93676,
+      93796
+    ]
+  },
+  {
+    "from": "unsupported_system_module",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 286,
+    "example_issues": [
+      90831,
+      91101,
+      92941,
+      93935,
+      95939
+    ]
+  },
+  {
+    "from": "huggingface_transformers",
+    "type": "is_subcause_of",
+    "to": "third_party_lib",
+    "evidence_count": 274,
+    "example_issues": [
+      93632,
+      93731,
+      93750,
+      93767,
+      93773
+    ]
+  },
+  {
+    "from": "unsupported_context_manager",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 267,
+    "example_issues": [
+      84308,
+      93533,
+      93668,
+      93781,
+      93782
+    ]
+  },
+  {
+    "from": "item_method",
+    "type": "is_subcause_of",
+    "to": "cause_scalar_return",
+    "evidence_count": 258,
+    "example_issues": [
+      93515,
+      93558,
+      93705,
+      95770,
+      97339
+    ]
+  },
+  {
+    "from": "custom_compile_mode",
+    "type": "is_subcause_of",
+    "to": "cause_fancy_compile_wrapper",
+    "evidence_count": 255,
+    "example_issues": [
+      91542,
+      93262,
+      93492,
+      93495,
+      93498
+    ]
+  },
+  {
+    "from": "shape_query_to_scalar",
+    "type": "is_subcause_of",
+    "to": "cause_scalar_return",
+    "evidence_count": 212,
+    "example_issues": [
+      93656,
+      93658,
+      93659,
+      93686,
+      93689
+    ]
+  },
+  {
+    "from": "vision_library",
+    "type": "is_subcause_of",
+    "to": "third_party_lib",
+    "evidence_count": 169,
+    "example_issues": [
+      93751,
+      93757,
+      93767,
+      93777,
+      93787
+    ]
+  },
+  {
+    "from": "conditional_tensor_operation",
+    "type": "is_subcause_of",
+    "to": "data_dependent_control",
+    "evidence_count": 164,
+    "example_issues": [
+      90559,
+      93562,
+      93690,
+      93723,
+      93805
+    ]
+  },
+  {
+    "from": "collective_ops_issue",
+    "type": "is_subcause_of",
+    "to": "distributed_interaction",
+    "evidence_count": 157,
+    "example_issues": [
+      92941,
+      93173,
+      93378,
+      93566,
+      93649
+    ]
+  },
+  {
+    "from": "torch_dispatch_protocol",
+    "type": "is_subcause_of",
+    "to": "tensor_subclass",
+    "evidence_count": 140,
+    "example_issues": [
+      81607,
+      93654,
+      93668,
+      93723,
+      93805
+    ]
+  },
+  {
+    "from": "triton_crash",
+    "type": "is_subcause_of",
+    "to": "backend_bug",
+    "evidence_count": 138,
+    "example_issues": [
+      91827,
+      93434,
+      93435,
+      93544,
+      93647
+    ]
+  },
+  {
+    "from": "unsupported_numpy_api",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 133,
+    "example_issues": [
+      91101,
+      92670,
+      93558,
+      93658,
+      93766
+    ]
+  },
+  {
+    "from": "unsupported_property_decorator",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 130,
+    "example_issues": [
+      91101,
+      91102,
+      93748,
+      97691,
+      100386
+    ]
+  },
+  {
+    "from": "module_int_member",
+    "type": "is_subcause_of",
+    "to": "cause_unspecialized_int",
+    "evidence_count": 130,
+    "example_issues": [
+      86427,
+      93042,
+      93180,
+      93357,
+      95846
+    ]
+  },
+  {
+    "from": "unsupported_generator",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 126,
+    "example_issues": [
+      93477,
+      93599,
+      93737,
+      93781,
+      93796
+    ]
+  },
+  {
+    "from": "custom_autograd_function",
+    "type": "is_subcause_of",
+    "to": "custom_autograd",
+    "evidence_count": 112,
+    "example_issues": [
+      90507,
+      91101,
+      91102,
+      91469,
+      93721
+    ]
+  },
+  {
+    "from": "ddp_compile_conflict",
+    "type": "is_subcause_of",
+    "to": "distributed_interaction",
+    "evidence_count": 92,
+    "example_issues": [
+      93612,
+      93641,
+      93668,
+      93672,
+      93773
+    ]
+  },
+  {
+    "from": "unsupported_functools",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 89,
+    "example_issues": [
+      93358,
+      93659,
+      93698,
+      94851,
+      95445
+    ]
+  },
+  {
+    "from": "fsdp_compile_conflict",
+    "type": "is_subcause_of",
+    "to": "distributed_interaction",
+    "evidence_count": 86,
+    "example_issues": [
+      93288,
+      93432,
+      93546,
+      93688,
+      93756
+    ]
+  },
+  {
+    "from": "custom_op_registration",
+    "type": "is_subcause_of",
+    "to": "non_compliant_custom_op",
+    "evidence_count": 86,
+    "example_issues": [
+      105157,
+      123470,
+      125869,
+      126201,
+      127561
+    ]
+  },
+  {
+    "from": "inplace_arithmetic",
+    "type": "is_subcause_of",
+    "to": "inplace_mutation",
+    "evidence_count": 82,
+    "example_issues": [
+      90507,
+      90844,
+      91310,
+      92129,
+      93363
+    ]
+  },
+  {
+    "from": "excessive_memory_usage",
+    "type": "is_subcause_of",
+    "to": "suboptimal_heuristics",
+    "evidence_count": 81,
+    "example_issues": [
+      93543,
+      93569,
+      93583,
+      93699,
+      93807
+    ]
+  },
+  {
+    "from": "unsupported_random_module",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 80,
+    "example_issues": [
+      93740,
+      95161,
+      95425,
+      96118,
+      98561
+    ]
+  },
+  {
+    "from": "unsupported_autocast",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 72,
+    "example_issues": [
+      93358,
+      93435,
+      93657,
+      93694,
+      93711
+    ]
+  },
+  {
+    "from": "torch_function_protocol",
+    "type": "is_subcause_of",
+    "to": "tensor_subclass",
+    "evidence_count": 65,
+    "example_issues": [
+      90527,
+      90882,
+      93453,
+      93723,
+      93748
+    ]
+  },
+  {
+    "from": "inplace_copy",
+    "type": "is_subcause_of",
+    "to": "inplace_mutation",
+    "evidence_count": 65,
+    "example_issues": [
+      91310,
+      92925,
+      93497,
+      93654,
+      93685
+    ]
+  },
+  {
+    "from": "inductor_wrong_output",
+    "type": "is_subcause_of",
+    "to": "backend_bug",
+    "evidence_count": 63,
+    "example_issues": [
+      93538,
+      96604,
+      108963,
+      109105,
+      111133
+    ]
+  },
+  {
+    "from": "unbacked_symint",
+    "type": "is_subcause_of",
+    "to": "dynamic_shapes_issue",
+    "evidence_count": 63,
+    "example_issues": [
+      93466,
+      96033,
+      110136,
+      111950,
+      112347
+    ]
+  },
+  {
+    "from": "dtensor_subclass",
+    "type": "is_subcause_of",
+    "to": "tensor_subclass",
+    "evidence_count": 61,
+    "example_issues": [
+      114405,
+      114411,
+      116430,
+      116712,
+      117670
+    ]
+  },
+  {
+    "from": "unsupported_jit_script",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 56,
+    "example_issues": [
+      90923,
+      93530,
+      93689,
+      93702,
+      93742
+    ]
+  },
+  {
+    "from": "item_in_condition",
+    "type": "is_subcause_of",
+    "to": "data_dependent_control",
+    "evidence_count": 56,
+    "example_issues": [
+      98928,
+      107277,
+      129877,
+      135161,
+      136306
+    ]
+  },
+  {
+    "from": "cuda_backend_error",
+    "type": "is_subcause_of",
+    "to": "backend_bug",
+    "evidence_count": 53,
+    "example_issues": [
+      92691,
+      93394,
+      93599,
+      93638,
+      93647
+    ]
+  },
+  {
+    "from": "nonzero_op",
+    "type": "is_subcause_of",
+    "to": "cause_dynamic_output_shape",
+    "evidence_count": 49,
+    "example_issues": [
+      94414,
+      96033,
+      102841,
+      105534,
+      109861
+    ]
+  },
+  {
+    "from": "where_op",
+    "type": "is_subcause_of",
+    "to": "cause_dynamic_output_shape",
+    "evidence_count": 45,
+    "example_issues": [
+      92941,
+      93374,
+      104146,
+      106580,
+      117807
+    ]
+  },
+  {
+    "from": "slow_compilation",
+    "type": "is_subcause_of",
+    "to": "suboptimal_heuristics",
+    "evidence_count": 43,
+    "example_issues": [
+      90844,
+      93795,
+      93857,
+      95501,
+      95660
+    ]
+  },
+  {
+    "from": "tolist_method",
+    "type": "is_subcause_of",
+    "to": "cause_scalar_return",
+    "evidence_count": 42,
+    "example_issues": [
+      93344,
+      93501,
+      103054,
+      114231,
+      114483
+    ]
+  },
+  {
+    "from": "unique_op",
+    "type": "is_subcause_of",
+    "to": "cause_dynamic_output_shape",
+    "evidence_count": 36,
+    "example_issues": [
+      93624,
+      93774,
+      96173,
+      102375,
+      105075
+    ]
+  },
+  {
+    "from": "saved_tensor_hooks",
+    "type": "is_subcause_of",
+    "to": "custom_autograd",
+    "evidence_count": 33,
+    "example_issues": [
+      91101,
+      91102,
+      104792,
+      106388,
+      106389
+    ]
+  },
+  {
+    "from": "ragged_tensor_shapes",
+    "type": "is_subcause_of",
+    "to": "dynamic_shapes_issue",
+    "evidence_count": 32,
+    "example_issues": [
+      93652,
+      93786,
+      93804,
+      94167,
+      106064
+    ]
+  },
+  {
+    "from": "inplace_initialization",
+    "type": "is_subcause_of",
+    "to": "inplace_mutation",
+    "evidence_count": 31,
+    "example_issues": [
+      120478,
+      121184,
+      121367,
+      127561,
+      127572
+    ]
+  },
+  {
+    "from": "numerical_accuracy",
+    "type": "is_subcause_of",
+    "to": "backend_bug",
+    "evidence_count": 30,
+    "example_issues": [
+      93433,
+      93671,
+      93691,
+      93708,
+      93777
+    ]
+  },
+  {
+    "from": "shape_specialization_needed",
+    "type": "is_subcause_of",
+    "to": "dynamic_shapes_issue",
+    "evidence_count": 30,
+    "example_issues": [
+      91901,
+      92286,
+      93068,
+      93380,
+      93829
+    ]
+  },
+  {
+    "from": "inplace_fill",
+    "type": "is_subcause_of",
+    "to": "inplace_mutation",
+    "evidence_count": 26,
+    "example_issues": [
+      93437,
+      93780,
+      93805,
+      98265,
+      103139
+    ]
+  },
+  {
+    "from": "pillow_call",
+    "type": "is_subcause_of",
+    "to": "third_party_lib",
+    "evidence_count": 25,
+    "example_issues": [
+      93019,
+      93658,
+      93659,
+      96287,
+      98045
+    ]
+  },
+  {
+    "from": "custom_op_implementation",
+    "type": "is_subcause_of",
+    "to": "non_compliant_custom_op",
+    "evidence_count": 25,
+    "example_issues": [
+      111950,
+      120441,
+      122129,
+      124918,
+      127821
+    ]
+  },
+  {
+    "from": "unsupported_itertools",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 22,
+    "example_issues": [
+      93744,
+      93790,
+      103139,
+      107232,
+      107682
+    ]
+  },
+  {
+    "from": "unsupported_einops",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 22,
+    "example_issues": [
+      90375,
+      92925,
+      93699,
+      93905,
+      94598
+    ]
+  },
+  {
+    "from": "dtensor_compile_conflict",
+    "type": "is_subcause_of",
+    "to": "distributed_interaction",
+    "evidence_count": 22,
+    "example_issues": [
+      114405,
+      116712,
+      118219,
+      118596,
+      118600
+    ]
+  },
+  {
+    "from": "unsupported_collections",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 20,
+    "example_issues": [
+      98668,
+      100320,
+      106125,
+      111713,
+      114674
+    ]
+  },
+  {
+    "from": "topk_ops",
+    "type": "is_subcause_of",
+    "to": "cause_dynamic_output_shape",
+    "evidence_count": 18,
+    "example_issues": [
+      93849,
+      104025,
+      104653,
+      105569,
+      108830
+    ]
+  },
+  {
+    "from": "sparse_tensor_subclass",
+    "type": "is_subcause_of",
+    "to": "tensor_subclass",
+    "evidence_count": 17,
+    "example_issues": [
+      91951,
+      93662,
+      113232,
+      117188,
+      118856
+    ]
+  },
+  {
+    "from": "index_assignment",
+    "type": "is_subcause_of",
+    "to": "inplace_mutation",
+    "evidence_count": 17,
+    "example_issues": [
+      97976,
+      105533,
+      120923,
+      123589,
+      126027
+    ]
+  },
+  {
+    "from": "scipy_call",
+    "type": "is_subcause_of",
+    "to": "third_party_lib",
+    "evidence_count": 15,
+    "example_issues": [
+      93431,
+      93633,
+      93677,
+      98510,
+      115953
+    ]
+  },
+  {
+    "from": "parallelism_conflict",
+    "type": "is_subcause_of",
+    "to": "distributed_interaction",
+    "evidence_count": 15,
+    "example_issues": [
+      107824,
+      108780,
+      108840,
+      113895,
+      116430
+    ]
+  },
+  {
+    "from": "inplace_scatter",
+    "type": "is_subcause_of",
+    "to": "inplace_mutation",
+    "evidence_count": 14,
+    "example_issues": [
+      93421,
+      99616,
+      105822,
+      114686,
+      126614
+    ]
+  },
+  {
+    "from": "auto_dynamic_enabled",
+    "type": "is_subcause_of",
+    "to": "automatic_dynamic_shapes",
+    "evidence_count": 14,
+    "example_issues": [
+      118213,
+      118260,
+      118758,
+      118798,
+      120080
+    ]
+  },
+  {
+    "from": "opencv_call",
+    "type": "is_subcause_of",
+    "to": "third_party_lib",
+    "evidence_count": 11,
+    "example_issues": [
+      93431,
+      93778,
+      99605,
+      115534,
+      127188
+    ]
+  },
+  {
+    "from": "codegen_error",
+    "type": "is_subcause_of",
+    "to": "backend_bug",
+    "evidence_count": 10,
+    "example_issues": [
+      93009,
+      93434,
+      93435,
+      95082,
+      104759
+    ]
+  },
+  {
+    "from": "pandas_call",
+    "type": "is_subcause_of",
+    "to": "third_party_lib",
+    "evidence_count": 9,
+    "example_issues": [
+      106546,
+      111113,
+      122088,
+      133079,
+      135675
+    ]
+  },
+  {
+    "from": "masked_select_op",
+    "type": "is_subcause_of",
+    "to": "cause_dynamic_output_shape",
+    "evidence_count": 8,
+    "example_issues": [
+      96467,
+      99726,
+      105534,
+      109871,
+      145874
+    ]
+  },
+  {
+    "from": "dynamic_padding",
+    "type": "is_subcause_of",
+    "to": "cause_shape_wobble",
+    "evidence_count": 8,
+    "example_issues": [
+      101014,
+      107200,
+      123855,
+      169760,
+      175831
+    ]
+  },
+  {
+    "from": "inplace_resize",
+    "type": "is_subcause_of",
+    "to": "inplace_mutation",
+    "evidence_count": 7,
+    "example_issues": [
+      93780,
+      93805,
+      97921,
+      104020,
+      110699
+    ]
+  },
+  {
+    "from": "primtorch_lowering_gap",
+    "type": "is_subcause_of",
+    "to": "decomposition_gap",
+    "evidence_count": 6,
+    "example_issues": [
+      82048,
+      93760,
+      99804,
+      108204,
+      108205
+    ]
+  },
+  {
+    "from": "nested_tensor_subclass",
+    "type": "is_subcause_of",
+    "to": "tensor_subclass",
+    "evidence_count": 6,
+    "example_issues": [
+      114374,
+      126025,
+      128013,
+      134873,
+      146707
+    ]
+  },
+  {
+    "from": "double_backward_issue",
+    "type": "is_subcause_of",
+    "to": "custom_autograd",
+    "evidence_count": 5,
+    "example_issues": [
+      91469,
+      116746,
+      155426,
+      167729,
+      174165
+    ]
+  },
+  {
+    "from": "variable_sequence_length",
+    "type": "is_subcause_of",
+    "to": "cause_shape_wobble",
+    "evidence_count": 5,
+    "example_issues": [
+      94167,
+      148752,
+      149533,
+      169290,
+      178260
+    ]
+  },
+  {
+    "from": "control_flow_ops",
+    "type": "is_subcause_of",
+    "to": "data_dependent_control",
+    "evidence_count": 5,
+    "example_issues": [
+      101255,
+      113914,
+      115122,
+      123155,
+      138689
+    ]
+  },
+  {
+    "from": "loop_over_tensor_value",
+    "type": "is_subcause_of",
+    "to": "data_dependent_control",
+    "evidence_count": 5,
+    "example_issues": [
+      110077,
+      128889,
+      137009,
+      155690,
+      162817
+    ]
+  },
+  {
+    "from": "opcheck_validation_failure",
+    "type": "is_subcause_of",
+    "to": "non_compliant_custom_op",
+    "evidence_count": 5,
+    "example_issues": [
+      119159,
+      124512,
+      126871,
+      142410,
+      144514
+    ]
+  },
+  {
+    "from": "unsupported_async",
+    "type": "is_subcause_of",
+    "to": "unsupported_op",
+    "evidence_count": 4,
+    "example_issues": [
+      93738,
+      150319,
+      166582,
+      170488
+    ]
+  },
+  {
+    "from": "slow_triton_kernel",
+    "type": "is_subcause_of",
+    "to": "suboptimal_heuristics",
+    "evidence_count": 4,
+    "example_issues": [
+      99807,
+      120667,
+      121367,
+      177146
+    ]
+  },
+  {
+    "from": "assume_static_false",
+    "type": "is_subcause_of",
+    "to": "automatic_dynamic_shapes",
+    "evidence_count": 4,
+    "example_issues": [
+      101151,
+      104515,
+      137527,
+      168937
+    ]
+  },
+  {
+    "from": "stride_specialization",
+    "type": "is_subcause_of",
+    "to": "dynamic_shapes_issue",
+    "evidence_count": 4,
+    "example_issues": [
+      137179,
+      153204,
+      158058,
+      165385
+    ]
+  },
+  {
+    "from": "shape_guard_failure",
+    "type": "is_subcause_of",
+    "to": "guard_mismatch",
+    "evidence_count": 3,
+    "example_issues": [
+      93453,
+      113875,
+      143463
+    ]
+  },
+  {
+    "from": "missing_aten_decomposition",
+    "type": "is_subcause_of",
+    "to": "decomposition_gap",
+    "evidence_count": 3,
+    "example_issues": [
+      115883,
+      133057,
+      177505
+    ]
+  },
+  {
+    "from": "cpp_custom_op_registration",
+    "type": "is_subcause_of",
+    "to": "non_compliant_custom_op",
+    "evidence_count": 3,
+    "example_issues": [
+      123603,
+      141013,
+      156322
+    ]
+  },
+  {
+    "from": "sklearn_call",
+    "type": "is_subcause_of",
+    "to": "third_party_lib",
+    "evidence_count": 3,
+    "example_issues": [
+      146990,
+      148003,
+      169178
+    ]
+  },
+  {
+    "from": "quantized_tensor_subclass",
+    "type": "is_subcause_of",
+    "to": "tensor_subclass",
+    "evidence_count": 2,
+    "example_issues": [
+      93642,
+      136287
+    ]
+  },
+  {
+    "from": "poor_autotuning",
+    "type": "is_subcause_of",
+    "to": "suboptimal_heuristics",
+    "evidence_count": 1,
+    "example_issues": [
+      93475
+    ]
+  },
+  {
+    "from": "batch_size_change",
+    "type": "is_subcause_of",
+    "to": "cause_shape_wobble",
+    "evidence_count": 1,
+    "example_issues": [
+      96274
+    ]
+  },
+  {
+    "from": "lowering_failure",
+    "type": "is_subcause_of",
+    "to": "decomposition_gap",
+    "evidence_count": 1,
+    "example_issues": [
+      111952
+    ]
+  },
+  {
+    "from": "explicit_mutation",
+    "type": "is_subcause_of",
+    "to": "inplace_mutation",
+    "evidence_count": 1,
+    "example_issues": [
+      120802
+    ]
+  }
+]
