@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "PT2 Domain Ontology",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "created": "2026-04-13",
     "updated": "2026-04-14",
     "description": "Structured domain ontology for PyTorch 2 (torch.compile), mined from 9,277 GitHub issues",
@@ -11,7 +11,11 @@
       "helion": "Helion kernel language (pytorch/helion) — phase 2",
       "shared": "Cross-cutting entities used by all sub-ontologies"
     },
-    "changelog": "v0.7.0: STO owners and GitHub label mappings on 43 components (from PT2 STO Structure + Issue Health Design Doc); 4 new components (PT2-Dispatch, vLLM Compile, Compiled Autograd, Helion); v0.6.1: Platform entity type — hardware accelerators (NVIDIA GPU, AMD GPU, Intel XPU, TPU, ARM CPU, Apple MPS) and OS (Linux, Windows, macOS) with default/non-default classification; v0.6.0: Beaver cause tree merge — 89 leaf subcauses from 9,277 GitHub issues with evidence counts and example issue IDs; v0.5.1: is_subcause_of tree, fix_type taxonomy, resolved_by, diagnosed_by enrichment; v0.5.0: user journeys, 6 new relationship types; v0.4.0: Beaver entity extraction"
+    "visibility": {
+      "oss": "Open-source — exists in public PyTorch repo and GitHub issues",
+      "internal": "Meta-internal only — not in public repo (e.g., MegaCache, internal backends, Meta-specific configs)"
+    },
+    "changelog": "v0.8.0: +23 label mappings (95.2% classification), +8 causes, +9 symptoms, 228 resolved_by PR edges, 107 weighted edges, expert mapping (27 entries), visibility field for OSS vs internal distinction; v0.7.0: STO owners and GitHub label mappings on 43 components (from PT2 STO Structure + Issue Health Design Doc); 4 new components (PT2-Dispatch, vLLM Compile, Compiled Autograd, Helion); v0.6.1: Platform entity type — hardware accelerators (NVIDIA GPU, AMD GPU, Intel XPU, TPU, ARM CPU, Apple MPS) and OS (Linux, Windows, macOS) with default/non-default classification; v0.6.0: Beaver cause tree merge — 89 leaf subcauses from 9,277 GitHub issues with evidence counts and example issue IDs; v0.5.1: is_subcause_of tree, fix_type taxonomy, resolved_by, diagnosed_by enrichment; v0.5.0: user journeys, 6 new relationship types; v0.4.0: Beaver entity extraction"
   },
   "entity_types": {
     "component": "A software component or subsystem in the PT2 stack",
