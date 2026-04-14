@@ -312,10 +312,10 @@
   {
     "id": "helion",
     "name": "Helion",
-    "description": "Next-generation kernel language — separate repo (pytorch/helion)",
+    "description": "Next-generation kernel language — separate repo (pytorch/helion). Out of scope for torch.compile ontology; will have its own ontology in phase 2",
     "aliases": ["helion"],
     "sto": "Engineer 14",
     "sto_scope": "foundational_backend",
-    "sto_note": "Separate repo, not tracked in PT2 issue health yet"
+    "phase": 2
   }
 ]
