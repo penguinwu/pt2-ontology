@@ -5,6 +5,12 @@
     "created": "2026-04-13",
     "updated": "2026-04-14",
     "description": "Structured domain ontology for PyTorch 2 (torch.compile), mined from 9,277 GitHub issues",
+    "scopes": {
+      "torch_compile": "Core torch.compile stack (Dynamo, Inductor, holistic areas) — current focus",
+      "export": "torch.export and ExportedProgram — phase 2",
+      "helion": "Helion kernel language (pytorch/helion) — phase 2",
+      "shared": "Cross-cutting entities used by all sub-ontologies"
+    },
     "changelog": "v0.7.0: STO owners and GitHub label mappings on 43 components (from PT2 STO Structure + Issue Health Design Doc); 4 new components (PT2-Dispatch, vLLM Compile, Compiled Autograd, Helion); v0.6.1: Platform entity type — hardware accelerators (NVIDIA GPU, AMD GPU, Intel XPU, TPU, ARM CPU, Apple MPS) and OS (Linux, Windows, macOS) with default/non-default classification; v0.6.0: Beaver cause tree merge — 89 leaf subcauses from 9,277 GitHub issues with evidence counts and example issue IDs; v0.5.1: is_subcause_of tree, fix_type taxonomy, resolved_by, diagnosed_by enrichment; v0.5.0: user journeys, 6 new relationship types; v0.4.0: Beaver entity extraction"
   },
   "entity_types": {
