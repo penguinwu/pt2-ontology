@@ -1,0 +1,329 @@
+{
+  "meta": {
+    "name": "PT2 Diagnostic Decision Tree",
+    "version": "0.1.0",
+    "description": "Symptom-driven diagnostic and resolution routing for PT2 issues",
+    "generated_from": "Phase 1 heuristic extraction of 2,606 closed oncall:pt2 issues",
+    "created": "2026-04-14"
+  },
+  "entry_points": {
+    "error_raised": {
+      "symptom": "RuntimeError, TypeError, ValueError, AssertionError, or traceback",
+      "frequency": 1174,
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Check if error occurs during tracing or codegen",
+          "tool": "TORCH_LOGS=dynamo,inductor",
+          "usage_count": 356,
+          "branch_if_tracing": "dynamo_error",
+          "branch_if_codegen": "inductor_error"
+        },
+        {
+          "step": 2,
+          "action": "Try aot_eager backend to isolate Inductor vs AOT issues",
+          "tool": "torch.compile(backend='aot_eager')",
+          "usage_count": 63,
+          "branch_if_passes": "inductor_bug",
+          "branch_if_fails": "dynamo_or_aot_bug"
+        },
+        {
+          "step": 3,
+          "action": "Minimize repro with Dynamo minifier",
+          "tool": "torch._dynamo.config.repro_after='aot'",
+          "usage_count": 102
+        }
+      ],
+      "resolution_distribution": {
+        "compiler_fix": 75,
+        "user_workaround": 12,
+        "user_adaptation": 13,
+        "wontfix": 22,
+        "stale": 405,
+        "unknown": 646
+      },
+      "quick_fixes": [
+        {
+          "id": "fix_capture_scalar_outputs",
+          "condition": "Error involves unbacked SymInt or data-dependent shapes",
+          "action": "torch._dynamo.config.capture_scalar_outputs = True"
+        },
+        {
+          "id": "fix_use_no_grad",
+          "condition": "Inference-only but hitting autograd/backward errors",
+          "action": "Wrap in torch.no_grad()"
+        },
+        {
+          "id": "fix_suppress_errors",
+          "condition": "Non-critical error, eager fallback acceptable",
+          "action": "torch._dynamo.config.suppress_errors = True"
+        }
+      ]
+    },
+    "wrong_result": {
+      "symptom": "Compiled output differs from eager output (silent correctness issue)",
+      "frequency": 74,
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Compare eager vs compiled output element-wise",
+          "tool": "torch.testing.assert_close(eager_out, compiled_out)",
+          "branch_if_shape_mismatch": "shape_issue",
+          "branch_if_value_mismatch": "numerical_issue"
+        },
+        {
+          "step": 2,
+          "action": "Test with aot_eager to isolate Inductor codegen",
+          "tool": "torch.compile(backend='aot_eager')",
+          "usage_count": 4,
+          "branch_if_passes": "inductor_codegen_bug",
+          "branch_if_fails": "dynamo_tracing_bug"
+        },
+        {
+          "step": 3,
+          "action": "Check precision settings (TF32, precision casts)",
+          "tool": "inspect torch.backends.cudnn.allow_tf32 and inductor config"
+        }
+      ],
+      "resolution_distribution": {
+        "compiler_fix": 2,
+        "user_workaround": 4,
+        "wontfix": 2,
+        "stale": 40,
+        "unknown": 25
+      },
+      "quick_fixes": [
+        {
+          "id": "fix_emulate_precision_casts",
+          "condition": "fp32→fp16 numerical mismatch",
+          "action": "TORCHINDUCTOR_EMULATE_PRECISION_CASTS=1"
+        },
+        {
+          "id": "fix_disable_tf32",
+          "condition": "Conv2d or CUDNN op mismatch, especially with shape padding",
+          "action": "torch.backends.cudnn.allow_tf32 = False"
+        },
+        {
+          "id": "fix_use_dynamic_shapes",
+          "condition": "Wrong shapes from shape specialization",
+          "action": "torch.compile(dynamic=True)"
+        },
+        {
+          "id": "fix_disable_autotune_cache",
+          "condition": "Result changed after model modification",
+          "action": "torch._inductor.config.autotune_local_cache = False"
+        }
+      ]
+    },
+    "crash": {
+      "symptom": "SIGSEGV, SIGABRT, core dump, or illegal instruction",
+      "frequency": 151,
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Get stack trace with faulthandler",
+          "tool": "import faulthandler; faulthandler.enable()"
+        },
+        {
+          "step": 2,
+          "action": "Check if crash is in Triton kernel or C++ runtime",
+          "tool": "TORCH_LOGS=output_code",
+          "branch_if_triton": "triton_crash",
+          "branch_if_cpp": "cpp_runtime_crash"
+        },
+        {
+          "step": 3,
+          "action": "Test with eager backend to confirm compile-specific",
+          "tool": "torch.compile(backend='eager')",
+          "usage_count": 12
+        }
+      ],
+      "resolution_distribution": {
+        "compiler_fix": 10,
+        "user_adaptation": 1,
+        "wontfix": 7,
+        "stale": 54,
+        "unknown": 79
+      },
+      "quick_fixes": []
+    },
+    "graph_break": {
+      "symptom": "Dynamo graph break causing performance loss or unexpected behavior",
+      "frequency": 170,
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Identify graph break location and reason",
+          "tool": "torch._dynamo.explain(fn, *args)",
+          "usage_count": 2
+        },
+        {
+          "step": 2,
+          "action": "Check TORCH_LOGS for graph break details",
+          "tool": "TORCH_LOGS=graph_breaks",
+          "usage_count": 56
+        }
+      ],
+      "resolution_distribution": {
+        "compiler_fix": 18,
+        "user_workaround": 5,
+        "wontfix": 5,
+        "stale": 43,
+        "unknown": 98
+      },
+      "quick_fixes": [
+        {
+          "id": "fix_capture_scalar_outputs",
+          "condition": "Graph break on data-dependent ops",
+          "action": "torch._dynamo.config.capture_scalar_outputs = True"
+        },
+        {
+          "id": "fix_use_pytree",
+          "condition": "Graph break from optree usage",
+          "action": "Replace optree with torch.utils._pytree"
+        }
+      ]
+    },
+    "recompilation": {
+      "symptom": "Excessive recompilation, guard failures, or shape specialization",
+      "frequency": 70,
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Check guard failure log to identify which guard is failing",
+          "tool": "TORCH_LOGS=recompiles",
+          "usage_count": 21
+        },
+        {
+          "step": 2,
+          "action": "Identify if input shape variation is causing recompilation",
+          "tool": "torch._dynamo.mark_dynamic(tensor, dim)"
+        }
+      ],
+      "resolution_distribution": {
+        "compiler_fix": 8,
+        "user_workaround": 2,
+        "stale": 16,
+        "unknown": 44
+      },
+      "quick_fixes": [
+        {
+          "id": "fix_use_dynamic_shapes",
+          "condition": "Input shapes vary between calls",
+          "action": "torch.compile(dynamic=True)"
+        }
+      ]
+    },
+    "memory_issue": {
+      "symptom": "OOM, memory leak, or excessive memory usage under compile",
+      "frequency": 39,
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Check if OOM is from compile-time memory or runtime memory",
+          "tool": "torch.cuda.memory_stats()"
+        },
+        {
+          "step": 2,
+          "action": "Try expandable segments to reduce fragmentation",
+          "tool": "PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True"
+        }
+      ],
+      "resolution_distribution": {
+        "compiler_fix": 4,
+        "user_workaround": 7,
+        "user_adaptation": 1,
+        "wontfix": 2,
+        "stale": 12,
+        "unknown": 13
+      },
+      "quick_fixes": [
+        {
+          "id": "fix_expandable_segments",
+          "condition": "CUDA OOM with fragmentation (reserved >> allocated)",
+          "action": "PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True"
+        },
+        {
+          "id": "fix_use_no_grad",
+          "condition": "Inference-only but compile reserves memory for backward",
+          "action": "Wrap in torch.no_grad()"
+        }
+      ]
+    },
+    "slow_compile": {
+      "symptom": "Compilation takes excessively long (minutes/hours)",
+      "frequency": 29,
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Profile compilation time breakdown",
+          "tool": "TORCH_COMPILE_DEBUG=1"
+        },
+        {
+          "step": 2,
+          "action": "Check if autotuning is the bottleneck",
+          "tool": "torch._inductor.config.max_autotune = False"
+        }
+      ],
+      "resolution_distribution": {
+        "compiler_fix": 5,
+        "user_workaround": 2,
+        "wontfix": 1,
+        "stale": 5,
+        "unknown": 15
+      },
+      "quick_fixes": [
+        {
+          "id": "fix_disable_max_autotune",
+          "condition": "Using mode='max-autotune' with many kernel variants",
+          "action": "Switch to mode='reduce-overhead' or mode='default'"
+        }
+      ]
+    },
+    "perf_regression": {
+      "symptom": "Compiled code slower than eager (negative speedup)",
+      "frequency": 21,
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Profile compiled vs eager execution",
+          "tool": "torch.profiler or TORCH_LOGS=output_code"
+        },
+        {
+          "step": 2,
+          "action": "Check for excessive graph breaks degrading performance",
+          "tool": "TORCH_LOGS=graph_breaks"
+        }
+      ],
+      "resolution_distribution": {
+        "compiler_fix": 3,
+        "user_workaround": 1,
+        "stale": 7,
+        "unknown": 9
+      },
+      "quick_fixes": []
+    },
+    "hang": {
+      "symptom": "Process hangs, never completes compilation or execution",
+      "frequency": 20,
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Check if hang is during compilation or execution",
+          "tool": "Ctrl+C to get stack trace, check if in Triton autotuning"
+        },
+        {
+          "step": 2,
+          "action": "Try with cache disabled to rule out cache corruption",
+          "tool": "torch._inductor.config.force_disable_caches = True"
+        }
+      ],
+      "resolution_distribution": {
+        "compiler_fix": 4,
+        "stale": 10,
+        "unknown": 6
+      },
+      "quick_fixes": []
+    }
+  }
+}

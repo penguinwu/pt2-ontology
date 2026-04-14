@@ -3,5 +3,12 @@
 /tmp/
 __pycache__/
 
+# Large data files (downloaded from Hive, not source-controlled)
+data/pt2_issues_closed.jsonl
+data/pt2_issues_open.jsonl
+data/pt2_comments.jsonl
+data/pt2_comments_diagnostic.jsonl
+data/diagnostic_extractions.json
+
 # Old monolithic backup (replaced by modular files)
 ontology/skeleton.json
