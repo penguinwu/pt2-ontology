@@ -1189,29 +1189,29 @@
     "id": "unsupported_async",
     "name": "Unsupported Async",
     "description": "Subcause of unsupported op (evidence from 4 issues)",
-    "evidence_count": 4,
+    "evidence_count": 219,
     "example_issues": [
-      93738,
-      150319,
-      166582,
-      170488
+      172693,
+      172529,
+      169253,
+      164701,
+      164563
     ],
-    "confidence": "low",
-    "validation_note": "entity verified in source; issue curation has false positives"
+    "confidence": "medium"
   },
   {
     "id": "slow_triton_kernel",
     "name": "Slow Triton Kernel",
     "description": "Subcause of suboptimal heuristics (evidence from 4 issues)",
-    "evidence_count": 4,
+    "evidence_count": 55,
     "example_issues": [
-      99807,
-      120667,
-      121367,
-      177146
+      164701,
+      162722,
+      162228,
+      157363,
+      151156
     ],
-    "confidence": "low",
-    "validation_note": "entity verified in source; issue curation has false positives"
+    "confidence": "medium"
   },
   {
     "id": "assume_static_false",
@@ -1231,28 +1231,29 @@
     "id": "stride_specialization",
     "name": "Stride Specialization",
     "description": "Subcause of dynamic shapes issue (evidence from 4 issues)",
-    "evidence_count": 4,
+    "evidence_count": 21,
     "example_issues": [
-      137179,
-      153204,
-      158058,
-      165385
+      164701,
+      151156,
+      154463,
+      150021,
+      143670
     ],
-    "confidence": "low",
-    "validation_note": "entity verified in source; issue curation has false positives"
+    "confidence": "medium"
   },
   {
     "id": "shape_guard_failure",
     "name": "Shape Guard Failure",
     "description": "Subcause of guard mismatch (evidence from 3 issues)",
-    "evidence_count": 3,
+    "evidence_count": 19,
     "example_issues": [
-      93453,
-      113875,
-      143463
+      172822,
+      161119,
+      150021,
+      141589,
+      138813
     ],
-    "confidence": "low",
-    "validation_note": "entity verified in source; issue curation has false positives"
+    "confidence": "medium"
   },
   {
     "id": "missing_aten_decomposition",
@@ -1270,14 +1271,15 @@
     "id": "cpp_custom_op_registration",
     "name": "Cpp Custom Op Registration",
     "description": "Subcause of non compliant custom op (evidence from 3 issues)",
-    "evidence_count": 3,
+    "evidence_count": 27,
     "example_issues": [
-      123603,
-      141013,
-      156322
+      157363,
+      144609,
+      138813,
+      128071,
+      109074
     ],
-    "confidence": "low",
-    "validation_note": "entity verified in source; issue curation has false positives"
+    "confidence": "medium"
   },
   {
     "id": "sklearn_call",
@@ -1327,12 +1329,15 @@
     "id": "lowering_failure",
     "name": "Lowering Failure",
     "description": "Subcause of decomposition gap (evidence from 1 issues)",
-    "evidence_count": 1,
+    "evidence_count": 41,
     "example_issues": [
-      111952
+      145093,
+      135873,
+      114859,
+      113180,
+      180164
     ],
-    "confidence": "low",
-    "validation_note": "entity verified in source; issue curation has false positives"
+    "confidence": "medium"
   },
   {
     "id": "explicit_mutation",
@@ -1343,5 +1348,45 @@
       120802
     ],
     "confidence": "medium"
+  },
+  {
+    "id": "numerical_issue",
+    "name": "Numerical Issue",
+    "description": "Compiled code produces NaN, Inf, or numerically incorrect results compared to eager"
+  },
+  {
+    "id": "codegen_issue",
+    "name": "Codegen Issue",
+    "description": "Bug in inductor code generation producing incorrect kernels"
+  },
+  {
+    "id": "stride_mismatch",
+    "name": "Stride Mismatch",
+    "description": "Compiled tensor has different strides than eager, causing incorrect results"
+  },
+  {
+    "id": "internal_assertion",
+    "name": "Internal Assertion Failure",
+    "description": "Internal assert fails during compilation or execution"
+  },
+  {
+    "id": "cache_issue",
+    "name": "Cache Issue",
+    "description": "Compilation cache miss, corruption, or stale cache causing incorrect behavior"
+  },
+  {
+    "id": "oom",
+    "name": "Out of Memory",
+    "description": "Compilation or runtime OOM during torch.compile"
+  },
+  {
+    "id": "export_issue",
+    "name": "Export Issue",
+    "description": "torch.export fails to capture the model or produces incorrect exported program"
+  },
+  {
+    "id": "shape_specialization",
+    "name": "Shape Specialization",
+    "description": "Compiler over-specializes on shapes, preventing cache reuse"
   }
 ]

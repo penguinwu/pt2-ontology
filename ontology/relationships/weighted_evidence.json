@@ -1,0 +1,751 @@
+[
+  {
+    "from": "recompilation",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 96,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 95,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 67,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 65,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 60,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 54,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 46,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 44,
+    "source": "extraction"
+  },
+  {
+    "from": "triton_issue",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 25,
+    "source": "extraction"
+  },
+  {
+    "from": "guard_failure",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 24,
+    "source": "extraction"
+  },
+  {
+    "from": "triton_issue",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 17,
+    "source": "extraction"
+  },
+  {
+    "from": "backward_error",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 17,
+    "source": "extraction"
+  },
+  {
+    "from": "guard_failure",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 16,
+    "source": "extraction"
+  },
+  {
+    "from": "autograd_issue",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 14,
+    "source": "extraction"
+  },
+  {
+    "from": "backward_error",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 12,
+    "source": "extraction"
+  },
+  {
+    "from": "autograd_issue",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 11,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "causes_symptom",
+    "to": "wrong_result",
+    "evidence_count": 9,
+    "source": "extraction"
+  },
+  {
+    "from": "graph_break",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 7,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "causes_symptom",
+    "to": "crash",
+    "evidence_count": 7,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "causes_symptom",
+    "to": "slow_compile",
+    "evidence_count": 7,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "causes_symptom",
+    "to": "crash",
+    "evidence_count": 6,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "causes_symptom",
+    "to": "slow_compile",
+    "evidence_count": 6,
+    "source": "extraction"
+  },
+  {
+    "from": "graph_break",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "causes_symptom",
+    "to": "wrong_result",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "codegen_issue",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "causes_symptom",
+    "to": "crash",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "causes_symptom",
+    "to": "wrong_result",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "causes_symptom",
+    "to": "slow_compile",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "dynamic_shape_issue",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "triton_issue",
+    "type": "causes_symptom",
+    "to": "wrong_result",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "causes_symptom",
+    "to": "crash",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "codegen_issue",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "causes_symptom",
+    "to": "silent_correctness",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "triton_issue",
+    "type": "causes_symptom",
+    "to": "crash",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "causes_symptom",
+    "to": "wrong_result",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "decomposition_issue",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "causes_symptom",
+    "to": "slow_compile",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "crash",
+    "type": "causes_symptom",
+    "to": "crash",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "crash",
+    "type": "causes_symptom",
+    "to": "error_raised",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "crash",
+    "type": "causes_symptom",
+    "to": "hang",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "torchdynamo",
+    "evidence_count": 52,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "pt2_debug_observability",
+    "evidence_count": 43,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "pt2_debug_observability",
+    "evidence_count": 35,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "torchinductor",
+    "evidence_count": 33,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "torchinductor",
+    "evidence_count": 31,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "torchdynamo",
+    "evidence_count": 31,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "pt2_debug_observability",
+    "evidence_count": 29,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "torchinductor",
+    "evidence_count": 21,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "pt2_debug_observability",
+    "evidence_count": 21,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "dynamic_shapes",
+    "evidence_count": 21,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "torchinductor",
+    "evidence_count": 20,
+    "source": "extraction"
+  },
+  {
+    "from": "guard_failure",
+    "type": "affects_component",
+    "to": "torchdynamo",
+    "evidence_count": 20,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "compilation_cache",
+    "evidence_count": 18,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "torchdynamo",
+    "evidence_count": 17,
+    "source": "extraction"
+  },
+  {
+    "from": "triton_issue",
+    "type": "affects_component",
+    "to": "torchinductor",
+    "evidence_count": 15,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "dynamic_shapes",
+    "evidence_count": 14,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "pt2_dispatch",
+    "evidence_count": 13,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "compile_profiler",
+    "evidence_count": 13,
+    "source": "extraction"
+  },
+  {
+    "from": "triton_issue",
+    "type": "affects_component",
+    "to": "pt2_debug_observability",
+    "evidence_count": 12,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "pt2_dispatch",
+    "evidence_count": 11,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "torchdynamo",
+    "evidence_count": 11,
+    "source": "extraction"
+  },
+  {
+    "from": "backward_error",
+    "type": "affects_component",
+    "to": "pt2_debug_observability",
+    "evidence_count": 10,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "dynamic_shapes",
+    "evidence_count": 9,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "compilation_cache",
+    "evidence_count": 9,
+    "source": "extraction"
+  },
+  {
+    "from": "backward_error",
+    "type": "affects_component",
+    "to": "torchinductor",
+    "evidence_count": 8,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "pt2_dispatch",
+    "evidence_count": 8,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "compilation_cache",
+    "evidence_count": 8,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "pt2_dispatch",
+    "evidence_count": 7,
+    "source": "extraction"
+  },
+  {
+    "from": "guard_failure",
+    "type": "affects_component",
+    "to": "dynamic_shapes",
+    "evidence_count": 7,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "compile_profiler",
+    "evidence_count": 7,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "dynamic_shapes",
+    "evidence_count": 6,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "compile_profiler",
+    "evidence_count": 6,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "pt2_cudagraph",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "backward_error",
+    "type": "affects_component",
+    "to": "pt2_dispatch",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "guards",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "autograd_issue",
+    "type": "affects_component",
+    "to": "torchinductor",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "triton_issue",
+    "type": "affects_component",
+    "to": "compilation_cache",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "compilation_cache",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "autograd_issue",
+    "type": "affects_component",
+    "to": "compilation_cache",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "aot_autograd",
+    "evidence_count": 5,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "pt2_cudagraph",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "guard_failure",
+    "type": "affects_component",
+    "to": "pt2_debug_observability",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "backward_error",
+    "type": "affects_component",
+    "to": "torchdynamo",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "autograd_issue",
+    "type": "affects_component",
+    "to": "dynamic_shapes",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "graph_break",
+    "type": "affects_component",
+    "to": "torchdynamo",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "triton_issue",
+    "type": "affects_component",
+    "to": "compile_profiler",
+    "evidence_count": 4,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "pt2_cudagraph",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "triton_issue",
+    "type": "affects_component",
+    "to": "pt2_cudagraph",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "codegen_issue",
+    "type": "affects_component",
+    "to": "pt2_debug_observability",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "codegen_issue",
+    "type": "affects_component",
+    "to": "torchinductor",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "guard_failure",
+    "type": "affects_component",
+    "to": "guards",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "autograd_issue",
+    "type": "affects_component",
+    "to": "pt2_debug_observability",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "aot_autograd",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "backward_error",
+    "type": "affects_component",
+    "to": "dynamic_shapes",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "flexattention",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "flexattention",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "flexattention",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "autograd_issue",
+    "type": "affects_component",
+    "to": "pt2_dispatch",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "autograd_issue",
+    "type": "affects_component",
+    "to": "torchdynamo",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "recompilation",
+    "type": "affects_component",
+    "to": "vllm_compile",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "numerical_issue",
+    "type": "affects_component",
+    "to": "vllm_compile",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "vllm_compile",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "compile_cache",
+    "type": "affects_component",
+    "to": "vllm_compile",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "cache_issue",
+    "type": "affects_component",
+    "to": "compile_profiler",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "autograd_issue",
+    "type": "affects_component",
+    "to": "compile_profiler",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "dynamic_shape_issue",
+    "type": "affects_component",
+    "to": "compile_profiler",
+    "evidence_count": 3,
+    "source": "extraction"
+  },
+  {
+    "from": "dynamic_shape_issue",
+    "type": "affects_component",
+    "to": "torchdynamo",
+    "evidence_count": 3,
+    "source": "extraction"
+  }
+]

@@ -1,0 +1,263 @@
+[
+  {
+    "person": "Engineer 01",
+    "unixname": "engineer_01",
+    "components": [
+      "torchdynamo",
+      "guards"
+    ],
+    "role": "STO",
+    "scope": "foundational_frontend"
+  },
+  {
+    "person": "Engineer 02",
+    "unixname": "engineer_02",
+    "components": [
+      "torchinductor",
+      "flexattention"
+    ],
+    "role": "STO",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 03",
+    "unixname": "engineer_03",
+    "components": [
+      "aot_autograd",
+      "pt2_dispatch",
+      "compiled_tensor_subclass",
+      "custom_ops",
+      "decompositions"
+    ],
+    "role": "STO",
+    "scope": "foundational_frontend"
+  },
+  {
+    "person": "Engineer 04",
+    "unixname": "engineer_04",
+    "components": [
+      "aot_inductor"
+    ],
+    "role": "STO",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 05",
+    "unixname": "engineer_05",
+    "components": [
+      "export"
+    ],
+    "role": "STO",
+    "scope": "foundational_frontend"
+  },
+  {
+    "person": "Engineer 06",
+    "unixname": "engineer_06",
+    "components": [
+      "dynamic_shapes"
+    ],
+    "role": "STO",
+    "scope": "holistic"
+  },
+  {
+    "person": "Engineer 07",
+    "unixname": "engineer_07",
+    "components": [
+      "pt2_cudagraph"
+    ],
+    "role": "STO",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 08",
+    "unixname": "engineer_08",
+    "components": [
+      "compilation_cache"
+    ],
+    "role": "STO",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 09",
+    "unixname": "engineer_09",
+    "components": [
+      "higher_order_ops"
+    ],
+    "role": "STO",
+    "scope": "foundational_frontend"
+  },
+  {
+    "person": "Engineer 10",
+    "unixname": "engineer_10",
+    "components": [
+      "cutedsl_backend",
+      "compiled_optimizer"
+    ],
+    "role": "STO",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 11",
+    "unixname": "engineer_11",
+    "components": [
+      "max_autotune"
+    ],
+    "role": "STO",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 12",
+    "unixname": "engineer_12",
+    "components": [
+      "pt2_debug_observability"
+    ],
+    "role": "STO",
+    "scope": "holistic"
+  },
+  {
+    "person": "Engineer 13",
+    "unixname": "engineer_13",
+    "components": [
+      "vllm_compile"
+    ],
+    "role": "STO",
+    "scope": "holistic"
+  },
+  {
+    "person": "Engineer 14",
+    "unixname": "engineer_14",
+    "components": [
+      "helion"
+    ],
+    "role": "STO",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 15",
+    "unixname": "engineer_15",
+    "components": [
+      "compilation_cache"
+    ],
+    "role": "co-STO (PT-D)",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 16",
+    "unixname": "engineer_16",
+    "components": [
+      "vllm_compile"
+    ],
+    "role": "sub-STO (Helion/custom ops)",
+    "scope": "holistic"
+  },
+  {
+    "person": "Engineer 17",
+    "unixname": "engineer_17",
+    "components": [
+      "torchdynamo",
+      "aot_autograd",
+      "fake_tensor"
+    ],
+    "role": "domain expert",
+    "scope": "cross-cutting"
+  },
+  {
+    "person": "Engineer 18",
+    "unixname": "engineer_18",
+    "components": [
+      "torchinductor"
+    ],
+    "role": "domain expert",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 19",
+    "unixname": "engineer_19",
+    "components": [
+      "torchinductor",
+      "triton"
+    ],
+    "role": "domain expert",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 20",
+    "unixname": "engineer_20",
+    "components": [
+      "torchinductor",
+      "triton_heuristics"
+    ],
+    "role": "domain expert",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 21",
+    "unixname": "engineer_21",
+    "components": [
+      "torchdynamo",
+      "guards"
+    ],
+    "role": "domain expert",
+    "scope": "foundational_frontend"
+  },
+  {
+    "person": "Engineer 22",
+    "unixname": "engineer_22",
+    "components": [
+      "flexattention"
+    ],
+    "role": "domain expert",
+    "scope": "foundational_backend"
+  },
+  {
+    "person": "Engineer 23",
+    "unixname": "engineer_23",
+    "components": [
+      "compiled_autograd",
+      "selective_checkpointing"
+    ],
+    "role": "domain expert",
+    "scope": "holistic"
+  },
+  {
+    "person": "Engineer 24",
+    "unixname": "engineer_24",
+    "components": [
+      "compiled_autograd",
+      "aot_autograd"
+    ],
+    "role": "domain expert",
+    "scope": "foundational_frontend"
+  },
+  {
+    "person": "Peng Wu",
+    "unixname": "pengwu",
+    "components": [
+      "torchinductor",
+      "pt2_dispatch"
+    ],
+    "role": "manager",
+    "scope": "cross-cutting"
+  },
+  {
+    "person": "Engineer 26",
+    "unixname": "engineer_26",
+    "components": [
+      "torchdynamo",
+      "dynamic_shapes",
+      "guards"
+    ],
+    "role": "manager",
+    "scope": "foundational_frontend"
+  },
+  {
+    "person": "Engineer 27",
+    "unixname": "engineer_27",
+    "components": [
+      "torchinductor",
+      "aot_inductor"
+    ],
+    "role": "manager",
+    "scope": "foundational_backend"
+  }
+]

@@ -73,5 +73,50 @@
     "aliases": [
       "dynamic slowdown"
     ]
+  },
+  {
+    "id": "crash",
+    "name": "Crash / Segfault",
+    "description": "Process crashes (SIGSEGV, SIGIOT, SIGABRT) during compilation or execution"
+  },
+  {
+    "id": "wrong_result",
+    "name": "Wrong Result",
+    "description": "Compiled code produces different output from eager mode"
+  },
+  {
+    "id": "slow_compile",
+    "name": "Slow Compilation",
+    "description": "Compilation takes unreasonably long (minutes to hours)"
+  },
+  {
+    "id": "hang",
+    "name": "Hang / Deadlock",
+    "description": "Process hangs during compilation or execution"
+  },
+  {
+    "id": "perf_regression",
+    "name": "Performance Regression",
+    "description": "Compiled code runs slower than expected or slower than a previous version"
+  },
+  {
+    "id": "memory_issue",
+    "name": "Memory Issue",
+    "description": "Excessive memory usage during compilation or runtime"
+  },
+  {
+    "id": "flaky",
+    "name": "Flaky / Intermittent",
+    "description": "Issue reproduces inconsistently"
+  },
+  {
+    "id": "error_raised",
+    "name": "Error Raised",
+    "description": "An exception or error message is raised during compilation or execution"
+  },
+  {
+    "id": "silent_correctness",
+    "name": "Silent Correctness Issue",
+    "description": "Compiled code silently produces wrong results without any error"
   }
 ]

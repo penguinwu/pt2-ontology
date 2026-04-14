@@ -1,0 +1,84 @@
+[
+  {
+    "issue_id": 172547,
+    "components": [
+      "compilation_cache"
+    ],
+    "reason": "cold start + compile-cache = compilation cache issue"
+  },
+  {
+    "issue_id": 171320,
+    "components": [
+      "torchdynamo",
+      "guards"
+    ],
+    "reason": "scalar arithmetic causing recompiles = guard/dynamo issue"
+  },
+  {
+    "issue_id": 162196,
+    "components": [
+      "torchinductor"
+    ],
+    "reason": "CUDA kernel compilation for new GPU arch = inductor backend"
+  },
+  {
+    "issue_id": 157918,
+    "components": [
+      "compilation_cache"
+    ],
+    "reason": "precompile umbrella task = compilation cache/warm start"
+  },
+  {
+    "issue_id": 155433,
+    "components": [
+      "compilation_cache",
+      "aot_autograd"
+    ],
+    "reason": "precompile + AOTAutograd cache entry"
+  },
+  {
+    "issue_id": 149449,
+    "components": [
+      "compilation_cache",
+      "triton"
+    ],
+    "reason": "triton kernel + FXGraphCache warm start"
+  },
+  {
+    "issue_id": 149096,
+    "components": [
+      "compilation_cache",
+      "torchdynamo"
+    ],
+    "reason": "determining recompile source after caching"
+  },
+  {
+    "issue_id": 146663,
+    "components": [
+      "torchinductor"
+    ],
+    "reason": "slow compile time with logsumexp = inductor codegen"
+  },
+  {
+    "issue_id": 144775,
+    "components": [
+      "torchdynamo",
+      "torchinductor"
+    ],
+    "reason": "compile time regression = dynamo+inductor"
+  },
+  {
+    "issue_id": 139202,
+    "components": [
+      "torchdynamo"
+    ],
+    "reason": "fail_on_recompile = dynamo guard/recompile system"
+  },
+  {
+    "issue_id": 105554,
+    "components": [
+      "torchdynamo"
+    ],
+    "reason": "force recompilation option = dynamo feature request"
+  }
+]

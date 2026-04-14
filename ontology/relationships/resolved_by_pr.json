@@ -1,0 +1,2282 @@
+[
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_173062",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173062",
+    "issue_id": 172693,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_173062",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173062",
+    "issue_id": 172693,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_173062",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173062",
+    "issue_id": 172693,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_173062",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173062",
+    "issue_id": 172693,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_173062",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173062",
+    "issue_id": 172693,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_173062",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173062",
+    "issue_id": 172693,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_cudagraph",
+    "type": "resolved_by",
+    "to": "pr_172531",
+    "to_url": "https://github.com/pytorch/pytorch/pull/172531",
+    "issue_id": 172529,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_172531",
+    "to_url": "https://github.com/pytorch/pytorch/pull/172531",
+    "issue_id": 172529,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_172531",
+    "to_url": "https://github.com/pytorch/pytorch/pull/172531",
+    "issue_id": 172529,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_172531",
+    "to_url": "https://github.com/pytorch/pytorch/pull/172531",
+    "issue_id": 172529,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_172531",
+    "to_url": "https://github.com/pytorch/pytorch/pull/172531",
+    "issue_id": 172529,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_172531",
+    "to_url": "https://github.com/pytorch/pytorch/pull/172531",
+    "issue_id": 172529,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_173033",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173033",
+    "issue_id": 172061,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_173033",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173033",
+    "issue_id": 172061,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_173033",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173033",
+    "issue_id": 172061,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_165731",
+    "to_url": "https://github.com/pytorch/pytorch/pull/165731",
+    "issue_id": 165753,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_163677",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163677",
+    "issue_id": 162228,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_163677",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163677",
+    "issue_id": 162228,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "graph_break",
+    "type": "resolved_by",
+    "to": "pr_163677",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163677",
+    "issue_id": 162228,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_163677",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163677",
+    "issue_id": 162228,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "backward_error",
+    "type": "resolved_by",
+    "to": "pr_163677",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163677",
+    "issue_id": 162228,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_163677",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163677",
+    "issue_id": 162228,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "triton_issue",
+    "type": "resolved_by",
+    "to": "pr_163677",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163677",
+    "issue_id": 162228,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_163677",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163677",
+    "issue_id": 162228,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_163677",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163677",
+    "issue_id": 162228,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_151598",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151598",
+    "issue_id": 151156,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_151598",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151598",
+    "issue_id": 151156,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "triton_issue",
+    "type": "resolved_by",
+    "to": "pr_151598",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151598",
+    "issue_id": 151156,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "codegen_issue",
+    "type": "resolved_by",
+    "to": "pr_151598",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151598",
+    "issue_id": 151156,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_151598",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151598",
+    "issue_id": 151156,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_151598",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151598",
+    "issue_id": 151156,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_151073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151073",
+    "issue_id": 150859,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_151073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151073",
+    "issue_id": 150859,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "compiled_tensor_subclass",
+    "type": "resolved_by",
+    "to": "pr_151073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151073",
+    "issue_id": 150859,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_151073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/151073",
+    "issue_id": 150859,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_147203",
+    "to_url": "https://github.com/pytorch/pytorch/pull/147203",
+    "issue_id": 150859,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_147203",
+    "to_url": "https://github.com/pytorch/pytorch/pull/147203",
+    "issue_id": 150859,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "compiled_tensor_subclass",
+    "type": "resolved_by",
+    "to": "pr_147203",
+    "to_url": "https://github.com/pytorch/pytorch/pull/147203",
+    "issue_id": 150859,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_147203",
+    "to_url": "https://github.com/pytorch/pytorch/pull/147203",
+    "issue_id": 150859,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_144736",
+    "to_url": "https://github.com/pytorch/pytorch/pull/144736",
+    "issue_id": 144699,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_144736",
+    "to_url": "https://github.com/pytorch/pytorch/pull/144736",
+    "issue_id": 144699,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "decomposition_issue",
+    "type": "resolved_by",
+    "to": "pr_144736",
+    "to_url": "https://github.com/pytorch/pytorch/pull/144736",
+    "issue_id": 144699,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_144736",
+    "to_url": "https://github.com/pytorch/pytorch/pull/144736",
+    "issue_id": 144699,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_138953",
+    "to_url": "https://github.com/pytorch/pytorch/pull/138953",
+    "issue_id": 144699,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_138953",
+    "to_url": "https://github.com/pytorch/pytorch/pull/138953",
+    "issue_id": 144699,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "decomposition_issue",
+    "type": "resolved_by",
+    "to": "pr_138953",
+    "to_url": "https://github.com/pytorch/pytorch/pull/138953",
+    "issue_id": 144699,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_138953",
+    "to_url": "https://github.com/pytorch/pytorch/pull/138953",
+    "issue_id": 144699,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_164144",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164144",
+    "issue_id": 141753,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_164144",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164144",
+    "issue_id": 141753,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_164144",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164144",
+    "issue_id": 141753,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_164144",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164144",
+    "issue_id": 141753,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "triton_issue",
+    "type": "resolved_by",
+    "to": "pr_164144",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164144",
+    "issue_id": 141753,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_164144",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164144",
+    "issue_id": 141753,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_164144",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164144",
+    "issue_id": 141753,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_140996",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140996",
+    "issue_id": 140913,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "backward_error",
+    "type": "resolved_by",
+    "to": "pr_140996",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140996",
+    "issue_id": 140913,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_140996",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140996",
+    "issue_id": 140913,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "triton_issue",
+    "type": "resolved_by",
+    "to": "pr_140996",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140996",
+    "issue_id": 140913,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_140996",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140996",
+    "issue_id": 140913,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_140996",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140996",
+    "issue_id": 140913,
+    "confidence": "high",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_126635",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126635",
+    "issue_id": 140913,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "backward_error",
+    "type": "resolved_by",
+    "to": "pr_126635",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126635",
+    "issue_id": 140913,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_126635",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126635",
+    "issue_id": 140913,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "triton_issue",
+    "type": "resolved_by",
+    "to": "pr_126635",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126635",
+    "issue_id": 140913,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_126635",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126635",
+    "issue_id": 140913,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_126635",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126635",
+    "issue_id": 140913,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_135701",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135701",
+    "issue_id": 135873,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_135701",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135701",
+    "issue_id": 135873,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_135701",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135701",
+    "issue_id": 135873,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_135701",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135701",
+    "issue_id": 135873,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "triton_issue",
+    "type": "resolved_by",
+    "to": "pr_135701",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135701",
+    "issue_id": 135873,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_135701",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135701",
+    "issue_id": 135873,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_135701",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135701",
+    "issue_id": 135873,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_136033",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136033",
+    "issue_id": 134030,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchdynamo",
+    "type": "resolved_by",
+    "to": "pr_136033",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136033",
+    "issue_id": 134030,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_129091",
+    "to_url": "https://github.com/pytorch/pytorch/pull/129091",
+    "issue_id": 134030,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchdynamo",
+    "type": "resolved_by",
+    "to": "pr_129091",
+    "to_url": "https://github.com/pytorch/pytorch/pull/129091",
+    "issue_id": 134030,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_141055",
+    "to_url": "https://github.com/pytorch/pytorch/pull/141055",
+    "issue_id": 134030,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchdynamo",
+    "type": "resolved_by",
+    "to": "pr_141055",
+    "to_url": "https://github.com/pytorch/pytorch/pull/141055",
+    "issue_id": 134030,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_132243",
+    "to_url": "https://github.com/pytorch/pytorch/pull/132243",
+    "issue_id": 132200,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "simplefsdp",
+    "type": "resolved_by",
+    "to": "pr_132243",
+    "to_url": "https://github.com/pytorch/pytorch/pull/132243",
+    "issue_id": 132200,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "functionalization",
+    "type": "resolved_by",
+    "to": "pr_132243",
+    "to_url": "https://github.com/pytorch/pytorch/pull/132243",
+    "issue_id": 132200,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_132243",
+    "to_url": "https://github.com/pytorch/pytorch/pull/132243",
+    "issue_id": 132200,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "autograd_issue",
+    "type": "resolved_by",
+    "to": "pr_132243",
+    "to_url": "https://github.com/pytorch/pytorch/pull/132243",
+    "issue_id": 132200,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_129307",
+    "to_url": "https://github.com/pytorch/pytorch/pull/129307",
+    "issue_id": 131805,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_129307",
+    "to_url": "https://github.com/pytorch/pytorch/pull/129307",
+    "issue_id": 131805,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_129307",
+    "to_url": "https://github.com/pytorch/pytorch/pull/129307",
+    "issue_id": 131805,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_129307",
+    "to_url": "https://github.com/pytorch/pytorch/pull/129307",
+    "issue_id": 131805,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_129307",
+    "to_url": "https://github.com/pytorch/pytorch/pull/129307",
+    "issue_id": 131805,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_130748",
+    "to_url": "https://github.com/pytorch/pytorch/pull/130748",
+    "issue_id": 130750,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "torchdynamo",
+    "type": "resolved_by",
+    "to": "pr_130748",
+    "to_url": "https://github.com/pytorch/pytorch/pull/130748",
+    "issue_id": 130750,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_debug_observability",
+    "type": "resolved_by",
+    "to": "pr_119500",
+    "to_url": "https://github.com/pytorch/pytorch/pull/119500",
+    "issue_id": 120462,
+    "confidence": "medium",
+    "journey": "j3"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_173032",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173032",
+    "issue_id": 172822,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_173032",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173032",
+    "issue_id": 172822,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "guard_failure",
+    "type": "resolved_by",
+    "to": "pr_173032",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173032",
+    "issue_id": 172822,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "autograd_issue",
+    "type": "resolved_by",
+    "to": "pr_173032",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173032",
+    "issue_id": 172822,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "backward_error",
+    "type": "resolved_by",
+    "to": "pr_173032",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173032",
+    "issue_id": 172822,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_173032",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173032",
+    "issue_id": 172822,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_173032",
+    "to_url": "https://github.com/pytorch/pytorch/pull/173032",
+    "issue_id": 172822,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchdynamo",
+    "type": "resolved_by",
+    "to": "pr_168387",
+    "to_url": "https://github.com/pytorch/pytorch/pull/168387",
+    "issue_id": 168373,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_168387",
+    "to_url": "https://github.com/pytorch/pytorch/pull/168387",
+    "issue_id": 168373,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "autograd_issue",
+    "type": "resolved_by",
+    "to": "pr_168387",
+    "to_url": "https://github.com/pytorch/pytorch/pull/168387",
+    "issue_id": 168373,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_168387",
+    "to_url": "https://github.com/pytorch/pytorch/pull/168387",
+    "issue_id": 168373,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_163310",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163310",
+    "issue_id": 165471,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_163310",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163310",
+    "issue_id": 165471,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_163310",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163310",
+    "issue_id": 165471,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "vllm_compile",
+    "type": "resolved_by",
+    "to": "pr_163310",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163310",
+    "issue_id": 165471,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_165575",
+    "to_url": "https://github.com/pytorch/pytorch/pull/165575",
+    "issue_id": 165471,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_165575",
+    "to_url": "https://github.com/pytorch/pytorch/pull/165575",
+    "issue_id": 165471,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_165575",
+    "to_url": "https://github.com/pytorch/pytorch/pull/165575",
+    "issue_id": 165471,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "vllm_compile",
+    "type": "resolved_by",
+    "to": "pr_165575",
+    "to_url": "https://github.com/pytorch/pytorch/pull/165575",
+    "issue_id": 165471,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_158209",
+    "to_url": "https://github.com/pytorch/pytorch/pull/158209",
+    "issue_id": 159440,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_158209",
+    "to_url": "https://github.com/pytorch/pytorch/pull/158209",
+    "issue_id": 159440,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_158209",
+    "to_url": "https://github.com/pytorch/pytorch/pull/158209",
+    "issue_id": 159440,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compile_profiler",
+    "type": "resolved_by",
+    "to": "pr_157803",
+    "to_url": "https://github.com/pytorch/pytorch/pull/157803",
+    "issue_id": 157792,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_157803",
+    "to_url": "https://github.com/pytorch/pytorch/pull/157803",
+    "issue_id": 157792,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "vllm_compile",
+    "type": "resolved_by",
+    "to": "pr_157803",
+    "to_url": "https://github.com/pytorch/pytorch/pull/157803",
+    "issue_id": 157792,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_157803",
+    "to_url": "https://github.com/pytorch/pytorch/pull/157803",
+    "issue_id": 157792,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_157803",
+    "to_url": "https://github.com/pytorch/pytorch/pull/157803",
+    "issue_id": 157792,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchdynamo",
+    "type": "resolved_by",
+    "to": "pr_156288",
+    "to_url": "https://github.com/pytorch/pytorch/pull/156288",
+    "issue_id": 155057,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_156288",
+    "to_url": "https://github.com/pytorch/pytorch/pull/156288",
+    "issue_id": 155057,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_156288",
+    "to_url": "https://github.com/pytorch/pytorch/pull/156288",
+    "issue_id": 155057,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "crash",
+    "type": "resolved_by",
+    "to": "pr_156288",
+    "to_url": "https://github.com/pytorch/pytorch/pull/156288",
+    "issue_id": 155057,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_156288",
+    "to_url": "https://github.com/pytorch/pytorch/pull/156288",
+    "issue_id": 155057,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_156288",
+    "to_url": "https://github.com/pytorch/pytorch/pull/156288",
+    "issue_id": 155057,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_154688",
+    "to_url": "https://github.com/pytorch/pytorch/pull/154688",
+    "issue_id": 154652,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "backward_error",
+    "type": "resolved_by",
+    "to": "pr_154688",
+    "to_url": "https://github.com/pytorch/pytorch/pull/154688",
+    "issue_id": 154652,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_106996",
+    "to_url": "https://github.com/pytorch/pytorch/pull/106996",
+    "issue_id": 154652,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "backward_error",
+    "type": "resolved_by",
+    "to": "pr_106996",
+    "to_url": "https://github.com/pytorch/pytorch/pull/106996",
+    "issue_id": 154652,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compile_profiler",
+    "type": "resolved_by",
+    "to": "pr_152977",
+    "to_url": "https://github.com/pytorch/pytorch/pull/152977",
+    "issue_id": 152976,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compile_profiler",
+    "type": "resolved_by",
+    "to": "pr_143341",
+    "to_url": "https://github.com/pytorch/pytorch/pull/143341",
+    "issue_id": 152976,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_152667",
+    "to_url": "https://github.com/pytorch/pytorch/pull/152667",
+    "issue_id": 152639,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_152667",
+    "to_url": "https://github.com/pytorch/pytorch/pull/152667",
+    "issue_id": 152639,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_149483",
+    "to_url": "https://github.com/pytorch/pytorch/pull/149483",
+    "issue_id": 150706,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "autograd_issue",
+    "type": "resolved_by",
+    "to": "pr_149483",
+    "to_url": "https://github.com/pytorch/pytorch/pull/149483",
+    "issue_id": 150706,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_149483",
+    "to_url": "https://github.com/pytorch/pytorch/pull/149483",
+    "issue_id": 150706,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_149483",
+    "to_url": "https://github.com/pytorch/pytorch/pull/149483",
+    "issue_id": 150706,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_149483",
+    "to_url": "https://github.com/pytorch/pytorch/pull/149483",
+    "issue_id": 150706,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_149564",
+    "to_url": "https://github.com/pytorch/pytorch/pull/149564",
+    "issue_id": 149406,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchdynamo",
+    "type": "resolved_by",
+    "to": "pr_149564",
+    "to_url": "https://github.com/pytorch/pytorch/pull/149564",
+    "issue_id": 149406,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_149564",
+    "to_url": "https://github.com/pytorch/pytorch/pull/149564",
+    "issue_id": 149406,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "guard_failure",
+    "type": "resolved_by",
+    "to": "pr_149564",
+    "to_url": "https://github.com/pytorch/pytorch/pull/149564",
+    "issue_id": 149406,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "aot_autograd",
+    "type": "resolved_by",
+    "to": "pr_147481",
+    "to_url": "https://github.com/pytorch/pytorch/pull/147481",
+    "issue_id": 147405,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_147481",
+    "to_url": "https://github.com/pytorch/pytorch/pull/147481",
+    "issue_id": 147405,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_147481",
+    "to_url": "https://github.com/pytorch/pytorch/pull/147481",
+    "issue_id": 147405,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_147481",
+    "to_url": "https://github.com/pytorch/pytorch/pull/147481",
+    "issue_id": 147405,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_136802",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136802",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_136802",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136802",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_136802",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136802",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "dynamic_shape_issue",
+    "type": "resolved_by",
+    "to": "pr_136802",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136802",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_136802",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136802",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_140084",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140084",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_140084",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140084",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_140084",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140084",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "dynamic_shape_issue",
+    "type": "resolved_by",
+    "to": "pr_140084",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140084",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_140084",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140084",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_141284",
+    "to_url": "https://github.com/pytorch/pytorch/pull/141284",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_141284",
+    "to_url": "https://github.com/pytorch/pytorch/pull/141284",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_141284",
+    "to_url": "https://github.com/pytorch/pytorch/pull/141284",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "dynamic_shape_issue",
+    "type": "resolved_by",
+    "to": "pr_141284",
+    "to_url": "https://github.com/pytorch/pytorch/pull/141284",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_141284",
+    "to_url": "https://github.com/pytorch/pytorch/pull/141284",
+    "issue_id": 142507,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "aot_autograd",
+    "type": "resolved_by",
+    "to": "pr_163769",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163769",
+    "issue_id": 141974,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_163769",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163769",
+    "issue_id": 141974,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_163769",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163769",
+    "issue_id": 141974,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "vllm_compile",
+    "type": "resolved_by",
+    "to": "pr_163769",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163769",
+    "issue_id": 141974,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "autograd_issue",
+    "type": "resolved_by",
+    "to": "pr_163769",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163769",
+    "issue_id": 141974,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_163769",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163769",
+    "issue_id": 141974,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_163769",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163769",
+    "issue_id": 141974,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_163769",
+    "to_url": "https://github.com/pytorch/pytorch/pull/163769",
+    "issue_id": 141974,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compute_comm_overlap",
+    "type": "resolved_by",
+    "to": "pr_140751",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140751",
+    "issue_id": 139474,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_140751",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140751",
+    "issue_id": 139474,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_140751",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140751",
+    "issue_id": 139474,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_140751",
+    "to_url": "https://github.com/pytorch/pytorch/pull/140751",
+    "issue_id": 139474,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "higher_order_ops",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "flexattention",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "backward_error",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "crash",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_135120",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135120",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "higher_order_ops",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compilation_cache",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchinductor",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "flexattention",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "backward_error",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "crash",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_135073",
+    "to_url": "https://github.com/pytorch/pytorch/pull/135073",
+    "issue_id": 134625,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compiled_optimizer",
+    "type": "resolved_by",
+    "to": "pr_134171",
+    "to_url": "https://github.com/pytorch/pytorch/pull/134171",
+    "issue_id": 133898,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_134171",
+    "to_url": "https://github.com/pytorch/pytorch/pull/134171",
+    "issue_id": 133898,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "cache_issue",
+    "type": "resolved_by",
+    "to": "pr_134171",
+    "to_url": "https://github.com/pytorch/pytorch/pull/134171",
+    "issue_id": 133898,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_134171",
+    "to_url": "https://github.com/pytorch/pytorch/pull/134171",
+    "issue_id": 133898,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_133045",
+    "to_url": "https://github.com/pytorch/pytorch/pull/133045",
+    "issue_id": 132849,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "vllm_compile",
+    "type": "resolved_by",
+    "to": "pr_133045",
+    "to_url": "https://github.com/pytorch/pytorch/pull/133045",
+    "issue_id": 132849,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_133045",
+    "to_url": "https://github.com/pytorch/pytorch/pull/133045",
+    "issue_id": 132849,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "guard_failure",
+    "type": "resolved_by",
+    "to": "pr_133045",
+    "to_url": "https://github.com/pytorch/pytorch/pull/133045",
+    "issue_id": 132849,
+    "confidence": "high",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "aot_autograd",
+    "type": "resolved_by",
+    "to": "pr_136173",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136173",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_136173",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136173",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compile_profiler",
+    "type": "resolved_by",
+    "to": "pr_136173",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136173",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "dynamic_shape_issue",
+    "type": "resolved_by",
+    "to": "pr_136173",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136173",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "triton_issue",
+    "type": "resolved_by",
+    "to": "pr_136173",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136173",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_136173",
+    "to_url": "https://github.com/pytorch/pytorch/pull/136173",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "aot_autograd",
+    "type": "resolved_by",
+    "to": "pr_126791",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126791",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "pt2_dispatch",
+    "type": "resolved_by",
+    "to": "pr_126791",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126791",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "compile_profiler",
+    "type": "resolved_by",
+    "to": "pr_126791",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126791",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "dynamic_shape_issue",
+    "type": "resolved_by",
+    "to": "pr_126791",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126791",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "triton_issue",
+    "type": "resolved_by",
+    "to": "pr_126791",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126791",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "compile_cache",
+    "type": "resolved_by",
+    "to": "pr_126791",
+    "to_url": "https://github.com/pytorch/pytorch/pull/126791",
+    "issue_id": 128234,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchdynamo",
+    "type": "resolved_by",
+    "to": "pr_124121",
+    "to_url": "https://github.com/pytorch/pytorch/pull/124121",
+    "issue_id": 124437,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "graph_break",
+    "type": "resolved_by",
+    "to": "pr_124121",
+    "to_url": "https://github.com/pytorch/pytorch/pull/124121",
+    "issue_id": 124437,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_114368",
+    "to_url": "https://github.com/pytorch/pytorch/pull/114368",
+    "issue_id": 114293,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_114368",
+    "to_url": "https://github.com/pytorch/pytorch/pull/114368",
+    "issue_id": 114293,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_113406",
+    "to_url": "https://github.com/pytorch/pytorch/pull/113406",
+    "issue_id": 114293,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_113406",
+    "to_url": "https://github.com/pytorch/pytorch/pull/113406",
+    "issue_id": 114293,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_164341",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164341",
+    "issue_id": 114293,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_164341",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164341",
+    "issue_id": 114293,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_164090",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164090",
+    "issue_id": 114293,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_164090",
+    "to_url": "https://github.com/pytorch/pytorch/pull/164090",
+    "issue_id": 114293,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "dynamic_shapes",
+    "type": "resolved_by",
+    "to": "pr_108964",
+    "to_url": "https://github.com/pytorch/pytorch/pull/108964",
+    "issue_id": 108745,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "component",
+    "from": "torchdynamo",
+    "type": "resolved_by",
+    "to": "pr_108964",
+    "to_url": "https://github.com/pytorch/pytorch/pull/108964",
+    "issue_id": 108745,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "recompilation",
+    "type": "resolved_by",
+    "to": "pr_108964",
+    "to_url": "https://github.com/pytorch/pytorch/pull/108964",
+    "issue_id": 108745,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "dynamic_shape_issue",
+    "type": "resolved_by",
+    "to": "pr_108964",
+    "to_url": "https://github.com/pytorch/pytorch/pull/108964",
+    "issue_id": 108745,
+    "confidence": "medium",
+    "journey": "j6"
+  },
+  {
+    "from_type": "cause",
+    "from": "numerical_issue",
+    "type": "resolved_by",
+    "to": "pr_108964",
+    "to_url": "https://github.com/pytorch/pytorch/pull/108964",
+    "issue_id": 108745,
+    "confidence": "medium",
+    "journey": "j6"
+  }
+]
