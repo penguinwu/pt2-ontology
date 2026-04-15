@@ -209,5 +209,13 @@
     "name": "AOT_FX_GRAPHS",
     "description": "Environment variable to dump AOT Autograd's forward/backward graph decomposition for inspection",
     "aliases": []
+  },
+  {
+    "id": "fake_tensor_crossref",
+    "name": "fake_tensor_crossref",
+    "description": "Cross-reference fake tensor metadata against concrete tensors to detect stride/shape mismatches. Set to 'all' to check all ops.",
+    "aliases": [
+      "torch._functorch.config.fake_tensor_crossref"
+    ]
   }
 ]

@@ -6,9 +6,14 @@
     "fix_type": "user_workaround",
     "category": "config_toggle",
     "action": "Set TORCHINDUCTOR_EMULATE_PRECISION_CASTS=1 or torch._inductor.config.emulate_precision_casts = True",
-    "symptoms": ["wrong_result", "silent_correctness"],
-    "conditions": "Numerical mismatch between eager and compiled outputs, especially fp32→fp16 conversions",
-    "evidence_issues": [176565],
+    "symptoms": [
+      "wrong_result",
+      "silent_correctness"
+    ],
+    "conditions": "Numerical mismatch between eager and compiled outputs, especially fp32\u2192fp16 conversions",
+    "evidence_issues": [
+      176565
+    ],
     "scope": "torch_compile"
   },
   {
@@ -18,9 +23,16 @@
     "fix_type": "user_workaround",
     "category": "config_toggle",
     "action": "Set PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True",
-    "symptoms": ["memory_issue"],
+    "symptoms": [
+      "memory_issue"
+    ],
     "conditions": "OOM errors under compile that don't happen in eager, especially with large models or fragmented memory",
-    "evidence_issues": [174418, 163563, 143346, 103716],
+    "evidence_issues": [
+      174418,
+      163563,
+      143346,
+      103716
+    ],
     "scope": "torch_compile"
   },
   {
@@ -30,9 +42,15 @@
     "fix_type": "user_workaround",
     "category": "config_toggle",
     "action": "torch._dynamo.config.capture_scalar_outputs = True",
-    "symptoms": ["error_raised", "graph_break"],
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ],
     "conditions": "Errors or graph breaks involving data-dependent control flow, unbacked SymInts, or scalar outputs",
-    "evidence_issues": [173915, 163563],
+    "evidence_issues": [
+      173915,
+      163563
+    ],
     "scope": "torch_compile"
   },
   {
@@ -42,9 +60,14 @@
     "fix_type": "user_workaround",
     "category": "config_toggle",
     "action": "torch.backends.cudnn.allow_tf32 = False",
-    "symptoms": ["wrong_result", "silent_correctness"],
+    "symptoms": [
+      "wrong_result",
+      "silent_correctness"
+    ],
     "conditions": "Numerical corruption in Conv2d or other CUDNN ops under compile, especially with shape padding enabled",
-    "evidence_issues": [173902],
+    "evidence_issues": [
+      173902
+    ],
     "scope": "torch_compile"
   },
   {
@@ -54,9 +77,13 @@
     "fix_type": "user_workaround",
     "category": "config_toggle",
     "action": "torch._inductor.config.realize_opcount_threshold = 100",
-    "symptoms": ["error_raised"],
+    "symptoms": [
+      "error_raised"
+    ],
     "conditions": "AssertionError about TRITON_MAX_BLOCK exceeded, typically with large reduction ops",
-    "evidence_issues": [145074],
+    "evidence_issues": [
+      145074
+    ],
     "scope": "torch_compile"
   },
   {
@@ -66,9 +93,13 @@
     "fix_type": "user_workaround",
     "category": "config_toggle",
     "action": "torch._dynamo.config.optimize_ddp = False",
-    "symptoms": ["error_raised"],
+    "symptoms": [
+      "error_raised"
+    ],
     "conditions": "DDPOptimizer + activation checkpointing not supported together",
-    "evidence_issues": [104674],
+    "evidence_issues": [
+      104674
+    ],
     "scope": "torch_compile"
   },
   {
@@ -78,9 +109,13 @@
     "fix_type": "user_workaround",
     "category": "config_toggle",
     "action": "torch._dynamo.config.suppress_errors = True",
-    "symptoms": ["error_raised"],
+    "symptoms": [
+      "error_raised"
+    ],
     "conditions": "Non-critical compilation errors where eager fallback is acceptable. Last resort workaround.",
-    "evidence_issues": [138809],
+    "evidence_issues": [
+      138809
+    ],
     "scope": "torch_compile"
   },
   {
@@ -90,9 +125,17 @@
     "fix_type": "user_workaround",
     "category": "guard_adjustment",
     "action": "torch.compile(dynamic=True) or torch._dynamo.mark_dynamic(tensor, dim)",
-    "symptoms": ["recompilation", "wrong_result", "error_raised"],
+    "symptoms": [
+      "recompilation",
+      "wrong_result",
+      "error_raised"
+    ],
     "conditions": "Shape specialization causing recompilation, wrong shapes, or errors with varying input sizes",
-    "evidence_issues": [172822, 147261, 137515],
+    "evidence_issues": [
+      172822,
+      147261,
+      137515
+    ],
     "scope": "torch_compile"
   },
   {
@@ -102,9 +145,16 @@
     "fix_type": "user_workaround",
     "category": "inference_mode",
     "action": "with torch.no_grad(): compiled_fn(x)",
-    "symptoms": ["error_raised", "memory_issue"],
+    "symptoms": [
+      "error_raised",
+      "memory_issue"
+    ],
     "conditions": "Inference-only model hitting autograd errors or OOM due to compile speculatively assuming backward will run",
-    "evidence_issues": [173902, 143346, 148808],
+    "evidence_issues": [
+      173902,
+      143346,
+      148808
+    ],
     "scope": "torch_compile"
   },
   {
@@ -114,9 +164,13 @@
     "fix_type": "user_workaround",
     "category": "code_restructure",
     "action": "Replace y[0, b] with y[0][b] (chain single-dim indexing)",
-    "symptoms": ["error_raised"],
+    "symptoms": [
+      "error_raised"
+    ],
     "conditions": "Export fails with multiple dimension indexing in strict=False mode",
-    "evidence_issues": [150057],
+    "evidence_issues": [
+      150057
+    ],
     "scope": "torch_compile"
   },
   {
@@ -126,9 +180,13 @@
     "fix_type": "user_workaround",
     "category": "code_restructure",
     "action": "Manually calculate output shape instead of relying on implicit shape inference (e.g., F.interpolate)",
-    "symptoms": ["wrong_result"],
+    "symptoms": [
+      "wrong_result"
+    ],
     "conditions": "Dynamic shape compile produces wrong output shapes for ops that infer shapes from input",
-    "evidence_issues": [147261],
+    "evidence_issues": [
+      147261
+    ],
     "scope": "torch_compile"
   },
   {
@@ -138,9 +196,14 @@
     "fix_type": "user_workaround",
     "category": "code_restructure",
     "action": "p.register_hook(lambda g: g.clone())",
-    "symptoms": ["wrong_result", "silent_correctness"],
+    "symptoms": [
+      "wrong_result",
+      "silent_correctness"
+    ],
     "conditions": "Precision issues with max-autotune mode due to in-place gradient operations",
-    "evidence_issues": [96693],
+    "evidence_issues": [
+      96693
+    ],
     "scope": "torch_compile"
   },
   {
@@ -150,9 +213,13 @@
     "fix_type": "user_workaround",
     "category": "code_restructure",
     "action": "Replace int(x.item()) with x.to(dtype=torch.int32).item()",
-    "symptoms": ["error_raised"],
+    "symptoms": [
+      "error_raised"
+    ],
     "conditions": "Export fails with int(x.item()) in strict=False mode (SymFloat to Double conversion)",
-    "evidence_issues": [137062],
+    "evidence_issues": [
+      137062
+    ],
     "scope": "torch_compile"
   },
   {
@@ -162,9 +229,13 @@
     "fix_type": "user_workaround",
     "category": "code_restructure",
     "action": "Replace optree usage with torch.utils._pytree when code will be compiled",
-    "symptoms": ["graph_break"],
-    "conditions": "Graph break when Dynamo encounters optree usage — not yet supported",
-    "evidence_issues": [164972],
+    "symptoms": [
+      "graph_break"
+    ],
+    "conditions": "Graph break when Dynamo encounters optree usage \u2014 not yet supported",
+    "evidence_issues": [
+      164972
+    ],
     "scope": "torch_compile"
   },
   {
@@ -174,9 +245,13 @@
     "fix_type": "user_workaround",
     "category": "config_toggle",
     "action": "torch._inductor.config.autotune_local_cache = False",
-    "symptoms": ["wrong_result"],
+    "symptoms": [
+      "wrong_result"
+    ],
     "conditions": "Stale autotune cache causing incorrect kernel selection, especially after model changes",
-    "evidence_issues": [96693],
+    "evidence_issues": [
+      96693
+    ],
     "scope": "torch_compile"
   },
   {
@@ -186,9 +261,15 @@
     "fix_type": "user_workaround",
     "category": "config_toggle",
     "action": "torch._dynamo.config.assume_static_by_default = True",
-    "symptoms": ["delayed_nan", "wrong_result", "error_raised"],
+    "symptoms": [
+      "delayed_nan",
+      "wrong_result",
+      "error_raised"
+    ],
     "conditions": "Dynamic shapes causing NaN/accuracy issues or split reduction crashes in Inductor",
-    "evidence_issues": [96971],
+    "evidence_issues": [
+      96971
+    ],
     "scope": "torch_compile"
   },
   {
@@ -198,9 +279,16 @@
     "fix_type": "user_workaround",
     "category": "backend_switch",
     "action": "torch.compile(backend='aot_eager') or torch.compile(backend='aot_eager_decomp_partition')",
-    "symptoms": ["wrong_result", "silent_correctness", "crash"],
-    "conditions": "Suspect Inductor-specific bug — aot_eager bypasses Inductor to test if Dynamo+AOT layer works correctly",
-    "evidence_issues": [96971, 100075],
+    "symptoms": [
+      "wrong_result",
+      "silent_correctness",
+      "crash"
+    ],
+    "conditions": "Suspect Inductor-specific bug \u2014 aot_eager bypasses Inductor to test if Dynamo+AOT layer works correctly",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
     "scope": "torch_compile"
   },
   {
@@ -210,9 +298,14 @@
     "fix_type": "diagnostic_technique",
     "category": "verification",
     "action": "Test with pretrained weights instead of random initialization to rule out model numerical instability",
-    "symptoms": ["wrong_result", "model_instability_false_alarm"],
-    "conditions": "Correctness mismatch with randomly initialized model — may be model instability, not compiler bug",
-    "evidence_issues": [100075],
+    "symptoms": [
+      "wrong_result",
+      "model_instability_false_alarm"
+    ],
+    "conditions": "Correctness mismatch with randomly initialized model \u2014 may be model instability, not compiler bug",
+    "evidence_issues": [
+      100075
+    ],
     "scope": "torch_compile"
   },
   {
@@ -222,9 +315,14 @@
     "fix_type": "user_workaround",
     "category": "export_mode",
     "action": "torch.export.export_for_training(model, args, strict=False, draft_export=True)",
-    "symptoms": ["export_dde_cascade", "error_raised"],
+    "symptoms": [
+      "export_dde_cascade",
+      "error_raised"
+    ],
     "conditions": "Detection/object-detection models with data-dependent control flow (NMS, ROI) that can't export normally",
-    "evidence_issues": [146152],
+    "evidence_issues": [
+      146152
+    ],
     "scope": "torch_export"
   },
   {
@@ -234,9 +332,15 @@
     "fix_type": "user_workaround",
     "category": "export_mode",
     "action": "Ensure torch.export dummy input has same spatial dimensions as inference input",
-    "symptoms": ["aoti_silent_degradation", "export_static_guard_leak"],
-    "conditions": "AOTI produces degraded output when inference shape differs from export dummy shape — position encoding creates static guards",
-    "evidence_issues": [147475, 155862],
+    "symptoms": [
+      "aoti_silent_degradation",
+      "export_static_guard_leak"
+    ],
+    "conditions": "AOTI produces degraded output when inference shape differs from export dummy shape \u2014 position encoding creates static guards",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
     "scope": "torch_export"
   },
   {
@@ -246,9 +350,13 @@
     "fix_type": "user_workaround",
     "category": "code_restructure",
     "action": "Use batch_first=False with manual transpose+contiguous to force mm instead of bmm",
-    "symptoms": ["fp16_perf_regression_small_batch"],
-    "conditions": "FP16 MultiHeadAttention 10x slower than FP32 at bs=1 — non-contiguous tensors trigger bad cuBLAS bmm kernel",
-    "evidence_issues": [159346],
+    "symptoms": [
+      "fp16_perf_regression_small_batch"
+    ],
+    "conditions": "FP16 MultiHeadAttention 10x slower than FP32 at bs=1 \u2014 non-contiguous tensors trigger bad cuBLAS bmm kernel",
+    "evidence_issues": [
+      159346
+    ],
     "scope": "torch_compile"
   },
   {
@@ -258,9 +366,64 @@
     "fix_type": "user_workaround",
     "category": "code_restructure",
     "action": "Replace tensor-based roll/rotate indexing with scalar indexing in KV cache updates",
-    "symptoms": ["non_deterministic_correctness"],
-    "conditions": "Non-deterministic correctness failure in sliding window cache — Inductor incorrectly fuses roll as pointwise",
-    "evidence_issues": [159855],
+    "symptoms": [
+      "non_deterministic_correctness"
+    ],
+    "conditions": "Non-deterministic correctness failure in sliding window cache \u2014 Inductor incorrectly fuses roll as pointwise",
+    "evidence_issues": [
+      159855
+    ],
+    "scope": "torch_compile"
+  },
+  {
+    "id": "fix_mark_dynamic_instead",
+    "type": "resolution",
+    "name": "Use mark_dynamic instead of dynamic=True",
+    "fix_type": "user_workaround",
+    "category": "guard_adjustment",
+    "action": "Use torch._dynamo.mark_dynamic(tensor, dim) for specific dimensions instead of global dynamic=True",
+    "symptoms": [
+      "dynamic_scalar_regression",
+      "error_raised"
+    ],
+    "conditions": "dynamic=True causes failures because scalar arguments become dynamic \u2014 mark only the dimensions you need",
+    "evidence_issues": [
+      111199
+    ],
+    "scope": "torch_compile"
+  },
+  {
+    "id": "fix_custom_op_stream",
+    "type": "resolution",
+    "name": "Set CUDA stream in custom op kernels",
+    "fix_type": "user_workaround",
+    "category": "code_restructure",
+    "action": "Call at::cuda::getCurrentCUDAStream() in custom CUDA kernel launch when using mode='reduce-overhead'",
+    "symptoms": [
+      "partial_zeros_output",
+      "wrong_result"
+    ],
+    "conditions": "Custom CUDA op produces partial zeros with mode='reduce-overhead' (CUDA graphs) \u2014 kernel must use correct stream",
+    "evidence_issues": [
+      157363
+    ],
+    "scope": "torch_compile"
+  },
+  {
+    "id": "fix_avoid_many_splits",
+    "type": "resolution",
+    "name": "Avoid many split/slice operations",
+    "fix_type": "user_workaround",
+    "category": "code_restructure",
+    "action": "Restructure model to avoid producing thousands of unbacked SymInts from split/slice operations",
+    "symptoms": [
+      "quadratic_compile_time_asserts",
+      "slow_compile"
+    ],
+    "conditions": "Compile time hours-long due to thousands of runtime asserts from split operations with many unbacked symbols",
+    "evidence_issues": [
+      144792
+    ],
     "scope": "torch_compile"
   }
 ]

@@ -122,49 +122,131 @@
   {
     "id": "delayed_nan",
     "name": "Delayed NaN / Accuracy Collapse",
-    "description": "Accuracy suddenly degrades after N iterations (not gradually) — jumps from 1e-4 error to ~300+ then NaN. Distinct from gradual numerical drift.",
-    "evidence_issues": [96971]
+    "description": "Accuracy suddenly degrades after N iterations (not gradually) \u2014 jumps from 1e-4 error to ~300+ then NaN. Distinct from gradual numerical drift.",
+    "evidence_issues": [
+      96971
+    ]
   },
   {
     "id": "non_deterministic_correctness",
     "name": "Non-Deterministic Correctness Failure",
-    "description": "Compiled model sometimes produces correct output, sometimes wrong — intermittent correctness failure from incorrect kernel fusion (e.g., roll fused as pointwise)",
-    "evidence_issues": [159855]
+    "description": "Compiled model sometimes produces correct output, sometimes wrong \u2014 intermittent correctness failure from incorrect kernel fusion (e.g., roll fused as pointwise)",
+    "evidence_issues": [
+      159855
+    ]
   },
   {
     "id": "fp16_perf_regression_small_batch",
     "name": "FP16 Small-Batch Performance Regression",
-    "description": "FP16 autocast dramatically slower than FP32 at small batch sizes — cuBLAS selects poor bmm kernel for non-contiguous fp16 tensors (10x slowdown at bs=1)",
-    "evidence_issues": [159346]
+    "description": "FP16 autocast dramatically slower than FP32 at small batch sizes \u2014 cuBLAS selects poor bmm kernel for non-contiguous fp16 tensors (10x slowdown at bs=1)",
+    "evidence_issues": [
+      159346
+    ]
   },
   {
     "id": "aoti_silent_degradation",
     "name": "AOTI Silent Output Degradation",
-    "description": "AOTInductor silently produces degraded/incorrect output where torch.compile would raise an error — masks export guard violations",
-    "evidence_issues": [147475, 155862]
+    "description": "AOTInductor silently produces degraded/incorrect output where torch.compile would raise an error \u2014 masks export guard violations",
+    "evidence_issues": [
+      147475,
+      155862
+    ]
   },
   {
     "id": "export_static_guard_leak",
     "name": "Export Static Guard Leakage",
     "description": "torch.export bakes static assumptions from dummy input shape into dynamic guards, causing silent accuracy degradation when inference shape differs from export shape",
-    "evidence_issues": [147475, 155862]
+    "evidence_issues": [
+      147475,
+      155862
+    ]
   },
   {
     "id": "export_dde_cascade",
     "name": "Export DDE Cascade",
     "description": "Data-dependent dynamic shapes from user model code (NMS, ROI operations, bounding box filtering) cause cascade of torch.export failures in detection/object-detection models",
-    "evidence_issues": [146152]
+    "evidence_issues": [
+      146152
+    ]
   },
   {
     "id": "model_instability_false_alarm",
     "name": "Model Instability False Alarm",
-    "description": "Numerical instability in randomly-initialized models masquerades as compiler correctness bug — random weights near decision boundaries cause 100% element mismatch",
-    "evidence_issues": [100075]
+    "description": "Numerical instability in randomly-initialized models masquerades as compiler correctness bug \u2014 random weights near decision boundaries cause 100% element mismatch",
+    "evidence_issues": [
+      100075
+    ]
   },
   {
     "id": "warning_log_spam",
     "name": "Warning Log Spam",
-    "description": "Thousands of warning messages per compilation (e.g., 'failed while executing int_truediv') from sympy interpreter — cosmetic but creates noise",
-    "evidence_issues": [138069]
+    "description": "Thousands of warning messages per compilation (e.g., 'failed while executing int_truediv') from sympy interpreter \u2014 cosmetic but creates noise",
+    "evidence_issues": [
+      138069
+    ]
+  },
+  {
+    "id": "dynamic_scalar_regression",
+    "name": "Dynamic Scalar Regression",
+    "description": "Operations that worked with static shapes fail with dynamic=True when scalar arguments (alpha, etc.) become dynamic \u2014 regression from improved dynamism in newer PT2 versions",
+    "evidence_issues": [
+      111199
+    ]
+  },
+  {
+    "id": "partial_zeros_output",
+    "name": "Partial Zeros Output",
+    "description": "Compiled output has first N elements correct then zeros \u2014 indicates CUDA stream synchronization issue in custom ops with mode='reduce-overhead'",
+    "evidence_issues": [
+      157363
+    ]
+  },
+  {
+    "id": "fake_kernel_stride_mismatch",
+    "name": "Fake Kernel Stride Mismatch",
+    "description": "Silent incorrectness when custom op's register_fake returns tensors with different strides/metadata than the real implementation \u2014 Inductor generates code based on fake metadata",
+    "evidence_issues": [
+      146536
+    ]
+  },
+  {
+    "id": "complex_scalar_backward_error",
+    "name": "Complex Scalar Backward Error",
+    "description": "RuntimeError on aten::_conj when compiling models that multiply tensors by complex scalars (1j) with autograd \u2014 scalar-tensor roundtrip breaks in backward trace",
+    "evidence_issues": [
+      105290
+    ]
+  },
+  {
+    "id": "mutation_lost_on_alignment_clone",
+    "name": "Mutation Lost on Alignment Clone",
+    "description": "Silent incorrectness where in-place mutations are lost because Inductor clones input for alignment, disconnecting mutation from original tensor (expand+mutate patterns)",
+    "evidence_issues": [
+      152425
+    ]
+  },
+  {
+    "id": "sympy_nan_comparison",
+    "name": "SymPy NaN Comparison Error",
+    "description": "Invalid NaN comparison error from sympy when ValueRanges arithmetic produces NaN through mixed integer/float range operations in floordiv",
+    "evidence_issues": [
+      133735
+    ]
+  },
+  {
+    "id": "quadratic_compile_time_asserts",
+    "name": "Quadratic Compile Time from Runtime Asserts",
+    "description": "Compile time grows quadratically with number of runtime asserts when model produces many unbacked SymInts from split/slice operations \u2014 each assert ~15 seconds",
+    "evidence_issues": [
+      144792
+    ]
+  },
+  {
+    "id": "weakref_blocks_device_move",
+    "name": "Weakref Blocks Device Movement",
+    "description": "RuntimeError in swap_tensors when moving compiled module to another device due to outstanding weakrefs from compilation (MetaConverter, guards) \u2014 critical for torchao+offloading workflows",
+    "evidence_issues": [
+      141548
+    ]
   }
 ]

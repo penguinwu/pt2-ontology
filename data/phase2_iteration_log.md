@@ -53,12 +53,62 @@ The main quality signal is whether the conversation contains **diagnostic reason
 - Environment issues (broken nightly, package conflicts) are easy to extract but low ontology value
 - Stale issues (closed with "no activity") have low signal-to-noise
 
+## Iteration 3: Priority A closed issues (5-17 comments)
+
+**Sample:** 10 Priority A (closed) issues selected by signal score from refined pool
+**Issues:** #92925, #111199, #157363, #146536, #105290, #152425, #133735, #144792, #141548, #90375
+**Avg Quality Score:** 8.6/10
+**Total New Entities:** 12 (8 symptoms, 3 workarounds, 1 config)
+
+### Findings
+
+**Component distribution:**
+- torchdynamo: 6 issues (fake inputs, dynamic scalars, ValueRanges, runtime asserts, weakrefs, DDP)
+- user_error: 2 issues (custom op stream, fake kernel strides)
+- torchinductor: 1 issue (alignment clone losing mutation)
+- aot_autograd: 1 issue (complex scalar backward)
+
+**Quality by issue type:**
+- Real compiler bugs with clear fix: 8-10/10 (#92925, #111199, #152425, #133735, #90375)
+- User errors with great diagnostic trail: 9/10 (#157363, #146536) — valuable for teaching correct patterns
+- Open/in-progress issues: 10/10 (#141548) — richest conversations happen when multiple engineers collaborate over time
+- Performance pathology: 8/10 (#144792) — clear symptom + workaround
+- Complex number gap: 9/10 (#105290) — systemic gap, not single-issue fix
+
+**Key insight — user errors are high-value extractions:**
+Two issues (#157363, #146536) were user errors, but they produced excellent diagnostic signals:
+- Partial-zeros output pattern → CUDA stream issue in custom ops
+- Fake kernel stride mismatch → silent incorrectness from metadata disagreement
+These patterns are exactly what the ontology needs for automated diagnosis.
+
+**New diagnostic technique discovered:**
+- `torch._functorch.config.fake_tensor_crossref = "all"` — cross-references fake tensor metadata against concrete tensors, catches stride mismatches (#152425)
+
+### Entity Yield
+
+| Type | Count | Notable |
+|------|-------|---------|
+| Symptoms | 8 | partial_zeros_output, mutation_lost_on_alignment_clone, weakref_blocks_device_move |
+| Workarounds | 3 | fix_custom_op_stream, fix_mark_dynamic_instead, fix_avoid_many_splits |
+| Configs | 1 | fake_tensor_crossref |
+| Diagnostic tools | 3 | aot_graphs_log, weakref_monkey_patch, minifier_aot_eager |
+
+### Cumulative Stats (30 extractions total)
+
+| Metric | Iter 1 | Iter 2 | Iter 3 | Total |
+|--------|--------|--------|--------|-------|
+| Issues | 10 | 10 | 10 | 30 |
+| Avg quality | 9.2 | 6.8 | 8.6 | 8.2 |
+| New symptoms | 9 | 0 | 8 | 17 |
+| New workarounds | 7 | 0 | 3 | 10 |
+| New configs | 3 | 0 | 1 | 4 |
+| Compiler fixes | 5 | 3 | 5 | 13 |
+| User errors | 0 | 3 | 2 | 5 |
+
 ## Next Iteration Recommendations
 
-1. **Add confidence threshold**: Skip issues where extraction confidence < "medium"
-2. **Add entity yield filter**: After extracting, flag issues with 0 new entities for review
-3. **Process in priority order**: Sort refined candidates by expected yield:
-   - Priority A: closed + completed + 7+ comments (likely resolved bugs) ~180 issues
-   - Priority B: open + 7+ comments (may have partial diagnosis) ~100 issues
-   - Priority C: closed + stale + 5-6 comments (low expected yield) ~300 issues
-4. **Batch size**: Process 20-30 per iteration, audit after each batch
+1. **Continue Priority A batch**: ~170 remaining Priority A (closed+completed) issues
+2. **Process in batches of 10-20**: Iteration 3 quality (8.6) validates this batch size
+3. **User errors are valuable**: Don't filter them out — they reveal diagnostic patterns
+4. **Consider automating extraction**: 30 manual extractions is enough to define the schema; could prompt an LLM for remaining 350+ issues
+5. **Update decision tree**: Add new entry points from iteration 3 findings (custom op stream, fake kernel metadata, device movement)

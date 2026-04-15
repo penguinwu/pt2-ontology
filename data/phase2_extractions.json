@@ -1444,5 +1444,657 @@
     "extraction_quality_notes": "Short conversation (6 comments) but high ontology value \u2014 meta kernel layout mismatch is a novel failure mode.",
     "extracted_by": "llm",
     "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 92925,
+    "title": "torch.compile gives 'AssertionError: Deduped args out of bounds' for working pytorch code",
+    "state": "closed",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "When calling the user compiler with fake_example_inputs(), the fake inputs didn't work correctly with the eager/aot_eager backends. The 'deduped args out of bounds' assertion in AOT Autograd fired because input deduplication logic produced invalid indices during tracing of models using einops operations (rearrange/einsum with complex reshape patterns).",
+        "trigger": "torch.compile on model using einops.rearrange + einsum with VectorQuantization (complex reshape + einsum patterns in training mode)",
+        "confirmed_by": "engineer_17 reproduced, confirmed error persists with backend='aot_eager', minifier produced different error, traced to fake_example_inputs handling"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Reproduced with provided script",
+          "result": "Error confirmed on both CPU and CUDA",
+          "conclusion": "Not backend-specific"
+        },
+        {
+          "step": 2,
+          "action": "Tried TORCHDYNAMO_REPRO_AFTER='dynamo'",
+          "result": "Segfault instead of assertion error",
+          "conclusion": "CPU inductor backend crash \u2014 separate issue"
+        },
+        {
+          "step": 3,
+          "action": "Tried backend='aot_eager'",
+          "result": "Same deduped args error, minifier script writable",
+          "conclusion": "Issue is in AOT Autograd input dedup, not inductor"
+        },
+        {
+          "step": 4,
+          "action": "Ran minifier on CUDA",
+          "result": "Different error in aot_autograd call_func_with_args",
+          "conclusion": "Multiple failure modes from same root cause"
+        },
+        {
+          "step": 5,
+          "action": "engineer_02 patched to use real example_inputs instead of fake",
+          "result": "Fixed the issue",
+          "conclusion": "Root cause was fake_example_inputs not working with some backends"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "description": "Fixed on master \u2014 patched example input handling in output_graph.py"
+      },
+      "new_entities": {
+        "symptoms": [],
+        "workarounds": [],
+        "configs": [
+          {
+            "id": "repro_after_dynamo",
+            "name": "TORCHDYNAMO_REPRO_AFTER=dynamo",
+            "description": "Run minifier at dynamo stage to isolate tracing issues"
+          }
+        ],
+        "diagnostic_tools": [
+          {
+            "id": "minifier_aot_eager",
+            "name": "Minifier with aot_eager backend",
+            "description": "Use backend='aot_eager' to get writable minifier scripts when inductor crashes"
+          }
+        ]
+      },
+      "quality_score": 8,
+      "confidence": "high",
+      "extraction_notes": "Rich diagnostic conversation with 5 steps of isolation. Highlights complexity of fake vs real example inputs in compiler pipeline."
+    }
+  },
+  {
+    "issue_number": 111199,
+    "title": "[Regression][PT2.1][Dynamic] torch.add torch._dynamo.exc.TorchRuntimeError with out= tensor",
+    "state": "closed",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "PT2.1 improved dynamism so that scalar arguments like alpha become dynamic by default. The torch.add out= lowering path never supported dynamic alpha, causing TorchRuntimeError when dynamic=True.",
+        "trigger": "torch.compile(dynamic=True) on torch.add(input, other, alpha=scalar, out=tensor)",
+        "confirmed_by": "engineer_17 confirmed \u2014 same root cause affects torch.addr and multiple other ops with out= + alpha pattern"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User reported regression from PT2.0 to PT2.1",
+          "result": "torch.add with out= and alpha fails with dynamic=True",
+          "conclusion": "Regression from improved dynamism"
+        },
+        {
+          "step": 2,
+          "action": "engineer_17 identified root cause",
+          "result": "alpha is now dynamic, out= path doesn't support dynamic alpha",
+          "conclusion": "Lowering path incomplete for dynamic scalars"
+        },
+        {
+          "step": 3,
+          "action": "User reported same issue in torch.addr and other ops",
+          "result": "7 related issues filed",
+          "conclusion": "Systemic gap in out= lowering paths for dynamic scalars"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "description": "Use torch._dynamo.mark_dynamic to manually mark dimensions dynamic and remove dynamic=True as workaround. Fix: add dynamic alpha support to out= lowering paths."
+      },
+      "new_entities": {
+        "symptoms": [
+          {
+            "type": "dynamic_scalar_regression",
+            "description": "Operations that worked with static shapes fail with dynamic=True when scalar arguments become dynamic"
+          }
+        ],
+        "workarounds": [
+          {
+            "id": "fix_mark_dynamic_instead",
+            "description": "Use torch._dynamo.mark_dynamic() for specific dimensions instead of global dynamic=True to avoid dynamic scalar issues"
+          }
+        ],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 8,
+      "confidence": "high",
+      "extraction_notes": "Clear regression pattern. Reveals systemic gap: out= tensor paths don't handle dynamic scalars. 7 related issues suggest fuzzer-discovered pattern."
+    }
+  },
+  {
+    "issue_number": 157363,
+    "title": "Custom op not compatible with compile mode='reduce-overhead' and linear layers for large inputs",
+    "state": "closed",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "user_error",
+        "mechanism": "Custom CUDA kernel did not set the CUDA stream via at::cuda::getCurrentCUDAStream(). When using mode='reduce-overhead' (CUDA graphs), the kernel ran on the wrong stream, producing zeros for elements beyond the initial chunk.",
+        "trigger": "torch.compile(mode='reduce-overhead') with nn.Linear before custom CUDA op, large input sizes",
+        "confirmed_by": "User (vlejd) debugged: first N elements correct then zeros, adding cudaDeviceSynchronize before kernel fixed first run. Root cause: missing stream in kernel launch."
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "zou3519 reproduced with pytorch/extension-cpp example",
+          "result": "Compiled model output is all zeros",
+          "conclusion": "Confirmed reproducible"
+        },
+        {
+          "step": 2,
+          "action": "User investigated: first N elements correct, rest zeros",
+          "result": "N varies by GPU (2080: ~3000, 4090: ~4000)",
+          "conclusion": "Race condition / stream synchronization issue"
+        },
+        {
+          "step": 3,
+          "action": "Added cudaDeviceSynchronize before kernel",
+          "result": "Fixed first run but broke second run",
+          "conclusion": "Stream management issue, not memory"
+        },
+        {
+          "step": 4,
+          "action": "Identified missing at::cuda::getCurrentCUDAStream()",
+          "result": "Tutorial code was wrong, not PyTorch",
+          "conclusion": "User error in custom op CUDA kernel"
+        }
+      ],
+      "resolution": {
+        "type": "user_error",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "description": "Fix: set CUDA stream in custom kernel launch. PR submitted to pytorch/extension-cpp tutorial."
+      },
+      "new_entities": {
+        "symptoms": [
+          {
+            "type": "partial_zeros_output",
+            "description": "Compiled output has first N elements correct then zeros \u2014 indicates CUDA stream synchronization issue in custom ops"
+          }
+        ],
+        "workarounds": [
+          {
+            "id": "fix_custom_op_stream",
+            "description": "Custom CUDA kernels must call at::cuda::getCurrentCUDAStream() when used with mode='reduce-overhead' (CUDA graphs)"
+          }
+        ],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 9,
+      "confidence": "high",
+      "extraction_notes": "Excellent diagnostic progression. The partial-zeros pattern is a strong diagnostic signal for stream issues. User self-diagnosed with systematic ablation."
+    }
+  },
+  {
+    "issue_number": 146536,
+    "title": "vmap x compile silently incorrect",
+    "state": "closed",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "user_error",
+        "mechanism": "Custom op's register_fake kernel returned tensor with incorrect strides compared to the real implementation. The fake vquantile used index_select+squeeze giving strides (2,1) while torch.quantile returns strides (1,3). Inductor generates code based on fake kernel metadata, so stride mismatch caused silent incorrectness.",
+        "trigger": "torch.compile(torch.vmap(custom_op)) where custom op's fake kernel has wrong output strides",
+        "confirmed_by": "guilhermeleobas confirmed not reproducible with backend='aot_eager', traced stride mismatch between fake and real kernel outputs"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Tested with backend='aot_eager'",
+          "result": "No error \u2014 works correctly",
+          "conclusion": "Inductor-specific issue"
+        },
+        {
+          "step": 2,
+          "action": "Inspected fake kernel output metadata",
+          "result": "Fake returns strides (2,1), real returns (1,3)",
+          "conclusion": "Stride mismatch in register_fake"
+        },
+        {
+          "step": 3,
+          "action": "Fixed fake kernel to match real strides",
+          "result": "Correct output",
+          "conclusion": "User error in custom op registration"
+        }
+      ],
+      "resolution": {
+        "type": "user_error",
+        "fix_prs": [
+          "#152353",
+          "#143765"
+        ],
+        "workaround_configs": [],
+        "description": "Fix fake kernel to produce matching strides. PyTorch added assert_size_stride check in inductor (#152353) and better error message for fake kernel mismatch (#143765)."
+      },
+      "new_entities": {
+        "symptoms": [
+          {
+            "type": "fake_kernel_stride_mismatch",
+            "description": "Silent incorrectness when custom op's register_fake returns tensors with different strides than the real implementation"
+          }
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": [
+          {
+            "id": "aot_eager_isolation_vmap",
+            "name": "aot_eager backend for vmap+compile",
+            "description": "Use backend='aot_eager' to isolate whether silent incorrectness is from Inductor codegen vs tracing"
+          }
+        ]
+      },
+      "quality_score": 9,
+      "confidence": "high",
+      "extraction_notes": "Important pattern: custom op fake kernel metadata must exactly match real kernel. Led to two defensive PRs adding stride assertions."
+    }
+  },
+  {
+    "issue_number": 105290,
+    "title": "torch.compile Error: RuntimeError: aten::_conj() Expected Tensor but found complex",
+    "state": "closed",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "aot_autograd",
+        "mechanism": "When tracing backward through torch.mul(tensor, 1j), the autograd derivative calls other.conj() which dispatches to aten._conj(). During tracing, the scalar-tensor (1j) gets converted back to a Python complex scalar, but _conj expects a Tensor. The python arg parser converts 1j to tensor for forward, but backward trace doesn't maintain this conversion.",
+        "trigger": "torch.compile on model using complex number multiplication (torch.mul(x, 1j)) with requires_grad=True",
+        "confirmed_by": "bdhirsh created minimal repro: torch.compile(backend='aot_eager')(lambda x: torch.mul(x, 1j)) with complex64 input"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Tried backend='eager'",
+          "result": "No error",
+          "conclusion": "AOT-specific issue"
+        },
+        {
+          "step": 2,
+          "action": "Tried backend='aot_eager'",
+          "result": "Same _conj error",
+          "conclusion": "AOT Autograd backward tracing issue, not inductor"
+        },
+        {
+          "step": 3,
+          "action": "Set TORCH_LOGS=aot_graphs",
+          "result": "Identified problematic op in backward graph",
+          "conclusion": "Complex scalar handling in backward"
+        },
+        {
+          "step": 4,
+          "action": "bdhirsh created minimal repro",
+          "result": "torch.mul(x, 1j) with complex64 + requires_grad",
+          "conclusion": "Scalar-tensor roundtrip breaks in backward trace"
+        },
+        {
+          "step": 5,
+          "action": "engineer_17 linked to AudioLM and broader complex number issues",
+          "result": "Multiple models affected",
+          "conclusion": "Systemic gap in complex number support"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "description": "Complex number support gap. Workaround: rewrite code to avoid complex literals (Euler's identity), but this can cause 10x slowdowns (msaroufim benchmarked rotary embeddings)."
+      },
+      "new_entities": {
+        "symptoms": [
+          {
+            "type": "complex_scalar_backward_error",
+            "description": "RuntimeError on aten::_conj when compiling models that multiply tensors by complex scalars (1j) with autograd"
+          }
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": [
+          {
+            "id": "aot_graphs_log",
+            "name": "TORCH_LOGS=aot_graphs",
+            "description": "Dump AOT Autograd forward/backward graphs to identify problematic ops in backward trace"
+          }
+        ]
+      },
+      "quality_score": 9,
+      "confidence": "high",
+      "extraction_notes": "Great diagnostic chain from user\u2192aot_eager isolation\u2192minimal repro. Reveals systemic complex number gap. Performance impact of workaround (10x) is critical context."
+    }
+  },
+  {
+    "issue_number": 152425,
+    "title": "Silent incorrectness between static torch.compile vs eager",
+    "state": "closed",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "When compiling expand+mutation patterns, Inductor infers tensor alignment on first run. On second run with unaligned input, Inductor clones the input to satisfy alignment assumptions, but this clone causes mutations (a[-1] = 3) to be lost \u2014 they apply to the clone, not the original. expand() creates a tensor with stride 0, making mutation semantics subtle (writes to all elements in eager).",
+        "trigger": "torch.compile(dynamic=False) on code that does x.expand(n) followed by in-place mutation (a[-1] = 3)",
+        "confirmed_by": "engineer_02 traced: first run gets aligned tensor, second run gets unaligned, clone for alignment loses mutation"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "zou3519 ablated to backend='inductor'",
+          "result": "Confirmed inductor-specific",
+          "conclusion": "Not a tracing issue"
+        },
+        {
+          "step": 2,
+          "action": "Analyzed expand semantics",
+          "result": "expand() creates stride-0 tensor, so a[-1]=3 writes to ALL elements in eager",
+          "conclusion": "Edge case of aliasing + mutation"
+        },
+        {
+          "step": 3,
+          "action": "engineer_02 checked fake_tensor_crossref='all'",
+          "result": "MetadataMismatchError: stride mismatch (1,) vs (0,)",
+          "conclusion": "Fake tensor metadata doesn't capture stride-0"
+        },
+        {
+          "step": 4,
+          "action": "engineer_02 traced alignment inference path",
+          "result": "First run aligned \u2192 guard set, second run unaligned \u2192 clone \u2192 mutation lost",
+          "conclusion": "Alignment inference on mutated views is unsafe"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "description": "Proposed fixes: (1) never infer alignment on mutated inputs, (2) add post-inductor epilogue to copy back clones, (3) guard on alignment for mutated inputs"
+      },
+      "new_entities": {
+        "symptoms": [
+          {
+            "type": "mutation_lost_on_alignment_clone",
+            "description": "Silent incorrectness where in-place mutations are lost because Inductor clones input for alignment, disconnecting mutation from original tensor"
+          }
+        ],
+        "workarounds": [],
+        "configs": [
+          {
+            "id": "fake_tensor_crossref",
+            "name": "torch._functorch.config.fake_tensor_crossref",
+            "description": "Cross-reference fake tensor metadata against concrete tensors to detect stride/shape mismatches ('all' mode)"
+          }
+        ],
+        "diagnostic_tools": []
+      },
+      "quality_score": 10,
+      "confidence": "high",
+      "extraction_notes": "Exceptional diagnostic depth. Reveals fundamental tension between alignment optimization and mutation semantics. The fake_tensor_crossref tool is a powerful debugging technique."
+    }
+  },
+  {
+    "issue_number": 133735,
+    "title": "sympy.core.relational.StrictLessThan throws Invalid NaN comparison on VLLM model",
+    "state": "closed",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "ValueRanges.floordiv doesn't correctly preserve type when 0 is in divisor range. When one argument has integer range [0, int_oo] and other has float range [-oo, oo], the product 0 * oo produces sympy.nan, which then causes Invalid NaN comparison in StrictLessThan.",
+        "trigger": "Compiling VLLM model (bigscience/bloom-560m) that produces value ranges with integer/float type mixing in floordiv",
+        "confirmed_by": "engineer_17 traced: floordiv with 0 in b returns ValueRanges.unknown() but products include NaN from 0*oo before the check"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User reported error on VLLM model",
+          "result": "sympy.core.relational.StrictLessThan Invalid NaN comparison",
+          "conclusion": "SymPy value range issue"
+        },
+        {
+          "step": 2,
+          "action": "engineer_17 created self-contained repro",
+          "result": "Reproduced with specific shape environment setup",
+          "conclusion": "Confirmed in symbolic shapes subsystem"
+        },
+        {
+          "step": 3,
+          "action": "engineer_17 traced to floordiv with mixed int/float ranges",
+          "result": "0 * oo = NaN in products list",
+          "conclusion": "Type preservation bug in ValueRanges.floordiv"
+        },
+        {
+          "step": 4,
+          "action": "Attempted synthetic reproduction",
+          "result": "Difficult because shape_env shifts ranges to positive before evaluation",
+          "conclusion": "Bug only triggers through specific code paths"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "description": "Fix needed in ValueRanges.floordiv to handle NaN products from mixed int/float range arithmetic"
+      },
+      "new_entities": {
+        "symptoms": [
+          {
+            "type": "sympy_nan_comparison",
+            "description": "Invalid NaN comparison error from sympy when ValueRanges arithmetic produces NaN through mixed integer/float range operations"
+          }
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 8,
+      "confidence": "high",
+      "extraction_notes": "Deep sympy/ValueRanges diagnostic. Hard to reproduce synthetically because shape_env normalizes ranges. Affects VLLM models specifically."
+    }
+  },
+  {
+    "issue_number": 144792,
+    "title": "massive number of runtime asserts can hamper compile times",
+    "state": "closed",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "When a model produces thousands of unbacked SymInts (e.g. from split operations), runtime asserts accumulate with expressions containing hundreds of symbols. Printing/sorting these expressions has quadratic behavior (~15 seconds per assert log line), and constructing inequality checks (expect_true \u2192 le) is 20% of compile time.",
+        "trigger": "Models with many split/slice operations producing thousands of unbacked symbols, each generating runtime asserts with sum of all symbols",
+        "confirmed_by": "Logs show ~15 seconds between each runtime assert line, TTFB profile shows expect_true=33%, le construction=20%, slice_forward=37%"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User reported 2-hour compile time",
+          "result": "Logs show ~4000 lines of runtime asserts with ~15s between each",
+          "conclusion": "Quadratic behavior in runtime assert processing"
+        },
+        {
+          "step": 2,
+          "action": "engineer_17 suggested sym_sum optimization",
+          "result": "Should help aggregate symbols",
+          "conclusion": "Potential fix exists"
+        },
+        {
+          "step": 3,
+          "action": "laithsakka profiled TTFB",
+          "result": "expect_true 33%, le construction 20%, slice_forward 37%",
+          "conclusion": "Multiple bottlenecks, not just printing"
+        },
+        {
+          "step": 4,
+          "action": "User avoided regression by avoiding split calls",
+          "result": "Compile time normalized",
+          "conclusion": "Workaround: restructure model to avoid many splits"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "description": "User workaround: avoid split operations. Potential fix: sym_sum to aggregate symbols, optimize le construction, address quadratic print sorting."
+      },
+      "new_entities": {
+        "symptoms": [
+          {
+            "type": "quadratic_compile_time_asserts",
+            "description": "Compile time grows quadratically with number of runtime asserts when model produces many unbacked SymInts from split/slice operations"
+          }
+        ],
+        "workarounds": [
+          {
+            "id": "fix_avoid_many_splits",
+            "description": "Restructure model to avoid many split/slice operations that produce thousands of unbacked SymInts causing quadratic compile time"
+          }
+        ],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 8,
+      "confidence": "high",
+      "extraction_notes": "Performance pathology in symbolic shapes. Quadratic behavior from sympy expression sorting. Related to #140835."
+    }
+  },
+  {
+    "issue_number": 141548,
+    "title": "Compiled nn.Module with tensor subclass can't be moved to another device",
+    "state": "open",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "During compilation, Dynamo takes weakrefs to module parameters in multiple places: (1) MetaConverter.tensor_meta dict in FakeTensorMode, (2) HASATTR guards in variables/builder.py, (3) TENSOR_MATCH guard code in guards.py. After compilation, these weakrefs persist. When Module._apply() calls swap_tensors() to move params to another device, swap_tensors refuses because outstanding weakrefs exist.",
+        "trigger": "compiled_module.cpu() or compiled_module.to(device) after torch.compile() on module with tensor subclass parameters",
+        "confirmed_by": "bdhirsh traced 3 weakref sources; azahed98 monkey-patched weakref to get creation tracebacks; removing one source reduced count from 3 to 2"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Identified error in swap_tensors due to outstanding weakrefs",
+          "result": "RuntimeError: cannot swap tensors with outstanding weakrefs",
+          "conclusion": "Weakrefs from compilation prevent device movement"
+        },
+        {
+          "step": 2,
+          "action": "bdhirsh traced weakref sources in compile pipeline",
+          "result": "Found 3 sources: MetaConverter, HASATTR guard, TENSOR_MATCH guard",
+          "conclusion": "Multiple places stash weakrefs to params"
+        },
+        {
+          "step": 3,
+          "action": "engineer_17 suggested clearing MetaConverter weakrefs at end of compilation",
+          "result": "Feasible \u2014 already breaks refcycles at compile end",
+          "conclusion": "Some weakrefs can be cleaned up"
+        },
+        {
+          "step": 4,
+          "action": "bdhirsh analyzed guard weakrefs",
+          "result": "HASATTR guard weakref is incidental not fundamental \u2014 can be removed",
+          "conclusion": "Guards don't need weakrefs to tensors"
+        },
+        {
+          "step": 5,
+          "action": "azahed98 fixed one source, tracked remaining",
+          "result": "PR #171209 WIP for remaining sources",
+          "conclusion": "Fix in progress, whack-a-mole approach"
+        }
+      ],
+      "resolution": {
+        "type": "in_progress",
+        "fix_prs": [
+          "#171209"
+        ],
+        "workaround_configs": [],
+        "description": "WIP: Systematically remove weakrefs to parameters after compilation. One source fixed, remaining tracked. Critical for torchao quantization + model offloading workflows."
+      },
+      "new_entities": {
+        "symptoms": [
+          {
+            "type": "weakref_blocks_device_move",
+            "description": "RuntimeError in swap_tensors when moving compiled module to another device due to outstanding weakrefs from compilation"
+          }
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": [
+          {
+            "id": "weakref_monkey_patch",
+            "name": "weakref creation tracing",
+            "description": "Monkey-patch weakref module to capture tracebacks at weakref creation time, identifying which compilation steps create persistent weakrefs"
+          }
+        ]
+      },
+      "quality_score": 10,
+      "confidence": "high",
+      "extraction_notes": "Exceptionally rich 17-comment diagnostic thread. Critical for torchao+diffusers workflow (quantize\u2192offload\u2192compile). Multiple engineers systematically traced weakref sources. Still open \u2014 in-progress fix."
+    }
+  },
+  {
+    "issue_number": 90375,
+    "title": "PyTorch 2.0: AssertionError fake_mode is not None (possibly because of einops.rearrange)",
+    "state": "closed",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "DDPOptimizer.compile_fn asserts fake_mode is not None, but fake_mode_from_tensors() returns None when example inputs don't contain fake tensors. This happens with DDP + certain model patterns (einops.rearrange). The fix: create a new FakeTensorMode() as fallback instead of asserting.",
+        "trigger": "torch.compile with DDP (DistributedDataParallel) on model using einops.rearrange",
+        "confirmed_by": "engineer_17 provided one-line patch: replace assert with fallback FakeTensorMode() creation"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User reported error with DDP + einops.rearrange",
+          "result": "AssertionError: fake_mode is not None in distributed.py",
+          "conclusion": "DDP compilation path assumes fake inputs always present"
+        },
+        {
+          "step": 2,
+          "action": "Replaced rearrange with torch.reshape",
+          "result": "Same error in random_masking function",
+          "conclusion": "Not einops-specific \u2014 model structure triggers it"
+        },
+        {
+          "step": 3,
+          "action": "wconstab suggested minifier + single-process DDP",
+          "result": "User asked for instructions",
+          "conclusion": "Minifier docs needed improvement"
+        },
+        {
+          "step": 4,
+          "action": "engineer_17 provided hotpatch",
+          "result": "Create FakeTensorMode() when None instead of asserting",
+          "conclusion": "Simple fallback fix, no perf impact"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "description": "One-line fix in DDPOptimizer: replace assert with FakeTensorMode() fallback. Fixed on master, available in next nightly."
+      },
+      "new_entities": {
+        "symptoms": [],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 7,
+      "confidence": "high",
+      "extraction_notes": "Simple fix but important DDP interaction pattern. User had follow-on issues (separate thread #90550). Minifier usability gap noted \u2014 user didn't know how to use it."
+    }
   }
 ]
