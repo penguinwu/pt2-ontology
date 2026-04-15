@@ -1,0 +1,2793 @@
+[
+  {
+    "issue_number": 100075,
+    "title": "[compile] output does not match eager mode",
+    "conversation_length": 31,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93528,
+    "title": "[TorchInductor] Add support for Pascal GPUs (P100, GTX 1080, etc)",
+    "conversation_length": 26,
+    "symptoms": []
+  },
+  {
+    "issue_number": 96971,
+    "title": "torch.compile() accuracy minifier breaks when using dynamic shapes",
+    "conversation_length": 20,
+    "symptoms": [
+      "crash",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 138069,
+    "title": "failed while executing int_truediv",
+    "conversation_length": 19,
+    "symptoms": []
+  },
+  {
+    "issue_number": 106110,
+    "title": "llama model failed for dynamic shape path",
+    "conversation_length": 19,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93767,
+    "title": "Common benchmarking infrastructure for Torchbench, TIMM and huggingFace",
+    "conversation_length": 19,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93428,
+    "title": "[aot_eager] [hf_Longformer] Cannot view a tensor with shape",
+    "conversation_length": 19,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 90167,
+    "title": "Does PyTorch 2.0 eliminate the need for custom fused operators?",
+    "conversation_length": 18,
+    "symptoms": []
+  },
+  {
+    "issue_number": 150702,
+    "title": "[ued] Investigate diffuser pipeline transformer recompilations due to different width/height",
+    "conversation_length": 17,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 141548,
+    "title": "Compiled `nn.Module` with tensor subclass can't be moved to another device",
+    "conversation_length": 17,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 123745,
+    "title": "Cannot process/load 2.3 produced aot-inductor shared library file with 2.4-dev",
+    "conversation_length": 17,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 117045,
+    "title": "cache_entries empty after torch.compile() ?",
+    "conversation_length": 17,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93517,
+    "title": "Triton MLIR benchmarks",
+    "conversation_length": 17,
+    "symptoms": []
+  },
+  {
+    "issue_number": 127581,
+    "title": "Equivalent index expression results in 50% perf difference in a triton kernel",
+    "conversation_length": 16,
+    "symptoms": []
+  },
+  {
+    "issue_number": 97693,
+    "title": " Compile targts cuda:0 rather than the device the model is on",
+    "conversation_length": 16,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 86427,
+    "title": "[functorch] [aot_autograd] ",
+    "conversation_length": 16,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 117602,
+    "title": "If I use torch.compile to compile the whole graph\uff0cin the my own compiler, how to manage the memory in my own compiler? ",
+    "conversation_length": 15,
+    "symptoms": []
+  },
+  {
+    "issue_number": 90375,
+    "title": "PyTorch 2.0: AssertionError fake_mode is not None (possibly because of einops.rearrange)",
+    "conversation_length": 15,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 153791,
+    "title": "torch.compile raise JSONDecodeError(\"Extra data\", s, end)  while using Ray with Ulysses + 4 GPUs",
+    "conversation_length": 14,
+    "symptoms": []
+  },
+  {
+    "issue_number": 141790,
+    "title": "AOTAutograd cache always misses even on simple program",
+    "conversation_length": 14,
+    "symptoms": []
+  },
+  {
+    "issue_number": 138274,
+    "title": "Torch 2.5.0 vs 2.4.1: torch nested in BetterTransformer fastpath implementation",
+    "conversation_length": 14,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 127677,
+    "title": "Key error in index_propagation when looking up dynamic shape vr",
+    "conversation_length": 14,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 100567,
+    "title": "Inductor graph viz doesnt print to correct directory",
+    "conversation_length": 14,
+    "symptoms": []
+  },
+  {
+    "issue_number": 97077,
+    "title": "[compile] `assert \"source\" in options and options[\"source\"] is not None`",
+    "conversation_length": 14,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 93665,
+    "title": "Explore TBB for TorchInductor C++ backend",
+    "conversation_length": 14,
+    "symptoms": []
+  },
+  {
+    "issue_number": 140423,
+    "title": "[triton 3.2] std::bad_alloc: torch.compile breaks with Triton built from source",
+    "conversation_length": 13,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 128095,
+    "title": "[inductor] Graph breaks in CohereForAI/aya-23-8b",
+    "conversation_length": 13,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 122227,
+    "title": "[Inductor][Triton] test_mixed_mm2_cuda fails on Hopper",
+    "conversation_length": 13,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 113707,
+    "title": "torch.compile doesnt respect use_determistic_algorithms during the backward()",
+    "conversation_length": 13,
+    "symptoms": []
+  },
+  {
+    "issue_number": 108079,
+    "title": "Aliased Input/Output Requirement in `aot_export_joint_simple`",
+    "conversation_length": 13,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 101624,
+    "title": "[Dynamo + DDP] If DDP partitions FX graph generated by Dynamo correctly",
+    "conversation_length": 13,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93224,
+    "title": "`torch.compile` failed on `torch.bitwise_xor` with a constant python number",
+    "conversation_length": 13,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 92925,
+    "title": "torch.compile gives \"AssertionError: Deduped args out of bounds\" for working pytorch code",
+    "conversation_length": 13,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 169545,
+    "title": "torch.compile + CUDAGraph + gradient accumulation fails",
+    "conversation_length": 12,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 130822,
+    "title": " torch._export.aot_compile reports an error when compiling the model after int8 quantization",
+    "conversation_length": 12,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 121069,
+    "title": "'torch.compile()' causes 'Accuracy failed: uint8 tensor did not match'",
+    "conversation_length": 12,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 119523,
+    "title": "Persistent reduction runs slower than reduction with the same triton config",
+    "conversation_length": 12,
+    "symptoms": []
+  },
+  {
+    "issue_number": 111636,
+    "title": "torch2.1.0 DDP+compile+dynamic_shape cause error",
+    "conversation_length": 12,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 97992,
+    "title": "torch.compile not compatible with multiprocessing pool",
+    "conversation_length": 12,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93629,
+    "title": "cpp_compile_command is brittle for fbcode integration",
+    "conversation_length": 12,
+    "symptoms": []
+  },
+  {
+    "issue_number": 167082,
+    "title": "float8_e4m3fn type conversion fails with torch.compile",
+    "conversation_length": 11,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 149586,
+    "title": "UserWarning: Dynamo does not know how to trace the builtin `None.pybind11_object.__new__.`",
+    "conversation_length": 11,
+    "symptoms": []
+  },
+  {
+    "issue_number": 131953,
+    "title": "TORCH_COMPILE_CPROFILE=1 broken (strobelight might always be on internally?)",
+    "conversation_length": 11,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 128357,
+    "title": "torch.compile() AssertionError: target must be of GPUTarget type",
+    "conversation_length": 11,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 127817,
+    "title": "W0603 torch/fx/experimental/symbolic_shapes.py:1325] [1/18] RecursionError ",
+    "conversation_length": 11,
+    "symptoms": []
+  },
+  {
+    "issue_number": 126614,
+    "title": "[inductor] `aten.index_put_`  runtime shape mismatch on H100 but not on A100",
+    "conversation_length": 11,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 119780,
+    "title": "110 Dynamo test are failing with \"Failed running call_function <built-in method sparse_coo_tensor of type object at 0xDEADBEEF\".",
+    "conversation_length": 11,
+    "symptoms": []
+  },
+  {
+    "issue_number": 111027,
+    "title": "[PT2.1] SIGSEGV seen with view + sgn operator inside torch.compile",
+    "conversation_length": 11,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 105290,
+    "title": "Torch.compile Error: RuntimeError: aten::_conj() Expected a value of type 'Tensor' for argument 'self' but instead found type 'complex'.",
+    "conversation_length": 11,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 104797,
+    "title": "Regression in Dalle2 due to dynamic shapes",
+    "conversation_length": 11,
+    "symptoms": []
+  },
+  {
+    "issue_number": 98928,
+    "title": "Changing module attributes doesn't retrigger compilation",
+    "conversation_length": 11,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 97078,
+    "title": "[compile] TypeError: __init__() missing 1 required positional argument: 'parent_module'",
+    "conversation_length": 11,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 94414,
+    "title": "[fake_tensor] torch._subclasses.fake_tensor.DynamicOutputShapeException when calling torch.nonzero using aot_function",
+    "conversation_length": 11,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 166653,
+    "title": "[CUDA][B200][Inductor] Inductor Loop Ordering After Fusion (#162030) causes > 70% perf. regression",
+    "conversation_length": 10,
+    "symptoms": [
+      "perf_regression"
+    ]
+  },
+  {
+    "issue_number": 166173,
+    "title": "dynamo should expose \"are there any side effects in my code\" to vLLM",
+    "conversation_length": 10,
+    "symptoms": []
+  },
+  {
+    "issue_number": 155121,
+    "title": "some_tensor.to(\"cpu\", non_blocking=True) becomes sync under PT2 while async in eager mode",
+    "conversation_length": 10,
+    "symptoms": []
+  },
+  {
+    "issue_number": 154490,
+    "title": "torch.compile regression: it cause recompile when int value changed",
+    "conversation_length": 10,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 149258,
+    "title": "Auto-selective activation checkpointing is not optimal for speed (issue with min_cut_rematerialization_partition)",
+    "conversation_length": 10,
+    "symptoms": []
+  },
+  {
+    "issue_number": 135005,
+    "title": "[Bug] torch.fx.experimental.symbolic_shapes.ConstraintViolationError: torch._dynamo.mark_dynamic(a, 0,min=1,max=8196) min don't work",
+    "conversation_length": 10,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 134385,
+    "title": "FlopCounterMode doesn't support HOP",
+    "conversation_length": 10,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 130859,
+    "title": "[pre-grad][batch_relu] batch_relu pass is triggered with inline_inbuilt_nn_modules causing major regression",
+    "conversation_length": 10,
+    "symptoms": []
+  },
+  {
+    "issue_number": 125652,
+    "title": "[dynamo][inline_inbuilt_nn_modules] Unnecessary compilation fails to optimize simple code",
+    "conversation_length": 10,
+    "symptoms": []
+  },
+  {
+    "issue_number": 114472,
+    "title": "[inductor][cpu]fbnetc_100 AMP single thread performance regression ",
+    "conversation_length": 10,
+    "symptoms": [
+      "perf_regression"
+    ]
+  },
+  {
+    "issue_number": 113393,
+    "title": "torch.compile() results in inflexible model with mistralai/Mistral-7B-v0.1",
+    "conversation_length": 10,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 113263,
+    "title": "PT2 improperly executes ambient saved_tensors_hooks",
+    "conversation_length": 10,
+    "symptoms": []
+  },
+  {
+    "issue_number": 97280,
+    "title": "torch.compile doesn't respect `torch.cuda.set_device()`",
+    "conversation_length": 10,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93830,
+    "title": "[pt2] MMDet meets Exception: Please convert all Tensors to FakeTensors first or instantiate FakeTensorMode error with aot_eager backend",
+    "conversation_length": 10,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93795,
+    "title": "Slow eager compilation time with TorchDynamo",
+    "conversation_length": 10,
+    "symptoms": [
+      "slow_compile",
+      "graph_break",
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 93691,
+    "title": "TorchInductor OpInfo accuracy failure Tracker",
+    "conversation_length": 10,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93640,
+    "title": "vision_maskrcnn: `NameError: name 'buf0' is not defined`",
+    "conversation_length": 10,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 175167,
+    "title": "MobileBertForMaskedLM is 90% slower with unbacked vs backed !",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 170696,
+    "title": "[torch.compile] `CatchErrorsWrapper' object has no attribute '__closure__`  when wrapping a fullgraph'd function in fullgraph'd module forward",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 169082,
+    "title": "Reduce Overhead and Max Autotune NaN",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 161457,
+    "title": "[compile] meta-llama correctness issue",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 144859,
+    "title": "Torch compile cache",
+    "conversation_length": 9,
+    "symptoms": [
+      "slow_compile"
+    ]
+  },
+  {
+    "issue_number": 144537,
+    "title": "FlexAttention uses much more GPU memory than FlashAttention-2 ",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 138775,
+    "title": "[Inductor] Regression in test_comprehensive_nn_functional_max_pool2d_cuda from triton",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 133586,
+    "title": "No way for low-overhead total norm in native PyTorch with large number of tensors",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 132609,
+    "title": "[Dynamo]Illegal getattr invocation requires_grad in strict mode",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 130825,
+    "title": "torch.compile fails for complex nested_tensor code",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 128640,
+    "title": "Question regarding computing ValueRanges for symbolic nodes",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 119128,
+    "title": "[dynamo] Refactor switch statements  to improve compile times",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 114405,
+    "title": "__torch_dispatch__ + compile: extra guards",
+    "conversation_length": 9,
+    "symptoms": [
+      "silent_correctness",
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 114366,
+    "title": "TypeError: unhashable type: non-singleton SymInt in AOTAutograd merge_view_inputs",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 109910,
+    "title": "Dynamo error for autograd function",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 106893,
+    "title": "[autograd.Function] torch.compile w/ once_differentiable leads to opaque graph break",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 98434,
+    "title": "assert callable(unaltered_fn)",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 95347,
+    "title": "[inductor] max-autotune leads to kernels not getting profiled correctly",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 95190,
+    "title": "Torch.compile produces Exception: Please convert all Tensors to FakeTensors first or instantiate ...",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 93495,
+    "title": "[Torch2 CPU] torch._inductor.ir: [WARNING] Using FallbackKernel: aten.cumsum",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93405,
+    "title": "Guided Diffusion fails guards with runtime errors.",
+    "conversation_length": 9,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 91753,
+    "title": "SymIntType gets translated to int when going through pybind",
+    "conversation_length": 9,
+    "symptoms": []
+  },
+  {
+    "issue_number": 176615,
+    "title": "[opaque objects] custom_op + Reference OpaqueObject is not CUDAGraphable.",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 168163,
+    "title": "Dynamo overguards on checkpoint policy functions that are closed over by compiled region",
+    "conversation_length": 8,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 167012,
+    "title": "regional inductor error out when input has unbacked symint expressions",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 161868,
+    "title": "SGLang torch.compile and triton `NameError('cuda_capability_geq is not defined')` on GPT-OSS",
+    "conversation_length": 8,
+    "symptoms": [
+      "crash",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 157601,
+    "title": "PyTorch 2.7.1 torch.compile will probably break with einops 0.8.2 or 0.9.0",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 151043,
+    "title": "FlexAttention: create_block_mask is considerably slow when using flattened 1D sequences (document masking / jagged tensors)",
+    "conversation_length": 8,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 148061,
+    "title": "[inductor] [cpu] [[silence] `nn.ConvTranspose2d-F.dropout` and `nn.Conv2d-F.dropout` outputs inconsistent results with eager",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 144540,
+    "title": "torch.compile does not work with Flash attention 3",
+    "conversation_length": 8,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 141594,
+    "title": "Marking integer inputs to a compiled region requires `torch._dynamo.assume_static_by_default = True`",
+    "conversation_length": 8,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 141386,
+    "title": "Add vLLM to torchbench",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 140960,
+    "title": "Better Error Message for SymIntArrayRef expected to contain only concrete integers",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 139862,
+    "title": "[Compiled Autograd] unnecessasy Memcpy DtoD in backward graph ",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 134447,
+    "title": "torch.compile does not work with test coverage tools",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 133487,
+    "title": "[Dynamo] torch.func.functional_call shouldn't emit additional side effects bytecode",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 132290,
+    "title": "25+ compile tests were disabled as flaky ",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 130547,
+    "title": "Ensuring caching is disabled on einops from Dynamo",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 129327,
+    "title": "[export/dynamo] torch._check fails at compile time when the condition evaluates to False",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 126241,
+    "title": "[inductor][layout optimization] Extra recompilations because of a guard failure on weight ",
+    "conversation_length": 8,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 124251,
+    "title": "Coordinate descent tuning on large tensors(?) results in illegal memory access",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 121679,
+    "title": "Complexity of output_graph.py:new_var() goes through the roof",
+    "conversation_length": 8,
+    "symptoms": [
+      "slow_compile",
+      "hang"
+    ]
+  },
+  {
+    "issue_number": 120774,
+    "title": "Inductor INFO logs are kind of spammy",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 111199,
+    "title": "[Regression][PT2.1][Dynamic] torch.add torch._dynamo.exc.TorchRuntimeError: Failed running call_function",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 109884,
+    "title": "basic_gnn_gcn: ERROR:common:TypeError: object of type 'GreaterThan' has no len()",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 105054,
+    "title": "Graph break in len(numpy_array) in compiled NumPy",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 101244,
+    "title": "Faketensor error when add new backend for pytorch",
+    "conversation_length": 8,
+    "symptoms": [
+      "crash",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 100067,
+    "title": "[decomp][aot autograd] View mismatch",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 97778,
+    "title": "inductor: NameError: name 'math_floor' is not defined when running fx_graph_runnable.py",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 96628,
+    "title": "Pytorch 2 compile leads to \"Triton Error [CUDA]: misaligned address\"",
+    "conversation_length": 8,
+    "symptoms": [
+      "crash",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 96274,
+    "title": "Dynamic batch size support when combine `torchdynamo.export` and `compile_fx`",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 95874,
+    "title": "The Benchmark test for dynamo runs stuck",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93777,
+    "title": "TorchInductor failing training models tracker",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised",
+      "flaky"
+    ]
+  },
+  {
+    "issue_number": 93421,
+    "title": "`index_put` with bool index errors out",
+    "conversation_length": 8,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 92245,
+    "title": "CapabilityBasedPartitioner incorrectly sorts the graph, causing optimizer return/output node to be first",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 91827,
+    "title": "[inductor] `triton.runtime.jit` does not provide `get_cuda_stream`",
+    "conversation_length": 8,
+    "symptoms": []
+  },
+  {
+    "issue_number": 170781,
+    "title": "meta_model.to_empty(...) equivalent for FakeTensor",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 170345,
+    "title": "[vllm] Pytorch failure lazy_imports.py is failing on torch._inductor.async_compile for release 2.9.0 and 2.10.0 rc1",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 170130,
+    "title": "Inductor generates `CUDA error : misaligned address` and crashes during `max-autotune`",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 162671,
+    "title": "Compilation time debugging: construction sympy.Min/Max can be very slow",
+    "conversation_length": 7,
+    "symptoms": [
+      "slow_compile"
+    ]
+  },
+  {
+    "issue_number": 156819,
+    "title": "FakeTensorUpdater doesn't support HOPs",
+    "conversation_length": 7,
+    "symptoms": [
+      "silent_correctness"
+    ]
+  },
+  {
+    "issue_number": 156103,
+    "title": "[compile][torchtune] Full model compiled Qwen3 is 4x slower than eager",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 153042,
+    "title": "Pytorch 2.7 crashes when using flex attention with torch.amp",
+    "conversation_length": 7,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 146536,
+    "title": "vmap x compile silently incorrect",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 146129,
+    "title": "torch.compile on Mamba2 model produces NaNs",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 143337,
+    "title": "An idea to improve Welford implementation in Inductor",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 139312,
+    "title": "incorrect _unsafe_index meta",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 137874,
+    "title": "TORCH_LOGS=cache only reports on remote cache, but it should report local cache too",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 137520,
+    "title": "Support torch.cond with differing (but same dimensionality) sizes on true/false branches",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 137372,
+    "title": "inductor shape padding of activations is bad for compiled autograd",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 136232,
+    "title": "NaN in Flex Attention backward if BlockMask is larger than first run seq_len when return_lse=True and torch compiled",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 135664,
+    "title": "`randint(max)` causes a graph break, but not `rand().mul(max).floor().to(torch.long)` (on CPU)",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 130358,
+    "title": "Cannot call numel() on tensor with symbolic sizes/strides ",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 130150,
+    "title": "Cannot Torch Export Forward Pass of  Mamba SSM",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 129934,
+    "title": "moco inference fail in dynamo when accessing buffer_hook in nn module",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 128954,
+    "title": "[Dynamo] Maybe we shouldn't attempt to recursively compile inside of a frame if the frame hit cache limit",
+    "conversation_length": 7,
+    "symptoms": [
+      "slow_compile",
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 128645,
+    "title": "Improving expand w/ unbacked symints",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 128251,
+    "title": "'FakeRootModule' object has no attribute 'self___aot_engines_0_short_term_memories_list_0_0_0'",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 127863,
+    "title": "Potential 7.5x compilation time improvement for foreach kernel",
+    "conversation_length": 7,
+    "symptoms": [
+      "slow_compile"
+    ]
+  },
+  {
+    "issue_number": 127830,
+    "title": "GuardOnDataDependentSymNode: Could not guard on data-dependent expression",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 126355,
+    "title": "Enable MiscTests.test_map_side_effects to work with nn module inlining",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 125638,
+    "title": "Investigate \"Expected a value of type 'List[int]' for argument 'stride' but instead found type 'tuple' \" when nn module inlining is enabled.",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 125341,
+    "title": "Happier cowpath for torch.tensor_split on Tensor split sizes",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 124090,
+    "title": "Fakeifying a non-leaf subclass where inner tensor is noncontiguous incorrectly produces contiguous tensor.",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 123967,
+    "title": "torch.compile doesn't work with triton kernel containing tl.interleave",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 123759,
+    "title": "tlparse: aot_compile doesn't setup compile ids",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 123560,
+    "title": "RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.cuda.HalfTensor) should be the same",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 122126,
+    "title": "split_with_sizes with unbacked SymInt results in buffers that cannot be materialized for extern calls",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 121967,
+    "title": "[PT2.2] PyTorch dispacthing non core ATen ops in .compile mode for torch ops.",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 121516,
+    "title": "SIGILL / ILL_ILLOPN crash when using AOT Inductor pre-compiled model (torch 2.2)",
+    "conversation_length": 7,
+    "symptoms": [
+      "crash",
+      "perf_regression",
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 117662,
+    "title": "dynamo <> autograd.Function assumes that grad_outputs have the same subclass-ness as forward outputs",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 116013,
+    "title": "[Dynamo] bytecode transformed by Dynamo is not serializable by marshal",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 113792,
+    "title": "[export] Export warnings as no-ops",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 112072,
+    "title": "torch.compile doesn't preserve torch.set_grad_enabled() (and possibly other APIs) side effects",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 111113,
+    "title": "Running inference with model.compile gives us wrong predictions on a X3D regression model trained using PyTorch 1.0",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 109505,
+    "title": "[dynamo] torch._dynamo.exc.Unsupported: call_function BuiltinVariable(setattr) [TensorVariable(), ConstantVariable(str), ConstantVariable(bool)] {}",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 108014,
+    "title": "NameError: name 's1' is not defined",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 106183,
+    "title": "[dynamo.export] symbolic_shapes.GuardOnDataDependentSymNode",
+    "conversation_length": 7,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 102331,
+    "title": "torch.nn.Transformer cannot be compiled",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 101937,
+    "title": "`torch.compile` fails to fuse backward pass when using `torch.autograd.Function`",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 100086,
+    "title": "[Inductor] Striding problems arising from complex operations in torch.compile",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 99455,
+    "title": "Not Preserving Grad For Tensor Created Inside torch.compile",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 96205,
+    "title": "[Dynamo] HuggingFace transformers configuration_utils graph break workaround",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 96130,
+    "title": "torch.compile fails when compiling a T5-style model with HF interfaces",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 96047,
+    "title": "No speedup and a null pointer exception",
+    "conversation_length": 7,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 95671,
+    "title": "Manual Installation of Jinja (for wheel env) or networkx (for conda) Package is Required to Use Torch.Compile",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 95595,
+    "title": "TorchInductor fails with memoy violations in `test_comprehensive_grid_sampler_2d_cuda_float16` and `test_reflection_pad2d_dynamic_shapes_cuda`",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 95277,
+    "title": "[Pytorch 2.0][compile] Squeeze_ torch._dynamo.exc.BackendCompilerFailed Dimension out of range",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 95189,
+    "title": "Pytorch 2.0 [compile] index_add bf16 compilation error",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93675,
+    "title": "Need operator fallback stats",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93664,
+    "title": "Add tiling to TorchInductor C++ backend ",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93642,
+    "title": "Meta/Fake Don't Support Quantized Tensors",
+    "conversation_length": 7,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93042,
+    "title": "PT2 doesn't work well with inference mode",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 92633,
+    "title": "TorchInductor Doesnt Support Generators",
+    "conversation_length": 7,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 168284,
+    "title": "torch.compile, when passes a single torch operation, does not put it into a graph",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 167321,
+    "title": "#167182 breaks local source build",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 164563,
+    "title": "[Blackwell][Inductor] Numerical mismatches in test_max_autotune.py::TestMaxAutotune::test_non_contiguous_input_mm_plus_mm",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 163834,
+    "title": "[inductor] [conv layout] `permute-Conv1d` throws a layout error",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 159097,
+    "title": "torch.compile improperly removes memory layout transformation",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 158058,
+    "title": "`torch.compile` on `torch.arange` hard errors with `PendingUnbackedSymbolNotFound`",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 157915,
+    "title": "tlparse symint guard user provenance slightly off",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 153389,
+    "title": "Compile produces different result than eager for mutable custom op use case",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 151589,
+    "title": "[inductor] alignment assertion failure on certain GGUF models in ComfyUI",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 151296,
+    "title": "[inductor] [assertion error] `torch.select_scatter` crashes on inductor but passes on eager",
+    "conversation_length": 6,
+    "symptoms": [
+      "crash",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 148950,
+    "title": "[inductor] [fake tensor] `torch.conj` crashes when `add` original complex tensor",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 148106,
+    "title": "NotImplementedError: FlexAttentionHigherOrderVariable() has no type",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 147468,
+    "title": "[Triton] [Upstream] FlexDecoding Test Failures opToStageAndCluster[&op].first < numStages && \"Op with invalid stage!",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 144211,
+    "title": "`torch.nn.functional.one_hot` has inconsistent execution behavior under torch.compile",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 138514,
+    "title": "torch.compile(create_block_mask) errors in certain cases and hangs in others",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised",
+      "hang"
+    ]
+  },
+  {
+    "issue_number": 135118,
+    "title": "InternalTorchDynamoError: 'FunctionCtx' object has no attribute 'saved_tensors'",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 134950,
+    "title": "Bert model training is not running on cpu (X86/ARM) with torch.compile() mode, generating value error.",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 133735,
+    "title": "sympy.core.relational.StrictLessThan throws Invalid NaN comparison one VLLM model. ",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised",
+      "memory_issue"
+    ]
+  },
+  {
+    "issue_number": 133644,
+    "title": "Compiled tensor subclass can fail when graph break happens in the wrong place",
+    "conversation_length": 6,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 130978,
+    "title": "Compiled DDP + TP unit test fails with `SymNodeVariable() is not a constant`",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 130394,
+    "title": "[Inductor] Incorrect strides for function containing `torch.empty_strided`. Causes output to crash.",
+    "conversation_length": 6,
+    "symptoms": [
+      "crash",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 129877,
+    "title": "Eager and PT2 inconsistent on whether or not scalar tensor is allowed as input where int is expected",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 129658,
+    "title": "[TensorDict - compile] dynamo generator compatibility",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 128427,
+    "title": "warnings.warn is super spammy under Dynamo",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 128354,
+    "title": "torch.compile() function calling is slower than @torch.compile decorator.",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 128071,
+    "title": "[user empathy day 2][based] torch.compile issues",
+    "conversation_length": 6,
+    "symptoms": [
+      "slow_compile",
+      "graph_break",
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 122296,
+    "title": "torch compile item() cannot convert symbols to int error",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 121345,
+    "title": "[AudioLM] Graph break: call_method UserDefinedObjectVariable(dict) get [TorchVariable(<class 'torch.Tensor'>), ConstantVariable(NoneType)]",
+    "conversation_length": 6,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 120699,
+    "title": "[Dynamo] Inconsistent code with and without TYPE_CHECKING",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 120654,
+    "title": "Subclasses with `__torch_function__()` impls for composite ops don't work with dynamic shapes",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 118896,
+    "title": "recompiling a model on a subclass then on a plain tensor causes malformed guards",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised",
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 118334,
+    "title": "Using autograd.Functions defined in torch/ cause graph breaks",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 118260,
+    "title": "Dynamo is not thread safe",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 118122,
+    "title": "`torch.cuda.is_bf16_compatible()` output inconsistent with with TorchInductor support",
+    "conversation_length": 6,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 117265,
+    "title": "[dynamo][inline-inbuilt-nn-modules]torch.compile silently incorrect with full_backward_pre_hook",
+    "conversation_length": 6,
+    "symptoms": [
+      "wrong_result"
+    ]
+  },
+  {
+    "issue_number": 114059,
+    "title": "[dynamo] Cacheing issue with nopython",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 112744,
+    "title": "When torch.compile is used, some APIs are decomposed even if decomposition is empty.",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 111414,
+    "title": "Minifier doesn't transfer execution states like @torch.no_grad to repro",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 110458,
+    "title": "bug(aten): poor support for aten `foreach_abs`",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 110291,
+    "title": "AOT Autograd Neg View Support",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 108074,
+    "title": "TorchDynamo/Inductor does not let CPython >=3.11 optimize function calls in graph breaks",
+    "conversation_length": 6,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 106732,
+    "title": "Hugging Face safetensor does not work with FakeTensorMode",
+    "conversation_length": 6,
+    "symptoms": [
+      "crash",
+      "error_raised",
+      "memory_issue"
+    ]
+  },
+  {
+    "issue_number": 105929,
+    "title": "Dynamo silently ignores TorchDispatchMode",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 104913,
+    "title": "StableDiffusion with dynamic=True still recompiles",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 103073,
+    "title": "torch.compile crash for tensor computing when tensor size is bigger ",
+    "conversation_length": 6,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 101265,
+    "title": "Noisy warning - torch.fx.experimental.symbolic_shapes: [WARNING] Ignored guard (...), this could result in accuracy problems",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 101154,
+    "title": "[Dynamo] TB hf_Reformer graph breaks",
+    "conversation_length": 6,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 100733,
+    "title": "Nightly torch.compile fails with dynamically patched `nn.module.forward`",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 98835,
+    "title": "[PT2.0] empty output shape causes Segmentation fault",
+    "conversation_length": 6,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 98825,
+    "title": "[functorch] functorch_maml_omniglot - fails under torch.compile",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 98822,
+    "title": "[functorch] torch.compile - functorch transforms Interaction",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 96722,
+    "title": "module.register_forward_hook only captures some layers when using torch.compile",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 95167,
+    "title": "[PT2.0][compile] embedding bag  max_norm=-1 causes leaf Variable that requires grad is being used in an in-place operation",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93687,
+    "title": "Bad g++ version downloaded from conda-forge when using None Path",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93658,
+    "title": "PyTorch Lightning AssertionError on trainer.fit()",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93656,
+    "title": "explain() has confusing explanation of graph breaks",
+    "conversation_length": 6,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 93654,
+    "title": "optimizer.step fails on fake tensor mode",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93626,
+    "title": "Move TorchInductor Triton autotuner to compile time, use common cache",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93559,
+    "title": "PyTorch Core Tests with Inductor",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93541,
+    "title": "Use A Memory Pool For Cudagraph Input Tensors",
+    "conversation_length": 6,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 93365,
+    "title": "[pt2] compiled function with cat and mul gives wrong results",
+    "conversation_length": 6,
+    "symptoms": [
+      "wrong_result",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 91794,
+    "title": "Tried to use torch.compile() to optimize model but didn't experience acceleration when running",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 91306,
+    "title": "[Torch 2.0] Fake Tensor Fails for codegen model",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 91249,
+    "title": "Use dynamo to detect incorrect op schemas automatically",
+    "conversation_length": 6,
+    "symptoms": []
+  },
+  {
+    "issue_number": 90882,
+    "title": "PyTorch 2.0: RuntimeError: Inference tensors do not track version counter.",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 90511,
+    "title": "[Dynamo] torch._dynamo.exc.BackendCompilerFailed: tvm raised AttributeError: Can't pickle local object 'WeakValueDictionary.__init__.<locals>.remove'",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 90454,
+    "title": "Inductor bug because of aten.clone lowering doesn't support memory_format",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 90203,
+    "title": "Godel Model fails to compile (python 3.11)",
+    "conversation_length": 6,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 174502,
+    "title": "AOTAutogradCache hit requires running pre-grad passes",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 172942,
+    "title": "cuda graphs dont play nice with numpy numbers",
+    "conversation_length": 5,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 172837,
+    "title": "importing cudagraph_trees causes segfault",
+    "conversation_length": 5,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 170834,
+    "title": "Generated torch.Library autograd functions seem not have `setup_context` which breaks `torch.func.grad` usage",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 168360,
+    "title": "torch__dynamo_variables_tensor_prim_redistribute and similar \"closures\" annoying in the Dynamo view",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 167707,
+    "title": "torch.profiler.profile cannot save trace",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 167453,
+    "title": "recompilation reason due to different backend is empty",
+    "conversation_length": 5,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 167339,
+    "title": "[Inductor] test_comprehensive_nn_functional_max_pool2d_cuda failed with Triton 3.5",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 166943,
+    "title": "Error `Cond doesn't work unless it is captured completely with torch.compile`, but it can actually be completely captured.",
+    "conversation_length": 5,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 165409,
+    "title": "[torch.compile][fullgraph][functionalization] In-place op on overlapped view from unfold fails: \u201ctensor being mutated has internal overlap\u201d (eager OK)",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 164990,
+    "title": "[dynamo, guards] Better error messages when generated guard fails on the same frame",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 163451,
+    "title": "[Fuzzer][Eager/Compile Divergence] Compile fails with \"operand #0 does not dominate this use\"",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 162402,
+    "title": "Issue with torch.compile - sm110a(Nvidia Jetson Thor)",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 162199,
+    "title": "inductor's process pool seems to time out while cleaning up after a cold start",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 162151,
+    "title": "`permute` +  `add` + `transpose` plays wrong on tensor slice",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 161562,
+    "title": "`set_fullgraph(False)` actually skips the frame if a graph break happens",
+    "conversation_length": 5,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 161360,
+    "title": "Crashing when selecting -1 from a tensor of unbacked symint size",
+    "conversation_length": 5,
+    "symptoms": [
+      "crash",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 161010,
+    "title": "torch.compile doesn't preserve stride with clone(memory_format=torch.preserve_format)",
+    "conversation_length": 5,
+    "symptoms": [
+      "wrong_result",
+      "silent_correctness"
+    ]
+  },
+  {
+    "issue_number": 160242,
+    "title": "`torch.compile` produces output mismatch vs eager float64 for some seeds",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised",
+      "flaky"
+    ]
+  },
+  {
+    "issue_number": 158892,
+    "title": "Inductor can be silently incorrect on custom ops with float8_e8m0fnu input",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 158088,
+    "title": "`torch.compile` doesn't properly raise eager fake tensor exception",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 157363,
+    "title": "The opp is not compatible with compile mode=\"reduce-overhead\" and linear layers for large inputs.",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 156813,
+    "title": "torch.compiler.load_cache_artifacts() failed with deserialization data ",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 156722,
+    "title": "torch.compile fails with torchvision ops due to FakeTensor handling in scalar parameters",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 156377,
+    "title": "[compile][transformers] Recompilation with mark_static_address with cudagraphs",
+    "conversation_length": 5,
+    "symptoms": [
+      "slow_compile",
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 155324,
+    "title": "The compilation result is incorrect when torch.compile compiles code containing torch.nonzero.",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 154212,
+    "title": "[Upstream Triton] AssertionError: Tensor-likes are not close! ```inductor.test_torchinductor_opinfo```",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 153478,
+    "title": "cpp wrapper calls back to python for custom op even when a C++ registration is made",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 152425,
+    "title": "Silent incorrectness between static torch.compile vs eager",
+    "conversation_length": 5,
+    "symptoms": [
+      "wrong_result"
+    ]
+  },
+  {
+    "issue_number": 149425,
+    "title": "python custom ops tutorial stopped working in PyTorch 2.7 RC1",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 148977,
+    "title": "module.cuda() doesn't work under FakeTensorMode",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 148829,
+    "title": "torch.compile with mode = \"max-autotune\" raise error when using gradient checkpoint",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 146274,
+    "title": "torch.nn.functional.one_hot has inconsistent behavior between eager and torch.compile when num_classes=0",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 145470,
+    "title": "[inductor] [silence] `nn.LazyLinear-F.gumbel_softmax` return inconsistent resutls compared with eager",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 145274,
+    "title": "AttributeError: '_OpNamespace' 'aten' object has no attribute 'momentum'",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 144792,
+    "title": "massive number of runtime asserts can hamper compile times",
+    "conversation_length": 5,
+    "symptoms": [
+      "slow_compile"
+    ]
+  },
+  {
+    "issue_number": 143505,
+    "title": "[Dynamo] torch._dynamo.exc.Unsupported: sort with non-constant keys",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 143466,
+    "title": "Support Dict Parameter Type for custom_op",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 143431,
+    "title": "aot_eager causes CPU RNG behavior to change",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 142104,
+    "title": "[compiled autograd] Does compiled autograd under torch 2.4 support using selective checkpoint?",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 141646,
+    "title": "[Compiled_autograd] running deepspeed Zero3 failed for torch.compile with compiled_autograd",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 136944,
+    "title": "Optimize reading code generated via pytorch codegen in triton kernel",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 134784,
+    "title": "Dynamo x autograd.Function x funtorch transform: intermediate sliced tensor doesn't require grad caused incorrect result ",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 133554,
+    "title": "[Optim][Dynamo] Tensor unproperly assigned in Adagrad optimizer in dynamo",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 133242,
+    "title": "Improve inductor codegen for writing out tensor and tensor.t() in the same kernel",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 133063,
+    "title": "torch.compile Parsing error results in error",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 132165,
+    "title": "Mutating global variable during inlining a function from imported module breaks in dynamo",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 129684,
+    "title": "`KeyError: 'ac_graph_id'` when using compile+SAC+reparameterization with `inline_inbuilt_nn_modules=False`",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 129423,
+    "title": "[torch.compile] Constraint violation error during dynamic shape compilation",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 128644,
+    "title": "Could not guard on data-dependent expression u0 - 7 < 0 (unhinted: u0 - 7 < 0).  (Size-like symbols: u0)",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 127337,
+    "title": "Add option for custom ops to automatically get a FakeTensor kernel (during static shapes)",
+    "conversation_length": 5,
+    "symptoms": [
+      "crash"
+    ]
+  },
+  {
+    "issue_number": 126864,
+    "title": "Compile with non-default mode + triton kernel fails",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 125836,
+    "title": "[inline-inbuilt-nn-modules] dynamo recompiles identical layers when they have (identical) hooks",
+    "conversation_length": 5,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 125728,
+    "title": "torch._inductor.config.max_autotune_gemm_backends = \"TRITON\" crashes with Convolution layer",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 125524,
+    "title": "Inductor generated Triton kernel spends double time from Llama2 to Llama 3",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 124918,
+    "title": "Custom Operator Design for torch.compile: Must Output Tensors Always Be Returned?",
+    "conversation_length": 5,
+    "symptoms": [
+      "wrong_result",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 124901,
+    "title": "`RuntimeError: invalid dtype for bias` when use compile + autocast",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 124686,
+    "title": "Unbacked SymInts: Should backwards graph with unbacked SymInts be recompiled with hints",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 124647,
+    "title": "custom ops should have needs_fixed_stride_order by default",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 124302,
+    "title": "[Dynamo] Fix refleak in 3.12+ and Dynamic Shapes test_parameter_free",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 124196,
+    "title": "[torch.compile][FlopCounter] AssertionError: Global is not OptimizedModule._orig_mod",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 124049,
+    "title": "Compilation Error in release/1.7 due to Missing Definition for OneCycleLR in lr_scheduler.pyi",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 123625,
+    "title": "OptimizedModule should call _orig_mod's load_state_dict()/state_dict() methods.",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 123589,
+    "title": "Enable inlining nn modules for test/dynamo/test_modules.py ",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised",
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 123522,
+    "title": "[TorchAO] fail to do fake_tensor_prop with freezing pass",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised",
+      "hang"
+    ]
+  },
+  {
+    "issue_number": 123374,
+    "title": "[dynamo] incorrect error traceback for runtime errors when executing dynamo codegen",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 121214,
+    "title": "torch compile does not improve the torchscript model",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 120650,
+    "title": "2 Dynamo test are failing with \"'int' object has no attribute 'wrapped'\".",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 120125,
+    "title": "Triton Error [CUDA]: invalid argument",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 119476,
+    "title": "torch::autograd::validate_outputs needs to use guard oblivious test",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 119241,
+    "title": "Inductor doesn't move 0-D tensors to enable cudagraphs",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 118385,
+    "title": "Inductor sizevars wrapper assignment DCE hazard",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 118228,
+    "title": "PT2.1 cudagraph trees loss divergence",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 117142,
+    "title": "If error is raised from generated Inductor Python file, should print full contents of file",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 114525,
+    "title": "[Inductor] StableDiffusion unet with `cudagraphs` backend raises fake tensor mismatch error",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 114019,
+    "title": "InternalTorchDynamoError: 'NoneType' object has no attribute 'make_guard'",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 113022,
+    "title": "Operator with only `Tensor[][]` args unsupported by dispatcher",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 112009,
+    "title": "_functional_collectives.all_gather_into_tensor cannot compile in aot_module_simplified",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 111818,
+    "title": "[aotinductor] 14k models: Function input to foward()",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 111417,
+    "title": "AOTAutograd generates wrong strides for view+inplace op",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 111020,
+    "title": "[Dynamo] Error in speculate_subgraph doesn't report inner user stack trace",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 108761,
+    "title": "[Inductor][cpu][amp] model YituTechConvBert MemoryError: std::bad_alloc ",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 107797,
+    "title": "Fake Tensor error 'lengths' argument should be a 1D CPU int64 tensor, but got 1D meta Long tensor",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 107599,
+    "title": "Fx Graph nodes generated via aot_module have empty 'stack_trace' attributes",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 107237,
+    "title": "torch.compile doesn't support torch.autograd.Function + tensor subclass + save_for_backward",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 106313,
+    "title": "Compile fail with inductor backend, only on CUDA.",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 106220,
+    "title": "torch compile does not work with torch.nn.functional.softmax ?",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 105524,
+    "title": "[Compile] Backward path using torch.compile(..., dynamic=True) is raising Exception",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 104805,
+    "title": "Regression in Maml due to dynamic shapes",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 103402,
+    "title": "[decomp][bad accuracy] AlbertForQuestionAnswering",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 103271,
+    "title": "Misaligned address error with torch.cat",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 103210,
+    "title": "[dynamo] Python 3.11: AttributeError: 'torch._C.dynamo.eval_frame._PyInterpreterFrame' object has no attribute 'f_lineno'",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 102206,
+    "title": "copy_'s functionalized operator keeps copied into tensor live",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 100348,
+    "title": "[torch.compile]  tensor.detach() is erroneously in-place after compilation",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 99726,
+    "title": "`cross_entropy` fails in `FakeTensorMode` with label_smoothing+weight",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 99445,
+    "title": "aten._cdist_backward not implemented",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 99356,
+    "title": "no meta kernel for a decomp but the decomp got traced out with no 'val'",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 98237,
+    "title": "inductor `compile_fx_inner()` segfaults on `torch.isinf`",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 98143,
+    "title": "[pt2] `add` + `unfold` + `abs_` produces wrong results",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 97745,
+    "title": "Using 'aot_eager' to compile model makes an error about `backward()` and `detach()`",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 97691,
+    "title": "AOTAutograd intermediate_base logic is leaving perf on the table",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 96569,
+    "title": "Inductor failure: Found <class 'torch._inductor.ir.ExpandView'>, which is not a supported top level IR node.",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 96473,
+    "title": "control_flow.{cond/map} graph break due to \"output.tracked_fakes mismatch\"",
+    "conversation_length": 5,
+    "symptoms": [
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 94175,
+    "title": "[pt2] MMDet's Faster R-CNN in `inductor` mode with `requires_grad related error`",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 93798,
+    "title": "torchinductor fallback cannot deal op that returns tuple of list of tensors",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93742,
+    "title": "Debug TorchScript error from fastNLP_Bert",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93705,
+    "title": "export(aten_graph=True) doesn't compose with capture_scalar_outputs=True",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93702,
+    "title": "AOT_Autograd's trace of factory functions are not getting properly translated to TorchScript?",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93686,
+    "title": "Unexpected assertionError when export tensor.numel",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised",
+      "graph_break"
+    ]
+  },
+  {
+    "issue_number": 93674,
+    "title": "Need easier way to tell which step of the optimized path fails (dynamo + inductor)",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93671,
+    "title": "Regression detected in latest nightly runs",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93636,
+    "title": "Timm Model Slow Operators",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93635,
+    "title": "tabulate.tabulate causes a lot of memory to be allocated in yolov3",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93611,
+    "title": "No speedup using inductor backend",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93603,
+    "title": "Move Dropout to LowMemDropout Replacement To PyDispatcher",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93535,
+    "title": "[opbench] NameError: name 'tensor' is not defined",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93525,
+    "title": "[inductor] Missing Impl - `as_strided` - might help `hf_Longformer`",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93510,
+    "title": "RuntimeError: one of the variables needed for gradient computation has been modified by an inplace operation",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93472,
+    "title": "torch.compile does not bring better performance and even lower than no compile, what is the possible reason?",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 93434,
+    "title": "[inductor][Seg fault] Inductor segfaulting with few AMP models",
+    "conversation_length": 5,
+    "symptoms": [
+      "crash",
+      "error_raised",
+      "flaky"
+    ]
+  },
+  {
+    "issue_number": 93357,
+    "title": "[pt2] compiled model with cat and expand gives wrong results",
+    "conversation_length": 5,
+    "symptoms": [
+      "wrong_result",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 93262,
+    "title": "`torch.compile` produce wrong result in `interpolate` when `mode=bilinear`",
+    "conversation_length": 5,
+    "symptoms": [
+      "wrong_result",
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 92745,
+    "title": "torch.compile model fails to run on CPU and CUDA",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 92655,
+    "title": "Dynamo or FakeTensor mode doesn't work properly if torch.div returns 1-element tensor",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 92582,
+    "title": "Some tests in test_torchinductor.py fail locally",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  },
+  {
+    "issue_number": 91799,
+    "title": "Codegen for in_out_ptr seems suboptimal",
+    "conversation_length": 5,
+    "symptoms": []
+  },
+  {
+    "issue_number": 91101,
+    "title": "[Dynamo] Graph Re-compilation Invoked by `np.sqrt`",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised",
+      "graph_break",
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 90397,
+    "title": "[dynamo] Accuracy minifier doesn't seem to catch bug",
+    "conversation_length": 5,
+    "symptoms": [
+      "recompilation"
+    ]
+  },
+  {
+    "issue_number": 90178,
+    "title": "torch.compile(model) error during training: no file cuda.h",
+    "conversation_length": 5,
+    "symptoms": [
+      "error_raised"
+    ]
+  }
+]

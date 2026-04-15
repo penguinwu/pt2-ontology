@@ -187,5 +187,27 @@
     "id": "fullgraph_flag",
     "name": "fullgraph",
     "description": "torch.compile flag to require no graph breaks (fullgraph=True) or allow them (fullgraph=False)"
+  },
+  {
+    "id": "max_autotune",
+    "name": "max_autotune",
+    "description": "Try all kernel options including Triton templates for matmul/conv. May not help if 64-bit indexing not implemented for templates.",
+    "aliases": [
+      "TORCHINDUCTOR_MAX_AUTOTUNE"
+    ]
+  },
+  {
+    "id": "triton_cudagraphs",
+    "name": "triton.cudagraphs",
+    "description": "Enable/disable CUDA graph capture for Triton kernels (disable for GPU compatibility testing or debugging)",
+    "aliases": [
+      "torch._inductor.config.triton.cudagraphs"
+    ]
+  },
+  {
+    "id": "aot_fx_graphs",
+    "name": "AOT_FX_GRAPHS",
+    "description": "Environment variable to dump AOT Autograd's forward/backward graph decomposition for inspection",
+    "aliases": []
   }
 ]

@@ -178,5 +178,89 @@
     "conditions": "Stale autotune cache causing incorrect kernel selection, especially after model changes",
     "evidence_issues": [96693],
     "scope": "torch_compile"
+  },
+  {
+    "id": "fix_assume_static_by_default",
+    "type": "resolution",
+    "name": "Force static shapes to avoid dynamic shape bugs",
+    "fix_type": "user_workaround",
+    "category": "config_toggle",
+    "action": "torch._dynamo.config.assume_static_by_default = True",
+    "symptoms": ["delayed_nan", "wrong_result", "error_raised"],
+    "conditions": "Dynamic shapes causing NaN/accuracy issues or split reduction crashes in Inductor",
+    "evidence_issues": [96971],
+    "scope": "torch_compile"
+  },
+  {
+    "id": "fix_aot_eager_isolation",
+    "type": "resolution",
+    "name": "Use aot_eager backend to isolate Inductor bugs",
+    "fix_type": "user_workaround",
+    "category": "backend_switch",
+    "action": "torch.compile(backend='aot_eager') or torch.compile(backend='aot_eager_decomp_partition')",
+    "symptoms": ["wrong_result", "silent_correctness", "crash"],
+    "conditions": "Suspect Inductor-specific bug — aot_eager bypasses Inductor to test if Dynamo+AOT layer works correctly",
+    "evidence_issues": [96971, 100075],
+    "scope": "torch_compile"
+  },
+  {
+    "id": "fix_pretrained_weights_verification",
+    "type": "resolution",
+    "name": "Verify with pretrained weights (not random init)",
+    "fix_type": "diagnostic_technique",
+    "category": "verification",
+    "action": "Test with pretrained weights instead of random initialization to rule out model numerical instability",
+    "symptoms": ["wrong_result", "model_instability_false_alarm"],
+    "conditions": "Correctness mismatch with randomly initialized model — may be model instability, not compiler bug",
+    "evidence_issues": [100075],
+    "scope": "torch_compile"
+  },
+  {
+    "id": "fix_draft_export",
+    "type": "resolution",
+    "name": "Use draft_export for detection models",
+    "fix_type": "user_workaround",
+    "category": "export_mode",
+    "action": "torch.export.export_for_training(model, args, strict=False, draft_export=True)",
+    "symptoms": ["export_dde_cascade", "error_raised"],
+    "conditions": "Detection/object-detection models with data-dependent control flow (NMS, ROI) that can't export normally",
+    "evidence_issues": [146152],
+    "scope": "torch_export"
+  },
+  {
+    "id": "fix_match_export_inference_shape",
+    "type": "resolution",
+    "name": "Match export dummy input shape to inference shape",
+    "fix_type": "user_workaround",
+    "category": "export_mode",
+    "action": "Ensure torch.export dummy input has same spatial dimensions as inference input",
+    "symptoms": ["aoti_silent_degradation", "export_static_guard_leak"],
+    "conditions": "AOTI produces degraded output when inference shape differs from export dummy shape — position encoding creates static guards",
+    "evidence_issues": [147475, 155862],
+    "scope": "torch_export"
+  },
+  {
+    "id": "fix_batch_first_false",
+    "type": "resolution",
+    "name": "Use batch_first=False for MHA at small batch sizes",
+    "fix_type": "user_workaround",
+    "category": "code_restructure",
+    "action": "Use batch_first=False with manual transpose+contiguous to force mm instead of bmm",
+    "symptoms": ["fp16_perf_regression_small_batch"],
+    "conditions": "FP16 MultiHeadAttention 10x slower than FP32 at bs=1 — non-contiguous tensors trigger bad cuBLAS bmm kernel",
+    "evidence_issues": [159346],
+    "scope": "torch_compile"
+  },
+  {
+    "id": "fix_scalar_indexing_for_roll",
+    "type": "resolution",
+    "name": "Use scalar indexing instead of tensor indexing with roll",
+    "fix_type": "user_workaround",
+    "category": "code_restructure",
+    "action": "Replace tensor-based roll/rotate indexing with scalar indexing in KV cache updates",
+    "symptoms": ["non_deterministic_correctness"],
+    "conditions": "Non-deterministic correctness failure in sliding window cache — Inductor incorrectly fuses roll as pointwise",
+    "evidence_issues": [159855],
+    "scope": "torch_compile"
   }
 ]

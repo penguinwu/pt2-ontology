@@ -1,0 +1,1448 @@
+[
+  {
+    "issue_number": 92927,
+    "title": "Inplace fused (leaky)relu+(leaky)dropout for memory savings",
+    "state": "open",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Feature request \u2014 Inductor does fuse relu+dropout into a single kernel, but does not produce fully inplace/allocation-less code. The backward pass requires saving either the input or the relu mask, preventing full elimination of intermediate buffers. The high watermark of memory is determined by saved-for-backward tensors, not intermediate allocations.",
+        "trigger": "User wanting maximum memory savings from relu+dropout fusion, especially for memory-constrained GPUs",
+        "confirmed_by": "experimentation \u2014 Chillee showed AOT_FX_GRAPHS output demonstrating fusion saves seed instead of full mask; engineer_20 explained high watermark is dominated by saved-for-backward"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Asked about inplace fused relu+dropout",
+          "result": "Chillee showed Inductor already fuses into single kernel saving only seed + relu mask",
+          "conclusion": "Partial optimization already exists"
+        },
+        {
+          "step": 2,
+          "action": "Asked if fully allocation-less is possible",
+          "result": "Chillee explained backward needs input or mask; for fp32 mask is cheaper, for fp16 about equal",
+          "conclusion": "Fundamental autograd constraint prevents full inplace"
+        },
+        {
+          "step": 3,
+          "action": "Suggested recovering mask from sign(output)",
+          "result": "Chillee explained this would require saving output + reading it back, more expensive than mask",
+          "conclusion": "Proposed optimization actually worse"
+        },
+        {
+          "step": 4,
+          "action": "Benchmarked manual inplace impl vs torch.compile",
+          "result": "torch.compile gives equal or better performance",
+          "conclusion": "Inductor fusion already near-optimal for speed"
+        },
+        {
+          "step": 5,
+          "action": "engineer_20 explained memory watermark",
+          "result": "Inplace intermediates don't help with peak memory, which is dominated by activations saved for backward",
+          "conclusion": "Memory saving from inplace intermediates is minimal"
+        }
+      ],
+      "resolution": {
+        "type": "wontfix",
+        "description": "Inductor already fuses these ops into single kernels. Full inplace is prevented by autograd's need to save values for backward. The memory saving from inplace intermediates is minimal because peak memory is dominated by saved-for-backward activations, not intermediate buffers.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [],
+        "new_workarounds": [],
+        "new_diagnostic_tools": [
+          "AOT_FX_GRAPHS=1 \u2014 environment variable to inspect AOT Autograd's forward/backward graph decomposition"
+        ]
+      },
+      "confidence": "medium \u2014 extensive discussion but issue still open, user continues proposing alternatives"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 93528,
+    "title": "[TorchInductor] Add support for Pascal GPUs (P100, GTX 1080, etc)",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "TorchInductor/Triton required Volta+ GPUs (SM70+). Pascal GPUs (SM60/61) lacked fp16 matmul support in Triton (tl.dot), some atomic operations, and had shared memory limitations. The has_triton check explicitly excluded pre-Volta GPUs.",
+        "trigger": "Users with Pascal GPUs (P100, GTX 1080) attempting to use torch.compile/TorchInductor",
+        "confirmed_by": "code reading \u2014 has_triton check at torchinductor/utils.py required Volta+; shintaro-iwasaki ran Triton tests on P100 (278 failed, 3983 passed)"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "ptillet outlined what Pascal support would need",
+          "result": "Identified 4 requirements: disable fp16, use aten for matmul/conv, fix Triton assert, test",
+          "conclusion": "Feasible but needs GPU access"
+        },
+        {
+          "step": 2,
+          "action": "shintaro-iwasaki ran Triton tests on P100",
+          "result": "3983 passed, 278 failed, 517 skipped",
+          "conclusion": "Most of Triton already works on Pascal"
+        },
+        {
+          "step": 3,
+          "action": "Discovered has_triton check excludes Pascal",
+          "result": "Tests were running Triton directly, not through Inductor",
+          "conclusion": "Inductor gate needs updating too"
+        },
+        {
+          "step": 4,
+          "action": "shintaro-iwasaki investigated failures",
+          "result": "tl.dot broken, some atomics unsupported, shared memory issues",
+          "conclusion": "Known Triton limitations on Pascal"
+        },
+        {
+          "step": 5,
+          "action": "Investigated fp16 atomic performance",
+          "result": "cas-based atomics not as bad as feared in microbenchmarks",
+          "conclusion": "Can proceed with enabling"
+        },
+        {
+          "step": 6,
+          "action": "Tested inductor-generated code for scatter_add",
+          "result": "Inductor version didn't use atomics, found DCE bug (missing return)",
+          "conclusion": "Side investigation found Inductor bug"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Pascal GPU support was incrementally added through Triton patches and Inductor changes. Multiple PRs across Triton and PyTorch repos addressed the gaps.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "torch._inductor.config.triton.cudagraphs = False \u2014 needed for some Pascal testing"
+        ],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [
+          "torch._inductor.config.triton.cudagraphs = False \u2014 disable CUDA graphs for GPU compatibility testing"
+        ],
+        "new_symptoms": [
+          "GPU architecture compatibility gate \u2014 has_triton check silently excludes older GPUs without clear error message"
+        ],
+        "new_workarounds": [
+          "Use aten backend for matmul/conv on pre-Volta GPUs",
+          "Disable fp16 on Pascal GPUs"
+        ],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "medium \u2014 issue is a feature request with incremental progress, not a single clear resolution"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 93830,
+    "title": "[pt2] MMDet meets Exception: Please convert all Tensors to FakeTensors first",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "conversation_length": 10,
+    "phase2": {
+      "root_cause": {
+        "component": "aot_autograd",
+        "mechanism": "FakeTensor leak at runtime \u2014 FakeTensors created during tracing appeared at execution time, likely from incorrect caching or state management in AOT Autograd. Only manifested after 13 training iterations, not immediately.",
+        "trigger": "Training RetinaNet (MMDet) with aot_eager backend for 13+ iterations",
+        "confirmed_by": "none \u2014 reproducibility was blocked by MMDet build complexity; closed for inactivity"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User reported FakeTensor exception after 13 training iterations",
+          "result": "Error during forward pass after several successful iterations",
+          "conclusion": "Delayed failure, possibly state accumulation"
+        },
+        {
+          "step": 2,
+          "action": "Asked if aot_eager failure implies inductor failure",
+          "result": "wconstab: yes, inductor builds on aot_autograd",
+          "conclusion": "aot_eager is lower in the stack"
+        },
+        {
+          "step": 3,
+          "action": "User reported inductor actually works but aot_eager fails",
+          "result": "Contradicts the stack assumption",
+          "conclusion": "Unusual \u2014 inductor may mask the issue differently"
+        },
+        {
+          "step": 4,
+          "action": "bdhirsh tried to build MMDet to reproduce",
+          "result": "Build issues prevented reproduction",
+          "conclusion": "No isolated repro available"
+        },
+        {
+          "step": 5,
+          "action": "Closed for inactivity",
+          "result": "Issue went stale",
+          "conclusion": "Unresolved due to reproduction difficulty"
+        }
+      ],
+      "resolution": {
+        "type": "stale",
+        "description": "Closed for inactivity \u2014 FakeTensor leak during MMDet training couldn't be reproduced due to MMDet build complexity. No isolated repro was ever provided.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "delayed FakeTensor leak \u2014 FakeTensors from tracing appear at runtime after N iterations, not immediately"
+        ],
+        "new_workarounds": [],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "low \u2014 never reproduced, closed as stale"
+    },
+    "extraction_quality_notes": "Interesting anomaly (inductor works but aot_eager doesn't) but low confidence \u2014 never diagnosed. The 10 comments are mostly 'can you repro?' with no resolution.",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 94652,
+    "title": "dynamo: handle contiguous graph breaks",
+    "state": "open",
+    "state_reason": "REOPENED",
+    "conversation_length": 7,
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "Feature request \u2014 when Dynamo encounters contiguous graph breaks (multiple unsupported instructions in sequence), it creates a separate resume/trace boundary for each one. This is wasteful when the instructions don't contain torch ops.",
+        "trigger": "Models with many consecutive unsupported ops (e.g., numpy code), causing many graph breaks in a row",
+        "confirmed_by": "code reading \u2014 existing optimization at convert_frame.py:360 partially addresses this but not fully"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Proposed optimization for contiguous graph breaks",
+          "result": "engineer_14 agreed it's a good idea, numpy code is the main case",
+          "conclusion": "Valid optimization target"
+        },
+        {
+          "step": 2,
+          "action": "Checked existing code",
+          "result": "Partial implementation exists but doesn't fully optimize",
+          "conclusion": "Enhancement needed, not greenfield"
+        },
+        {
+          "step": 3,
+          "action": "Marked low priority",
+          "result": "Dynamo team won't work on it for months",
+          "conclusion": "Open for contributions"
+        }
+      ],
+      "resolution": {
+        "type": "unresolved",
+        "description": "Valid optimization proposal for reducing overhead from contiguous graph breaks, especially in models with numpy code. Marked low priority by Dynamo team.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [],
+        "new_workarounds": [],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "low \u2014 feature request, minimal diagnostic content"
+    },
+    "extraction_quality_notes": "Feature request, not a bug. Zero ontology yield. This type of issue should probably be filtered from Phase 2 candidates.",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 95407,
+    "title": "Issues with torch.compile on A100 when finetuning DistilBERT",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "conversation_length": 5,
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Broken pytorch-triton package (2.0.0+c8bfe3f548) \u2014 libdevice.10.bc not found. Packaging issue, not a compiler bug.",
+        "trigger": "Installing PyTorch nightly with broken Triton wheel on A100",
+        "confirmed_by": "experimentation \u2014 updating to fixed pytorch-triton 2.0.0+d54c04abe2 resolved the issue"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User reported LLVM ERROR about missing libdevice",
+          "result": "Crash during torch.compile",
+          "conclusion": "Triton dependency issue"
+        },
+        {
+          "step": 2,
+          "action": "msaroufim suggested TRITON_PTXAS_PATH workaround",
+          "result": "Linked to known builder issue #1318",
+          "conclusion": "Known packaging problem"
+        },
+        {
+          "step": 3,
+          "action": "weiwangmeta identified broken triton wheel version",
+          "result": "Fixed in newer nightly",
+          "conclusion": "Packaging fix, not code fix"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Broken pytorch-triton wheel in nightly. Fixed by updating to newer nightly or RC2 with corrected Triton package.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "TRITON_PTXAS_PATH=/usr/bin/ptxas"
+        ],
+        "version_fixed": "nightly (pytorch-triton 2.0.0+d54c04abe2)",
+        "user_action_required": true
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "LLVM ERROR from missing libdevice \u2014 packaging issue masquerading as compiler bug"
+        ],
+        "new_workarounds": [
+          "TRITON_PTXAS_PATH=/usr/bin/ptxas \u2014 point to system ptxas when Triton's bundled path is broken"
+        ],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "high \u2014 simple packaging issue, clear fix"
+    },
+    "extraction_quality_notes": "Short conversation (5 comments) but very clear diagnostic path. Low ontology yield \u2014 packaging issue, not a deep compiler bug.",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 96971,
+    "title": "torch.compile() accuracy minifier breaks when using dynamic shapes",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Inductor with dynamic shapes produced NaN values after ~5 iterations on T5-style models, while static shapes and aot_eager backend produced correct results. The accuracy minifier itself couldn't handle symbolic shapes, crashing before it could isolate the bug. The NaN appeared to originate in attention-related custom kernels under dynamic shapes.",
+        "trigger": "torch.compile with dynamic shapes on HuggingFace T5-style model with custom architecture, specifically during multi-iteration token generation",
+        "confirmed_by": "experimentation \u2014 aot_eager produces correct results (isolating to Inductor); static shapes produce correct results (isolating to dynamic shape handling); NaNs appear after iteration 5 consistently"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Ran accuracy minifier on dynamic shapes model",
+          "result": "Minifier itself crashed \u2014 doesn't support symbolic shapes",
+          "conclusion": "Minifier broken for dynamic shapes"
+        },
+        {
+          "step": 2,
+          "action": "Tested aot_eager backend with dynamic shapes",
+          "result": "Correct results identical to eager",
+          "conclusion": "Bug is in Inductor, not Dynamo or AOT"
+        },
+        {
+          "step": 3,
+          "action": "Tested static shapes with Inductor",
+          "result": "Correct results to 1e-4",
+          "conclusion": "Bug specific to dynamic shapes in Inductor"
+        },
+        {
+          "step": 4,
+          "action": "Studied error accumulation over iterations",
+          "result": "Error jumps from 1e-4 to ~300 after iteration 5, then NaNs",
+          "conclusion": "Not gradual drift \u2014 sudden catastrophic failure"
+        },
+        {
+          "step": 5,
+          "action": "Tried assume_static_by_default + mark_dynamic",
+          "result": "Same crash as minifier \u2014 split reduction fails with dynamic shapes",
+          "conclusion": "Dynamic shape split reduction is broken"
+        },
+        {
+          "step": 6,
+          "action": "Tried debugging with graph break via print",
+          "result": "Got separate error: __getattr__ not supported in graph mode",
+          "conclusion": "Debugging tools also limited"
+        },
+        {
+          "step": 7,
+          "action": "Created standalone repro with custom T5 model",
+          "result": "NaNs after 5th iteration reproducible",
+          "conclusion": "Minimal repro achieved"
+        },
+        {
+          "step": 8,
+          "action": "engineer_17 tried repro on A100",
+          "result": "No NaNs but same error magnitude jump pattern",
+          "conclusion": "NaN is hardware-dependent but error pattern is universal"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Fixed via improvements to Inductor's dynamic shape handling. The minifier was also separately fixed to handle symbolic shapes. Chillee worked on minifier fix.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "torch._dynamo.config.assume_static_by_default = True \u2014 use static shapes as workaround",
+          "torch._dynamo.mark_dynamic(x, 0) \u2014 explicitly mark dynamic dims (but may hit split reduction bug)"
+        ],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [
+          "torch._dynamo.config.assume_static_by_default \u2014 treat all shapes as static unless explicitly marked dynamic"
+        ],
+        "new_symptoms": [
+          "accuracy degrades suddenly after N iterations (not gradually) \u2014 jumps from 1e-4 to ~300 then NaN",
+          "accuracy minifier crashes with dynamic shapes \u2014 NotImplementedError in split reduction"
+        ],
+        "new_workarounds": [
+          "Use assume_static_by_default=True to avoid dynamic shape code paths",
+          "Test with aot_eager backend to isolate Inductor-specific issues"
+        ],
+        "new_diagnostic_tools": [
+          "Multi-iteration accuracy tracking \u2014 run N iterations and plot error over time to detect delayed correctness failures",
+          "assume_static_by_default + mark_dynamic \u2014 selective dynamic shape testing to narrow down which dimension causes issues"
+        ]
+      },
+      "confidence": "high \u2014 clear diagnostic path, multiple backends tested, repro provided"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 100075,
+    "title": "[compile] output does not match eager mode",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "phase2": {
+      "root_cause": {
+        "component": "aot_autograd",
+        "mechanism": "group_norm decomposition in AOT Autograd produced numerically divergent results compared to eager mode. The decomposed group_norm accumulated floating point errors that, when combined with unstable model behavior (random weights near decision boundaries), caused wildly different classification outputs.",
+        "trigger": "Using torch.compile with functorch (make_functional_with_buffers + vmap + grad) on resnet18 with randomly initialized weights and GroupNorm layers",
+        "confirmed_by": "minifier + experimentation \u2014 engineer_17 used accuracy minifier to isolate divergence to a less-than comparison, zou3519 compared float32 vs float64 and showed eager float32 vs float64 already diverge significantly (0.16 abs, 20 rel), proving model instability not compiler bug"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Reported wrong output with functorch + torch.compile on resnet18",
+          "result": "100% elements mismatched, abs diff 0.12",
+          "conclusion": "Looks like serious correctness bug"
+        },
+        {
+          "step": 2,
+          "action": "Another user reported similar issue with basic resnet18 compile",
+          "result": "Large differences observed",
+          "conclusion": "Might be widespread"
+        },
+        {
+          "step": 3,
+          "action": "engineer_21_gh checked second user's repro",
+          "result": "Divergence within atol=5e-3",
+          "conclusion": "Second case is just floating point precision, not a bug"
+        },
+        {
+          "step": 4,
+          "action": "engineer_17 ran accuracy minifier",
+          "result": "Divergence isolated to a less-than test inside network",
+          "conclusion": "Small perturbation flipping a comparison, not systematic error"
+        },
+        {
+          "step": 5,
+          "action": "engineer_17 ran minifier overnight restricting to float divergence only",
+          "result": "Got repro with RMSE 0.00017 on group_norm-related code",
+          "conclusion": "Some real numerical divergence exists in decomps"
+        },
+        {
+          "step": 6,
+          "action": "kshitij12345 tested with pretrained weights",
+          "result": "No accuracy issue with pretrained weights",
+          "conclusion": "Random weights create unstable decision boundaries"
+        },
+        {
+          "step": 7,
+          "action": "engineer_17 tested aot_eager_decomp_partition backend",
+          "result": "Also reproduces divergence",
+          "conclusion": "Bug is in decompositions, not Inductor"
+        },
+        {
+          "step": 8,
+          "action": "kshitij12345 identified group_norm decomposition as root cause",
+          "result": "Patching proxy_tensor.py fixed the divergence",
+          "conclusion": "group_norm decomp is the source"
+        },
+        {
+          "step": 9,
+          "action": "zou3519 did comprehensive float32 vs float64 comparison",
+          "result": "eager float32 vs float64 already has 0.16 abs diff, model is numerically unstable",
+          "conclusion": "Not a compiler bug \u2014 model with random weights is inherently unstable"
+        },
+        {
+          "step": 10,
+          "action": "zou3519 closed as expected behavior",
+          "result": "Opened separate issue for segfault found during investigation",
+          "conclusion": "Original issue is expected numerical behavior"
+        }
+      ],
+      "resolution": {
+        "type": "expected_behavior",
+        "description": "Divergence traced to numerical instability in randomly-initialized resnet18, not a compiler bug. Float32 eager vs float64 eager already diverge significantly. Pretrained weights show no issue. Separate segfault bug filed.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "numerical instability masquerading as correctness bug \u2014 random weights + decision boundaries cause 100% element mismatch that looks like compiler error but is model instability"
+        ],
+        "new_workarounds": [
+          "Use pretrained weights to verify correctness instead of random initialization",
+          "Compare compile(float64) vs eager(float64) to rule out model instability"
+        ],
+        "new_diagnostic_tools": [
+          "accuracy minifier with float-only restriction (TORCHDYNAMO_REPRO_AFTER=aot TORCHDYNAMO_REPRO_LEVEL=4)",
+          "float32 vs float64 comparison to distinguish model instability from compiler bugs",
+          "aot_eager_decomp_partition backend to isolate decomposition bugs from inductor bugs"
+        ]
+      },
+      "confidence": "high \u2014 extensive diagnostic conversation with multiple PT2 maintainers, clear resolution"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 113707,
+    "title": "torch.compile doesnt respect use_deterministic_algorithms during the backward()",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "conversation_length": 13,
+    "phase2": {
+      "root_cause": {
+        "component": "aot_autograd",
+        "mechanism": "AOT Autograd traces the backward graph during forward compilation, running meta implementations of backward ops ahead-of-time. If use_deterministic_algorithms is set after compilation but before backward(), the compiled backward won't respect it because the graph was already traced with the old setting.",
+        "trigger": "Setting use_deterministic_algorithms(True) after torch.compile but before backward() \u2014 especially for ops like ReflectionPad2d that have non-deterministic backward implementations",
+        "confirmed_by": "code reading \u2014 bdhirsh identified the AOT ahead-of-time tracing as the mechanism; albanD and engineer_17 discussed design solutions"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Reported that compiled backward ignores deterministic mode",
+          "result": "No error raised despite non-deterministic op in backward",
+          "conclusion": "Compiled backward doesn't check runtime deterministic flag"
+        },
+        {
+          "step": 2,
+          "action": "bdhirsh analyzed AOT tracing",
+          "result": "Backward graph traced during forward, uses compile-time settings",
+          "conclusion": "Fundamental AOT design issue"
+        },
+        {
+          "step": 3,
+          "action": "Discussed guard-based solution",
+          "result": "Could guard on deterministic flag like grad_mode",
+          "conclusion": "Feasible but needs design"
+        },
+        {
+          "step": 4,
+          "action": "kurtamohler investigated deeply",
+          "result": "Two needed fixes: warning on mismatch + guard to invalidate",
+          "conclusion": "Clear design direction"
+        },
+        {
+          "step": 5,
+          "action": "albanD questioned whether mixed determinism is useful",
+          "result": "Agreed: just error on mismatch, don't support dynamic switching",
+          "conclusion": "Simpler solution accepted"
+        },
+        {
+          "step": 6,
+          "action": "Tested on PyTorch 2.12.0a0",
+          "result": "No longer reproduces \u2014 likely fixed by backward tracing changes",
+          "conclusion": "Resolved by architectural changes"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Issue resolved by architectural changes to backward tracing in later PyTorch versions. The original problem was that AOT Autograd traced backward during forward compilation, ignoring runtime deterministic flag changes.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": "PyTorch 2.12.0a0",
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "compiled backward ignores runtime use_deterministic_algorithms \u2014 AOT ahead-of-time tracing captures compile-time settings"
+        ],
+        "new_workarounds": [
+          "Set use_deterministic_algorithms before torch.compile, not after \u2014 ensures backward graph is traced with correct flag"
+        ],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "high \u2014 clear root cause, verified fix"
+    },
+    "extraction_quality_notes": "Good diagnostic depth despite being an architectural design discussion. High ontology value \u2014 novel failure mode (compiled backward ignoring runtime flags).",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 123022,
+    "title": "AttributeError: module 'z3' has no attribute 'ExprRef'",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "conversation_length": 6,
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "Python package name collision \u2014 user installed 'z3' package which shadows the 'z3-solver' (Microsoft Z3) that PyTorch's symbolic shape reasoning depends on. torch._dynamo imports z3 expecting z3-solver but gets the wrong package.",
+        "trigger": "Having pip package 'z3' installed alongside PyTorch on Windows",
+        "confirmed_by": "experimentation \u2014 uninstalling 'z3' package resolved the error"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User reported AttributeError on z3.ExprRef",
+          "result": "Crash on torch.compile",
+          "conclusion": "z3 module issue"
+        },
+        {
+          "step": 2,
+          "action": "Tried in clean environment",
+          "result": "Could not reproduce",
+          "conclusion": "Environment-specific"
+        },
+        {
+          "step": 3,
+          "action": "User identified conflicting 'z3' package",
+          "result": "Uninstalling fixed it",
+          "conclusion": "Package name collision"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Package name collision between pip 'z3' and 'z3-solver'. User needs to uninstall 'z3' package. Also noted: torch.compile not officially supported on Windows at the time.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": true
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "Python package name collision \u2014 wrong z3 module shadows z3-solver dependency"
+        ],
+        "new_workarounds": [
+          "Uninstall conflicting 'z3' pip package when z3-solver is needed"
+        ],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "high \u2014 clear root cause identified by user"
+    },
+    "extraction_quality_notes": "Short conversation (6 comments). Environment issue, not compiler bug. Minimal ontology value.",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 136495,
+    "title": "[dynamo] enable TorchDispatchMode for eager part when graph breaks",
+    "state": "open",
+    "state_reason": null,
+    "conversation_length": 8,
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "Feature request \u2014 TorchDispatchMode (used for flop counting and runtime estimation in AutoFSDP) is disabled inside compiled regions. Users want it enabled for eager parts between graph breaks.",
+        "trigger": "Using TorchDispatchMode for flop counting with torch.compile that has graph breaks",
+        "confirmed_by": "discussion \u2014 engineer_17 suggested disabling mode inside compiled regions rather than enabling at graph break boundaries"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Asked about enabling TorchDispatchMode at graph break boundaries",
+          "result": "engineer_17 said it's difficult, suggested inverse approach",
+          "conclusion": "Better to disable inside compiled regions"
+        },
+        {
+          "step": 2,
+          "action": "Explored push/pop mode API",
+          "result": "engineer_17 warned about mode stack interaction issues",
+          "conclusion": "Bool flag approach is cleaner"
+        },
+        {
+          "step": 3,
+          "action": "yf225 picked up for cross-graph optimization work",
+          "result": "PR in progress",
+          "conclusion": "Being addressed"
+        }
+      ],
+      "resolution": {
+        "type": "unresolved",
+        "description": "Feature request for TorchDispatchMode at graph break boundaries. Design approach settled: use bool flag to disable mode inside compiled regions rather than push/pop at boundaries.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [],
+        "new_workarounds": [
+          "Use bool flag on TorchDispatchMode to disable inside compiled regions instead of push/pop at boundaries"
+        ],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "low \u2014 feature request, not a bug"
+    },
+    "extraction_quality_notes": "Feature request with design discussion. Minimal ontology yield. Another candidate type to filter from Phase 2.",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 138069,
+    "title": "failed while executing int_truediv",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "phase2": {
+      "root_cause": {
+        "component": "torchdynamo",
+        "mechanism": "Warning spam from sympy interpreter: int_truediv between float tensors (MetaProxy types) raises NotImplementedError which is caught and triggers a warning log. The warning is harmless but extremely noisy in logs. Root cause is that the sympy interpreter's associative op handler doesn't gracefully handle type mismatches between symbolic int division and float tensor operands.",
+        "trigger": "torch.compile on models that involve integer division operations with tensor operands \u2014 common in transformer architectures with dynamic shapes",
+        "confirmed_by": "code reading \u2014 engineer_17 identified the exception path in torch/utils/_sympy/interp.py:159 where NotImplementedError is caught and logged as warning"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User reported spammy warning messages appearing in logs",
+          "result": "Thousands of 'failed while executing int_truediv' warnings per compilation",
+          "conclusion": "New regression in nightly builds"
+        },
+        {
+          "step": 2,
+          "action": "isuruf tried to reproduce",
+          "result": "Couldn't reproduce without model code",
+          "conclusion": "Need model-level repro"
+        },
+        {
+          "step": 3,
+          "action": "isuruf identified likely source",
+          "result": "torch/utils/_sympy/reference.py:410",
+          "conclusion": "Location identified but no repro"
+        },
+        {
+          "step": 4,
+          "action": "engineer_17 analyzed the exception handling code",
+          "result": "NotImplementedError in associative op handler caught and logged as warning",
+          "conclusion": "Warning is cosmetic, not a correctness issue"
+        },
+        {
+          "step": 5,
+          "action": "engineer_15_gh tried to write minimal repro",
+          "result": "Surprisingly hard \u2014 couldn't trigger the exact path with simple scripts",
+          "conclusion": "Requires specific graph structure from real models"
+        },
+        {
+          "step": 6,
+          "action": "engineer_15_gh found repro via existing test case",
+          "result": "test_builtins_round_float_ndigits_pos hits same path",
+          "conclusion": "Repro found serendipitously"
+        },
+        {
+          "step": 7,
+          "action": "Fix submitted",
+          "result": "Warning suppressed/fixed",
+          "conclusion": "Resolved as cosmetic bug"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Fixed the noisy warning in sympy interpreter's int_truediv handler. The warning was harmless (correctness unaffected) but created massive log spam. Fix suppressed the NotImplementedError warning for expected type mismatches.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": "nightly",
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "massive warning log spam from sympy interpreter \u2014 'failed while executing int_truediv' appears thousands of times per compilation"
+        ],
+        "new_workarounds": [],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "high \u2014 clear root cause, fix landed"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 140423,
+    "title": "[triton 3.2] std::bad_alloc: torch.compile breaks with Triton built from source",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "conversation_length": 13,
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Triton 3.2 version incompatibility with PyTorch nightly \u2014 std::bad_alloc during pybind type conversion, likely related to #140590. The failure was hardware-dependent (worked on 4090, failed on H100) and version-specific (broke between 20241101 and 20241102 nightlies).",
+        "trigger": "Building Triton from source (master branch) with PyTorch nightly, running torch.compile with Triton-based models",
+        "confirmed_by": "bisection \u2014 user narrowed to nightly 20241102 as breaking change; davidberard98 linked to #140590 (pybind std::bad_alloc)"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Reported std::bad_alloc with Triton from source",
+          "result": "Crash during torch.compile",
+          "conclusion": "Triton version mismatch"
+        },
+        {
+          "step": 2,
+          "action": "Updated to latest nightly",
+          "result": "Different error (scheduler issue)",
+          "conclusion": "Multiple issues"
+        },
+        {
+          "step": 3,
+          "action": "davidberard98 suspected relation to #140590",
+          "result": "Similar timeline and error pattern",
+          "conclusion": "Likely same root cause"
+        },
+        {
+          "step": 4,
+          "action": "Tried on different GPU (4090 vs H100)",
+          "result": "Works on 4090, fails on H100",
+          "conclusion": "Hardware-dependent"
+        },
+        {
+          "step": 5,
+          "action": "Bisected nightlies",
+          "result": "Broke between 20241101 and 20241102",
+          "conclusion": "Narrow regression window"
+        },
+        {
+          "step": 6,
+          "action": "Traced to Triton autotuning",
+          "result": "Removing autotuning makes it work",
+          "conclusion": "Autotuning triggers the pybind issue"
+        },
+        {
+          "step": 7,
+          "action": "Tested latest nightly",
+          "result": "Fixed in 20241218",
+          "conclusion": "Resolved by upstream fixes"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Triton version incompatibility resolved in later nightlies. std::bad_alloc from pybind type conversion during Triton autotuning, hardware-dependent (H100 affected, 4090 not).",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": "nightly 20241218+",
+        "user_action_required": true
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "std::bad_alloc from pybind type conversion during Triton autotuning \u2014 hardware-dependent (affects some GPU architectures but not others)"
+        ],
+        "new_workarounds": [
+          "Pin to working nightly version (before regression)",
+          "Build PyTorch from source to avoid packaged Triton incompatibility"
+        ],
+        "new_diagnostic_tools": [
+          "Nightly bisection \u2014 pin down breaking date to narrow regression window",
+          "Disable Triton autotuning to confirm autotuning-related crashes"
+        ]
+      },
+      "confidence": "medium \u2014 root cause narrowed but not fully confirmed; resolved by version update"
+    },
+    "extraction_quality_notes": "Good diagnostic depth \u2014 bisection, hardware comparison, autotuning isolation. Useful ontology entities despite being a version incompatibility.",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 141204,
+    "title": "Stack trace from pytest is very far away and far too find on some tests",
+    "state": "open",
+    "state_reason": null,
+    "conversation_length": 8,
+    "phase2": {
+      "root_cause": {
+        "component": "unknown",
+        "mechanism": "CI/infrastructure issue \u2014 pytest output is too noisy and stack traces are buried far from the error message, making debugging difficult. Not a compiler bug.",
+        "trigger": "CI test failures with verbose pytest output in inductor tests",
+        "confirmed_by": "observation \u2014 engineer_17 noted this is a pytest/CI log formatting issue"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Reported that stack traces are far from failure message",
+          "result": "Too much stdout/stderr between error and trace",
+          "conclusion": "Log formatting issue"
+        },
+        {
+          "step": 2,
+          "action": "Discussed log classifier improvements",
+          "result": "Possible but needs investigation of noise sources",
+          "conclusion": "CI tooling problem"
+        }
+      ],
+      "resolution": {
+        "type": "unresolved",
+        "description": "CI log formatting issue \u2014 not a compiler bug. Pytest output too noisy, stack traces buried.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [],
+        "new_workarounds": [],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "low \u2014 CI/infrastructure issue, not compiler-related"
+    },
+    "extraction_quality_notes": "CI tooling issue, not a compiler bug. Zero ontology yield. Should be filtered from Phase 2 candidates.",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 146018,
+    "title": "Improve error message for wrong number of arguments in CachingAutotuner",
+    "state": "open",
+    "state_reason": null,
+    "conversation_length": 8,
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "When Triton kernel receives wrong number of arguments, args_with_constexprs splatting overwrites the 'grid' keyword argument, producing a confusing error message instead of a clear argument count mismatch.",
+        "trigger": "Kernel argument count mismatch in CachingAutotuner launcher",
+        "confirmed_by": "code reading \u2014 launcher splats args_with_constexprs before grid kwarg"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Reported confusing error message from CachingAutotuner",
+          "result": "Error says 'expected TensorType' for grid instead of argument count mismatch",
+          "conclusion": "Error message improvement needed"
+        },
+        {
+          "step": 2,
+          "action": "Multiple contributors expressed interest",
+          "result": "Good first issue",
+          "conclusion": "Community contribution candidate"
+        }
+      ],
+      "resolution": {
+        "type": "unresolved",
+        "description": "Error message improvement needed in CachingAutotuner \u2014 wrong number of arguments produces confusing error about grid type instead of clear mismatch.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "confusing error message from CachingAutotuner when kernel argument count is wrong \u2014 splatting overwrites grid kwarg"
+        ],
+        "new_workarounds": [],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "medium \u2014 clear issue but no fix yet"
+    },
+    "extraction_quality_notes": "Error message improvement, not a functional bug. Minimal ontology yield. Comments are mostly 'can I work on this?' \u2014 not diagnostic content.",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 146152,
+    "title": "[torch.export] Cannot export TorchVision fasterrcnn_mobilenet_v3_large_fpn",
+    "state": "open",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torch_export",
+        "mechanism": "Detection models (FasterRCNN, MaskRCNN, FCOS, etc.) use data-dependent control flow extensively \u2014 bounding box filtering based on scores, NMS with variable output size, ROI operations with dynamic box counts. These patterns are fundamentally incompatible with torch.export's static graph requirement. The data-dependent expressions (DDEs) originate in user code (torchvision), not in the framework.",
+        "trigger": "torch.export.export_for_training on any torchvision detection model (FasterRCNN, MaskRCNN, KeypointRCNN, FCOS, RetinaNet, SSD, SSDLITE)",
+        "confirmed_by": "code reading \u2014 pianpwk traced DDEs to torchvision/ops/boxes.py:97 (_batched_nms_coordinate_trick) and torchvision/models/detection/roi_heads.py"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Tried export_for_training with strict=True",
+          "result": "Attribute mutation not supported error",
+          "conclusion": "Strict mode can't handle attribute mutation"
+        },
+        {
+          "step": 2,
+          "action": "Tried strict=False per suggestion",
+          "result": "Different error \u2014 data-dependent shape from symbolic_shapes",
+          "conclusion": "Non-strict mode hits DDE issue"
+        },
+        {
+          "step": 3,
+          "action": "Tried draft_export",
+          "result": "Produced graph with specializations",
+          "conclusion": "Draft export works as temporary solution"
+        },
+        {
+          "step": 4,
+          "action": "Tried rewriting boxes.numel==0 with torch.cond",
+          "result": "Fixed one error but 10+ more DDEs remain",
+          "conclusion": "Too many data-dependent patterns to fix one by one"
+        },
+        {
+          "step": 5,
+          "action": "Tested all detection models on latest nightly",
+          "result": "All fail with various DDE errors",
+          "conclusion": "Systemic issue across all detection models"
+        },
+        {
+          "step": 6,
+          "action": "pianpwk analyzed error sources",
+          "result": "DDEs from user code (torchvision), not framework",
+          "conclusion": "Fix needs to go upstream in torchvision"
+        },
+        {
+          "step": 7,
+          "action": "laithsakka confirmed his DDE improvements don't help user code",
+          "result": "Only framework DDEs were fixed",
+          "conclusion": "Need torchvision model rewrites for export compatibility"
+        }
+      ],
+      "resolution": {
+        "type": "unresolved",
+        "description": "Fundamental incompatibility between detection model architectures (data-dependent control flow for NMS, ROI operations) and torch.export's static graph requirement. Fix requires upstream torchvision model rewrites. draft_export works as partial workaround with specializations.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "torch.export.export_for_training(model, args, strict=False) \u2014 avoids attribute mutation error",
+          "draft_export=True \u2014 produces graph with specializations"
+        ],
+        "version_fixed": null,
+        "user_action_required": true
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "data-dependent dynamic shapes (DDEs) from user model code \u2014 cascade of export failures from NMS, ROI operations, bounding box filtering",
+          "draft_export succeeds but with specializations \u2014 may not generalize"
+        ],
+        "new_workarounds": [
+          "Use draft_export=True for detection models (produces specialized graph)",
+          "Rewrite data-dependent control flow with torch.cond (requires extensive model changes)"
+        ],
+        "new_diagnostic_tools": [
+          "draft_export to identify which specializations export makes \u2014 shows what's incompatible"
+        ]
+      },
+      "confidence": "high \u2014 systematic testing across all detection models, clear architectural incompatibility"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 147475,
+    "title": "[Export AOTI] dynamic_shapes export and compile degraded output",
+    "state": "open",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torch_export",
+        "mechanism": "torch.export with dynamic_shapes produces an exported program with incorrect guards that bake in static assumptions from the dummy input shape. Specifically, interpolate_pos_encoding creates a statically-shaped tensor (4097 elements based on pos_embed), and the export system generates a guard Eq(((s0//14))*((s1//14)) + 1, 4097) that constrains dynamic dims. When inference uses different shapes, this guard either fails (torch.compile) or produces silently degraded output (AOTI).",
+        "trigger": "Using torch.export with dynamic_shapes (Dim) for models containing position encoding with static parameters (e.g., DepthAnything/Video-Depth-Anything)",
+        "confirmed_by": "code reading \u2014 pianpwk traced the incorrect guard in the exported program"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Exported model with fixed resolution",
+          "result": "Correct output",
+          "conclusion": "Fixed shapes work fine"
+        },
+        {
+          "step": 2,
+          "action": "Exported same model with dynamic W,H using Dim",
+          "result": "Degraded/incorrect output at inference",
+          "conclusion": "Dynamic shapes cause accuracy regression"
+        },
+        {
+          "step": 3,
+          "action": "Tested with export dummy input matching inference shape",
+          "result": "Output correct even with Dim",
+          "conclusion": "Bug only when inference shape differs from export shape"
+        },
+        {
+          "step": 4,
+          "action": "Tried torch.compile on exported program",
+          "result": "TorchRuntimeError about shape mismatch",
+          "conclusion": "torch.compile surfaces error that AOTI silently masks"
+        },
+        {
+          "step": 5,
+          "action": "Tried torch.export.save/load",
+          "result": "Serialization error",
+          "conclusion": "Related but separate issue"
+        },
+        {
+          "step": 6,
+          "action": "Provided minimal repro with DepthAnything model",
+          "result": "Reproducible with Docker setup",
+          "conclusion": "Confirmed not user-specific"
+        },
+        {
+          "step": 7,
+          "action": "pianpwk debugged exported program",
+          "result": "Found incorrect guard Eq(((s0//14))*((s1//14)) + 1, 4097)",
+          "conclusion": "Static pos_embed shape leaks into dynamic guard"
+        }
+      ],
+      "resolution": {
+        "type": "unresolved",
+        "description": "Root cause identified: position encoding with static parameters creates incorrect guards in exported program. AOTI silently produces wrong output while torch.compile raises error. No fix landed yet.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": true
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "AOTI silently masks export guard violations \u2014 produces degraded output instead of raising error",
+          "export guard baking in static parameter shapes as dynamic constraints"
+        ],
+        "new_workarounds": [
+          "Use export dummy input with same shape as inference input (defeats dynamic shapes purpose)",
+          "Use fixed shapes instead of Dim for models with position encoding"
+        ],
+        "new_diagnostic_tools": [
+          "Compare AOTI vs torch.compile on exported program \u2014 torch.compile surfaces errors AOTI hides",
+          "Inspect exported program guards for static shape leakage"
+        ]
+      },
+      "confidence": "high \u2014 clear root cause identified, minimal repro available"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 155862,
+    "title": "Export Huggingface models with StaticCache",
+    "state": "open",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torch_export",
+        "mechanism": "StaticCache from HuggingFace transformers is not registered as a pytree type, which torch.export requires for all input types. Additionally, when using DynamicCache with dynamic shapes, export produces incorrect guards (e.g., Eq(((s0//14))*((s1//14)) + 1, 4097)) that bake in static assumptions from the dummy input shape, causing silent accuracy degradation at different inference shapes.",
+        "trigger": "Exporting HuggingFace LLM models (Llama-2, DepthAnything) with StaticCache or DynamicCache using torch.export with dynamic_shapes",
+        "confirmed_by": "code reading \u2014 pianpwk identified the incorrect guard Eq(((s0//14))*((s1//14)) + 1, 4097) in exported program; position encoding produces statically-shaped tensor based on model.pos_embed"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Tried to export Llama-2 with StaticCache",
+          "result": "Error: StaticCache not registered as pytree type",
+          "conclusion": "Need pytree registration from transformers side"
+        },
+        {
+          "step": 2,
+          "action": "Used convert_and_export_with_cache API from transformers",
+          "result": "Export succeeded",
+          "conclusion": "Workaround exists but has limitations"
+        },
+        {
+          "step": 3,
+          "action": "Tried DynamicCache + dynamic shapes export",
+          "result": "Export succeeded with correct dynamic shape specs",
+          "conclusion": "DynamicCache works with proper setup"
+        },
+        {
+          "step": 4,
+          "action": "Used AOTI compile on exported model with dynamic shapes",
+          "result": "Silently produced degraded/incorrect output",
+          "conclusion": "AOTI masks errors from export stage"
+        },
+        {
+          "step": 5,
+          "action": "Tried torch.compile on exported program with Dim",
+          "result": "Got TorchRuntimeError about shape mismatch",
+          "conclusion": "torch.compile surfaces the error that AOTI hides"
+        },
+        {
+          "step": 6,
+          "action": "Tested with dummy input same shape as inference input",
+          "result": "Output correct",
+          "conclusion": "Bug only manifests when inference shape differs from export shape"
+        },
+        {
+          "step": 7,
+          "action": "pianpwk debugged exported program guards",
+          "result": "Found guard Eq(((s0//14))*((s1//14)) + 1, 4097) baking in static shape",
+          "conclusion": "interpolate_pos_encoding produces statically-shaped tensor, creating incorrect dynamic constraint"
+        }
+      ],
+      "resolution": {
+        "type": "unresolved",
+        "description": "Root cause identified (incorrect guard from position encoding with static shape), but no fix landed yet. HuggingFace PR opened for transformers-side serialization. Core torch.export issue with pos_embed static shapes remains open.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": true
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "AOTI silently masks export errors \u2014 torch.compile surfaces TorchRuntimeError but AOTI produces silently wrong output",
+          "dynamic shape guard baking in static assumptions from dummy input shape",
+          "output correct only when inference shape matches export dummy input shape"
+        ],
+        "new_workarounds": [
+          "Use convert_and_export_with_cache API from HuggingFace transformers",
+          "Ensure export dummy input shape matches inference shape (defeats purpose of dynamic shapes)"
+        ],
+        "new_diagnostic_tools": [
+          "Compare AOTI output vs torch.compile output to detect silently masked errors",
+          "Check exported program guards for static shape assumptions"
+        ]
+      },
+      "confidence": "high \u2014 clear root cause identified by pianpwk, multiple reproducible steps"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 159346,
+    "title": "[AOTI] Severe Performance Regression with FP16 Autocast in AOTInductor for Small Batch Sizes",
+    "state": "open",
+    "state_reason": null,
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Linear decomposition's bmm-vs-mm folding heuristic fails for fp16 with small batch sizes. When batch_first=True, transpose makes activations non-contiguous, and the heuristic chooses bmm over mm (to avoid a copy). But cuBLAS selects a terrible fp16 bmm kernel (ampere_fp16_s16816gemm) that is 30x slower than the fp32 equivalent. Additionally, max_autotune can't help because '64-bit indexing is not yet implemented for triton templates', so no Triton backend is available.",
+        "trigger": "MultiHeadAttention with batch_first=True, fp16 autocast, small batch size (bs=1-2), on Ampere GPUs",
+        "confirmed_by": "experimentation \u2014 yushangdi traced slow kernel to aoti_torch_cuda_bmm_out, profiled cuBLAS kernel selection, showed contiguity determines mm-vs-bmm choice"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Profiled fp16 vs fp32 AOTI inference",
+          "result": "fp16 10x slower at bs=1, 2.7x at bs=2",
+          "conclusion": "Severe regression specific to fp16 small batches"
+        },
+        {
+          "step": 2,
+          "action": "Traced slow kernel in profiler",
+          "result": "ampere_fp16_s16816gemm kernel from aoti_torch_cuda_bmm_out taking 51ms vs 1.5ms fp32",
+          "conclusion": "cuBLAS picks bad fp16 bmm kernel"
+        },
+        {
+          "step": 3,
+          "action": "Investigated why bmm instead of mm",
+          "result": "batch_first=True causes transpose, non-contiguous input, heuristic avoids copy by using bmm",
+          "conclusion": "Folding heuristic makes wrong choice for fp16"
+        },
+        {
+          "step": 4,
+          "action": "Discovered fp32 perf was accidentally good",
+          "result": "fp32 only fast because requires_grad=True triggers different code path; with requires_grad=False, fp32 also slow",
+          "conclusion": "Original comparison was misleading"
+        },
+        {
+          "step": 5,
+          "action": "Tried TORCHINDUCTOR_MAX_AUTOTUNE=1",
+          "result": "Still falls back to aten bmm; Triton templates lack 64-bit indexing",
+          "conclusion": "No alternative kernel available via max_autotune"
+        },
+        {
+          "step": 6,
+          "action": "Proposed batch_first=False workaround",
+          "result": "Manual transpose + contiguous + linear gives correct fast performance",
+          "conclusion": "Contiguity is the key factor"
+        }
+      ],
+      "resolution": {
+        "type": "unresolved",
+        "description": "Root cause identified as bmm-vs-mm folding heuristic not accounting for fp16 cuBLAS kernel quality. engineer_20 proposed fix: transpose activations inside linear to make contiguous, fold to mm, transpose output back. PR for heuristic change would be accepted.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "Use batch_first=False and manually transpose input (make contiguous)",
+          "TORCHINDUCTOR_MAX_AUTOTUNE=1 \u2014 does NOT help (Triton templates lack 64-bit indexing)"
+        ],
+        "version_fixed": null,
+        "user_action_required": true
+      },
+      "new_entities": {
+        "new_configs": [
+          "TORCHINDUCTOR_MAX_AUTOTUNE=1 \u2014 try all kernel options including Triton templates (blocked for this case by 64-bit indexing gap)"
+        ],
+        "new_symptoms": [
+          "fp16 autocast performance regression at small batch sizes \u2014 cuBLAS selects poor bmm kernel for non-contiguous fp16 tensors",
+          "requires_grad=True accidentally triggers different (faster) code path \u2014 misleading benchmarks"
+        ],
+        "new_workarounds": [
+          "Use batch_first=False with manual transpose+contiguous to force mm instead of bmm",
+          "Disable requires_grad to get realistic inference benchmark (requires_grad=True triggers different path)"
+        ],
+        "new_diagnostic_tools": [
+          "Profile individual cuBLAS kernel selection to identify poor algorithm choices",
+          "Check tensor contiguity to understand mm-vs-bmm heuristic decisions"
+        ]
+      },
+      "confidence": "high \u2014 thorough investigation by yushangdi and engineer_20, clear root cause"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 159855,
+    "title": "[compile] Correctness and reproducibility issue",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Inductor fused a KV cache roll/rotate operation as a pointwise kernel, but roll is not a pointwise operation \u2014 it's a data movement pattern. The fused kernel produced incorrect results for the sliding window cache rotation used in Gemma-2 style models with HybridCache.",
+        "trigger": "HuggingFace transformers generate() with torch.compile on models using sliding window attention with HybridCache (Gemma-2-2b), specifically when cache rotation uses tensor indexing with roll",
+        "confirmed_by": "experimentation \u2014 v0i0 identified the incorrect fusion of roll as pointwise; engineer_21_gh reproduced on H100/A100; issue was intermittent (non-deterministic)"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Noticed generation output differs between compiled and non-compiled model",
+          "result": "Non-deterministic \u2014 sometimes passes, sometimes fails",
+          "conclusion": "Correctness issue with torch.compile on transformers generate"
+        },
+        {
+          "step": 2,
+          "action": "Tested scalar vs tensor slicing in cache update",
+          "result": "Scalar slicing works, tensor slicing with roll fails",
+          "conclusion": "Issue related to roll/rotate operation in cache"
+        },
+        {
+          "step": 3,
+          "action": "zou3519 asked to try mode=reduce_overhead and backend=eager/aot_eager",
+          "result": "No change in behavior",
+          "conclusion": "Not backend-specific"
+        },
+        {
+          "step": 4,
+          "action": "zou3519 tried to reproduce",
+          "result": "Could not reproduce initially",
+          "conclusion": "Hardware/version dependent"
+        },
+        {
+          "step": 5,
+          "action": "engineer_21_gh successfully reproduced",
+          "result": "Confirmed different results on consecutive runs",
+          "conclusion": "Real bug, not environment issue"
+        },
+        {
+          "step": 6,
+          "action": "BoyuanFeng triaged as inductor issue",
+          "result": "Confirmed it's in inductor layer",
+          "conclusion": "Not dynamo or aot_autograd"
+        },
+        {
+          "step": 7,
+          "action": "v0i0 identified incorrect pointwise fusion of roll",
+          "result": "Roll fused as pointwise but it's a data movement op",
+          "conclusion": "Root cause found \u2014 incorrect fusion pattern"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Fixed by preventing Inductor from incorrectly fusing roll operations as pointwise kernels. PR submitted by v0i0 to address the fusion logic.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "non-deterministic correctness failure \u2014 compiled model sometimes produces correct output, sometimes wrong",
+          "KV cache corruption from incorrect fusion of data movement operations (roll/rotate)"
+        ],
+        "new_workarounds": [
+          "Use scalar indexing instead of tensor indexing with roll in cache update code"
+        ],
+        "new_diagnostic_tools": [
+          "Compare scalar vs tensor slicing to isolate fusion-related correctness issues",
+          "Run multiple iterations to detect intermittent correctness failures"
+        ]
+      },
+      "confidence": "high \u2014 clear root cause identified and fix in progress"
+    },
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  },
+  {
+    "issue_number": 162762,
+    "title": "Voxtral + Export/AOTI",
+    "state": "closed",
+    "state_reason": "COMPLETED",
+    "conversation_length": 6,
+    "phase2": {
+      "root_cause": {
+        "component": "torch_export",
+        "mechanism": "Custom SDPA op's meta implementation returned wrong tensor layout \u2014 used empty_like(query) which inherits non-contiguous strides from query, but the real kernel returns contiguous output. This caused AOTI to generate code assuming wrong memory layout.",
+        "trigger": "Exporting Voxtral model with custom_sdpa op through ExecutorTorch/AOTI",
+        "confirmed_by": "code reading \u2014 yushangdi identified the meta implementation at executorch custom_ops.py:154 returning non-contiguous tensor"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Exported Voxtral model, ran with AOTI",
+          "result": "Numerical error in audio encoder",
+          "conclusion": "AOTI produces wrong output"
+        },
+        {
+          "step": 2,
+          "action": "Tested CPU + Export without AOTI",
+          "result": "Works correctly",
+          "conclusion": "Issue is AOTI-specific"
+        },
+        {
+          "step": 3,
+          "action": "yushangdi traced to custom_sdpa meta implementation",
+          "result": "empty_like(query) returns non-contiguous tensor",
+          "conclusion": "Meta kernel layout mismatch"
+        },
+        {
+          "step": 4,
+          "action": "Changed to empty_like(query).contiguous()",
+          "result": "Fixed the numerical error",
+          "conclusion": "Root cause confirmed"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Fixed custom_sdpa meta implementation to return contiguous tensor (empty_like(query).contiguous() instead of empty_like(query)). The non-contiguous meta output caused AOTI to generate code with wrong memory layout assumptions.",
+        "fix_prs": [],
+        "workaround_configs": [],
+        "version_fixed": null,
+        "user_action_required": false
+      },
+      "new_entities": {
+        "new_configs": [],
+        "new_symptoms": [
+          "meta kernel layout mismatch \u2014 meta implementation returns different stride/contiguity than real kernel, causing AOTI codegen errors"
+        ],
+        "new_workarounds": [],
+        "new_diagnostic_tools": []
+      },
+      "confidence": "high \u2014 clear root cause, minimal fix"
+    },
+    "extraction_quality_notes": "Short conversation (6 comments) but high ontology value \u2014 meta kernel layout mismatch is a novel failure mode.",
+    "extracted_by": "llm",
+    "extracted_at": "2026-04-14"
+  }
+]

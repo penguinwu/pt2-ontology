@@ -3,7 +3,7 @@
     "name": "PT2 Diagnostic Decision Tree",
     "version": "0.1.0",
     "description": "Symptom-driven diagnostic and resolution routing for PT2 issues",
-    "generated_from": "Phase 1 heuristic extraction of 2,606 closed oncall:pt2 issues",
+    "generated_from": "Phase 1 heuristic extraction of 7,347 issues + Phase 2 LLM extraction of 10 richest conversations",
     "created": "2026-04-14"
   },
   "entry_points": {
@@ -112,6 +112,38 @@
           "id": "fix_disable_autotune_cache",
           "condition": "Result changed after model modification",
           "action": "torch._inductor.config.autotune_local_cache = False"
+        },
+        {
+          "id": "fix_pretrained_weights_verification",
+          "condition": "Mismatch with randomly initialized model — may be model instability, not compiler bug",
+          "action": "Test with pretrained weights; compare compile(float64) vs eager(float64)"
+        },
+        {
+          "id": "fix_assume_static_by_default",
+          "condition": "NaN/accuracy collapse after N iterations with dynamic shapes",
+          "action": "torch._dynamo.config.assume_static_by_default = True"
+        },
+        {
+          "id": "fix_scalar_indexing_for_roll",
+          "condition": "Non-deterministic correctness with KV cache roll/rotate operations",
+          "action": "Use scalar indexing instead of tensor indexing with roll"
+        }
+      ],
+      "phase2_diagnostic_techniques": [
+        {
+          "name": "Multi-iteration accuracy tracking",
+          "description": "Run N iterations and track error magnitude over time — delayed NaN appears after iteration 5+ as sudden jump from 1e-4 to ~300",
+          "evidence_issues": [96971]
+        },
+        {
+          "name": "Float32 vs Float64 comparison",
+          "description": "Compare eager(float32) vs eager(float64) to distinguish model numerical instability from compiler bugs",
+          "evidence_issues": [100075]
+        },
+        {
+          "name": "aot_eager_decomp_partition isolation",
+          "description": "Use backend='aot_eager_decomp_partition' to isolate decomposition bugs from Inductor codegen bugs",
+          "evidence_issues": [100075]
         }
       ]
     },
@@ -277,6 +309,51 @@
           "id": "fix_disable_max_autotune",
           "condition": "Using mode='max-autotune' with many kernel variants",
           "action": "Switch to mode='reduce-overhead' or mode='default'"
+        }
+      ]
+    },
+    "export_failure": {
+      "symptom": "torch.export or AOTI produces errors or incorrect output",
+      "frequency": 0,
+      "note": "New category from Phase 2 extraction — frequency not yet counted from full corpus",
+      "diagnostic_steps": [
+        {
+          "step": 1,
+          "action": "Determine if failure is in export, AOTI compile, or AOTI runtime",
+          "tool": "Try torch.export.export() alone first, then torch.compile() on exported program",
+          "branch_if_export_fails": "export_tracing_issue",
+          "branch_if_aoti_fails": "aoti_codegen_issue",
+          "branch_if_silent_wrong": "aoti_silent_degradation"
+        },
+        {
+          "step": 2,
+          "action": "Check for data-dependent dynamic shapes (DDEs) in model code",
+          "tool": "Try strict=False, then draft_export=True",
+          "branch_if_dde": "model_needs_rewrite",
+          "branch_if_guard_error": "export_guard_issue"
+        },
+        {
+          "step": 3,
+          "action": "For silent degradation: compare AOTI output vs torch.compile output",
+          "tool": "torch.compile surfaces errors that AOTI silently masks",
+          "branch_if_different": "aoti_masking_error"
+        },
+        {
+          "step": 4,
+          "action": "Check exported program guards for static shape leakage",
+          "tool": "Inspect guards — look for Eq() constraints baking in dummy input dimensions"
+        }
+      ],
+      "quick_fixes": [
+        {
+          "id": "fix_draft_export",
+          "condition": "Detection model with NMS/ROI data-dependent control flow",
+          "action": "torch.export.export_for_training(model, args, strict=False, draft_export=True)"
+        },
+        {
+          "id": "fix_match_export_inference_shape",
+          "condition": "AOTI output degraded — position encoding model with static pos_embed",
+          "action": "Match export dummy input shape to inference shape"
         }
       ]
     },
