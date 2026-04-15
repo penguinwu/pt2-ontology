@@ -1,0 +1,981 @@
+[
+  {
+    "from": "activation_checkpoint_compile_error",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      97077
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "aoti_silent_degradation",
+    "type": "fixed_by",
+    "to": "fix_match_export_inference_shape",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "aoti_silent_degradation",
+    "type": "resolution_type",
+    "to": "unresolved",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "as_strided_scatter_error",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      86427
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "complex_scalar_backward_error",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      105290
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "conj_view_aliasing_crash",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      148950
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "crash",
+    "type": "fixed_by",
+    "to": "fix_aot_eager_isolation",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "crash",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Internal compiler error \u2014 needs PyTorch PR",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "upstream_fix"
+  },
+  {
+    "from": "crash",
+    "type": "fixed_by",
+    "to": "version_upgrade",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Bug already fixed in newer PyTorch version",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "upstream_fix"
+  },
+  {
+    "from": "cudagraph_oom",
+    "type": "fixed_by",
+    "to": "config_change",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Adjust cudagraph pool size or disable cudagraphs",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "compiler_fix"
+  },
+  {
+    "from": "ddp_autocast_accuracy_loss",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      101624
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "ddp_dynamic_shape_error",
+    "type": "fixed_by",
+    "to": "fix_disable_ddp_optimizer",
+    "evidence_issues": [
+      111636
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "ddp_dynamic_shape_error",
+    "type": "resolution_type",
+    "to": "user_workaround",
+    "evidence_issues": [
+      111636
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "delayed_nan",
+    "type": "fixed_by",
+    "to": "fix_assume_static_by_default",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "delayed_nan",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dispatch_mode_ignored",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      105929
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "duck_sizing_recompilation",
+    "type": "resolution_type",
+    "to": "user_adaptation",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamic_scalar_regression",
+    "type": "fixed_by",
+    "to": "fix_mark_dynamic_instead",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamic_scalar_regression",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamic_shape_specialization_on_slice",
+    "type": "resolution_type",
+    "to": "user_workaround",
+    "evidence_issues": [
+      106110
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamo_unsupported",
+    "type": "fixed_by",
+    "to": "code_rewrite",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Rewrite code pattern to be compile-friendly (fundamental limitation)",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "user_adaptation"
+  },
+  {
+    "from": "dynamo_unsupported",
+    "type": "fixed_by",
+    "to": "op_replacement",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Swap unsupported op for supported equivalent",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "user_adaptation"
+  },
+  {
+    "from": "dynamo_unsupported",
+    "type": "fixed_by",
+    "to": "skip_compile",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Exclude region from compilation \u2014 avoids problem, doesn't solve it",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "user_workaround"
+  },
+  {
+    "from": "embedding_bag_inplace_leaf_error",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      95167
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "empty_shape_segfault",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      98835
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "empty_strided_incorrect_strides",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      130394
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "code_rewrite",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Rewrite model to meet export constraints (fundamental requirement)",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "user_adaptation"
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_assume_static_by_default",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_capture_scalar_outputs",
+    "evidence_issues": [
+      163563,
+      173915
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_disable_ddp_optimizer",
+    "evidence_issues": [
+      104674
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_draft_export",
+    "evidence_issues": [
+      146152
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_mark_dynamic_instead",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_realize_opcount_threshold",
+    "evidence_issues": [
+      145074
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_rewrite_indexing",
+    "evidence_issues": [
+      150057
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_suppress_errors",
+    "evidence_issues": [
+      138809
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_use_dynamic_shapes",
+    "evidence_issues": [
+      137515,
+      147261,
+      172822
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_use_item_cast",
+    "evidence_issues": [
+      137062
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_use_no_grad",
+    "evidence_issues": [
+      143346,
+      148808,
+      173902
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "export_dde_cascade",
+    "type": "fixed_by",
+    "to": "fix_draft_export",
+    "evidence_issues": [
+      146152
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "export_dde_cascade",
+    "type": "resolution_type",
+    "to": "unresolved",
+    "evidence_issues": [
+      146152
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "export_static_guard_leak",
+    "type": "fixed_by",
+    "to": "fix_match_export_inference_shape",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "export_static_guard_leak",
+    "type": "resolution_type",
+    "to": "unresolved",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "failure_dynamic_shape_error",
+    "type": "fixed_by",
+    "to": "config_change",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Adjust dynamic shapes config or add constraints",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "compiler_fix"
+  },
+  {
+    "from": "failure_silent_incorrectness",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Correctness bug \u2014 needs PyTorch PR",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "upstream_fix"
+  },
+  {
+    "from": "fake_kernel_stride_mismatch",
+    "type": "resolution_type",
+    "to": "user_error",
+    "evidence_issues": [
+      146536
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "foreach_cross_device_error",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      102023
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "forward_hook_partial_capture",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      96722
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fp16_perf_regression_small_batch",
+    "type": "fixed_by",
+    "to": "fix_batch_first_false",
+    "evidence_issues": [
+      159346
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fp16_perf_regression_small_batch",
+    "type": "resolution_type",
+    "to": "unresolved",
+    "evidence_issues": [
+      159346
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "functionctx_missing_saved_tensors",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      135118
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "index_expression_perf_regression",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      127581
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "index_propagation_key_error",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      127677
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "memory_issue",
+    "type": "fixed_by",
+    "to": "fix_expandable_segments",
+    "evidence_issues": [
+      103716,
+      143346,
+      163563,
+      174418
+    ],
+    "evidence_count": 4
+  },
+  {
+    "from": "memory_issue",
+    "type": "fixed_by",
+    "to": "fix_use_no_grad",
+    "evidence_issues": [
+      143346,
+      148808,
+      173902
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "model_instability_false_alarm",
+    "type": "fixed_by",
+    "to": "fix_pretrained_weights_verification",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "model_instability_false_alarm",
+    "type": "resolution_type",
+    "to": "expected_behavior",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "mutation_lost_on_alignment_clone",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      152425
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "nested_tensor_compile_error",
+    "type": "resolution_type",
+    "to": "user_adaptation",
+    "evidence_issues": [
+      138274
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "networkx_unbounded_scheduling",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      103055
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "non_compliant_custom_op",
+    "type": "fixed_by",
+    "to": "code_rewrite",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Register op via torch.library with FakeTensor kernel",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "user_adaptation"
+  },
+  {
+    "from": "non_deterministic_correctness",
+    "type": "fixed_by",
+    "to": "fix_scalar_indexing_for_roll",
+    "evidence_issues": [
+      159855
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "non_deterministic_correctness",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      159855
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "nopython_cache_collision",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      114059
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "numerical_drift",
+    "type": "fixed_by",
+    "to": "config_change",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "e.g., emulate_precision_casts, fallback_random",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "compiler_fix"
+  },
+  {
+    "from": "numerical_drift",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Precision bug in codegen \u2014 needs PyTorch PR",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "upstream_fix"
+  },
+  {
+    "from": "partial_zeros_output",
+    "type": "fixed_by",
+    "to": "fix_custom_op_stream",
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "partial_zeros_output",
+    "type": "resolution_type",
+    "to": "user_error",
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "perf_improvement",
+    "type": "fixed_by",
+    "to": "code_rewrite",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Restructure model for better fusion/codegen",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "user_adaptation"
+  },
+  {
+    "from": "perf_improvement",
+    "type": "fixed_by",
+    "to": "config_change",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Enable max-autotune, tune inductor flags",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "compiler_fix"
+  },
+  {
+    "from": "perf_regression",
+    "type": "fixed_by",
+    "to": "config_change",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Tune mode, backend options, or disable problematic optimizations",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "compiler_fix"
+  },
+  {
+    "from": "quadratic_compile_time_asserts",
+    "type": "fixed_by",
+    "to": "fix_avoid_many_splits",
+    "evidence_issues": [
+      144792
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "quadratic_compile_time_asserts",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      144792
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "recompile_warning",
+    "type": "fixed_by",
+    "to": "config_change",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Adjust dynamic shapes, recompile_limit, or guard config",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "compiler_fix"
+  },
+  {
+    "from": "scalar_op_faketensor_error",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      93224
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "silent_correctness",
+    "type": "fixed_by",
+    "to": "fix_aot_eager_isolation",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "silent_correctness",
+    "type": "fixed_by",
+    "to": "fix_clone_gradient_hook",
+    "evidence_issues": [
+      96693
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "silent_correctness",
+    "type": "fixed_by",
+    "to": "fix_disable_tf32",
+    "evidence_issues": [
+      173902
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "silent_correctness",
+    "type": "fixed_by",
+    "to": "fix_emulate_precision_casts",
+    "evidence_issues": [
+      176565
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "slow_compile",
+    "type": "fixed_by",
+    "to": "config_change",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Enable caching, reduce graph size, tune compile options",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "compiler_fix"
+  },
+  {
+    "from": "slow_compile",
+    "type": "fixed_by",
+    "to": "fix_avoid_many_splits",
+    "evidence_issues": [
+      144792
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "stride_mismatch_view_error",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      93428
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "subclass_tensor_guard_malformed",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      118896
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "suboptimal_heuristics",
+    "type": "fixed_by",
+    "to": "config_change",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Override inductor heuristics via config namespace",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "compiler_fix"
+  },
+  {
+    "from": "symptom_multiple_cache_entries",
+    "type": "fixed_by",
+    "to": "config_change",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Adjust cache config or declare dynamic sources upfront",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "compiler_fix"
+  },
+  {
+    "from": "sympy_nan_comparison",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      133735
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "uint8_accuracy_false_positive",
+    "type": "resolution_type",
+    "to": "user_adaptation",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "warning_log_spam",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      138069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "weakref_blocks_device_move",
+    "type": "resolution_type",
+    "to": "in_progress",
+    "evidence_issues": [
+      141548
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_device_compilation",
+    "type": "resolution_type",
+    "to": "compiler_fix",
+    "evidence_issues": [
+      97693
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_aot_eager_isolation",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_assume_static_by_default",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_clone_gradient_hook",
+    "evidence_issues": [
+      96693
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_custom_op_stream",
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_disable_autotune_cache",
+    "evidence_issues": [
+      96693
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_disable_tf32",
+    "evidence_issues": [
+      173902
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_emulate_precision_casts",
+    "evidence_issues": [
+      176565
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_explicit_output_shape",
+    "evidence_issues": [
+      147261
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_pretrained_weights_verification",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_use_dynamic_shapes",
+    "evidence_issues": [
+      137515,
+      147261,
+      172822
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Bug in compiler \u2014 needs PyTorch PR",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "upstream_fix"
+  }
+]

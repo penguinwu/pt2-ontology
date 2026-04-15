@@ -1,13 +1,21 @@
 {
-  "version": "1.0",
-  "description": "PT2 triage decision tree \u2014 maps error signatures to diagnostic paths and workarounds. Built from 324 issue extractions.",
+  "version": "2.0",
+  "description": "PT2 triage decision tree v2 \u2014 enriched with 418 relationship edges across 135 entities. Maps error signatures to diagnostic paths, workarounds, and configs.",
+  "stats": {
+    "total_edges": 418,
+    "total_symptoms": 62,
+    "total_workarounds": 33,
+    "total_configs": 40,
+    "coverage": "135/135 entities connected"
+  },
   "entry_points": [
     {
       "id": "recompilation",
       "error_signatures": [
         "V*torch/_dynamo/guards.py*[__recompiles] Recompiling function",
         "torch._dynamo.exc.RecompileError",
-        "cache_size_limit reached"
+        "cache_size_limit reached",
+        "exceeded maximum allowed number of cache entries"
       ],
       "first_step": "Run with TORCH_LOGS=recompiles to see which guard triggered the recompilation",
       "diagnostic_path": [
@@ -32,18 +40,45 @@
           "step": 4,
           "action": "Check if DDP + dynamic shapes",
           "look_for": "'Cannot call sizes() on tensor with symbolic sizes/strides'",
-          "if_yes": "Set torch._dynamo.config.optimize_ddp = False OR dynamic=False on torch.compile"
+          "if_yes": "Set torch._dynamo.config.optimize_ddp = False OR dynamic=False"
+        },
+        {
+          "step": 5,
+          "action": "Check if automatic dynamic shapes triggering",
+          "look_for": "Dynamic shapes being applied without explicit request",
+          "if_yes": "Set assume_static_by_default = True or declare TORCH_COMPILE_DYNAMIC_SOURCES"
+        },
+        {
+          "step": 6,
+          "action": "Check guard_nn_modules setting",
+          "look_for": "Recompilation from nn.Module attribute changes",
+          "if_yes": "Ensure guard_nn_modules matches your use case"
         }
       ],
       "common_fixes": [
         "fix_disable_duck_shape",
         "fix_use_maybe_mark_dynamic",
-        "fix_rewrite_indexing_narrow"
+        "fix_rewrite_indexing_narrow",
+        "fix_disable_dynamic_shapes",
+        "fix_assume_static_by_default"
       ],
       "related_symptoms": [
         "duck_sizing_recompilation",
         "dynamic_shape_specialization_on_slice",
-        "ddp_dynamic_shape_error"
+        "ddp_dynamic_shape_error",
+        "recompile_warning",
+        "symptom_multiple_cache_entries"
+      ],
+      "related_configs": [
+        "use_duck_shape",
+        "recompile_limit",
+        "accumulated_recompile_limit",
+        "assume_static_by_default",
+        "specialize_int",
+        "specialize_float",
+        "guard_nn_modules",
+        "torch_compile_dynamic_sources",
+        "optimize_ddp"
       ],
       "component": "torchdynamo"
     },
@@ -52,7 +87,8 @@
       "error_signatures": [
         "torch._dynamo.exc.Unsupported",
         "[WARNING] Graph break",
-        "torch._dynamo.output_graph"
+        "torch._dynamo.output_graph",
+        "graph_break"
       ],
       "first_step": "Run torch._dynamo.explain(fn, *args) to see all graph breaks",
       "diagnostic_path": [
@@ -71,20 +107,50 @@
           "step": 3,
           "action": "Check if data-dependent control flow",
           "look_for": "'data dependent' or 'guard on data'",
-          "if_yes": "Set capture_scalar_outputs=True or refactor control flow"
+          "if_yes": "Set capture_scalar_outputs=True or use torch.cond()"
         },
         {
           "step": 4,
+          "action": "Check if dynamic output shape ops",
+          "look_for": "Graph break at nonzero/unique/where",
+          "if_yes": "Set capture_dynamic_output_shape_ops=True"
+        },
+        {
+          "step": 5,
           "action": "Check if third-party library",
-          "look_for": "Graph break in non-PyTorch module",
-          "if_yes": "Wrap the call or use fullgraph=False (default)"
+          "look_for": "Graph break in non-PyTorch module (numpy, optree, einops)",
+          "if_yes": "Wrap the call or use pytree instead of optree"
+        },
+        {
+          "step": 6,
+          "action": "Check if RNN ops",
+          "look_for": "Graph break at LSTM/GRU",
+          "if_yes": "Set torch._dynamo.config.allow_rnn = True"
+        },
+        {
+          "step": 7,
+          "action": "Check if forward hooks causing breaks",
+          "look_for": "Graph break in hook registration or execution",
+          "if_yes": "Known limitation \u2014 restructure hook usage or accept break"
         }
       ],
       "common_fixes": [
-        "fix_use_fullgraph"
+        "fix_use_fullgraph",
+        "fix_capture_scalar_outputs",
+        "fix_use_pytree"
       ],
       "related_symptoms": [
-        "dynamo_unsupported"
+        "dynamo_unsupported",
+        "forward_hook_partial_capture",
+        "dispatch_mode_ignored",
+        "subclass_tensor_guard_malformed"
+      ],
+      "related_configs": [
+        "capture_scalar_outputs",
+        "capture_dynamic_output_shape_ops",
+        "allow_rnn",
+        "trace_numpy",
+        "fullgraph_flag"
       ],
       "component": "torchdynamo"
     },
@@ -94,7 +160,8 @@
         "AccuracyError",
         "Accuracy failed",
         "allclose not within tol",
-        "tensor did not match"
+        "tensor did not match",
+        "numerical mismatch"
       ],
       "first_step": "Run with TORCHDYNAMO_REPRO_AFTER=aot TORCHDYNAMO_REPRO_LEVEL=4 to generate a minimal repro",
       "diagnostic_path": [
@@ -117,35 +184,71 @@
         },
         {
           "step": 4,
-          "action": "Check batch norm decomposition",
-          "look_for": "Divergence in batch_norm_legit_functional",
-          "if_yes": "Try removing from inductor_decompositions"
+          "action": "Check precision cast issue",
+          "look_for": "fp32\u2192fp16 conversion producing different results",
+          "if_yes": "Set emulate_precision_casts = True"
         },
         {
           "step": 5,
+          "action": "Check TF32 interference",
+          "look_for": "Conv2d/CUDNN divergence with shape padding",
+          "if_yes": "Set torch.backends.cudnn.allow_tf32 = False"
+        },
+        {
+          "step": 6,
+          "action": "Check if random init masking real issue",
+          "look_for": "100% element mismatch with random weights",
+          "if_yes": "Test with pretrained weights \u2014 random init can be numerically unstable"
+        },
+        {
+          "step": 7,
           "action": "Check DDP + autocast",
           "look_for": "DDPOptimizer partitioned through autocast region",
           "if_yes": "Set torch._dynamo.config.optimize_ddp = False"
+        },
+        {
+          "step": 8,
+          "action": "Check autotune cache staleness",
+          "look_for": "Accuracy changed after model modification",
+          "if_yes": "Set autotune_local_cache = False or force_disable_caches = True"
         }
       ],
       "common_fixes": [
         "fix_ignore_non_fp_accuracy",
-        "fix_disable_ddp_optimizer"
+        "fix_emulate_precision_casts",
+        "fix_disable_tf32",
+        "fix_disable_ddp_optimizer",
+        "fix_aot_eager_isolation",
+        "fix_pretrained_weights_verification",
+        "fix_disable_autotune_cache"
       ],
       "related_symptoms": [
         "accuracy_mismatch",
         "uint8_accuracy_false_positive",
         "ddp_autocast_accuracy_loss",
-        "numerical_drift"
+        "delayed_nan",
+        "numerical_drift",
+        "model_instability_false_alarm",
+        "non_deterministic_correctness"
       ],
-      "component": "torchinductor"
+      "related_configs": [
+        "repro_level",
+        "repro_after",
+        "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+        "emulate_precision_casts",
+        "fallback_random",
+        "optimize_ddp",
+        "force_disable_caches"
+      ],
+      "component": "mixed"
     },
     {
       "id": "compilation_error",
       "error_signatures": [
         "BackendCompilerFailed",
         "torch._dynamo.exc.BackendCompilerFailed",
-        "InternalTorchDynamoError"
+        "InternalTorchDynamoError",
+        "RuntimeError: Failed running call_function"
       ],
       "first_step": "Run the minifier: TORCHDYNAMO_REPRO_AFTER=dynamo TORCHDYNAMO_REPRO_LEVEL=4",
       "diagnostic_path": [
@@ -168,18 +271,58 @@
         },
         {
           "step": 4,
-          "action": "Check if activation checkpointing",
-          "look_for": "'source' in options or preserve_rng_state",
-          "if_yes": "Ensure using latest PyTorch \u2014 early versions didn't support this"
+          "action": "Check if custom autograd function",
+          "look_for": "'torch.autograd.Function' or 'FunctionCtx'",
+          "if_yes": "Set capture_autograd_function = True"
+        },
+        {
+          "step": 5,
+          "action": "Check if SymPy/ValueRanges error",
+          "look_for": "'Invalid NaN comparison' or 'sympy'",
+          "if_yes": "Dynamic shape arithmetic issue \u2014 try static shapes or constrain values"
+        },
+        {
+          "step": 6,
+          "action": "Check if weakref blocking device move",
+          "look_for": "'swap_tensors' or 'outstanding weak references'",
+          "if_yes": "Known issue with compiled module + device movement"
+        },
+        {
+          "step": 7,
+          "action": "Check if export DDE cascade",
+          "look_for": "Multiple data-dependent errors in detection model",
+          "if_yes": "Use torch.export.export_for_training with draft_export=True"
+        },
+        {
+          "step": 8,
+          "action": "Last resort: suppress_errors",
+          "look_for": "Non-critical compilation where eager fallback is acceptable",
+          "if_yes": "Set suppress_errors = True (will lose optimization)"
         }
       ],
-      "common_fixes": [],
+      "common_fixes": [
+        "fix_aot_eager_isolation",
+        "fix_suppress_errors",
+        "fix_draft_export"
+      ],
       "related_symptoms": [
         "backend_compiler_failed",
         "stride_mismatch_view_error",
         "scalar_op_faketensor_error",
         "foreach_cross_device_error",
-        "activation_checkpoint_compile_error"
+        "activation_checkpoint_compile_error",
+        "sympy_nan_comparison",
+        "weakref_blocks_device_move",
+        "export_dde_cascade",
+        "functionctx_missing_saved_tensors",
+        "complex_scalar_backward_error"
+      ],
+      "related_configs": [
+        "repro_level",
+        "repro_after",
+        "suppress_errors",
+        "capture_autograd_function",
+        "verbose"
       ],
       "component": "mixed"
     },
@@ -190,7 +333,7 @@
         "performance regression",
         "speedup < 1.0"
       ],
-      "first_step": "Run NCU/profiler to identify bottleneck \u2014 is it compile time or runtime?",
+      "first_step": "Separate compile time vs runtime \u2014 is first-run slow (compile) or all-runs slow (runtime)?",
       "diagnostic_path": [
         {
           "step": 1,
@@ -201,28 +344,57 @@
           "step": 2,
           "action": "If compile time: check graph size",
           "look_for": "Large number of nodes in FX graph",
-          "if_yes": "Check for unbounded scheduling (networkx) or quadratic runtime asserts"
+          "if_yes": "Check for unbounded scheduling or quadratic runtime asserts"
         },
         {
           "step": 3,
           "action": "If runtime: NCU profile the kernel",
-          "look_for": "Memory-bound vs compute-bound kernel",
-          "if_yes": "Check if index expression is suboptimal (register pressure from address computation)"
+          "look_for": "Memory-bound vs compute-bound kernel"
         },
         {
           "step": 4,
+          "action": "Check FP16 small batch regression",
+          "look_for": "FP16 autocast 10x slower than FP32 at small batch sizes",
+          "if_yes": "Use batch_first=False with manual transpose+contiguous"
+        },
+        {
+          "step": 5,
           "action": "Check if wrong device compilation",
           "look_for": "Kernel compiled for cuda:0 but running on cuda:1",
-          "if_yes": "Update to latest PyTorch \u2014 fixed in later versions"
+          "if_yes": "Update to latest PyTorch"
+        },
+        {
+          "step": 6,
+          "action": "Check dynamic shapes overhead",
+          "look_for": "Dynamic shapes 9x slower than static",
+          "if_yes": "Ensure divisibility hints are set, or use static shapes"
+        },
+        {
+          "step": 7,
+          "action": "Try max_autotune",
+          "look_for": "Default kernel selection is suboptimal",
+          "if_yes": "Set mode='max-autotune' or max_autotune_gemm=True"
         }
       ],
-      "common_fixes": [],
+      "common_fixes": [
+        "fix_batch_first_false",
+        "fix_avoid_many_splits"
+      ],
       "related_symptoms": [
+        "perf_regression",
         "silent_slowdown",
+        "fp16_perf_regression_small_batch",
         "index_expression_perf_regression",
         "networkx_unbounded_scheduling",
         "quadratic_compile_time_asserts",
-        "wrong_device_compilation"
+        "wrong_device_compilation",
+        "symptom_perf_regression_dynamic"
+      ],
+      "related_configs": [
+        "max_autotune",
+        "max_autotune_gemm",
+        "max_autotune_gemm_backends",
+        "dynamic_shapes_flag"
       ],
       "component": "torchinductor"
     },
@@ -232,9 +404,11 @@
         "Segmentation fault",
         "CUDA error",
         "RuntimeError: CUDA",
-        "Triton Error"
+        "Triton Error",
+        "SIGABRT",
+        "SIGSEGV"
       ],
-      "first_step": "Set TORCH_USE_CUDA_DSA=1 for better CUDA error messages, then check if empty tensors involved",
+      "first_step": "Set TORCH_USE_CUDA_DSA=1 for better CUDA error messages",
       "diagnostic_path": [
         {
           "step": 1,
@@ -251,89 +425,383 @@
           "step": 3,
           "action": "Check if custom op stream issue",
           "look_for": "First N elements correct then zeros",
-          "if_yes": "Custom op not synchronizing CUDA streams \u2014 use fix_custom_op_stream"
+          "if_yes": "Custom op must use at::cuda::getCurrentCUDAStream()"
         },
         {
           "step": 4,
           "action": "Check if multi-GPU device mismatch",
           "look_for": "'device kernel image is invalid'",
           "if_yes": "Inductor compiled for wrong GPU architecture"
+        },
+        {
+          "step": 5,
+          "action": "Test with aot_eager backend",
+          "look_for": "Does the crash reproduce?",
+          "if_yes": "Issue is in Dynamo/AOT, not Inductor"
+        },
+        {
+          "step": 6,
+          "action": "Check if NCCL hang in distributed",
+          "look_for": "Hang during all_reduce or barrier",
+          "if_yes": "Enable compiler_collectives for SPMD sync"
+        }
+      ],
+      "common_fixes": [
+        "fix_custom_op_stream",
+        "fix_aot_eager_isolation"
+      ],
+      "related_symptoms": [
+        "segfault",
+        "crash",
+        "empty_shape_segfault",
+        "partial_zeros_output",
+        "wrong_device_compilation",
+        "conj_view_aliasing_crash"
+      ],
+      "related_configs": [
+        "TORCH_USE_CUDA_DSA",
+        "triton_cudagraphs",
+        "enable_compiler_collectives"
+      ],
+      "component": "torchinductor"
+    },
+    {
+      "id": "silent_incorrectness",
+      "error_signatures": [
+        "wrong output without error",
+        "silent correctness",
+        "model produces degraded output"
+      ],
+      "first_step": "Compare eager vs compiled output element-wise with torch.allclose(atol=1e-5, rtol=1e-3)",
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Compare eager vs compiled output",
+          "look_for": "Which elements differ and by how much"
+        },
+        {
+          "step": 2,
+          "action": "Check if mutation lost on clone",
+          "look_for": "In-place ops on expanded tensors",
+          "if_yes": "Inductor clones for alignment, disconnecting mutation \u2014 restructure code"
+        },
+        {
+          "step": 3,
+          "action": "Check if fake kernel stride mismatch",
+          "look_for": "Custom op's register_fake returns different strides",
+          "if_yes": "Ensure register_fake matches real kernel's output metadata exactly"
+        },
+        {
+          "step": 4,
+          "action": "Check if export guard leak",
+          "look_for": "AOTI output degrades with different input shape than export",
+          "if_yes": "Match export dummy input shape to inference shape"
+        },
+        {
+          "step": 5,
+          "action": "Check if non-deterministic fusion",
+          "look_for": "Intermittent correctness failure, works sometimes",
+          "if_yes": "Check if roll/rotate ops being fused as pointwise \u2014 use scalar indexing"
+        },
+        {
+          "step": 6,
+          "action": "Check autotune cache",
+          "look_for": "Correctness changed after model modification",
+          "if_yes": "Clear autotune cache or set force_disable_caches = True"
+        }
+      ],
+      "common_fixes": [
+        "fix_match_export_inference_shape",
+        "fix_scalar_indexing_for_roll",
+        "fix_disable_autotune_cache",
+        "fix_emulate_precision_casts"
+      ],
+      "related_symptoms": [
+        "silent_correctness",
+        "mutation_lost_on_alignment_clone",
+        "fake_kernel_stride_mismatch",
+        "aoti_silent_degradation",
+        "export_static_guard_leak",
+        "non_deterministic_correctness"
+      ],
+      "related_configs": [
+        "emulate_precision_casts",
+        "force_disable_caches",
+        "fake_tensor_crossref"
+      ],
+      "component": "mixed"
+    },
+    {
+      "id": "memory_issue",
+      "error_signatures": [
+        "OutOfMemoryError",
+        "CUDA out of memory",
+        "RuntimeError: CUDA OOM",
+        "torch.OutOfMemoryError"
+      ],
+      "first_step": "Distinguish compile-time OOM vs runtime OOM",
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Distinguish compile-time vs runtime OOM",
+          "look_for": "Does OOM happen during compilation or during forward/backward?"
+        },
+        {
+          "step": 2,
+          "action": "Check if CUDA graph memory",
+          "look_for": "OOM only with mode='reduce-overhead'",
+          "if_yes": "Disable CUDA graphs: triton.cudagraphs = False"
+        },
+        {
+          "step": 3,
+          "action": "Try expandable segments",
+          "look_for": "Fragmented CUDA memory allocation",
+          "if_yes": "Set PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True"
+        },
+        {
+          "step": 4,
+          "action": "Check if inference without no_grad",
+          "look_for": "OOM from autograd saving tensors for backward",
+          "if_yes": "Wrap inference in torch.no_grad()"
+        },
+        {
+          "step": 5,
+          "action": "Check if Inductor compile-time OOM",
+          "look_for": "OOM during graph compilation, not execution",
+          "if_yes": "Graph may be too large \u2014 split model or use regional compilation"
+        }
+      ],
+      "common_fixes": [
+        "fix_expandable_segments",
+        "fix_use_no_grad"
+      ],
+      "related_symptoms": [
+        "memory_issue",
+        "inductor_oom"
+      ],
+      "related_configs": [
+        "triton_cudagraphs",
+        "fx_graph_cache",
+        "inline_inbuilt_nn_modules"
+      ],
+      "component": "torchinductor"
+    },
+    {
+      "id": "slow_compilation",
+      "error_signatures": [
+        "compilation takes minutes",
+        "compile time too long",
+        "compilation timeout"
+      ],
+      "first_step": "Profile compilation with TORCHINDUCTOR_PROFILE=1 or TORCH_COMPILE_CPROFILE=1",
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Profile with TORCH_COMPILE_DEBUG=1",
+          "look_for": "Which phase takes the most time: tracing, lowering, or codegen?"
+        },
+        {
+          "step": 2,
+          "action": "Check quadratic runtime asserts",
+          "look_for": "Thousands of unbacked SymInts from split/slice",
+          "if_yes": "Restructure to avoid many split operations"
+        },
+        {
+          "step": 3,
+          "action": "Check unbounded scheduling",
+          "look_for": "NetworkX graph algorithm taking too long",
+          "if_yes": "Large fusion groups \u2014 reduce model complexity or graph size"
+        },
+        {
+          "step": 4,
+          "action": "Check if FX graph cache is working",
+          "look_for": "Recompiling same graph repeatedly",
+          "if_yes": "Ensure fx_graph_cache = True"
+        },
+        {
+          "step": 5,
+          "action": "Check warning log spam",
+          "look_for": "Thousands of 'failed while executing' warnings",
+          "if_yes": "May be SymPy interpreter noise \u2014 not a real error"
+        }
+      ],
+      "common_fixes": [
+        "fix_avoid_many_splits"
+      ],
+      "related_symptoms": [
+        "slow_compile",
+        "compile_timeout",
+        "quadratic_compile_time_asserts",
+        "networkx_unbounded_scheduling",
+        "warning_log_spam"
+      ],
+      "related_configs": [
+        "torch_compile_debug",
+        "TORCH_COMPILE_DEBUG_DIR",
+        "fx_graph_cache",
+        "force_disable_caches",
+        "inline_inbuilt_nn_modules"
+      ],
+      "component": "torchinductor"
+    },
+    {
+      "id": "export_issue",
+      "error_signatures": [
+        "torch.export error",
+        "export failed",
+        "ExportError",
+        "ConstraintViolationError"
+      ],
+      "first_step": "Check if strict or non-strict mode \u2014 try strict=False first",
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Try strict=False mode",
+          "look_for": "Does the error resolve?"
+        },
+        {
+          "step": 2,
+          "action": "Check data-dependent control flow",
+          "look_for": "NMS, ROI, bounding box ops causing cascade",
+          "if_yes": "Use draft_export=True for detection models"
+        },
+        {
+          "step": 3,
+          "action": "Check static guard leakage",
+          "look_for": "Position encoding or shape-dependent computation",
+          "if_yes": "Match export dummy input shape to inference shape"
+        },
+        {
+          "step": 4,
+          "action": "Check multi-dim indexing",
+          "look_for": "Error with y[0, b] style indexing",
+          "if_yes": "Replace with y[0][b] (chain single-dim indexing)"
+        },
+        {
+          "step": 5,
+          "action": "Check .item() usage",
+          "look_for": "SymFloat to Double conversion error",
+          "if_yes": "Cast before .item(): x.to(dtype=torch.int32).item()"
+        }
+      ],
+      "common_fixes": [
+        "fix_draft_export",
+        "fix_match_export_inference_shape",
+        "fix_rewrite_indexing",
+        "fix_use_item_cast"
+      ],
+      "related_symptoms": [
+        "export_dde_cascade",
+        "export_static_guard_leak",
+        "aoti_silent_degradation",
+        "error_raised"
+      ],
+      "related_configs": [
+        "capture_scalar_outputs",
+        "capture_dynamic_output_shape_ops"
+      ],
+      "component": "torch_export"
+    },
+    {
+      "id": "custom_op_issue",
+      "error_signatures": [
+        "custom op",
+        "torch.library",
+        "register_fake",
+        "FakeTensor.*custom",
+        "opcheck"
+      ],
+      "first_step": "Run torch.library.opcheck to validate custom op registration",
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Run torch.library.opcheck(op, args)",
+          "look_for": "Which checks fail (autograd, fake tensor, etc.)"
+        },
+        {
+          "step": 2,
+          "action": "Check register_fake implementation",
+          "look_for": "Output metadata (shape, stride, dtype) must match real kernel exactly",
+          "if_yes": "Fix register_fake to return tensors with correct metadata"
+        },
+        {
+          "step": 3,
+          "action": "Check CUDA stream handling",
+          "look_for": "Custom CUDA op with mode='reduce-overhead'",
+          "if_yes": "Use at::cuda::getCurrentCUDAStream() in kernel launch"
+        },
+        {
+          "step": 4,
+          "action": "Check autograd function",
+          "look_for": "Custom autograd.Function not captured",
+          "if_yes": "Set capture_autograd_function = True"
         }
       ],
       "common_fixes": [
         "fix_custom_op_stream"
       ],
       "related_symptoms": [
-        "segfault",
-        "empty_shape_segfault",
+        "fake_kernel_stride_mismatch",
         "partial_zeros_output",
-        "wrong_device_compilation"
+        "functionctx_missing_saved_tensors"
       ],
-      "component": "torchinductor"
+      "related_configs": [
+        "capture_autograd_function",
+        "fake_tensor_crossref"
+      ],
+      "component": "mixed"
     },
     {
-      "id": "tensor_subclass_issue",
+      "id": "distributed_compile",
       "error_signatures": [
-        "tensor subclass",
-        "TorchDispatchMode",
-        "FakeTensor.*subclass",
-        "__torch_dispatch__"
+        "DDP.*compile",
+        "FSDP.*compile",
+        "DTensor",
+        "DDPOptimizer",
+        "Cannot call sizes() on tensor with symbolic"
       ],
-      "first_step": "Check if the subclass implements all required metadata methods correctly",
+      "first_step": "Check if DDPOptimizer partitioning is the issue",
       "diagnostic_path": [
         {
           "step": 1,
-          "action": "Verify __torch_dispatch__ implementation",
-          "look_for": "Missing ops or incorrect metadata propagation"
+          "action": "Disable DDPOptimizer",
+          "look_for": "Does torch._dynamo.config.optimize_ddp = False fix it?",
+          "if_yes": "DDPOptimizer partitioning issue"
         },
         {
           "step": 2,
-          "action": "Check if TorchDispatchMode is silently ignored",
-          "look_for": "Mode not being applied during compiled execution",
-          "if_yes": "Known limitation \u2014 compile may not trace through dispatch modes"
+          "action": "Check dynamic shapes + DDP",
+          "look_for": "symbolic sizes error on last batch",
+          "if_yes": "Use dynamic=False or pad last batch"
         },
         {
           "step": 3,
-          "action": "Check guard generation",
-          "look_for": "Excessive recompilation with subclass tensors",
-          "if_yes": "Guard system may not handle subclass metadata correctly"
-        }
-      ],
-      "common_fixes": [],
-      "related_symptoms": [
-        "subclass_tensor_guard_malformed",
-        "dispatch_mode_ignored"
-      ],
-      "component": "torchdynamo"
-    },
-    {
-      "id": "nested_tensor_issue",
-      "error_signatures": [
-        "NestedTensor",
-        "nested tensor",
-        "BetterTransformer"
-      ],
-      "first_step": "Check which nested tensor layout is being used \u2014 NST (old) vs NJT (new)",
-      "diagnostic_path": [
-        {
-          "step": 1,
-          "action": "Identify nested tensor layout",
-          "look_for": "NST (Nested Strided Tensor) vs NJT (Nested Jagged Tensor)"
+          "action": "Check autocast + DDP",
+          "look_for": "Accuracy loss with autocast + compiled DDP",
+          "if_yes": "DDPOptimizer splits through autocast \u2014 disable it"
         },
         {
-          "step": 2,
-          "action": "If NST (BetterTransformer)",
-          "look_for": "torch.compile errors with NST ops",
-          "if_yes": "Disable BetterTransformer fast path, use NJT-based SDPA instead"
+          "step": 4,
+          "action": "Check NCCL hang",
+          "look_for": "Hang during distributed collectives",
+          "if_yes": "Set enable_compiler_collectives = True for SPMD sync"
         }
       ],
       "common_fixes": [
-        "fix_disable_bettertransformer_with_compile"
+        "fix_disable_ddp_optimizer",
+        "fix_disable_dynamic_shapes"
       ],
       "related_symptoms": [
-        "nested_tensor_compile_error"
+        "ddp_dynamic_shape_error",
+        "ddp_autocast_accuracy_loss",
+        "hang"
       ],
-      "component": "torchdynamo"
+      "related_configs": [
+        "optimize_ddp",
+        "enable_compiler_collectives",
+        "dynamic_shapes_flag"
+      ],
+      "component": "ddpoptimizer"
     }
   ]
 }

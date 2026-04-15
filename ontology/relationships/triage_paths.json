@@ -1,153 +1,1234 @@
 [
   {
-    "symptom": "activation_checkpoint_compile_error",
+    "symptom": "aoti_silent_degradation",
+    "symptom_name": "AOTI Silent Output Degradation",
+    "description": "AOTInductor silently produces degraded/incorrect output where torch.compile would raise an error \u2014 masks export guard violations",
     "components": [
-      "torch._dynamo"
+      "torch_export"
     ],
-    "diagnostic_tools": [],
+    "diagnostic_tools": [
+      "dynamic_shapes_flag"
+    ],
     "workarounds": [
-      "fix_disable_preserve_rng_state"
+      "fix_match_export_inference_shape"
     ],
     "configs": [],
     "evidence_issues": [
-      97077
+      147475,
+      155862
     ],
-    "evidence_count": 1
+    "evidence_count": 2,
+    "freshness": "living",
+    "parent_symptom": "silent_correctness"
   },
   {
-    "symptom": "ddp_autocast_accuracy_loss",
+    "symptom": "export_static_guard_leak",
+    "symptom_name": "Export Static Guard Leakage",
+    "description": "torch.export bakes static assumptions from dummy input shape into dynamic guards, causing silent accuracy degradation when inference shape differs from export shape",
     "components": [
-      "ddpoptimizer"
+      "torch_export"
+    ],
+    "diagnostic_tools": [
+      "dynamic_shapes_flag"
+    ],
+    "workarounds": [
+      "fix_match_export_inference_shape"
+    ],
+    "configs": [],
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2,
+    "freshness": "living",
+    "parent_symptom": "silent_correctness"
+  },
+  {
+    "symptom": "non_deterministic_correctness",
+    "symptom_name": "Non-Deterministic Correctness Failure",
+    "description": "Compiled model sometimes produces correct output, sometimes wrong \u2014 intermittent correctness failure from incorrect kernel fusion (e.g., roll fused as pointwise)",
+    "components": [
+      "torchinductor"
     ],
     "diagnostic_tools": [],
     "workarounds": [
-      "fix_disable_ddp_optimizer"
+      "fix_scalar_indexing_for_roll"
     ],
-    "configs": [
-      "optimize_ddp"
-    ],
+    "configs": [],
     "evidence_issues": [
-      101624
+      159855
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "accuracy_mismatch"
   },
   {
-    "symptom": "ddp_dynamic_shape_error",
+    "symptom": "fp16_perf_regression_small_batch",
+    "symptom_name": "FP16 Small-Batch Performance Regression",
+    "description": "FP16 autocast dramatically slower than FP32 at small batch sizes \u2014 cuBLAS selects poor bmm kernel for non-contiguous fp16 tensors (10x slowdown at bs=1)",
     "components": [
-      "ddpoptimizer"
+      "torchinductor"
+    ],
+    "diagnostic_tools": [
+      "max_autotune"
+    ],
+    "workarounds": [
+      "fix_batch_first_false"
+    ],
+    "configs": [],
+    "evidence_issues": [
+      159346
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "perf_regression"
+  },
+  {
+    "symptom": "export_dde_cascade",
+    "symptom_name": "Export DDE Cascade",
+    "description": "Data-dependent dynamic shapes from user model code (NMS, ROI operations, bounding box filtering) cause cascade of torch.export failures in detection/object-detection models",
+    "components": [
+      "torch_export"
     ],
     "diagnostic_tools": [],
     "workarounds": [
-      "fix_disable_ddp_optimizer"
+      "fix_draft_export"
     ],
-    "configs": [
-      "optimize_ddp"
-    ],
+    "configs": [],
     "evidence_issues": [
-      111636
+      146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "model_instability_false_alarm",
+    "symptom_name": "Model Instability False Alarm",
+    "description": "Numerical instability in randomly-initialized models masquerades as compiler correctness bug \u2014 random weights near decision boundaries cause 100% element mismatch",
+    "components": [
+      "aot_autograd"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_pretrained_weights_verification"
+    ],
+    "configs": [],
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "accuracy_mismatch"
+  },
+  {
+    "symptom": "warning_log_spam",
+    "symptom_name": "Warning Log Spam",
+    "description": "Thousands of warning messages per compilation (e.g., 'failed while executing int_truediv') from sympy interpreter \u2014 cosmetic but creates noise",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      138069
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "symptom_extended_debug_output"
+  },
+  {
+    "symptom": "partial_zeros_output",
+    "symptom_name": "Partial Zeros Output",
+    "description": "Compiled output has first N elements correct then zeros \u2014 indicates CUDA stream synchronization issue in custom ops with mode='reduce-overhead'",
+    "components": [
+      "user_error"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_custom_op_stream"
+    ],
+    "configs": [],
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "wrong_result"
+  },
+  {
+    "symptom": "fake_kernel_stride_mismatch",
+    "symptom_name": "Fake Kernel Stride Mismatch",
+    "description": "Silent incorrectness when custom op's register_fake returns tensors with different strides/metadata than the real implementation \u2014 Inductor generates code based on fake metadata",
+    "components": [
+      "user_error"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      146536
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "silent_correctness"
+  },
+  {
+    "symptom": "complex_scalar_backward_error",
+    "symptom_name": "Complex Scalar Backward Error",
+    "description": "RuntimeError on aten::_conj when compiling models that multiply tensors by complex scalars (1j) with autograd \u2014 scalar-tensor roundtrip breaks in backward trace",
+    "components": [
+      "aot_autograd"
+    ],
+    "diagnostic_tools": [
+      "aot_fx_graphs",
+      "torch_logs"
+    ],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      105290
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "mutation_lost_on_alignment_clone",
+    "symptom_name": "Mutation Lost on Alignment Clone",
+    "description": "Silent incorrectness where in-place mutations are lost because Inductor clones input for alignment, disconnecting mutation from original tensor (expand+mutate patterns)",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [
+      "fake_tensor_crossref"
+    ],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      152425
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "silent_correctness"
+  },
+  {
+    "symptom": "quadratic_compile_time_asserts",
+    "symptom_name": "Quadratic Compile Time from Runtime Asserts",
+    "description": "Compile time grows quadratically with number of runtime asserts when model produces many unbacked SymInts from split/slice operations \u2014 each assert ~15 seconds",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_avoid_many_splits"
+    ],
+    "configs": [],
+    "evidence_issues": [
+      144792
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "slow_compile"
+  },
+  {
+    "symptom": "weakref_blocks_device_move",
+    "symptom_name": "Weakref Blocks Device Movement",
+    "description": "RuntimeError in swap_tensors when moving compiled module to another device due to outstanding weakrefs from compilation (MetaConverter, guards) \u2014 critical for torchao+offloading workflows",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      141548
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "error_raised"
   },
   {
     "symptom": "duck_sizing_recompilation",
+    "symptom_name": "Duck Sizing Recompilation",
+    "description": "Duck sizing causes recompilations when dimensions that happen to be equal at first compile (e.g., height==width) differ at subsequent calls \u2014 guard: size[3]==size[2]",
     "components": [
       "torch._dynamo"
     ],
     "diagnostic_tools": [
-      "TORCH_LOGS_recompiles"
+      "dynamic_shapes_flag",
+      "use_duck_shape"
     ],
-    "workarounds": [
-      "fix_disable_duck_shape",
-      "fix_rewrite_indexing_narrow"
-    ],
+    "workarounds": [],
     "configs": [
       "use_duck_shape"
     ],
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "recompile_warning"
+  },
+  {
+    "symptom": "nested_tensor_compile_error",
+    "symptom_name": "Nested Tensor Compile Error",
+    "description": "BetterTransformer (NST layout) incompatible with torch.compile \u2014 old Nested Strided Tensor not supported, must use Nested Jagged Tensor (NJT) layout",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      138274
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "conj_view_aliasing_crash",
+    "symptom_name": "Conj View Aliasing Crash",
+    "description": "Crash when tensor views created by _conj() are aliased during compilation \u2014 view metadata not preserved correctly through AOT tracing",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      148950
+    ],
+    "evidence_count": 1,
+    "freshness": "living",
+    "parent_symptom": "crash"
+  },
+  {
+    "symptom": "sympy_nan_comparison",
+    "symptom_name": "SymPy NaN Comparison Error",
+    "description": "Invalid NaN comparison error from sympy when ValueRanges arithmetic produces NaN through mixed integer/float range operations in floordiv",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      133735
+    ],
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "error_raised"
   },
   {
     "symptom": "dynamic_shape_specialization_on_slice",
+    "symptom_name": "Dynamic Shape Specialization on Slice",
+    "description": "Symbolic shapes specializes when tensor slicing reaches exact end of dimension \u2014 slice-to-end vs before-end produces inconsistent guard behavior, causing unexpected shape specialization",
     "components": [
       "torch._dynamo"
     ],
     "diagnostic_tools": [
-      "TORCH_LOGS_dynamic"
+      "dynamic_shapes_flag",
+      "torch_logs"
     ],
-    "workarounds": [
-      "fix_use_maybe_mark_dynamic"
+    "workarounds": [],
+    "configs": [
+      "dynamic_shapes_flag"
     ],
-    "configs": [],
     "evidence_issues": [
       106110
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "recompile_warning"
   },
   {
     "symptom": "index_expression_perf_regression",
+    "symptom_name": "Index Expression Performance Regression",
+    "description": "Inductor generates suboptimal but equivalent index expressions that prevent Triton compiler from optimizing address computation \u2014 can cause 50% perf regression from register pressure and memory stalls",
     "components": [
       "torchinductor"
     ],
-    "diagnostic_tools": [
-      "ncu_warp_stall_sampling"
-    ],
+    "diagnostic_tools": [],
     "workarounds": [],
     "configs": [],
     "evidence_issues": [
       127581
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "perf_regression"
   },
   {
-    "symptom": "nested_tensor_compile_error",
+    "symptom": "ddp_dynamic_shape_error",
+    "symptom_name": "DDP Dynamic Shape Error",
+    "description": "DDPOptimizer not compatible with dynamic shapes \u2014 Cannot call sizes() on tensor with symbolic sizes/strides when last batch has different size",
     "components": [
-      "torch._dynamo"
+      "ddpoptimizer"
     ],
     "diagnostic_tools": [],
     "workarounds": [
-      "fix_disable_bettertransformer_with_compile"
+      "fix_disable_ddp_optimizer"
     ],
-    "configs": [],
+    "configs": [
+      "dynamic_shapes_flag",
+      "optimize_ddp"
+    ],
     "evidence_issues": [
-      138274
+      111636
     ],
-    "evidence_count": 1
-  },
-  {
-    "symptom": "stride_mismatch_view_error",
-    "components": [
-      "aot_autograd"
-    ],
-    "diagnostic_tools": [
-      "functionalization_stride_debug_patch"
-    ],
-    "workarounds": [],
-    "configs": [],
-    "evidence_issues": [
-      93428
-    ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "error_raised"
   },
   {
     "symptom": "uint8_accuracy_false_positive",
+    "symptom_name": "Uint8 Accuracy False Positive",
+    "description": "Accuracy check reports false positive on uint8 tensors \u2014 batch norm decomposition introduces small numerical diffs that cross relu boundary, changing 0/non-zero in integer output",
     "components": [
       "torchinductor"
     ],
     "diagnostic_tools": [
-      "TORCHDYNAMO_REPRO_AFTER",
-      "TORCHDYNAMO_REPRO_LEVEL"
+      "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+      "repro_after",
+      "repro_level"
     ],
-    "workarounds": [
-      "fix_ignore_non_fp_accuracy"
-    ],
+    "workarounds": [],
     "configs": [
       "TORCHDYNAMO_REPRO_IGNORE_NON_FP"
     ],
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "accuracy_mismatch"
+  },
+  {
+    "symptom": "index_propagation_key_error",
+    "symptom_name": "Index Propagation Key Error",
+    "description": "Indirect symbol ends up in TypedExpr causing KeyError in var_ranges lookup \u2014 affects models with complex indexing (SwinB encoder), also causes quadratic compile time from warning spam",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [
+      "dynamic_shapes_flag"
+    ],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      127677
+    ],
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "dispatch_mode_ignored",
+    "symptom_name": "TorchDispatchMode Silently Ignored",
+    "description": "torch.compile silently ignores TorchDispatchMode \u2014 custom dispatch modes are not traced, causing incorrect behavior without error",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      105929
+    ],
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "dynamo_unsupported"
+  },
+  {
+    "symptom": "empty_strided_incorrect_strides",
+    "symptom_name": "Empty Strided Incorrect Strides",
+    "description": "torch.empty_strided produces tensors with incorrect strides after compilation \u2014 stride metadata not preserved through tracing",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      130394
+    ],
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "forward_hook_partial_capture",
+    "symptom_name": "Forward Hook Partial Capture",
+    "description": "torch.compile partially captures forward hooks \u2014 some hooks fire during tracing but not execution, or hooks cause graph breaks",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      96722
+    ],
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "dynamo_unsupported"
+  },
+  {
+    "symptom": "functionctx_missing_saved_tensors",
+    "symptom_name": "FunctionCtx Missing Saved Tensors",
+    "description": "Custom autograd function's saved_tensors not available in backward when used with torch.compile \u2014 AOT tracing doesn't preserve FunctionCtx state",
+    "components": [
+      "aot_autograd"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      135118
+    ],
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "networkx_unbounded_scheduling",
+    "symptom_name": "NetworkX Unbounded Scheduling",
+    "description": "Inductor scheduling hangs or takes extremely long due to networkx graph algorithm on large fusion groups \u2014 compilation becomes O(n^2) or worse",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      103055
+    ],
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "slow_compile"
+  },
+  {
+    "symptom": "subclass_tensor_guard_malformed",
+    "symptom_name": "Subclass Tensor Guard Malformed",
+    "description": "Guards generated for tensor subclasses are malformed or over-restrictive \u2014 causes excessive recompilation or incorrect behavior with custom tensor types",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      118896
+    ],
+    "evidence_count": 1,
+    "freshness": "likely_living",
+    "parent_symptom": "dynamo_unsupported"
+  },
+  {
+    "symptom": "delayed_nan",
+    "symptom_name": "Delayed NaN / Accuracy Collapse",
+    "description": "Accuracy suddenly degrades after N iterations (not gradually) \u2014 jumps from 1e-4 error to ~300+ then NaN. Distinct from gradual numerical drift.",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [
+      "assume_static_by_default",
+      "dynamic_shapes_flag"
+    ],
+    "workarounds": [
+      "fix_assume_static_by_default"
+    ],
+    "configs": [
+      "assume_static_by_default",
+      "dynamic_shapes_flag"
+    ],
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "accuracy_mismatch"
+  },
+  {
+    "symptom": "dynamic_scalar_regression",
+    "symptom_name": "Dynamic Scalar Regression",
+    "description": "Operations that worked with static shapes fail with dynamic=True when scalar arguments (alpha, etc.) become dynamic \u2014 regression from improved dynamism in newer PT2 versions",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_mark_dynamic_instead"
+    ],
+    "configs": [
+      "dynamic_shapes_flag"
+    ],
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "stride_mismatch_view_error",
+    "symptom_name": "Stride Mismatch View Error",
+    "description": "Cannot view a tensor with given shape and strides \u2014 functionalization or AOT tracing produces tensors with incorrect strides, causing view ops to fail",
+    "components": [
+      "aot_autograd"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      93428
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "wrong_device_compilation",
+    "symptom_name": "Wrong Device Compilation",
+    "description": "Inductor compiles kernels targeting cuda:0 architecture regardless of model's actual device \u2014 fails on heterogeneous multi-GPU systems with different GPU architectures",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      97693
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "perf_regression"
+  },
+  {
+    "symptom": "activation_checkpoint_compile_error",
+    "symptom_name": "Activation Checkpoint Compile Error",
+    "description": "torch.compile fails with activation checkpointing (gradient checkpointing) \u2014 torch.get_rng_state errors during tracing because RNG state operations not supported",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      97077
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "scalar_op_faketensor_error",
+    "symptom_name": "Scalar Op FakeTensor Error",
+    "description": "FakeTensor error when using scalar binary ops (bitwise_xor, bitwise_or, etc.) with Python constants \u2014 CompositeImplicitAutograd ops use wrapped_scalar_tensor without dispatch",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      93224
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "ddp_autocast_accuracy_loss",
+    "symptom_name": "DDP Autocast Accuracy Loss",
+    "description": "DDPOptimizer partitions graph through autocast regions without preserving context manager state \u2014 causes accuracy issues when autocast enter/exit nodes are split across subgraphs",
+    "components": [
+      "ddpoptimizer"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      101624
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "accuracy_mismatch"
+  },
+  {
+    "symptom": "foreach_cross_device_error",
+    "symptom_name": "Foreach Cross-Device Error",
+    "description": "FakeTensor tracing fails when foreach ops (foreach_add, foreach_mul, etc.) operate on tensors across devices (CUDA+CPU) \u2014 meta kernels don't support cross-device",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      102023
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "as_strided_scatter_error",
+    "symptom_name": "As-Strided Scatter Error",
+    "description": "Functionalization introduces as_strided_scatter for inplace view ops (relu_) but as_strided_scatter lacks backward support \u2014 affects vmap+aot_function and tensor subclasses",
+    "components": [
+      "aot_autograd"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      86427
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "embedding_bag_inplace_leaf_error",
+    "symptom_name": "EmbeddingBag Inplace Leaf Error",
+    "description": "Compilation fails with 'leaf variable that requires grad is being used in an in-place operation' for EmbeddingBag operations",
+    "components": [
+      "aot_autograd"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      95167
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "empty_shape_segfault",
+    "symptom_name": "Empty Shape Segfault",
+    "description": "Segfault or CUDA error when compiled code encounters empty (zero-dimension) tensors \u2014 empty shape handling missing in codegen",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      98835
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "segfault"
+  },
+  {
+    "symptom": "nopython_cache_collision",
+    "symptom_name": "Nopython Cache Collision",
+    "description": "fullgraph=True (nopython) mode can hit cache collisions when multiple compiled functions share similar structure \u2014 incorrect cached graph returned",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      114059
+    ],
+    "evidence_count": 1,
+    "freshness": "historical",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "dynamo_unsupported",
+    "symptom_name": "torch._dynamo.exc.Unsupported",
+    "description": "Dynamo explicitly doesn't support this construct",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "code_rewrite",
+      "op_replacement",
+      "skip_compile"
+    ],
+    "configs": [
+      "allow_rnn",
+      "capture_dynamic_output_shape_ops",
+      "trace_numpy"
+    ],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "dispatch_mode_ignored",
+      "forward_hook_partial_capture",
+      "subclass_tensor_guard_malformed"
+    ]
+  },
+  {
+    "symptom": "torch_runtime_error",
+    "symptom_name": "TorchRuntimeError",
+    "description": "Runtime error from compiled code",
+    "components": [],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base"
+  },
+  {
+    "symptom": "backend_compiler_failed",
+    "symptom_name": "BackendCompilerFailed",
+    "description": "Backend (inductor/triton) failed to compile the graph",
+    "components": [
+      "aot_autograd",
+      "ddpoptimizer",
+      "torch._dynamo",
+      "torch_export",
+      "torchdynamo",
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "recompile_warning",
+    "symptom_name": "Recompilation Warning",
+    "description": "torch._dynamo hit recompilation limit",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "config_change"
+    ],
+    "configs": [
+      "accumulated_recompile_limit",
+      "guard_nn_modules",
+      "recompile_limit",
+      "specialize_float",
+      "specialize_int",
+      "torch_compile_dynamic_sources"
+    ],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "duck_sizing_recompilation",
+      "dynamic_shape_specialization_on_slice",
+      "symptom_multiple_cache_entries"
+    ]
+  },
+  {
+    "symptom": "accuracy_mismatch",
+    "symptom_name": "Accuracy Mismatch",
+    "description": "Numerical differences between compiled and eager",
+    "components": [
+      "aot_autograd",
+      "ddpoptimizer",
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [
+      "fallback_random"
+    ],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "ddp_autocast_accuracy_loss",
+      "delayed_nan",
+      "model_instability_false_alarm",
+      "non_deterministic_correctness",
+      "numerical_drift",
+      "uint8_accuracy_false_positive"
+    ]
+  },
+  {
+    "symptom": "numerical_drift",
+    "symptom_name": "Numerical Drift",
+    "description": "Subtle precision differences \u2014 may or may not be acceptable depending on tolerance",
+    "components": [
+      "aot_autograd",
+      "ddpoptimizer",
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "config_change",
+      "upstream_fix"
+    ],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "parent_symptom": "accuracy_mismatch"
+  },
+  {
+    "symptom": "silent_slowdown",
+    "symptom_name": "Silent Performance Degradation",
+    "description": "No error but compiled code is slower than eager",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "parent_symptom": "perf_regression"
+  },
+  {
+    "symptom": "segfault",
+    "symptom_name": "Segfault / CUDA Error",
+    "description": "Low-level crash during compiled execution",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "empty_shape_segfault"
+    ]
+  },
+  {
+    "symptom": "compile_timeout",
+    "symptom_name": "Compile Timeout",
+    "description": "Compilation exceeds job timeout threshold (e.g., 10min or 30min training job timeout)",
+    "components": [
+      "torchdynamo",
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "parent_symptom": "slow_compile"
+  },
+  {
+    "symptom": "inductor_oom",
+    "symptom_name": "Inductor OOM During Compilation",
+    "description": "Inductor runs out of memory while compiling the graph (distinct from runtime OOM)",
+    "components": [],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base"
+  },
+  {
+    "symptom": "symptom_multiple_cache_entries",
+    "symptom_name": "multiple_cache_entries",
+    "description": "Frame cache shows many entries (approaching recompile_limit) indicating guard specialization",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "config_change"
+    ],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "parent_symptom": "recompile_warning"
+  },
+  {
+    "symptom": "symptom_extended_debug_output",
+    "symptom_name": "extended_debug_output",
+    "description": "TORCH_LOGS output shows graph breaks, guard failures, or shape constraint violations",
+    "components": [
+      "torchdynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "warning_log_spam"
+    ]
+  },
+  {
+    "symptom": "symptom_perf_regression_dynamic",
+    "symptom_name": "perf_regression_dynamic",
+    "description": "Dynamic shapes run 9x slower than static due to missing divisibility hints (known gap)",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "parent_symptom": "perf_regression"
+  },
+  {
+    "symptom": "crash",
+    "symptom_name": "Crash / Segfault",
+    "description": "Process crashes (SIGSEGV, SIGIOT, SIGABRT) during compilation or execution",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_aot_eager_isolation",
+      "upstream_fix",
+      "version_upgrade"
+    ],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "conj_view_aliasing_crash"
+    ]
+  },
+  {
+    "symptom": "wrong_result",
+    "symptom_name": "Wrong Result",
+    "description": "Compiled code produces different output from eager mode",
+    "components": [
+      "user_error"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_aot_eager_isolation",
+      "fix_assume_static_by_default",
+      "fix_clone_gradient_hook",
+      "fix_custom_op_stream",
+      "fix_disable_autotune_cache",
+      "fix_disable_tf32",
+      "fix_emulate_precision_casts",
+      "fix_explicit_output_shape",
+      "fix_pretrained_weights_verification",
+      "fix_use_dynamic_shapes",
+      "upstream_fix"
+    ],
+    "configs": [
+      "assume_static_by_default",
+      "dynamic_shapes_flag",
+      "emulate_precision_casts"
+    ],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "partial_zeros_output"
+    ]
+  },
+  {
+    "symptom": "slow_compile",
+    "symptom_name": "Slow Compilation",
+    "description": "Compilation takes unreasonably long (minutes to hours)",
+    "components": [
+      "torchdynamo",
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "config_change",
+      "fix_avoid_many_splits"
+    ],
+    "configs": [
+      "force_disable_caches",
+      "fx_graph_cache",
+      "inline_inbuilt_nn_modules"
+    ],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "compile_timeout",
+      "networkx_unbounded_scheduling",
+      "quadratic_compile_time_asserts"
+    ]
+  },
+  {
+    "symptom": "hang",
+    "symptom_name": "Hang / Deadlock",
+    "description": "Process hangs during compilation or execution",
+    "components": [
+      "torchdynamo",
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [
+      "enable_compiler_collectives"
+    ],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base"
+  },
+  {
+    "symptom": "perf_regression",
+    "symptom_name": "Performance Regression",
+    "description": "Compiled code runs slower than expected or slower than a previous version",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "config_change"
+    ],
+    "configs": [
+      "max_autotune_gemm"
+    ],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "fp16_perf_regression_small_batch",
+      "index_expression_perf_regression",
+      "silent_slowdown",
+      "symptom_perf_regression_dynamic",
+      "wrong_device_compilation"
+    ]
+  },
+  {
+    "symptom": "memory_issue",
+    "symptom_name": "Memory Issue",
+    "description": "Excessive memory usage during compilation or runtime",
+    "components": [],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_expandable_segments",
+      "fix_use_no_grad"
+    ],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base"
+  },
+  {
+    "symptom": "flaky",
+    "symptom_name": "Flaky / Intermittent",
+    "description": "Issue reproduces inconsistently",
+    "components": [
+      "aot_autograd",
+      "ddpoptimizer",
+      "torch._dynamo",
+      "torch_export",
+      "torchdynamo",
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "parent_symptom": "error_raised"
+  },
+  {
+    "symptom": "error_raised",
+    "symptom_name": "Error Raised",
+    "description": "An exception or error message is raised during compilation or execution",
+    "components": [
+      "aot_autograd",
+      "ddpoptimizer",
+      "torch._dynamo",
+      "torch_export",
+      "torchdynamo",
+      "torchinductor"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "code_rewrite",
+      "fix_assume_static_by_default",
+      "fix_capture_scalar_outputs",
+      "fix_disable_ddp_optimizer",
+      "fix_draft_export",
+      "fix_mark_dynamic_instead",
+      "fix_realize_opcount_threshold",
+      "fix_rewrite_indexing",
+      "fix_suppress_errors",
+      "fix_use_dynamic_shapes",
+      "fix_use_item_cast",
+      "fix_use_no_grad"
+    ],
+    "configs": [
+      "assume_static_by_default",
+      "capture_scalar_outputs",
+      "dynamic_shapes_flag",
+      "optimize_ddp",
+      "suppress_errors"
+    ],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "activation_checkpoint_compile_error",
+      "as_strided_scatter_error",
+      "backend_compiler_failed",
+      "complex_scalar_backward_error",
+      "ddp_dynamic_shape_error",
+      "dynamic_scalar_regression",
+      "embedding_bag_inplace_leaf_error",
+      "empty_strided_incorrect_strides",
+      "export_dde_cascade",
+      "flaky",
+      "foreach_cross_device_error",
+      "functionctx_missing_saved_tensors",
+      "index_propagation_key_error",
+      "nested_tensor_compile_error",
+      "nopython_cache_collision",
+      "scalar_op_faketensor_error",
+      "stride_mismatch_view_error",
+      "sympy_nan_comparison",
+      "weakref_blocks_device_move"
+    ]
+  },
+  {
+    "symptom": "silent_correctness",
+    "symptom_name": "Silent Correctness Issue",
+    "description": "Compiled code silently produces wrong results without any error",
+    "components": [
+      "torch_export",
+      "torchinductor",
+      "user_error"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_aot_eager_isolation",
+      "fix_clone_gradient_hook",
+      "fix_disable_tf32",
+      "fix_emulate_precision_casts"
+    ],
+    "configs": [
+      "emulate_precision_casts"
+    ],
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "freshness": "base",
+    "child_symptoms": [
+      "aoti_silent_degradation",
+      "export_static_guard_leak",
+      "fake_kernel_stride_mismatch",
+      "mutation_lost_on_alignment_clone"
+    ]
   }
 ]

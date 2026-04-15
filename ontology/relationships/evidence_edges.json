@@ -1,5 +1,80 @@
 [
   {
+    "from": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "TORCHINDUCTOR_ABI_COMPATIBLE",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      123745
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "TORCH_COMPILE_DEBUG_DIR",
+    "type": "configures_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      100086
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "TORCH_USE_CUDA_DSA",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      95595
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "accuracy_mismatch",
+    "type": "caused_by_component",
+    "to": "aot_autograd",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "accuracy_mismatch",
+    "type": "caused_by_component",
+    "to": "ddpoptimizer",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "accuracy_mismatch",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 3,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
     "from": "activation_checkpoint_compile_error",
     "type": "caused_by_component",
     "to": "torch._dynamo",
@@ -10,12 +85,64 @@
   },
   {
     "from": "activation_checkpoint_compile_error",
-    "type": "fixed_by",
-    "to": "fix_disable_preserve_rng_state",
+    "type": "fixed_by_pr",
+    "to": "pytorch/pytorch#97403",
     "evidence_issues": [
       97077
     ],
     "evidence_count": 1
+  },
+  {
+    "from": "activation_checkpoint_compile_error",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "aot_fx_graphs",
+    "type": "configures_component",
+    "to": "aot_autograd",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "aoti_silent_degradation",
+    "type": "caused_by_component",
+    "to": "torch_export",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "aoti_silent_degradation",
+    "type": "diagnosed_by",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2,
+    "detail": "Exported same model with dynamic W,H using Dim"
+  },
+  {
+    "from": "aoti_silent_degradation",
+    "type": "fixed_by",
+    "to": "fix_match_export_inference_shape",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "aoti_silent_degradation",
+    "type": "is_subtype_of",
+    "to": "silent_correctness",
+    "evidence_issues": [],
+    "evidence_count": 0
   },
   {
     "from": "as_strided_scatter_error",
@@ -27,6 +154,72 @@
     "evidence_count": 1
   },
   {
+    "from": "as_strided_scatter_error",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "backend_compiler_failed",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "capture_autograd_function",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      109910
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "compile_timeout",
+    "type": "is_subtype_of",
+    "to": "slow_compile",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "complex_scalar_backward_error",
+    "type": "caused_by_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      105290
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "complex_scalar_backward_error",
+    "type": "diagnosed_by",
+    "to": "aot_fx_graphs",
+    "evidence_issues": [
+      105290
+    ],
+    "evidence_count": 1,
+    "detail": "Set TORCH_LOGS=aot_graphs"
+  },
+  {
+    "from": "complex_scalar_backward_error",
+    "type": "diagnosed_by",
+    "to": "torch_logs",
+    "evidence_issues": [
+      105290
+    ],
+    "evidence_count": 1,
+    "detail": "Set TORCH_LOGS=aot_graphs"
+  },
+  {
+    "from": "complex_scalar_backward_error",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
     "from": "conj_view_aliasing_crash",
     "type": "caused_by_component",
     "to": "torchinductor",
@@ -36,6 +229,57 @@
     "evidence_count": 1
   },
   {
+    "from": "conj_view_aliasing_crash",
+    "type": "is_subtype_of",
+    "to": "crash",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "crash",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "crash",
+    "type": "fixed_by",
+    "to": "fix_aot_eager_isolation",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "crash",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Internal compiler error \u2014 needs PyTorch PR",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "upstream_fix"
+  },
+  {
+    "from": "crash",
+    "type": "fixed_by",
+    "to": "version_upgrade",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Bug already fixed in newer PyTorch version",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "upstream_fix"
+  },
+  {
     "from": "ddp_autocast_accuracy_loss",
     "type": "caused_by_component",
     "to": "ddpoptimizer",
@@ -46,39 +290,107 @@
   },
   {
     "from": "ddp_autocast_accuracy_loss",
-    "type": "fixed_by",
-    "to": "fix_disable_ddp_optimizer",
+    "type": "is_subtype_of",
+    "to": "accuracy_mismatch",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "ddp_dynamic_shape_error",
+    "type": "caused_by_component",
+    "to": "ddpoptimizer",
     "evidence_issues": [
-      101624
+      111636
     ],
     "evidence_count": 1
   },
   {
-    "from": "ddp_autocast_accuracy_loss",
+    "from": "ddp_dynamic_shape_error",
+    "type": "fixed_by",
+    "to": "fix_disable_ddp_optimizer",
+    "evidence_issues": [
+      111636
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "ddp_dynamic_shape_error",
+    "type": "involves_config",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      111636
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "ddp_dynamic_shape_error",
     "type": "involves_config",
     "to": "optimize_ddp",
     "evidence_issues": [
-      101624
+      111636
     ],
     "evidence_count": 1
   },
   {
     "from": "ddp_dynamic_shape_error",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "delayed_nan",
     "type": "caused_by_component",
-    "to": "ddpoptimizer",
+    "to": "torchinductor",
     "evidence_issues": [
-      111636
+      96971
     ],
     "evidence_count": 1
   },
   {
-    "from": "ddp_dynamic_shape_error",
-    "type": "fixed_by",
-    "to": "fix_disable_ddp_optimizer",
+    "from": "delayed_nan",
+    "type": "diagnosed_by",
+    "to": "assume_static_by_default",
     "evidence_issues": [
-      111636
+      96971
+    ],
+    "evidence_count": 1,
+    "detail": "Tried assume_static_by_default + mark_dynamic"
+  },
+  {
+    "from": "delayed_nan",
+    "type": "diagnosed_by",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1,
+    "detail": "Ran accuracy minifier on dynamic shapes model"
+  },
+  {
+    "from": "delayed_nan",
+    "type": "fixed_by",
+    "to": "fix_assume_static_by_default",
+    "evidence_issues": [
+      96971
     ],
     "evidence_count": 1
+  },
+  {
+    "from": "delayed_nan",
+    "type": "involves_config",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "delayed_nan",
+    "type": "is_subtype_of",
+    "to": "accuracy_mismatch",
+    "evidence_issues": [],
+    "evidence_count": 0
   },
   {
     "from": "dispatch_mode_ignored",
@@ -88,6 +400,13 @@
       105929
     ],
     "evidence_count": 1
+  },
+  {
+    "from": "dispatch_mode_ignored",
+    "type": "is_subtype_of",
+    "to": "dynamo_unsupported",
+    "evidence_issues": [],
+    "evidence_count": 0
   },
   {
     "from": "duck_sizing_recompilation",
@@ -101,25 +420,27 @@
   {
     "from": "duck_sizing_recompilation",
     "type": "diagnosed_by",
-    "to": "TORCH_LOGS_recompiles",
+    "to": "dynamic_shapes_flag",
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "detail": "Rewrite tensor indexing with narrow per dynamic shapes guide"
   },
   {
     "from": "duck_sizing_recompilation",
-    "type": "fixed_by",
-    "to": "fix_disable_duck_shape",
+    "type": "diagnosed_by",
+    "to": "use_duck_shape",
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "detail": "Set use_duck_shape = False"
   },
   {
     "from": "duck_sizing_recompilation",
-    "type": "fixed_by",
-    "to": "fix_rewrite_indexing_narrow",
+    "type": "fixed_by_pr",
+    "to": "huggingface/diffusers#11297",
     "evidence_issues": [
       150702
     ],
@@ -135,6 +456,47 @@
     "evidence_count": 1
   },
   {
+    "from": "duck_sizing_recompilation",
+    "type": "is_subtype_of",
+    "to": "recompile_warning",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "dynamic_scalar_regression",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamic_scalar_regression",
+    "type": "fixed_by",
+    "to": "fix_mark_dynamic_instead",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamic_scalar_regression",
+    "type": "involves_config",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamic_scalar_regression",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
     "from": "dynamic_shape_specialization_on_slice",
     "type": "caused_by_component",
     "to": "torch._dynamo",
@@ -146,7 +508,27 @@
   {
     "from": "dynamic_shape_specialization_on_slice",
     "type": "diagnosed_by",
-    "to": "TORCH_LOGS_dynamic",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      106110
+    ],
+    "evidence_count": 1,
+    "detail": "Run llama with dynamic shapes"
+  },
+  {
+    "from": "dynamic_shape_specialization_on_slice",
+    "type": "diagnosed_by",
+    "to": "torch_logs",
+    "evidence_issues": [
+      106110
+    ],
+    "evidence_count": 1,
+    "detail": "Run with TORCH_LOGS=dynamic"
+  },
+  {
+    "from": "dynamic_shape_specialization_on_slice",
+    "type": "fixed_by_pr",
+    "to": "pytorch/benchmark#2283",
     "evidence_issues": [
       106110
     ],
@@ -154,12 +536,29 @@
   },
   {
     "from": "dynamic_shape_specialization_on_slice",
-    "type": "fixed_by",
-    "to": "fix_use_maybe_mark_dynamic",
+    "type": "involves_config",
+    "to": "dynamic_shapes_flag",
     "evidence_issues": [
       106110
     ],
     "evidence_count": 1
+  },
+  {
+    "from": "dynamic_shape_specialization_on_slice",
+    "type": "is_subtype_of",
+    "to": "recompile_warning",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "dynamo_unsupported",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 3,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
   },
   {
     "from": "embedding_bag_inplace_leaf_error",
@@ -171,6 +570,13 @@
     "evidence_count": 1
   },
   {
+    "from": "embedding_bag_inplace_leaf_error",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
     "from": "empty_shape_segfault",
     "type": "caused_by_component",
     "to": "torchinductor",
@@ -180,11 +586,505 @@
     "evidence_count": 1
   },
   {
+    "from": "empty_shape_segfault",
+    "type": "is_subtype_of",
+    "to": "segfault",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
     "from": "empty_strided_incorrect_strides",
     "type": "caused_by_component",
     "to": "torchinductor",
     "evidence_issues": [
       130394
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "empty_strided_incorrect_strides",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "error_raised",
+    "type": "caused_by_component",
+    "to": "aot_autograd",
+    "evidence_issues": [],
+    "evidence_count": 5,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "error_raised",
+    "type": "caused_by_component",
+    "to": "ddpoptimizer",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "error_raised",
+    "type": "caused_by_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [],
+    "evidence_count": 4,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "error_raised",
+    "type": "caused_by_component",
+    "to": "torch_export",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "error_raised",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 4,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "error_raised",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 2,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_assume_static_by_default",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_capture_scalar_outputs",
+    "evidence_issues": [
+      163563,
+      173915
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_disable_ddp_optimizer",
+    "evidence_issues": [
+      104674
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_draft_export",
+    "evidence_issues": [
+      146152
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_mark_dynamic_instead",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_realize_opcount_threshold",
+    "evidence_issues": [
+      145074
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_rewrite_indexing",
+    "evidence_issues": [
+      150057
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_suppress_errors",
+    "evidence_issues": [
+      138809
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_use_dynamic_shapes",
+    "evidence_issues": [
+      137515,
+      147261,
+      172822
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_use_item_cast",
+    "evidence_issues": [
+      137062
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "error_raised",
+    "type": "fixed_by",
+    "to": "fix_use_no_grad",
+    "evidence_issues": [
+      143346,
+      148808,
+      173902
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "export_dde_cascade",
+    "type": "caused_by_component",
+    "to": "torch_export",
+    "evidence_issues": [
+      146152
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "export_dde_cascade",
+    "type": "fixed_by",
+    "to": "fix_draft_export",
+    "evidence_issues": [
+      146152
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "export_dde_cascade",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "export_static_guard_leak",
+    "type": "caused_by_component",
+    "to": "torch_export",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "export_static_guard_leak",
+    "type": "diagnosed_by",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2,
+    "detail": "Exported same model with dynamic W,H using Dim"
+  },
+  {
+    "from": "export_static_guard_leak",
+    "type": "fixed_by",
+    "to": "fix_match_export_inference_shape",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "export_static_guard_leak",
+    "type": "is_subtype_of",
+    "to": "silent_correctness",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "fake_kernel_stride_mismatch",
+    "type": "caused_by_component",
+    "to": "user_error",
+    "evidence_issues": [
+      146536
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fake_kernel_stride_mismatch",
+    "type": "fixed_by_pr",
+    "to": "#143765",
+    "evidence_issues": [
+      146536
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fake_kernel_stride_mismatch",
+    "type": "fixed_by_pr",
+    "to": "#152353",
+    "evidence_issues": [
+      146536
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fake_kernel_stride_mismatch",
+    "type": "is_subtype_of",
+    "to": "silent_correctness",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "fake_tensor_crossref",
+    "type": "configures_component",
+    "to": "aot_autograd",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "fix_aot_eager_isolation",
+    "type": "addresses_symptom",
+    "to": "crash",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "fix_aot_eager_isolation",
+    "type": "addresses_symptom",
+    "to": "silent_correctness",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "fix_aot_eager_isolation",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "fix_aot_eager_isolation",
+    "type": "works_around_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_aot_eager_isolation",
+    "type": "works_around_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_assume_static_by_default",
+    "type": "addresses_symptom",
+    "to": "delayed_nan",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_assume_static_by_default",
+    "type": "addresses_symptom",
+    "to": "error_raised",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_assume_static_by_default",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_assume_static_by_default",
+    "type": "uses_config",
+    "to": "assume_static_by_default",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_assume_static_by_default",
+    "type": "works_around_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_avoid_many_splits",
+    "type": "addresses_symptom",
+    "to": "quadratic_compile_time_asserts",
+    "evidence_issues": [
+      144792
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_avoid_many_splits",
+    "type": "addresses_symptom",
+    "to": "slow_compile",
+    "evidence_issues": [
+      144792
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_avoid_many_splits",
+    "type": "works_around_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      144792
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_batch_first_false",
+    "type": "addresses_symptom",
+    "to": "fp16_perf_regression_small_batch",
+    "evidence_issues": [
+      159346
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_batch_first_false",
+    "type": "works_around_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      159346
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_capture_scalar_outputs",
+    "type": "addresses_symptom",
+    "to": "error_raised",
+    "evidence_issues": [
+      163563,
+      173915
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "fix_capture_scalar_outputs",
+    "type": "uses_config",
+    "to": "capture_scalar_outputs",
+    "evidence_issues": [
+      163563,
+      173915
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "fix_clone_gradient_hook",
+    "type": "addresses_symptom",
+    "to": "silent_correctness",
+    "evidence_issues": [
+      96693
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_clone_gradient_hook",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      96693
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_custom_op_stream",
+    "type": "addresses_symptom",
+    "to": "partial_zeros_output",
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_custom_op_stream",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_custom_op_stream",
+    "type": "works_around_component",
+    "to": "user_error",
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_disable_autotune_cache",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      96693
     ],
     "evidence_count": 1
   },
@@ -199,28 +1099,19 @@
   },
   {
     "from": "fix_disable_ddp_optimizer",
-    "type": "uses_config",
-    "to": "optimize_ddp",
+    "type": "addresses_symptom",
+    "to": "error_raised",
     "evidence_issues": [
-      101624
+      104674
     ],
     "evidence_count": 1
   },
   {
     "from": "fix_disable_ddp_optimizer",
-    "type": "works_around_component",
-    "to": "ddpoptimizer",
-    "evidence_issues": [
-      101624
-    ],
-    "evidence_count": 1
-  },
-  {
-    "from": "fix_disable_duck_shape",
     "type": "uses_config",
-    "to": "use_duck_shape",
+    "to": "optimize_ddp",
     "evidence_issues": [
-      150702
+      104674
     ],
     "evidence_count": 1
   },
@@ -252,11 +1143,95 @@
     "evidence_count": 1
   },
   {
-    "from": "fix_ignore_non_fp_accuracy",
-    "type": "uses_config",
-    "to": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+    "from": "fix_disable_tf32",
+    "type": "addresses_symptom",
+    "to": "silent_correctness",
     "evidence_issues": [
-      121069
+      173902
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_disable_tf32",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      173902
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_draft_export",
+    "type": "addresses_symptom",
+    "to": "error_raised",
+    "evidence_issues": [
+      146152
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_draft_export",
+    "type": "addresses_symptom",
+    "to": "export_dde_cascade",
+    "evidence_issues": [
+      146152
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_draft_export",
+    "type": "works_around_component",
+    "to": "torch_export",
+    "evidence_issues": [
+      146152
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_emulate_precision_casts",
+    "type": "addresses_symptom",
+    "to": "silent_correctness",
+    "evidence_issues": [
+      176565
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_emulate_precision_casts",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      176565
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_emulate_precision_casts",
+    "type": "uses_config",
+    "to": "emulate_precision_casts",
+    "evidence_issues": [
+      176565
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_expandable_segments",
+    "type": "addresses_symptom",
+    "to": "memory_issue",
+    "evidence_issues": [
+      103716,
+      143346,
+      163563,
+      174418
+    ],
+    "evidence_count": 4
+  },
+  {
+    "from": "fix_explicit_output_shape",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      147261
     ],
     "evidence_count": 1
   },
@@ -270,11 +1245,113 @@
     "evidence_count": 1
   },
   {
-    "from": "fix_rewrite_indexing_narrow",
-    "type": "uses_config",
-    "to": "use_duck_shape",
+    "from": "fix_mark_dynamic_instead",
+    "type": "addresses_symptom",
+    "to": "dynamic_scalar_regression",
     "evidence_issues": [
-      150702
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_mark_dynamic_instead",
+    "type": "addresses_symptom",
+    "to": "error_raised",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_mark_dynamic_instead",
+    "type": "uses_config",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_mark_dynamic_instead",
+    "type": "works_around_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      111199
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_match_export_inference_shape",
+    "type": "addresses_symptom",
+    "to": "aoti_silent_degradation",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "fix_match_export_inference_shape",
+    "type": "addresses_symptom",
+    "to": "export_static_guard_leak",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "fix_match_export_inference_shape",
+    "type": "works_around_component",
+    "to": "torch_export",
+    "evidence_issues": [
+      147475,
+      155862
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "fix_pretrained_weights_verification",
+    "type": "addresses_symptom",
+    "to": "model_instability_false_alarm",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_pretrained_weights_verification",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_pretrained_weights_verification",
+    "type": "works_around_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_realize_opcount_threshold",
+    "type": "addresses_symptom",
+    "to": "error_raised",
+    "evidence_issues": [
+      145074
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_rewrite_indexing",
+    "type": "addresses_symptom",
+    "to": "error_raised",
+    "evidence_issues": [
+      150057
     ],
     "evidence_count": 1
   },
@@ -288,47 +1365,80 @@
     "evidence_count": 1
   },
   {
-    "from": "fix_use_fullgraph",
-    "type": "uses_config",
-    "to": "capture_dynamic_output_shape_ops",
+    "from": "fix_scalar_indexing_for_roll",
+    "type": "addresses_symptom",
+    "to": "non_deterministic_correctness",
     "evidence_issues": [
-      163451
+      159855
     ],
     "evidence_count": 1
   },
   {
-    "from": "fix_use_fullgraph",
-    "type": "uses_config",
-    "to": "capture_scalar_outputs",
+    "from": "fix_scalar_indexing_for_roll",
+    "type": "works_around_component",
+    "to": "torchinductor",
     "evidence_issues": [
-      119476
+      159855
     ],
     "evidence_count": 1
   },
   {
-    "from": "fix_use_fullgraph",
-    "type": "uses_config",
-    "to": "emulate_precision_casts",
+    "from": "fix_suppress_errors",
+    "type": "addresses_symptom",
+    "to": "error_raised",
     "evidence_issues": [
-      163451
+      138809
     ],
     "evidence_count": 1
   },
   {
-    "from": "fix_use_fullgraph",
+    "from": "fix_suppress_errors",
     "type": "uses_config",
     "to": "suppress_errors",
     "evidence_issues": [
-      112009
+      138809
     ],
     "evidence_count": 1
+  },
+  {
+    "from": "fix_use_dynamic_shapes",
+    "type": "addresses_symptom",
+    "to": "error_raised",
+    "evidence_issues": [
+      137515,
+      147261,
+      172822
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "fix_use_dynamic_shapes",
+    "type": "addresses_symptom",
+    "to": "wrong_result",
+    "evidence_issues": [
+      137515,
+      147261,
+      172822
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "fix_use_dynamic_shapes",
+    "type": "uses_config",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      137515,
+      147261,
+      172822
+    ],
+    "evidence_count": 3
   },
   {
     "from": "fix_use_fullgraph",
     "type": "works_around_component",
     "to": "aot_autograd",
     "evidence_issues": [
-      119476
+      143431
     ],
     "evidence_count": 1
   },
@@ -337,25 +1447,27 @@
     "type": "works_around_component",
     "to": "torchdynamo",
     "evidence_issues": [
-      105524
+      105524,
+      111020,
+      167453
     ],
-    "evidence_count": 1
+    "evidence_count": 3
   },
   {
     "from": "fix_use_fullgraph",
     "type": "works_around_component",
     "to": "torchinductor",
     "evidence_issues": [
-      114525
+      149425
     ],
     "evidence_count": 1
   },
   {
-    "from": "fix_use_fullgraph",
-    "type": "works_around_component",
-    "to": "user_error",
+    "from": "fix_use_item_cast",
+    "type": "addresses_symptom",
+    "to": "error_raised",
     "evidence_issues": [
-      124918
+      137062
     ],
     "evidence_count": 1
   },
@@ -369,6 +1481,28 @@
     "evidence_count": 1
   },
   {
+    "from": "fix_use_no_grad",
+    "type": "addresses_symptom",
+    "to": "error_raised",
+    "evidence_issues": [
+      143346,
+      148808,
+      173902
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "fix_use_no_grad",
+    "type": "addresses_symptom",
+    "to": "memory_issue",
+    "evidence_issues": [
+      143346,
+      148808,
+      173902
+    ],
+    "evidence_count": 3
+  },
+  {
     "from": "foreach_cross_device_error",
     "type": "caused_by_component",
     "to": "torch._dynamo",
@@ -376,6 +1510,13 @@
       102023
     ],
     "evidence_count": 1
+  },
+  {
+    "from": "foreach_cross_device_error",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
   },
   {
     "from": "forward_hook_partial_capture",
@@ -387,6 +1528,48 @@
     "evidence_count": 1
   },
   {
+    "from": "forward_hook_partial_capture",
+    "type": "is_subtype_of",
+    "to": "dynamo_unsupported",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "fp16_perf_regression_small_batch",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      159346
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fp16_perf_regression_small_batch",
+    "type": "diagnosed_by",
+    "to": "max_autotune",
+    "evidence_issues": [
+      159346
+    ],
+    "evidence_count": 1,
+    "detail": "Tried TORCHINDUCTOR_MAX_AUTOTUNE=1"
+  },
+  {
+    "from": "fp16_perf_regression_small_batch",
+    "type": "fixed_by",
+    "to": "fix_batch_first_false",
+    "evidence_issues": [
+      159346
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fp16_perf_regression_small_batch",
+    "type": "is_subtype_of",
+    "to": "perf_regression",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
     "from": "functionctx_missing_saved_tensors",
     "type": "caused_by_component",
     "to": "aot_autograd",
@@ -394,6 +1577,13 @@
       135118
     ],
     "evidence_count": 1
+  },
+  {
+    "from": "functionctx_missing_saved_tensors",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
   },
   {
     "from": "index_expression_perf_regression",
@@ -406,12 +1596,10 @@
   },
   {
     "from": "index_expression_perf_regression",
-    "type": "diagnosed_by",
-    "to": "ncu_warp_stall_sampling",
-    "evidence_issues": [
-      127581
-    ],
-    "evidence_count": 1
+    "type": "is_subtype_of",
+    "to": "perf_regression",
+    "evidence_issues": [],
+    "evidence_count": 0
   },
   {
     "from": "index_propagation_key_error",
@@ -423,6 +1611,106 @@
     "evidence_count": 1
   },
   {
+    "from": "index_propagation_key_error",
+    "type": "diagnosed_by",
+    "to": "dynamic_shapes_flag",
+    "evidence_issues": [
+      127677
+    ],
+    "evidence_count": 1,
+    "detail": "Compile model with dynamic shapes"
+  },
+  {
+    "from": "index_propagation_key_error",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "max_autotune_gemm_backends",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      125728
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "memory_issue",
+    "type": "fixed_by",
+    "to": "fix_expandable_segments",
+    "evidence_issues": [
+      103716,
+      143346,
+      163563,
+      174418
+    ],
+    "evidence_count": 4
+  },
+  {
+    "from": "memory_issue",
+    "type": "fixed_by",
+    "to": "fix_use_no_grad",
+    "evidence_issues": [
+      143346,
+      148808,
+      173902
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "model_instability_false_alarm",
+    "type": "caused_by_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "model_instability_false_alarm",
+    "type": "fixed_by",
+    "to": "fix_pretrained_weights_verification",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "model_instability_false_alarm",
+    "type": "is_subtype_of",
+    "to": "accuracy_mismatch",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "mutation_lost_on_alignment_clone",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      152425
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "mutation_lost_on_alignment_clone",
+    "type": "diagnosed_by",
+    "to": "fake_tensor_crossref",
+    "evidence_issues": [
+      152425
+    ],
+    "evidence_count": 1,
+    "detail": "engineer_02 checked fake_tensor_crossref='all'"
+  },
+  {
+    "from": "mutation_lost_on_alignment_clone",
+    "type": "is_subtype_of",
+    "to": "silent_correctness",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
     "from": "nested_tensor_compile_error",
     "type": "caused_by_component",
     "to": "torch._dynamo",
@@ -433,12 +1721,10 @@
   },
   {
     "from": "nested_tensor_compile_error",
-    "type": "fixed_by",
-    "to": "fix_disable_bettertransformer_with_compile",
-    "evidence_issues": [
-      138274
-    ],
-    "evidence_count": 1
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
   },
   {
     "from": "networkx_unbounded_scheduling",
@@ -450,6 +1736,38 @@
     "evidence_count": 1
   },
   {
+    "from": "networkx_unbounded_scheduling",
+    "type": "is_subtype_of",
+    "to": "slow_compile",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "non_deterministic_correctness",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      159855
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "non_deterministic_correctness",
+    "type": "fixed_by",
+    "to": "fix_scalar_indexing_for_roll",
+    "evidence_issues": [
+      159855
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "non_deterministic_correctness",
+    "type": "is_subtype_of",
+    "to": "accuracy_mismatch",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
     "from": "nopython_cache_collision",
     "type": "caused_by_component",
     "to": "torchdynamo",
@@ -459,11 +1777,236 @@
     "evidence_count": 1
   },
   {
+    "from": "nopython_cache_collision",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "numerical_drift",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Precision bug in codegen \u2014 needs PyTorch PR",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "upstream_fix"
+  },
+  {
+    "from": "numerical_drift",
+    "type": "is_subtype_of",
+    "to": "accuracy_mismatch",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "partial_zeros_output",
+    "type": "caused_by_component",
+    "to": "user_error",
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "partial_zeros_output",
+    "type": "fixed_by",
+    "to": "fix_custom_op_stream",
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "partial_zeros_output",
+    "type": "is_subtype_of",
+    "to": "wrong_result",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "perf_regression",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 3,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "quadratic_compile_time_asserts",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      144792
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "quadratic_compile_time_asserts",
+    "type": "fixed_by",
+    "to": "fix_avoid_many_splits",
+    "evidence_issues": [
+      144792
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "quadratic_compile_time_asserts",
+    "type": "is_subtype_of",
+    "to": "slow_compile",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "recompile_warning",
+    "type": "caused_by_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [],
+    "evidence_count": 2,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
     "from": "scalar_op_faketensor_error",
     "type": "caused_by_component",
     "to": "torch._dynamo",
     "evidence_issues": [
       93224
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "scalar_op_faketensor_error",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "segfault",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "side_effect_replay_policy",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      166173
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "silent_correctness",
+    "type": "caused_by_component",
+    "to": "torch_export",
+    "evidence_issues": [],
+    "evidence_count": 4,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "silent_correctness",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "silent_correctness",
+    "type": "caused_by_component",
+    "to": "user_error",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "silent_correctness",
+    "type": "fixed_by",
+    "to": "fix_aot_eager_isolation",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "silent_correctness",
+    "type": "fixed_by",
+    "to": "fix_clone_gradient_hook",
+    "evidence_issues": [
+      96693
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "silent_correctness",
+    "type": "fixed_by",
+    "to": "fix_disable_tf32",
+    "evidence_issues": [
+      173902
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "silent_correctness",
+    "type": "fixed_by",
+    "to": "fix_emulate_precision_casts",
+    "evidence_issues": [
+      176565
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "silent_slowdown",
+    "type": "is_subtype_of",
+    "to": "perf_regression",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "slow_compile",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "slow_compile",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "slow_compile",
+    "type": "fixed_by",
+    "to": "fix_avoid_many_splits",
+    "evidence_issues": [
+      144792
     ],
     "evidence_count": 1
   },
@@ -478,12 +2021,10 @@
   },
   {
     "from": "stride_mismatch_view_error",
-    "type": "diagnosed_by",
-    "to": "functionalization_stride_debug_patch",
-    "evidence_issues": [
-      93428
-    ],
-    "evidence_count": 1
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
   },
   {
     "from": "subclass_tensor_guard_malformed",
@@ -495,6 +2036,60 @@
     "evidence_count": 1
   },
   {
+    "from": "subclass_tensor_guard_malformed",
+    "type": "is_subtype_of",
+    "to": "dynamo_unsupported",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "symptom_extended_debug_output",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "symptom_multiple_cache_entries",
+    "type": "is_subtype_of",
+    "to": "recompile_warning",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "symptom_perf_regression_dynamic",
+    "type": "is_subtype_of",
+    "to": "perf_regression",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "sympy_nan_comparison",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      133735
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "sympy_nan_comparison",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "triton_cudagraphs",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
     "from": "uint8_accuracy_false_positive",
     "type": "caused_by_component",
     "to": "torchinductor",
@@ -506,29 +2101,32 @@
   {
     "from": "uint8_accuracy_false_positive",
     "type": "diagnosed_by",
-    "to": "TORCHDYNAMO_REPRO_AFTER",
+    "to": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "detail": "engineer_02 applied TORCHDYNAMO_REPRO_IGNORE_NON_FP=1"
   },
   {
     "from": "uint8_accuracy_false_positive",
     "type": "diagnosed_by",
-    "to": "TORCHDYNAMO_REPRO_LEVEL",
+    "to": "repro_after",
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "detail": "Run TORCHDYNAMO_REPRO_AFTER=aot REPRO_LEVEL=4"
   },
   {
     "from": "uint8_accuracy_false_positive",
-    "type": "fixed_by",
-    "to": "fix_ignore_non_fp_accuracy",
+    "type": "diagnosed_by",
+    "to": "repro_level",
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "detail": "Run TORCHDYNAMO_REPRO_AFTER=aot REPRO_LEVEL=4"
   },
   {
     "from": "uint8_accuracy_false_positive",
@@ -540,6 +2138,63 @@
     "evidence_count": 1
   },
   {
+    "from": "uint8_accuracy_false_positive",
+    "type": "is_subtype_of",
+    "to": "accuracy_mismatch",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "use_duck_shape",
+    "type": "configures_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "warning_log_spam",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      138069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "warning_log_spam",
+    "type": "is_subtype_of",
+    "to": "symptom_extended_debug_output",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "weakref_blocks_device_move",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      141548
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "weakref_blocks_device_move",
+    "type": "fixed_by_pr",
+    "to": "#171209",
+    "evidence_issues": [
+      141548
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "weakref_blocks_device_move",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
     "from": "wrong_device_compilation",
     "type": "caused_by_component",
     "to": "torchinductor",
@@ -547,5 +2202,372 @@
       97693
     ],
     "evidence_count": 1
+  },
+  {
+    "from": "wrong_device_compilation",
+    "type": "is_subtype_of",
+    "to": "perf_regression",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "wrong_result",
+    "type": "caused_by_component",
+    "to": "user_error",
+    "evidence_issues": [],
+    "evidence_count": 1,
+    "sources": [
+      "child_symptom_aggregation"
+    ]
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_aot_eager_isolation",
+    "evidence_issues": [
+      96971,
+      100075
+    ],
+    "evidence_count": 2
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_assume_static_by_default",
+    "evidence_issues": [
+      96971
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_clone_gradient_hook",
+    "evidence_issues": [
+      96693
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_custom_op_stream",
+    "evidence_issues": [
+      157363
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_disable_autotune_cache",
+    "evidence_issues": [
+      96693
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_disable_tf32",
+    "evidence_issues": [
+      173902
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_emulate_precision_casts",
+    "evidence_issues": [
+      176565
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_explicit_output_shape",
+    "evidence_issues": [
+      147261
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_pretrained_weights_verification",
+    "evidence_issues": [
+      100075
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "fix_use_dynamic_shapes",
+    "evidence_issues": [
+      137515,
+      147261,
+      172822
+    ],
+    "evidence_count": 3
+  },
+  {
+    "from": "wrong_result",
+    "type": "fixed_by",
+    "to": "upstream_fix",
+    "evidence_issues": [],
+    "evidence_count": 0,
+    "detail": "Bug in compiler \u2014 needs PyTorch PR",
+    "sources": [
+      "bootstrap_resolution"
+    ],
+    "fix_type": "upstream_fix"
+  },
+  {
+    "from": "flaky",
+    "type": "is_subtype_of",
+    "to": "error_raised",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "hang",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "hang",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "recompile_limit",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "recompile_limit",
+    "type": "relevant_to",
+    "to": "recompile_warning",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "accumulated_recompile_limit",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "accumulated_recompile_limit",
+    "type": "relevant_to",
+    "to": "recompile_warning",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "capture_dynamic_output_shape_ops",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "capture_dynamic_output_shape_ops",
+    "type": "relevant_to",
+    "to": "dynamo_unsupported",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "allow_rnn",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "allow_rnn",
+    "type": "relevant_to",
+    "to": "dynamo_unsupported",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "trace_numpy",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "trace_numpy",
+    "type": "relevant_to",
+    "to": "dynamo_unsupported",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "specialize_int",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "specialize_int",
+    "type": "relevant_to",
+    "to": "recompile_warning",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "specialize_float",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "specialize_float",
+    "type": "relevant_to",
+    "to": "recompile_warning",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "guard_nn_modules",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "guard_nn_modules",
+    "type": "relevant_to",
+    "to": "recompile_warning",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "inline_inbuilt_nn_modules",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "inline_inbuilt_nn_modules",
+    "type": "relevant_to",
+    "to": "slow_compile",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "verbose",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "torch_compile_dynamic_sources",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "torch_compile_dynamic_sources",
+    "type": "relevant_to",
+    "to": "recompile_warning",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "enable_compiler_collectives",
+    "type": "configures_component",
+    "to": "torchdynamo",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "enable_compiler_collectives",
+    "type": "relevant_to",
+    "to": "hang",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "cpp_wrapper",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "fx_graph_cache",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "fx_graph_cache",
+    "type": "relevant_to",
+    "to": "slow_compile",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "force_disable_caches",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "force_disable_caches",
+    "type": "relevant_to",
+    "to": "slow_compile",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "max_autotune_gemm",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "max_autotune_gemm",
+    "type": "relevant_to",
+    "to": "perf_regression",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "fallback_random",
+    "type": "configures_component",
+    "to": "torchinductor",
+    "evidence_issues": [],
+    "evidence_count": 0
+  },
+  {
+    "from": "fallback_random",
+    "type": "relevant_to",
+    "to": "accuracy_mismatch",
+    "evidence_issues": [],
+    "evidence_count": 0
   }
 ]
