@@ -583,5 +583,90 @@
       "validated_date": "2026-04-14",
       "location": "torch._inductor abi_compatible mode"
     }
+  },
+  {
+    "id": "TORCH_COMPILE_DEBUG_DIR",
+    "name": "TORCH_COMPILE_DEBUG_DIR",
+    "description": "Environment variable \u2014 directory for torch.compile debug output (generated code, graphs, timing)",
+    "evidence_issues": [
+      100086
+    ],
+    "freshness": {
+      "status": "living",
+      "reason": "Active diagnostic config",
+      "classified_date": "2026-04-14"
+    },
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "TORCH_USE_CUDA_DSA",
+    "name": "TORCH_USE_CUDA_DSA",
+    "description": "Environment variable \u2014 enables CUDA Device-Side Assertions for better error messages on GPU errors",
+    "evidence_issues": [
+      95595
+    ],
+    "freshness": {
+      "status": "living",
+      "reason": "Active diagnostic config",
+      "classified_date": "2026-04-14"
+    },
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "capture_autograd_function",
+    "name": "capture_autograd_function",
+    "description": "torch._dynamo.config.capture_autograd_function \u2014 enables tracing through custom autograd functions (torch.autograd.Function)",
+    "evidence_issues": [
+      109910
+    ],
+    "freshness": {
+      "status": "living",
+      "reason": "Active feature config",
+      "classified_date": "2026-04-14"
+    },
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "max_autotune_gemm_backends",
+    "name": "max_autotune_gemm_backends",
+    "description": "torch._inductor.config.max_autotune_gemm_backends \u2014 controls which GEMM backends are tried during max_autotune (ATEN, TRITON, CPP)",
+    "evidence_issues": [
+      125728
+    ],
+    "freshness": {
+      "status": "living",
+      "reason": "Active perf config",
+      "classified_date": "2026-04-14"
+    },
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "side_effect_replay_policy",
+    "name": "side_effect_replay_policy",
+    "description": "torch._dynamo.config.side_effect_replay_policy \u2014 controls how side effects (prints, logging) are replayed in compiled code",
+    "evidence_issues": [
+      166173
+    ],
+    "freshness": {
+      "status": "living",
+      "reason": "New config from PT 2.5+",
+      "classified_date": "2026-04-14"
+    },
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    }
   }
 ]

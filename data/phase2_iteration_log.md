@@ -169,11 +169,79 @@ Iteration 4 is the first "automated" batch — all 20 issues extracted in a sing
 
 **Recommendation:** For remaining ~350 candidates, apply quality_score ≥ 5 threshold during entity synthesis. Low-quality extractions are still useful as training data but shouldn't produce ontology entities.
 
-## Next Iteration Recommendations
+## Iteration 5: Full automated sweep (274 issues, 6 parallel batches)
 
-1. **Continue automated batches**: ~330 remaining Priority A issues
-2. **Process in batches of 20-30**: Iteration 4 validates this batch size for automated extraction
-3. **Apply quality threshold**: Only synthesize entities from extractions with quality_score ≥ 5
-4. **Priority ordering**: Continue sorting by comment count — higher-comment issues yield more diagnostic depth
-5. **Filter improvement**: Pre-filter dashboard/tracker/benchmark issues from candidate list (removed 5 manually this iteration)
-6. **Diminishing returns watch**: Track new entity yield per batch — stop when <2 new entities per batch
+**Sample:** All 274 remaining closed+completed candidates, processed in 6 parallel batches of 40-74
+**Method:** 6 sub-agents processed batches concurrently, reading full conversations from corpus
+**Avg Quality Score:** 7.3/10
+**Total New Entities:** 17 (10 symptoms, 2 workarounds, 5 configs)
+
+### Findings
+
+**Quality distribution (274 issues):**
+- High quality (≥7): 182 issues (66%)
+- Medium quality (4-6): 90 issues (33%)
+- Low quality (<4): 2 issues (<1%)
+
+**Component distribution (all 324 extractions):**
+- torchdynamo: 142 (44%) — dominant component across all issues
+- torchinductor: 92 (28%) — second most common
+- aot_autograd: 39 (12%)
+- torch_export: 12 (4%)
+- triton: 10 (3%)
+- unknown/other: 29 (9%)
+
+**Resolution types (all 324 extractions):**
+- compiler_fix: 225 (69%) — majority of issues are real bugs that got fixed
+- user_workaround: 50 (15%) — user-side code changes
+- expected_behavior: 23 (7%) — not a bug
+- user_adaptation: 12 (4%) — user needed to change approach
+- unresolved/other: 14 (4%)
+
+**Entity yield per batch:**
+| Batch | Issues | Avg Q | Symptoms | Workarounds | Configs |
+|-------|--------|-------|----------|-------------|---------|
+| 1 (top conv) | 40 | 7.2 | 0 | 0 | 0 |
+| 2 | 40 | 6.8 | 0 | 0 | 4 |
+| 3 | 40 | 8.2 | 0 | 0 | 2 |
+| 4 | 40 | 5.6 | 10 | 0 | 1 |
+| 5 | 40 | 7.6 | 0 | 2 | 2 |
+| 6 (tail) | 74 | 8.0 | 0 | 0 | 0 |
+
+**Key observations:**
+1. **Entity discovery has plateaued**: Most new entities (symptoms, workarounds) were found in iterations 1-4 (50 manual/semi-manual extractions). The 274 automated extractions added only 10 new symptoms and 2 new workarounds — most diagnostic patterns are already captured.
+2. **Configs are the long tail**: 5 genuinely new configs emerged from the sweep — these are less discoverable because they're environment variables or niche settings.
+3. **Component distribution is stable**: torchdynamo (44%) + torchinductor (28%) = 72% of all issues. This matches the team's intuition about where users hit problems.
+4. **Resolution breakdown validates ontology**: 69% compiler_fix means most issues are real bugs, not user errors. This validates the ontology's focus on compiler behaviors over user patterns.
+
+### Cumulative Stats (324 extractions total)
+
+| Metric | Manual (50) | Automated (274) | Total |
+|--------|-------------|-----------------|-------|
+| Issues | 50 | 274 | 324 |
+| Avg quality | 7.4 | 7.3 | 6.8 |
+| Symptoms | 31 | 10 | 41 |
+| Workarounds | 16 | 2 | 18 |
+| Configs | 7 | 5 | 12 |
+| Compiler fixes | 20 | 205 | 225 |
+| User errors/Q&A | 12 | 38 | 50 |
+
+### Ontology Final State
+
+| Entity Type | Count |
+|-------------|-------|
+| Symptoms | 62 |
+| Workarounds | 33 |
+| Configs | 40 |
+
+## Phase 2 Extraction — Complete
+
+All 324 closed+completed candidates from the refined pool have been extracted. The remaining 89 candidates are open issues (77), NOT_PLANNED closures (7), or reopened (5) — these can be processed in a future pass when they close.
+
+### What's Next
+
+1. **Mine open issues**: 77 open issues may have diagnostic value, especially recent ones
+2. **Rebuild ontology**: With stable methodology and full extraction, a clean rebuild from scratch would produce a coherent provenance chain
+3. **Decision tree update**: Map new symptoms/workarounds into the triage decision tree
+4. **Workplace Q&A extraction**: Internal-only diagnostic patterns from PyTorch Compile Q&A group
+5. **Validation refresh**: Re-run config source validation periodically as PyTorch evolves

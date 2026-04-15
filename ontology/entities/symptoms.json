@@ -830,5 +830,185 @@
       "reason": "NST/NJT migration still ongoing in HuggingFace ecosystem",
       "classified_date": "2026-04-14"
     }
+  },
+  {
+    "id": "conj_view_aliasing_crash",
+    "name": "Conj View Aliasing Crash",
+    "description": "Crash when tensor views created by _conj() are aliased during compilation \u2014 view metadata not preserved correctly through AOT tracing",
+    "evidence_issues": [
+      148950
+    ],
+    "temporal": {
+      "first_seen_date": "2025-03-11",
+      "first_seen_version": "2.6",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Recent issue from PT 2.6",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "dispatch_mode_ignored",
+    "name": "TorchDispatchMode Silently Ignored",
+    "description": "torch.compile silently ignores TorchDispatchMode \u2014 custom dispatch modes are not traced, causing incorrect behavior without error",
+    "evidence_issues": [
+      105929
+    ],
+    "temporal": {
+      "first_seen_date": "2023-07-25",
+      "first_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "TorchDispatchMode support still evolving",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "embedding_bag_inplace_leaf_error",
+    "name": "EmbeddingBag Inplace Leaf Error",
+    "description": "Compilation fails with 'leaf variable that requires grad is being used in an in-place operation' for EmbeddingBag operations",
+    "evidence_issues": [
+      95167
+    ],
+    "temporal": {
+      "first_seen_date": "2023-02-20",
+      "first_seen_version": "pre-2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Early PT2 issue, likely fixed",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "empty_shape_segfault",
+    "name": "Empty Shape Segfault",
+    "description": "Segfault or CUDA error when compiled code encounters empty (zero-dimension) tensors \u2014 empty shape handling missing in codegen",
+    "evidence_issues": [
+      98835
+    ],
+    "temporal": {
+      "first_seen_date": "2023-04-11",
+      "first_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Empty tensor handling improved significantly",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "empty_strided_incorrect_strides",
+    "name": "Empty Strided Incorrect Strides",
+    "description": "torch.empty_strided produces tensors with incorrect strides after compilation \u2014 stride metadata not preserved through tracing",
+    "evidence_issues": [
+      130394
+    ],
+    "temporal": {
+      "first_seen_date": "2024-07-09",
+      "first_seen_version": "2.3",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Stride correctness issues can still surface",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "forward_hook_partial_capture",
+    "name": "Forward Hook Partial Capture",
+    "description": "torch.compile partially captures forward hooks \u2014 some hooks fire during tracing but not execution, or hooks cause graph breaks",
+    "evidence_issues": [
+      96722
+    ],
+    "temporal": {
+      "first_seen_date": "2023-03-14",
+      "first_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Hook handling still has edge cases",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "functionctx_missing_saved_tensors",
+    "name": "FunctionCtx Missing Saved Tensors",
+    "description": "Custom autograd function's saved_tensors not available in backward when used with torch.compile \u2014 AOT tracing doesn't preserve FunctionCtx state",
+    "evidence_issues": [
+      135118
+    ],
+    "temporal": {
+      "first_seen_date": "2024-09-04",
+      "first_seen_version": "2.4",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Custom autograd function compile support evolving",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "networkx_unbounded_scheduling",
+    "name": "NetworkX Unbounded Scheduling",
+    "description": "Inductor scheduling hangs or takes extremely long due to networkx graph algorithm on large fusion groups \u2014 compilation becomes O(n^2) or worse",
+    "evidence_issues": [
+      103055
+    ],
+    "temporal": {
+      "first_seen_date": "2023-06-06",
+      "first_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Scheduling complexity can still surface on large models",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "nopython_cache_collision",
+    "name": "Nopython Cache Collision",
+    "description": "fullgraph=True (nopython) mode can hit cache collisions when multiple compiled functions share similar structure \u2014 incorrect cached graph returned",
+    "evidence_issues": [
+      114059
+    ],
+    "temporal": {
+      "first_seen_date": "2023-11-19",
+      "first_seen_version": "2.1",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Cache system significantly reworked since PT 2.1",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "subclass_tensor_guard_malformed",
+    "name": "Subclass Tensor Guard Malformed",
+    "description": "Guards generated for tensor subclasses are malformed or over-restrictive \u2014 causes excessive recompilation or incorrect behavior with custom tensor types",
+    "evidence_issues": [
+      118896
+    ],
+    "temporal": {
+      "first_seen_date": "2024-02-01",
+      "first_seen_version": "2.2",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Tensor subclass support still active development area",
+      "classified_date": "2026-04-14"
+    }
   }
 ]

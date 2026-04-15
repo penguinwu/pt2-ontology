@@ -845,5 +845,45 @@
       "reason": "NST still not supported with compile; NJT migration ongoing",
       "classified_date": "2026-04-14"
     }
+  },
+  {
+    "id": "fix_disable_dynamic_shapes",
+    "name": "Disable Dynamic Shapes",
+    "description": "Set dynamic=False on torch.compile to avoid dynamic shape-related errors \u2014 trades generality for stability",
+    "evidence_issues": [
+      105524
+    ],
+    "temporal": {
+      "first_seen_date": "2023-07-19",
+      "first_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Always available as a fallback",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "fix_use_fullgraph",
+    "name": "Use fullgraph=True Mode",
+    "description": "Set fullgraph=True to force single-graph compilation \u2014 avoids graph break issues but requires model to be fully traceable",
+    "evidence_issues": [
+      105524,
+      111020,
+      143431,
+      149425,
+      167453
+    ],
+    "temporal": {
+      "first_seen_date": "2023-07-19",
+      "first_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Always available, widely recommended",
+      "classified_date": "2026-04-14"
+    }
   }
 ]
