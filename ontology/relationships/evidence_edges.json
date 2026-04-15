@@ -1888,7 +1888,7 @@
       152425
     ],
     "evidence_count": 1,
-    "detail": "engineer_02 checked fake_tensor_crossref='all'",
+    "detail": "[engineer] checked fake_tensor_crossref='all'",
     "visibility": "oss"
   },
   {
@@ -2340,7 +2340,7 @@
       121069
     ],
     "evidence_count": 1,
-    "detail": "engineer_02 applied TORCHDYNAMO_REPRO_IGNORE_NON_FP=1",
+    "detail": "[engineer] applied TORCHDYNAMO_REPRO_IGNORE_NON_FP=1",
     "visibility": "oss"
   },
   {

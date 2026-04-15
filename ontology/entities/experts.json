@@ -7,7 +7,8 @@
       "guards"
     ],
     "role": "STO",
-    "scope": "foundational_frontend"
+    "scope": "foundational_frontend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 02",
@@ -17,7 +18,8 @@
       "flexattention"
     ],
     "role": "STO",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 03",
@@ -30,7 +32,8 @@
       "decompositions"
     ],
     "role": "STO",
-    "scope": "foundational_frontend"
+    "scope": "foundational_frontend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 04",
@@ -39,7 +42,8 @@
       "aot_inductor"
     ],
     "role": "STO",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 05",
@@ -48,7 +52,8 @@
       "export"
     ],
     "role": "STO",
-    "scope": "foundational_frontend"
+    "scope": "foundational_frontend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 06",
@@ -57,7 +62,8 @@
       "dynamic_shapes"
     ],
     "role": "STO",
-    "scope": "holistic"
+    "scope": "holistic",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 07",
@@ -66,7 +72,8 @@
       "pt2_cudagraph"
     ],
     "role": "STO",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 08",
@@ -75,7 +82,8 @@
       "compilation_cache"
     ],
     "role": "STO",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 09",
@@ -84,7 +92,8 @@
       "higher_order_ops"
     ],
     "role": "STO",
-    "scope": "foundational_frontend"
+    "scope": "foundational_frontend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 10",
@@ -94,7 +103,8 @@
       "compiled_optimizer"
     ],
     "role": "STO",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 11",
@@ -103,7 +113,8 @@
       "max_autotune"
     ],
     "role": "STO",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 12",
@@ -112,7 +123,8 @@
       "pt2_debug_observability"
     ],
     "role": "STO",
-    "scope": "holistic"
+    "scope": "holistic",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 13",
@@ -121,7 +133,8 @@
       "vllm_compile"
     ],
     "role": "STO",
-    "scope": "holistic"
+    "scope": "holistic",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 14",
@@ -130,7 +143,8 @@
       "helion"
     ],
     "role": "STO",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 15",
@@ -139,7 +153,8 @@
       "compilation_cache"
     ],
     "role": "co-STO (PT-D)",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 16",
@@ -148,7 +163,8 @@
       "vllm_compile"
     ],
     "role": "sub-STO (Helion/custom ops)",
-    "scope": "holistic"
+    "scope": "holistic",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 17",
@@ -159,7 +175,8 @@
       "fake_tensor"
     ],
     "role": "domain expert",
-    "scope": "cross-cutting"
+    "scope": "cross-cutting",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 18",
@@ -168,7 +185,8 @@
       "torchinductor"
     ],
     "role": "domain expert",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 19",
@@ -178,7 +196,8 @@
       "triton"
     ],
     "role": "domain expert",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 20",
@@ -188,7 +207,8 @@
       "triton_heuristics"
     ],
     "role": "domain expert",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 21",
@@ -198,7 +218,8 @@
       "guards"
     ],
     "role": "domain expert",
-    "scope": "foundational_frontend"
+    "scope": "foundational_frontend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 22",
@@ -207,7 +228,8 @@
       "flexattention"
     ],
     "role": "domain expert",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 23",
@@ -217,7 +239,8 @@
       "selective_checkpointing"
     ],
     "role": "domain expert",
-    "scope": "holistic"
+    "scope": "holistic",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 24",
@@ -227,7 +250,8 @@
       "aot_autograd"
     ],
     "role": "domain expert",
-    "scope": "foundational_frontend"
+    "scope": "foundational_frontend",
+    "visibility": "internal"
   },
   {
     "person": "Peng Wu",
@@ -237,7 +261,8 @@
       "pt2_dispatch"
     ],
     "role": "manager",
-    "scope": "cross-cutting"
+    "scope": "cross-cutting",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 26",
@@ -248,7 +273,8 @@
       "guards"
     ],
     "role": "manager",
-    "scope": "foundational_frontend"
+    "scope": "foundational_frontend",
+    "visibility": "internal"
   },
   {
     "person": "Engineer 27",
@@ -258,6 +284,7 @@
       "aot_inductor"
     ],
     "role": "manager",
-    "scope": "foundational_backend"
+    "scope": "foundational_backend",
+    "visibility": "internal"
   }
 ]
