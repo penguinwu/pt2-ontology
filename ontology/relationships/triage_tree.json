@@ -80,7 +80,8 @@
         "torch_compile_dynamic_sources",
         "optimize_ddp"
       ],
-      "component": "torchdynamo"
+      "component": "torchdynamo",
+      "visibility": "oss"
     },
     {
       "id": "graph_break",
@@ -152,7 +153,8 @@
         "trace_numpy",
         "fullgraph_flag"
       ],
-      "component": "torchdynamo"
+      "component": "torchdynamo",
+      "visibility": "oss"
     },
     {
       "id": "accuracy_mismatch",
@@ -240,7 +242,8 @@
         "optimize_ddp",
         "force_disable_caches"
       ],
-      "component": "mixed"
+      "component": "mixed",
+      "visibility": "oss"
     },
     {
       "id": "compilation_error",
@@ -324,7 +327,8 @@
         "capture_autograd_function",
         "verbose"
       ],
-      "component": "mixed"
+      "component": "mixed",
+      "visibility": "oss"
     },
     {
       "id": "performance_regression",
@@ -396,7 +400,8 @@
         "max_autotune_gemm_backends",
         "dynamic_shapes_flag"
       ],
-      "component": "torchinductor"
+      "component": "torchinductor",
+      "visibility": "oss"
     },
     {
       "id": "crash_segfault",
@@ -463,7 +468,8 @@
         "triton_cudagraphs",
         "enable_compiler_collectives"
       ],
-      "component": "torchinductor"
+      "component": "torchinductor",
+      "visibility": "oss"
     },
     {
       "id": "silent_incorrectness",
@@ -529,7 +535,8 @@
         "force_disable_caches",
         "fake_tensor_crossref"
       ],
-      "component": "mixed"
+      "component": "mixed",
+      "visibility": "oss"
     },
     {
       "id": "memory_issue",
@@ -584,7 +591,8 @@
         "fx_graph_cache",
         "inline_inbuilt_nn_modules"
       ],
-      "component": "torchinductor"
+      "component": "torchinductor",
+      "visibility": "oss"
     },
     {
       "id": "slow_compilation",
@@ -642,7 +650,8 @@
         "force_disable_caches",
         "inline_inbuilt_nn_modules"
       ],
-      "component": "torchinductor"
+      "component": "torchinductor",
+      "visibility": "oss"
     },
     {
       "id": "export_issue",
@@ -700,7 +709,8 @@
         "capture_scalar_outputs",
         "capture_dynamic_output_shape_ops"
       ],
-      "component": "torch_export"
+      "component": "torch_export",
+      "visibility": "oss"
     },
     {
       "id": "custom_op_issue",
@@ -749,7 +759,8 @@
         "capture_autograd_function",
         "fake_tensor_crossref"
       ],
-      "component": "mixed"
+      "component": "mixed",
+      "visibility": "oss"
     },
     {
       "id": "distributed_compile",
@@ -801,7 +812,8 @@
         "enable_compiler_collectives",
         "dynamic_shapes_flag"
       ],
-      "component": "ddpoptimizer"
+      "component": "ddpoptimizer",
+      "visibility": "oss"
     }
   ]
 }

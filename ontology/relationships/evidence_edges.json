@@ -6,7 +6,8 @@
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
@@ -15,7 +16,8 @@
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "TORCHINDUCTOR_ABI_COMPATIBLE",
@@ -24,7 +26,8 @@
     "evidence_issues": [
       123745
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "TORCH_COMPILE_DEBUG_DIR",
@@ -33,7 +36,8 @@
     "evidence_issues": [
       100086
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "TORCH_USE_CUDA_DSA",
@@ -42,7 +46,8 @@
     "evidence_issues": [
       95595
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "accuracy_mismatch",
@@ -52,7 +57,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "accuracy_mismatch",
@@ -62,7 +68,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "accuracy_mismatch",
@@ -72,7 +79,8 @@
     "evidence_count": 3,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "activation_checkpoint_compile_error",
@@ -81,7 +89,8 @@
     "evidence_issues": [
       97077
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "activation_checkpoint_compile_error",
@@ -90,21 +99,24 @@
     "evidence_issues": [
       97077
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "activation_checkpoint_compile_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "aot_fx_graphs",
     "type": "configures_component",
     "to": "aot_autograd",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "aoti_silent_degradation",
@@ -114,7 +126,8 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "aoti_silent_degradation",
@@ -125,7 +138,8 @@
       155862
     ],
     "evidence_count": 2,
-    "detail": "Exported same model with dynamic W,H using Dim"
+    "detail": "Exported same model with dynamic W,H using Dim",
+    "visibility": "oss"
   },
   {
     "from": "aoti_silent_degradation",
@@ -135,14 +149,16 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "aoti_silent_degradation",
     "type": "is_subtype_of",
     "to": "silent_correctness",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "as_strided_scatter_error",
@@ -151,21 +167,24 @@
     "evidence_issues": [
       86427
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "as_strided_scatter_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "backend_compiler_failed",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "capture_autograd_function",
@@ -174,14 +193,16 @@
     "evidence_issues": [
       109910
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "compile_timeout",
     "type": "is_subtype_of",
     "to": "slow_compile",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "complex_scalar_backward_error",
@@ -190,7 +211,8 @@
     "evidence_issues": [
       105290
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "complex_scalar_backward_error",
@@ -200,7 +222,8 @@
       105290
     ],
     "evidence_count": 1,
-    "detail": "Set TORCH_LOGS=aot_graphs"
+    "detail": "Set TORCH_LOGS=aot_graphs",
+    "visibility": "oss"
   },
   {
     "from": "complex_scalar_backward_error",
@@ -210,14 +233,16 @@
       105290
     ],
     "evidence_count": 1,
-    "detail": "Set TORCH_LOGS=aot_graphs"
+    "detail": "Set TORCH_LOGS=aot_graphs",
+    "visibility": "oss"
   },
   {
     "from": "complex_scalar_backward_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "conj_view_aliasing_crash",
@@ -226,14 +251,16 @@
     "evidence_issues": [
       148950
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "conj_view_aliasing_crash",
     "type": "is_subtype_of",
     "to": "crash",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "crash",
@@ -243,7 +270,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "crash",
@@ -253,7 +281,8 @@
       96971,
       100075
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "crash",
@@ -265,7 +294,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "upstream_fix"
+    "fix_type": "upstream_fix",
+    "visibility": "oss"
   },
   {
     "from": "crash",
@@ -277,7 +307,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "upstream_fix"
+    "fix_type": "upstream_fix",
+    "visibility": "oss"
   },
   {
     "from": "ddp_autocast_accuracy_loss",
@@ -286,14 +317,16 @@
     "evidence_issues": [
       101624
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "ddp_autocast_accuracy_loss",
     "type": "is_subtype_of",
     "to": "accuracy_mismatch",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "ddp_dynamic_shape_error",
@@ -302,7 +335,8 @@
     "evidence_issues": [
       111636
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "ddp_dynamic_shape_error",
@@ -311,7 +345,8 @@
     "evidence_issues": [
       111636
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "ddp_dynamic_shape_error",
@@ -320,7 +355,8 @@
     "evidence_issues": [
       111636
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "ddp_dynamic_shape_error",
@@ -329,14 +365,16 @@
     "evidence_issues": [
       111636
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "ddp_dynamic_shape_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "delayed_nan",
@@ -345,7 +383,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "delayed_nan",
@@ -355,7 +394,8 @@
       96971
     ],
     "evidence_count": 1,
-    "detail": "Tried assume_static_by_default + mark_dynamic"
+    "detail": "Tried assume_static_by_default + mark_dynamic",
+    "visibility": "oss"
   },
   {
     "from": "delayed_nan",
@@ -365,7 +405,8 @@
       96971
     ],
     "evidence_count": 1,
-    "detail": "Ran accuracy minifier on dynamic shapes model"
+    "detail": "Ran accuracy minifier on dynamic shapes model",
+    "visibility": "oss"
   },
   {
     "from": "delayed_nan",
@@ -374,7 +415,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "delayed_nan",
@@ -383,14 +425,16 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "delayed_nan",
     "type": "is_subtype_of",
     "to": "accuracy_mismatch",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "dispatch_mode_ignored",
@@ -399,14 +443,16 @@
     "evidence_issues": [
       105929
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dispatch_mode_ignored",
     "type": "is_subtype_of",
     "to": "dynamo_unsupported",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "duck_sizing_recompilation",
@@ -415,7 +461,8 @@
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "duck_sizing_recompilation",
@@ -425,7 +472,8 @@
       150702
     ],
     "evidence_count": 1,
-    "detail": "Rewrite tensor indexing with narrow per dynamic shapes guide"
+    "detail": "Rewrite tensor indexing with narrow per dynamic shapes guide",
+    "visibility": "oss"
   },
   {
     "from": "duck_sizing_recompilation",
@@ -435,7 +483,8 @@
       150702
     ],
     "evidence_count": 1,
-    "detail": "Set use_duck_shape = False"
+    "detail": "Set use_duck_shape = False",
+    "visibility": "oss"
   },
   {
     "from": "duck_sizing_recompilation",
@@ -444,7 +493,8 @@
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "duck_sizing_recompilation",
@@ -453,14 +503,16 @@
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "duck_sizing_recompilation",
     "type": "is_subtype_of",
     "to": "recompile_warning",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_scalar_regression",
@@ -469,7 +521,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_scalar_regression",
@@ -478,7 +531,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_scalar_regression",
@@ -487,14 +541,16 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_scalar_regression",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_shape_specialization_on_slice",
@@ -503,7 +559,8 @@
     "evidence_issues": [
       106110
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_shape_specialization_on_slice",
@@ -513,7 +570,8 @@
       106110
     ],
     "evidence_count": 1,
-    "detail": "Run llama with dynamic shapes"
+    "detail": "Run llama with dynamic shapes",
+    "visibility": "oss"
   },
   {
     "from": "dynamic_shape_specialization_on_slice",
@@ -523,7 +581,8 @@
       106110
     ],
     "evidence_count": 1,
-    "detail": "Run with TORCH_LOGS=dynamic"
+    "detail": "Run with TORCH_LOGS=dynamic",
+    "visibility": "oss"
   },
   {
     "from": "dynamic_shape_specialization_on_slice",
@@ -532,7 +591,8 @@
     "evidence_issues": [
       106110
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_shape_specialization_on_slice",
@@ -541,14 +601,16 @@
     "evidence_issues": [
       106110
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_shape_specialization_on_slice",
     "type": "is_subtype_of",
     "to": "recompile_warning",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "dynamo_unsupported",
@@ -558,7 +620,8 @@
     "evidence_count": 3,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "embedding_bag_inplace_leaf_error",
@@ -567,14 +630,16 @@
     "evidence_issues": [
       95167
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "embedding_bag_inplace_leaf_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "empty_shape_segfault",
@@ -583,14 +648,16 @@
     "evidence_issues": [
       98835
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "empty_shape_segfault",
     "type": "is_subtype_of",
     "to": "segfault",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "empty_strided_incorrect_strides",
@@ -599,14 +666,16 @@
     "evidence_issues": [
       130394
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "empty_strided_incorrect_strides",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -616,7 +685,8 @@
     "evidence_count": 5,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -626,7 +696,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -636,7 +707,8 @@
     "evidence_count": 4,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -646,7 +718,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -656,7 +729,8 @@
     "evidence_count": 4,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -666,7 +740,8 @@
     "evidence_count": 2,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -675,7 +750,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -685,7 +761,8 @@
       163563,
       173915
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -694,7 +771,8 @@
     "evidence_issues": [
       104674
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -703,7 +781,8 @@
     "evidence_issues": [
       146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -712,7 +791,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -721,7 +801,8 @@
     "evidence_issues": [
       145074
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -730,7 +811,8 @@
     "evidence_issues": [
       150057
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -739,7 +821,8 @@
     "evidence_issues": [
       138809
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -750,7 +833,8 @@
       147261,
       172822
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -759,7 +843,8 @@
     "evidence_issues": [
       137062
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -770,7 +855,8 @@
       148808,
       173902
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "export_dde_cascade",
@@ -779,7 +865,8 @@
     "evidence_issues": [
       146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "export_dde_cascade",
@@ -788,14 +875,16 @@
     "evidence_issues": [
       146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "export_dde_cascade",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "export_static_guard_leak",
@@ -805,7 +894,8 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "export_static_guard_leak",
@@ -816,7 +906,8 @@
       155862
     ],
     "evidence_count": 2,
-    "detail": "Exported same model with dynamic W,H using Dim"
+    "detail": "Exported same model with dynamic W,H using Dim",
+    "visibility": "oss"
   },
   {
     "from": "export_static_guard_leak",
@@ -826,14 +917,16 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "export_static_guard_leak",
     "type": "is_subtype_of",
     "to": "silent_correctness",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "fake_kernel_stride_mismatch",
@@ -842,7 +935,8 @@
     "evidence_issues": [
       146536
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fake_kernel_stride_mismatch",
@@ -851,7 +945,8 @@
     "evidence_issues": [
       146536
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fake_kernel_stride_mismatch",
@@ -860,21 +955,24 @@
     "evidence_issues": [
       146536
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fake_kernel_stride_mismatch",
     "type": "is_subtype_of",
     "to": "silent_correctness",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "fake_tensor_crossref",
     "type": "configures_component",
     "to": "aot_autograd",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "fix_aot_eager_isolation",
@@ -884,7 +982,8 @@
       96971,
       100075
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "fix_aot_eager_isolation",
@@ -894,7 +993,8 @@
       96971,
       100075
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "fix_aot_eager_isolation",
@@ -904,7 +1004,8 @@
       96971,
       100075
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "fix_aot_eager_isolation",
@@ -913,7 +1014,8 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_aot_eager_isolation",
@@ -922,7 +1024,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_assume_static_by_default",
@@ -931,7 +1034,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_assume_static_by_default",
@@ -940,7 +1044,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_assume_static_by_default",
@@ -949,7 +1054,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_assume_static_by_default",
@@ -958,7 +1064,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_assume_static_by_default",
@@ -967,7 +1074,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_avoid_many_splits",
@@ -976,7 +1084,8 @@
     "evidence_issues": [
       144792
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_avoid_many_splits",
@@ -985,7 +1094,8 @@
     "evidence_issues": [
       144792
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_avoid_many_splits",
@@ -994,7 +1104,8 @@
     "evidence_issues": [
       144792
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_batch_first_false",
@@ -1003,7 +1114,8 @@
     "evidence_issues": [
       159346
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_batch_first_false",
@@ -1012,7 +1124,8 @@
     "evidence_issues": [
       159346
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_capture_scalar_outputs",
@@ -1022,7 +1135,8 @@
       163563,
       173915
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "fix_capture_scalar_outputs",
@@ -1032,7 +1146,8 @@
       163563,
       173915
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "fix_clone_gradient_hook",
@@ -1041,7 +1156,8 @@
     "evidence_issues": [
       96693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_clone_gradient_hook",
@@ -1050,7 +1166,8 @@
     "evidence_issues": [
       96693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_custom_op_stream",
@@ -1059,7 +1176,8 @@
     "evidence_issues": [
       157363
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_custom_op_stream",
@@ -1068,7 +1186,8 @@
     "evidence_issues": [
       157363
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_custom_op_stream",
@@ -1077,7 +1196,8 @@
     "evidence_issues": [
       157363
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_disable_autotune_cache",
@@ -1086,7 +1206,8 @@
     "evidence_issues": [
       96693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_disable_bettertransformer_with_compile",
@@ -1095,7 +1216,8 @@
     "evidence_issues": [
       138274
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_disable_ddp_optimizer",
@@ -1104,7 +1226,8 @@
     "evidence_issues": [
       104674
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_disable_ddp_optimizer",
@@ -1113,7 +1236,8 @@
     "evidence_issues": [
       104674
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_disable_duck_shape",
@@ -1122,7 +1246,8 @@
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_disable_dynamic_shapes",
@@ -1131,7 +1256,8 @@
     "evidence_issues": [
       105524
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_disable_preserve_rng_state",
@@ -1140,7 +1266,8 @@
     "evidence_issues": [
       97077
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_disable_tf32",
@@ -1149,7 +1276,8 @@
     "evidence_issues": [
       173902
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_disable_tf32",
@@ -1158,7 +1286,8 @@
     "evidence_issues": [
       173902
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_draft_export",
@@ -1167,7 +1296,8 @@
     "evidence_issues": [
       146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_draft_export",
@@ -1176,7 +1306,8 @@
     "evidence_issues": [
       146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_draft_export",
@@ -1185,7 +1316,8 @@
     "evidence_issues": [
       146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_emulate_precision_casts",
@@ -1194,7 +1326,8 @@
     "evidence_issues": [
       176565
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_emulate_precision_casts",
@@ -1203,7 +1336,8 @@
     "evidence_issues": [
       176565
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_emulate_precision_casts",
@@ -1212,7 +1346,8 @@
     "evidence_issues": [
       176565
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_expandable_segments",
@@ -1224,7 +1359,8 @@
       163563,
       174418
     ],
-    "evidence_count": 4
+    "evidence_count": 4,
+    "visibility": "oss"
   },
   {
     "from": "fix_explicit_output_shape",
@@ -1233,7 +1369,8 @@
     "evidence_issues": [
       147261
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_ignore_non_fp_accuracy",
@@ -1242,7 +1379,8 @@
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_mark_dynamic_instead",
@@ -1251,7 +1389,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_mark_dynamic_instead",
@@ -1260,7 +1399,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_mark_dynamic_instead",
@@ -1269,7 +1409,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_mark_dynamic_instead",
@@ -1278,7 +1419,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_match_export_inference_shape",
@@ -1288,7 +1430,8 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "fix_match_export_inference_shape",
@@ -1298,7 +1441,8 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "fix_match_export_inference_shape",
@@ -1308,7 +1452,8 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "fix_pretrained_weights_verification",
@@ -1317,7 +1462,8 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_pretrained_weights_verification",
@@ -1326,7 +1472,8 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_pretrained_weights_verification",
@@ -1335,7 +1482,8 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_realize_opcount_threshold",
@@ -1344,7 +1492,8 @@
     "evidence_issues": [
       145074
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_rewrite_indexing",
@@ -1353,7 +1502,8 @@
     "evidence_issues": [
       150057
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_rewrite_indexing_narrow",
@@ -1362,7 +1512,8 @@
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_scalar_indexing_for_roll",
@@ -1371,7 +1522,8 @@
     "evidence_issues": [
       159855
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_scalar_indexing_for_roll",
@@ -1380,7 +1532,8 @@
     "evidence_issues": [
       159855
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_suppress_errors",
@@ -1389,7 +1542,8 @@
     "evidence_issues": [
       138809
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_suppress_errors",
@@ -1398,7 +1552,8 @@
     "evidence_issues": [
       138809
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_dynamic_shapes",
@@ -1409,7 +1564,8 @@
       147261,
       172822
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_dynamic_shapes",
@@ -1420,7 +1576,8 @@
       147261,
       172822
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_dynamic_shapes",
@@ -1431,7 +1588,8 @@
       147261,
       172822
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_fullgraph",
@@ -1440,7 +1598,8 @@
     "evidence_issues": [
       143431
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_fullgraph",
@@ -1451,7 +1610,8 @@
       111020,
       167453
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_fullgraph",
@@ -1460,7 +1620,8 @@
     "evidence_issues": [
       149425
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_item_cast",
@@ -1469,7 +1630,8 @@
     "evidence_issues": [
       137062
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_maybe_mark_dynamic",
@@ -1478,7 +1640,8 @@
     "evidence_issues": [
       106110
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_no_grad",
@@ -1489,7 +1652,8 @@
       148808,
       173902
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "fix_use_no_grad",
@@ -1500,7 +1664,8 @@
       148808,
       173902
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "foreach_cross_device_error",
@@ -1509,14 +1674,16 @@
     "evidence_issues": [
       102023
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "foreach_cross_device_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "forward_hook_partial_capture",
@@ -1525,14 +1692,16 @@
     "evidence_issues": [
       96722
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "forward_hook_partial_capture",
     "type": "is_subtype_of",
     "to": "dynamo_unsupported",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "fp16_perf_regression_small_batch",
@@ -1541,7 +1710,8 @@
     "evidence_issues": [
       159346
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fp16_perf_regression_small_batch",
@@ -1551,7 +1721,8 @@
       159346
     ],
     "evidence_count": 1,
-    "detail": "Tried TORCHINDUCTOR_MAX_AUTOTUNE=1"
+    "detail": "Tried TORCHINDUCTOR_MAX_AUTOTUNE=1",
+    "visibility": "oss"
   },
   {
     "from": "fp16_perf_regression_small_batch",
@@ -1560,14 +1731,16 @@
     "evidence_issues": [
       159346
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fp16_perf_regression_small_batch",
     "type": "is_subtype_of",
     "to": "perf_regression",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "functionctx_missing_saved_tensors",
@@ -1576,14 +1749,16 @@
     "evidence_issues": [
       135118
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "functionctx_missing_saved_tensors",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "index_expression_perf_regression",
@@ -1592,14 +1767,16 @@
     "evidence_issues": [
       127581
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "index_expression_perf_regression",
     "type": "is_subtype_of",
     "to": "perf_regression",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "index_propagation_key_error",
@@ -1608,7 +1785,8 @@
     "evidence_issues": [
       127677
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "index_propagation_key_error",
@@ -1618,14 +1796,16 @@
       127677
     ],
     "evidence_count": 1,
-    "detail": "Compile model with dynamic shapes"
+    "detail": "Compile model with dynamic shapes",
+    "visibility": "oss"
   },
   {
     "from": "index_propagation_key_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "max_autotune_gemm_backends",
@@ -1634,7 +1814,8 @@
     "evidence_issues": [
       125728
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "memory_issue",
@@ -1646,7 +1827,8 @@
       163563,
       174418
     ],
-    "evidence_count": 4
+    "evidence_count": 4,
+    "visibility": "oss"
   },
   {
     "from": "memory_issue",
@@ -1657,7 +1839,8 @@
       148808,
       173902
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "model_instability_false_alarm",
@@ -1666,7 +1849,8 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "model_instability_false_alarm",
@@ -1675,14 +1859,16 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "model_instability_false_alarm",
     "type": "is_subtype_of",
     "to": "accuracy_mismatch",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "mutation_lost_on_alignment_clone",
@@ -1691,7 +1877,8 @@
     "evidence_issues": [
       152425
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "mutation_lost_on_alignment_clone",
@@ -1701,14 +1888,16 @@
       152425
     ],
     "evidence_count": 1,
-    "detail": "engineer_02 checked fake_tensor_crossref='all'"
+    "detail": "engineer_02 checked fake_tensor_crossref='all'",
+    "visibility": "oss"
   },
   {
     "from": "mutation_lost_on_alignment_clone",
     "type": "is_subtype_of",
     "to": "silent_correctness",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "nested_tensor_compile_error",
@@ -1717,14 +1906,16 @@
     "evidence_issues": [
       138274
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "nested_tensor_compile_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "networkx_unbounded_scheduling",
@@ -1733,14 +1924,16 @@
     "evidence_issues": [
       103055
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "networkx_unbounded_scheduling",
     "type": "is_subtype_of",
     "to": "slow_compile",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "non_deterministic_correctness",
@@ -1749,7 +1942,8 @@
     "evidence_issues": [
       159855
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "non_deterministic_correctness",
@@ -1758,14 +1952,16 @@
     "evidence_issues": [
       159855
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "non_deterministic_correctness",
     "type": "is_subtype_of",
     "to": "accuracy_mismatch",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "nopython_cache_collision",
@@ -1774,14 +1970,16 @@
     "evidence_issues": [
       114059
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "nopython_cache_collision",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "numerical_drift",
@@ -1793,14 +1991,16 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "upstream_fix"
+    "fix_type": "upstream_fix",
+    "visibility": "oss"
   },
   {
     "from": "numerical_drift",
     "type": "is_subtype_of",
     "to": "accuracy_mismatch",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "partial_zeros_output",
@@ -1809,7 +2009,8 @@
     "evidence_issues": [
       157363
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "partial_zeros_output",
@@ -1818,14 +2019,16 @@
     "evidence_issues": [
       157363
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "partial_zeros_output",
     "type": "is_subtype_of",
     "to": "wrong_result",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "perf_regression",
@@ -1835,7 +2038,8 @@
     "evidence_count": 3,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "quadratic_compile_time_asserts",
@@ -1844,7 +2048,8 @@
     "evidence_issues": [
       144792
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "quadratic_compile_time_asserts",
@@ -1853,14 +2058,16 @@
     "evidence_issues": [
       144792
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "quadratic_compile_time_asserts",
     "type": "is_subtype_of",
     "to": "slow_compile",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "recompile_warning",
@@ -1870,7 +2077,8 @@
     "evidence_count": 2,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "scalar_op_faketensor_error",
@@ -1879,14 +2087,16 @@
     "evidence_issues": [
       93224
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "scalar_op_faketensor_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "segfault",
@@ -1896,7 +2106,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "side_effect_replay_policy",
@@ -1905,7 +2116,8 @@
     "evidence_issues": [
       166173
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -1915,7 +2127,8 @@
     "evidence_count": 4,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -1925,7 +2138,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -1935,7 +2149,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -1945,7 +2160,8 @@
       96971,
       100075
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -1954,7 +2170,8 @@
     "evidence_issues": [
       96693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -1963,7 +2180,8 @@
     "evidence_issues": [
       173902
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -1972,14 +2190,16 @@
     "evidence_issues": [
       176565
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "silent_slowdown",
     "type": "is_subtype_of",
     "to": "perf_regression",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "slow_compile",
@@ -1989,7 +2209,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "slow_compile",
@@ -1999,7 +2220,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "slow_compile",
@@ -2008,7 +2230,8 @@
     "evidence_issues": [
       144792
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "stride_mismatch_view_error",
@@ -2017,14 +2240,16 @@
     "evidence_issues": [
       93428
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "stride_mismatch_view_error",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "subclass_tensor_guard_malformed",
@@ -2033,14 +2258,16 @@
     "evidence_issues": [
       118896
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "subclass_tensor_guard_malformed",
     "type": "is_subtype_of",
     "to": "dynamo_unsupported",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "symptom_extended_debug_output",
@@ -2050,21 +2277,24 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "symptom_multiple_cache_entries",
     "type": "is_subtype_of",
     "to": "recompile_warning",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "symptom_perf_regression_dynamic",
     "type": "is_subtype_of",
     "to": "perf_regression",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "sympy_nan_comparison",
@@ -2073,21 +2303,24 @@
     "evidence_issues": [
       133735
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "sympy_nan_comparison",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "triton_cudagraphs",
     "type": "configures_component",
     "to": "torchinductor",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "uint8_accuracy_false_positive",
@@ -2096,7 +2329,8 @@
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "uint8_accuracy_false_positive",
@@ -2106,7 +2340,8 @@
       121069
     ],
     "evidence_count": 1,
-    "detail": "engineer_02 applied TORCHDYNAMO_REPRO_IGNORE_NON_FP=1"
+    "detail": "engineer_02 applied TORCHDYNAMO_REPRO_IGNORE_NON_FP=1",
+    "visibility": "oss"
   },
   {
     "from": "uint8_accuracy_false_positive",
@@ -2116,7 +2351,8 @@
       121069
     ],
     "evidence_count": 1,
-    "detail": "Run TORCHDYNAMO_REPRO_AFTER=aot REPRO_LEVEL=4"
+    "detail": "Run TORCHDYNAMO_REPRO_AFTER=aot REPRO_LEVEL=4",
+    "visibility": "oss"
   },
   {
     "from": "uint8_accuracy_false_positive",
@@ -2126,7 +2362,8 @@
       121069
     ],
     "evidence_count": 1,
-    "detail": "Run TORCHDYNAMO_REPRO_AFTER=aot REPRO_LEVEL=4"
+    "detail": "Run TORCHDYNAMO_REPRO_AFTER=aot REPRO_LEVEL=4",
+    "visibility": "oss"
   },
   {
     "from": "uint8_accuracy_false_positive",
@@ -2135,14 +2372,16 @@
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "uint8_accuracy_false_positive",
     "type": "is_subtype_of",
     "to": "accuracy_mismatch",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "use_duck_shape",
@@ -2151,7 +2390,8 @@
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "warning_log_spam",
@@ -2160,14 +2400,16 @@
     "evidence_issues": [
       138069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "warning_log_spam",
     "type": "is_subtype_of",
     "to": "symptom_extended_debug_output",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "weakref_blocks_device_move",
@@ -2176,7 +2418,8 @@
     "evidence_issues": [
       141548
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "weakref_blocks_device_move",
@@ -2185,14 +2428,16 @@
     "evidence_issues": [
       141548
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "weakref_blocks_device_move",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "wrong_device_compilation",
@@ -2201,14 +2446,16 @@
     "evidence_issues": [
       97693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_device_compilation",
     "type": "is_subtype_of",
     "to": "perf_regression",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2218,7 +2465,8 @@
     "evidence_count": 1,
     "sources": [
       "child_symptom_aggregation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2228,7 +2476,8 @@
       96971,
       100075
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2237,7 +2486,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2246,7 +2496,8 @@
     "evidence_issues": [
       96693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2255,7 +2506,8 @@
     "evidence_issues": [
       157363
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2264,7 +2516,8 @@
     "evidence_issues": [
       96693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2273,7 +2526,8 @@
     "evidence_issues": [
       173902
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2282,7 +2536,8 @@
     "evidence_issues": [
       176565
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2291,7 +2546,8 @@
     "evidence_issues": [
       147261
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2300,7 +2556,8 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2311,7 +2568,8 @@
       147261,
       172822
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -2323,251 +2581,287 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "upstream_fix"
+    "fix_type": "upstream_fix",
+    "visibility": "oss"
   },
   {
     "from": "flaky",
     "type": "is_subtype_of",
     "to": "error_raised",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "hang",
     "type": "caused_by_component",
     "to": "torchinductor",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "hang",
     "type": "caused_by_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "recompile_limit",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "recompile_limit",
     "type": "relevant_to",
     "to": "recompile_warning",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "accumulated_recompile_limit",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "accumulated_recompile_limit",
     "type": "relevant_to",
     "to": "recompile_warning",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "capture_dynamic_output_shape_ops",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "capture_dynamic_output_shape_ops",
     "type": "relevant_to",
     "to": "dynamo_unsupported",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "allow_rnn",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "allow_rnn",
     "type": "relevant_to",
     "to": "dynamo_unsupported",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "trace_numpy",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "trace_numpy",
     "type": "relevant_to",
     "to": "dynamo_unsupported",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "specialize_int",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "specialize_int",
     "type": "relevant_to",
     "to": "recompile_warning",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "specialize_float",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "specialize_float",
     "type": "relevant_to",
     "to": "recompile_warning",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "guard_nn_modules",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "guard_nn_modules",
     "type": "relevant_to",
     "to": "recompile_warning",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "inline_inbuilt_nn_modules",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "inline_inbuilt_nn_modules",
     "type": "relevant_to",
     "to": "slow_compile",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "verbose",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "torch_compile_dynamic_sources",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "torch_compile_dynamic_sources",
     "type": "relevant_to",
     "to": "recompile_warning",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "enable_compiler_collectives",
     "type": "configures_component",
     "to": "torchdynamo",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "enable_compiler_collectives",
     "type": "relevant_to",
     "to": "hang",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "cpp_wrapper",
     "type": "configures_component",
     "to": "torchinductor",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "fx_graph_cache",
     "type": "configures_component",
     "to": "torchinductor",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "fx_graph_cache",
     "type": "relevant_to",
     "to": "slow_compile",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "force_disable_caches",
     "type": "configures_component",
     "to": "torchinductor",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "force_disable_caches",
     "type": "relevant_to",
     "to": "slow_compile",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "max_autotune_gemm",
     "type": "configures_component",
     "to": "torchinductor",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "max_autotune_gemm",
     "type": "relevant_to",
     "to": "perf_regression",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "fallback_random",
     "type": "configures_component",
     "to": "torchinductor",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   },
   {
     "from": "fallback_random",
     "type": "relevant_to",
     "to": "accuracy_mismatch",
     "evidence_issues": [],
-    "evidence_count": 0
+    "evidence_count": 0,
+    "visibility": "oss"
   }
 ]

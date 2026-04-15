@@ -7,7 +7,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "accuracy_mismatch",
@@ -17,7 +18,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "automatic_dynamic_shapes",
@@ -27,7 +29,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "automatic_dynamic_shapes",
@@ -37,7 +40,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "backend_bug",
@@ -47,7 +51,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "backend_bug",
@@ -57,7 +62,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "backend_bug",
@@ -67,7 +73,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "backend_compiler_failed",
@@ -77,7 +84,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "cause_dynamic_output_shape",
@@ -87,7 +95,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "cause_dynamic_output_shape",
@@ -99,7 +108,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "cause_fancy_compile_wrapper",
@@ -109,7 +119,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "cause_scalar_return",
@@ -119,7 +130,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "cause_scalar_return",
@@ -131,7 +143,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "cause_shape_wobble",
@@ -141,7 +154,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "cause_shape_wobble",
@@ -153,7 +167,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "cause_shape_wobble",
@@ -165,7 +180,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "cause_unspecialized_int",
@@ -175,7 +191,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "cause_unspecialized_int",
@@ -187,7 +204,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "compile_timeout",
@@ -197,7 +215,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "compile_timeout",
@@ -207,7 +226,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "crash",
@@ -219,7 +239,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "custom_autograd",
@@ -229,7 +250,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "data_dependent_control",
@@ -239,7 +261,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "decomposition_gap",
@@ -249,7 +272,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "distributed_interaction",
@@ -259,7 +283,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "distributed_interaction",
@@ -269,7 +294,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "dynamic_shapes_issue",
@@ -279,7 +305,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "dynamic_shapes_issue",
@@ -289,7 +316,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "dynamo_unsupported",
@@ -299,7 +327,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "dynamo_unsupported",
@@ -311,7 +340,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "dynamo_unsupported",
@@ -323,7 +353,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "excessive_logging",
@@ -333,7 +364,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "guard_mismatch",
@@ -343,7 +375,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "guard_mismatch",
@@ -353,7 +386,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "inductor_oom",
@@ -363,7 +397,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "inplace_mutation",
@@ -373,7 +408,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "non_compliant_custom_op",
@@ -383,7 +419,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "numerical_drift",
@@ -393,7 +430,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "recompile_warning",
@@ -403,7 +441,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "recompile_warning",
@@ -415,7 +454,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "segfault",
@@ -425,7 +465,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "silent_slowdown",
@@ -435,7 +476,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "suboptimal_heuristics",
@@ -445,7 +487,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "symptom_multiple_cache_entries",
@@ -455,7 +498,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "symptom_perf_regression_dynamic",
@@ -465,7 +509,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "tensor_subclass",
@@ -475,7 +520,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "third_party_lib",
@@ -485,7 +531,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "torch_runtime_error",
@@ -495,7 +542,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "unsupported_op",
@@ -505,7 +553,8 @@
     "evidence_count": 0,
     "sources": [
       "bootstrap_diagnostic"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -517,6 +566,7 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   }
 ]

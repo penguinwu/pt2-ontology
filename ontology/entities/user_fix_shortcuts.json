@@ -26,7 +26,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_expandable_segments",
@@ -57,7 +58,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_capture_scalar_outputs",
@@ -87,7 +89,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_disable_tf32",
@@ -116,7 +119,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_realize_opcount_threshold",
@@ -144,7 +148,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.5",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_disable_ddp_optimizer",
@@ -172,7 +177,8 @@
       "status": "uncertain",
       "reason": "DDPOptimizer reworked since PT 2.0. Config exists but use case changed.",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_suppress_errors",
@@ -200,7 +206,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.5",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_use_dynamic_shapes",
@@ -232,7 +239,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_use_no_grad",
@@ -263,7 +271,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_rewrite_indexing",
@@ -291,7 +300,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.6",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_explicit_output_shape",
@@ -319,7 +329,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.6",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_clone_gradient_hook",
@@ -348,7 +359,8 @@
       "status": "uncertain",
       "reason": "max_autotune gradient issues may have been addressed.",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_use_item_cast",
@@ -376,7 +388,8 @@
       "status": "likely_living",
       "reason": "Last evidence from PT 2.4",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_use_pytree",
@@ -404,7 +417,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_disable_autotune_cache",
@@ -432,7 +446,8 @@
       "status": "living",
       "reason": "Config autotune_local_cache confirmed in source. Cache staleness ongoing.",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_assume_static_by_default",
@@ -462,7 +477,8 @@
       "status": "living",
       "reason": "Config confirmed in source. Valid fallback for dynamic shape issues.",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_aot_eager_isolation",
@@ -493,7 +509,8 @@
       "status": "living",
       "reason": "Diagnostic technique \u2014 always valid",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_pretrained_weights_verification",
@@ -522,7 +539,8 @@
       "status": "living",
       "reason": "Diagnostic technique \u2014 always valid",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_draft_export",
@@ -551,7 +569,8 @@
       "status": "living",
       "reason": "Has open evidence issue(s)",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_match_export_inference_shape",
@@ -581,7 +600,8 @@
       "status": "living",
       "reason": "Has open evidence issue(s)",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_batch_first_false",
@@ -609,7 +629,8 @@
       "status": "living",
       "reason": "Has open evidence issue(s)",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_scalar_indexing_for_roll",
@@ -637,7 +658,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_mark_dynamic_instead",
@@ -666,7 +688,8 @@
       "status": "historical",
       "reason": "Specific dynamic alpha bug fixed",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_custom_op_stream",
@@ -695,7 +718,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_avoid_many_splits",
@@ -724,7 +748,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.5",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_use_maybe_mark_dynamic",
@@ -744,7 +769,8 @@
       "status": "likely_living",
       "reason": "maybe_mark_dynamic API still available",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_disable_duck_shape",
@@ -764,7 +790,8 @@
       "status": "living",
       "reason": "Config still available and relevant",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_rewrite_indexing_narrow",
@@ -784,7 +811,8 @@
       "status": "living",
       "reason": "Recommended pattern in dynamic shapes guide",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_disable_preserve_rng_state",
@@ -804,7 +832,8 @@
       "status": "historical",
       "reason": "Activation checkpointing now fully supported in compile",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_ignore_non_fp_accuracy",
@@ -824,7 +853,8 @@
       "status": "living",
       "reason": "Diagnostic technique \u2014 always valid for accuracy debugging",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_disable_bettertransformer_with_compile",
@@ -844,7 +874,8 @@
       "status": "living",
       "reason": "NST still not supported with compile; NJT migration ongoing",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_disable_dynamic_shapes",
@@ -862,7 +893,8 @@
       "status": "living",
       "reason": "Always available as a fallback",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fix_use_fullgraph",
@@ -884,6 +916,7 @@
       "status": "living",
       "reason": "Always available, widely recommended",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   }
 ]

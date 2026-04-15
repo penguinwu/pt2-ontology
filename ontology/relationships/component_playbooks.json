@@ -52,7 +52,8 @@
       "max_autotune",
       "repro_after",
       "repro_level"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "component": "torchdynamo",
@@ -96,7 +97,8 @@
       "trace_numpy",
       "verbose"
     ],
-    "diagnostic_tools": []
+    "diagnostic_tools": [],
+    "visibility": "oss"
   },
   {
     "component": "aot_autograd",
@@ -124,7 +126,8 @@
     "diagnostic_tools": [
       "aot_fx_graphs",
       "torch_logs"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "component": "torch._dynamo",
@@ -153,7 +156,8 @@
       "dynamic_shapes_flag",
       "torch_logs",
       "use_duck_shape"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "component": "torch_export",
@@ -172,7 +176,8 @@
     "configs": [],
     "diagnostic_tools": [
       "dynamic_shapes_flag"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "component": "ddpoptimizer",
@@ -185,6 +190,7 @@
     ],
     "workarounds": [],
     "configs": [],
-    "diagnostic_tools": []
+    "diagnostic_tools": [],
+    "visibility": "oss"
   }
 ]

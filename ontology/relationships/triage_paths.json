@@ -19,7 +19,8 @@
     ],
     "evidence_count": 2,
     "freshness": "living",
-    "parent_symptom": "silent_correctness"
+    "parent_symptom": "silent_correctness",
+    "visibility": "oss"
   },
   {
     "symptom": "export_static_guard_leak",
@@ -41,7 +42,8 @@
     ],
     "evidence_count": 2,
     "freshness": "living",
-    "parent_symptom": "silent_correctness"
+    "parent_symptom": "silent_correctness",
+    "visibility": "oss"
   },
   {
     "symptom": "non_deterministic_correctness",
@@ -60,7 +62,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "accuracy_mismatch"
+    "parent_symptom": "accuracy_mismatch",
+    "visibility": "oss"
   },
   {
     "symptom": "fp16_perf_regression_small_batch",
@@ -81,7 +84,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "perf_regression"
+    "parent_symptom": "perf_regression",
+    "visibility": "oss"
   },
   {
     "symptom": "export_dde_cascade",
@@ -100,7 +104,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "model_instability_false_alarm",
@@ -119,7 +124,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "accuracy_mismatch"
+    "parent_symptom": "accuracy_mismatch",
+    "visibility": "oss"
   },
   {
     "symptom": "warning_log_spam",
@@ -136,7 +142,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "symptom_extended_debug_output"
+    "parent_symptom": "symptom_extended_debug_output",
+    "visibility": "oss"
   },
   {
     "symptom": "partial_zeros_output",
@@ -155,7 +162,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "wrong_result"
+    "parent_symptom": "wrong_result",
+    "visibility": "oss"
   },
   {
     "symptom": "fake_kernel_stride_mismatch",
@@ -172,7 +180,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "silent_correctness"
+    "parent_symptom": "silent_correctness",
+    "visibility": "oss"
   },
   {
     "symptom": "complex_scalar_backward_error",
@@ -192,7 +201,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "mutation_lost_on_alignment_clone",
@@ -211,7 +221,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "silent_correctness"
+    "parent_symptom": "silent_correctness",
+    "visibility": "oss"
   },
   {
     "symptom": "quadratic_compile_time_asserts",
@@ -230,7 +241,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "slow_compile"
+    "parent_symptom": "slow_compile",
+    "visibility": "oss"
   },
   {
     "symptom": "weakref_blocks_device_move",
@@ -247,7 +259,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "duck_sizing_recompilation",
@@ -269,7 +282,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "recompile_warning"
+    "parent_symptom": "recompile_warning",
+    "visibility": "oss"
   },
   {
     "symptom": "nested_tensor_compile_error",
@@ -286,7 +300,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "conj_view_aliasing_crash",
@@ -303,7 +318,8 @@
     ],
     "evidence_count": 1,
     "freshness": "living",
-    "parent_symptom": "crash"
+    "parent_symptom": "crash",
+    "visibility": "oss"
   },
   {
     "symptom": "sympy_nan_comparison",
@@ -320,7 +336,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "dynamic_shape_specialization_on_slice",
@@ -342,7 +359,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "recompile_warning"
+    "parent_symptom": "recompile_warning",
+    "visibility": "oss"
   },
   {
     "symptom": "index_expression_perf_regression",
@@ -359,7 +377,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "perf_regression"
+    "parent_symptom": "perf_regression",
+    "visibility": "oss"
   },
   {
     "symptom": "ddp_dynamic_shape_error",
@@ -381,7 +400,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "uint8_accuracy_false_positive",
@@ -404,7 +424,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "accuracy_mismatch"
+    "parent_symptom": "accuracy_mismatch",
+    "visibility": "oss"
   },
   {
     "symptom": "index_propagation_key_error",
@@ -423,7 +444,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "dispatch_mode_ignored",
@@ -440,7 +462,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "dynamo_unsupported"
+    "parent_symptom": "dynamo_unsupported",
+    "visibility": "oss"
   },
   {
     "symptom": "empty_strided_incorrect_strides",
@@ -457,7 +480,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "forward_hook_partial_capture",
@@ -474,7 +498,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "dynamo_unsupported"
+    "parent_symptom": "dynamo_unsupported",
+    "visibility": "oss"
   },
   {
     "symptom": "functionctx_missing_saved_tensors",
@@ -491,7 +516,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "networkx_unbounded_scheduling",
@@ -508,7 +534,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "slow_compile"
+    "parent_symptom": "slow_compile",
+    "visibility": "oss"
   },
   {
     "symptom": "subclass_tensor_guard_malformed",
@@ -525,7 +552,8 @@
     ],
     "evidence_count": 1,
     "freshness": "likely_living",
-    "parent_symptom": "dynamo_unsupported"
+    "parent_symptom": "dynamo_unsupported",
+    "visibility": "oss"
   },
   {
     "symptom": "delayed_nan",
@@ -550,7 +578,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "accuracy_mismatch"
+    "parent_symptom": "accuracy_mismatch",
+    "visibility": "oss"
   },
   {
     "symptom": "dynamic_scalar_regression",
@@ -571,7 +600,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "stride_mismatch_view_error",
@@ -588,7 +618,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "wrong_device_compilation",
@@ -605,7 +636,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "perf_regression"
+    "parent_symptom": "perf_regression",
+    "visibility": "oss"
   },
   {
     "symptom": "activation_checkpoint_compile_error",
@@ -622,7 +654,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "scalar_op_faketensor_error",
@@ -639,7 +672,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "ddp_autocast_accuracy_loss",
@@ -656,7 +690,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "accuracy_mismatch"
+    "parent_symptom": "accuracy_mismatch",
+    "visibility": "oss"
   },
   {
     "symptom": "foreach_cross_device_error",
@@ -673,7 +708,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "as_strided_scatter_error",
@@ -690,7 +726,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "embedding_bag_inplace_leaf_error",
@@ -707,7 +744,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "empty_shape_segfault",
@@ -724,7 +762,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "segfault"
+    "parent_symptom": "segfault",
+    "visibility": "oss"
   },
   {
     "symptom": "nopython_cache_collision",
@@ -741,7 +780,8 @@
     ],
     "evidence_count": 1,
     "freshness": "historical",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "dynamo_unsupported",
@@ -768,7 +808,8 @@
       "dispatch_mode_ignored",
       "forward_hook_partial_capture",
       "subclass_tensor_guard_malformed"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "torch_runtime_error",
@@ -780,7 +821,8 @@
     "configs": [],
     "evidence_issues": [],
     "evidence_count": 0,
-    "freshness": "base"
+    "freshness": "base",
+    "visibility": "oss"
   },
   {
     "symptom": "backend_compiler_failed",
@@ -800,7 +842,8 @@
     "evidence_issues": [],
     "evidence_count": 0,
     "freshness": "base",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "recompile_warning",
@@ -828,7 +871,8 @@
       "duck_sizing_recompilation",
       "dynamic_shape_specialization_on_slice",
       "symptom_multiple_cache_entries"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "accuracy_mismatch",
@@ -854,7 +898,8 @@
       "non_deterministic_correctness",
       "numerical_drift",
       "uint8_accuracy_false_positive"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "numerical_drift",
@@ -874,7 +919,8 @@
     "evidence_issues": [],
     "evidence_count": 0,
     "freshness": "base",
-    "parent_symptom": "accuracy_mismatch"
+    "parent_symptom": "accuracy_mismatch",
+    "visibility": "oss"
   },
   {
     "symptom": "silent_slowdown",
@@ -889,7 +935,8 @@
     "evidence_issues": [],
     "evidence_count": 0,
     "freshness": "base",
-    "parent_symptom": "perf_regression"
+    "parent_symptom": "perf_regression",
+    "visibility": "oss"
   },
   {
     "symptom": "segfault",
@@ -906,7 +953,8 @@
     "freshness": "base",
     "child_symptoms": [
       "empty_shape_segfault"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "compile_timeout",
@@ -922,7 +970,8 @@
     "evidence_issues": [],
     "evidence_count": 0,
     "freshness": "base",
-    "parent_symptom": "slow_compile"
+    "parent_symptom": "slow_compile",
+    "visibility": "oss"
   },
   {
     "symptom": "inductor_oom",
@@ -934,7 +983,8 @@
     "configs": [],
     "evidence_issues": [],
     "evidence_count": 0,
-    "freshness": "base"
+    "freshness": "base",
+    "visibility": "oss"
   },
   {
     "symptom": "symptom_multiple_cache_entries",
@@ -951,7 +1001,8 @@
     "evidence_issues": [],
     "evidence_count": 0,
     "freshness": "base",
-    "parent_symptom": "recompile_warning"
+    "parent_symptom": "recompile_warning",
+    "visibility": "oss"
   },
   {
     "symptom": "symptom_extended_debug_output",
@@ -968,7 +1019,8 @@
     "freshness": "base",
     "child_symptoms": [
       "warning_log_spam"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "symptom_perf_regression_dynamic",
@@ -983,7 +1035,8 @@
     "evidence_issues": [],
     "evidence_count": 0,
     "freshness": "base",
-    "parent_symptom": "perf_regression"
+    "parent_symptom": "perf_regression",
+    "visibility": "oss"
   },
   {
     "symptom": "crash",
@@ -1004,7 +1057,8 @@
     "freshness": "base",
     "child_symptoms": [
       "conj_view_aliasing_crash"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "wrong_result",
@@ -1037,7 +1091,8 @@
     "freshness": "base",
     "child_symptoms": [
       "partial_zeros_output"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "slow_compile",
@@ -1064,7 +1119,8 @@
       "compile_timeout",
       "networkx_unbounded_scheduling",
       "quadratic_compile_time_asserts"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "hang",
@@ -1081,7 +1137,8 @@
     ],
     "evidence_issues": [],
     "evidence_count": 0,
-    "freshness": "base"
+    "freshness": "base",
+    "visibility": "oss"
   },
   {
     "symptom": "perf_regression",
@@ -1106,7 +1163,8 @@
       "silent_slowdown",
       "symptom_perf_regression_dynamic",
       "wrong_device_compilation"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "memory_issue",
@@ -1121,7 +1179,8 @@
     "configs": [],
     "evidence_issues": [],
     "evidence_count": 0,
-    "freshness": "base"
+    "freshness": "base",
+    "visibility": "oss"
   },
   {
     "symptom": "flaky",
@@ -1141,7 +1200,8 @@
     "evidence_issues": [],
     "evidence_count": 0,
     "freshness": "base",
-    "parent_symptom": "error_raised"
+    "parent_symptom": "error_raised",
+    "visibility": "oss"
   },
   {
     "symptom": "error_raised",
@@ -1200,7 +1260,8 @@
       "stride_mismatch_view_error",
       "sympy_nan_comparison",
       "weakref_blocks_device_move"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "symptom": "silent_correctness",
@@ -1229,6 +1290,7 @@
       "export_static_guard_leak",
       "fake_kernel_stride_mismatch",
       "mutation_lost_on_alignment_clone"
-    ]
+    ],
+    "visibility": "oss"
   }
 ]

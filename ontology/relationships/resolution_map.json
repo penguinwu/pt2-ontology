@@ -6,7 +6,8 @@
     "evidence_issues": [
       97077
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "aoti_silent_degradation",
@@ -16,7 +17,8 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "aoti_silent_degradation",
@@ -26,7 +28,8 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "as_strided_scatter_error",
@@ -35,7 +38,8 @@
     "evidence_issues": [
       86427
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "complex_scalar_backward_error",
@@ -44,7 +48,8 @@
     "evidence_issues": [
       105290
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "conj_view_aliasing_crash",
@@ -53,7 +58,8 @@
     "evidence_issues": [
       148950
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "crash",
@@ -63,7 +69,8 @@
       96971,
       100075
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "crash",
@@ -75,7 +82,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "upstream_fix"
+    "fix_type": "upstream_fix",
+    "visibility": "oss"
   },
   {
     "from": "crash",
@@ -87,7 +95,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "upstream_fix"
+    "fix_type": "upstream_fix",
+    "visibility": "oss"
   },
   {
     "from": "cudagraph_oom",
@@ -99,7 +108,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "ddp_autocast_accuracy_loss",
@@ -108,7 +118,8 @@
     "evidence_issues": [
       101624
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "ddp_dynamic_shape_error",
@@ -117,7 +128,8 @@
     "evidence_issues": [
       111636
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "ddp_dynamic_shape_error",
@@ -126,7 +138,8 @@
     "evidence_issues": [
       111636
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "delayed_nan",
@@ -135,7 +148,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "delayed_nan",
@@ -144,7 +158,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dispatch_mode_ignored",
@@ -153,7 +168,8 @@
     "evidence_issues": [
       105929
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "duck_sizing_recompilation",
@@ -162,7 +178,8 @@
     "evidence_issues": [
       150702
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_scalar_regression",
@@ -171,7 +188,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_scalar_regression",
@@ -180,7 +198,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamic_shape_specialization_on_slice",
@@ -189,7 +208,8 @@
     "evidence_issues": [
       106110
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "dynamo_unsupported",
@@ -201,7 +221,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "user_adaptation"
+    "fix_type": "user_adaptation",
+    "visibility": "oss"
   },
   {
     "from": "dynamo_unsupported",
@@ -213,7 +234,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "user_adaptation"
+    "fix_type": "user_adaptation",
+    "visibility": "oss"
   },
   {
     "from": "dynamo_unsupported",
@@ -225,7 +247,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "user_workaround"
+    "fix_type": "user_workaround",
+    "visibility": "oss"
   },
   {
     "from": "embedding_bag_inplace_leaf_error",
@@ -234,7 +257,8 @@
     "evidence_issues": [
       95167
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "empty_shape_segfault",
@@ -243,7 +267,8 @@
     "evidence_issues": [
       98835
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "empty_strided_incorrect_strides",
@@ -252,7 +277,8 @@
     "evidence_issues": [
       130394
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -264,7 +290,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "user_adaptation"
+    "fix_type": "user_adaptation",
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -273,7 +300,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -283,7 +311,8 @@
       163563,
       173915
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -292,7 +321,8 @@
     "evidence_issues": [
       104674
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -301,7 +331,8 @@
     "evidence_issues": [
       146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -310,7 +341,8 @@
     "evidence_issues": [
       111199
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -319,7 +351,8 @@
     "evidence_issues": [
       145074
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -328,7 +361,8 @@
     "evidence_issues": [
       150057
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -337,7 +371,8 @@
     "evidence_issues": [
       138809
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -348,7 +383,8 @@
       147261,
       172822
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -357,7 +393,8 @@
     "evidence_issues": [
       137062
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "error_raised",
@@ -368,7 +405,8 @@
       148808,
       173902
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "export_dde_cascade",
@@ -377,7 +415,8 @@
     "evidence_issues": [
       146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "export_dde_cascade",
@@ -386,7 +425,8 @@
     "evidence_issues": [
       146152
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "export_static_guard_leak",
@@ -396,7 +436,8 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "export_static_guard_leak",
@@ -406,7 +447,8 @@
       147475,
       155862
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "failure_dynamic_shape_error",
@@ -418,7 +460,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "failure_silent_incorrectness",
@@ -430,7 +473,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "upstream_fix"
+    "fix_type": "upstream_fix",
+    "visibility": "oss"
   },
   {
     "from": "fake_kernel_stride_mismatch",
@@ -439,7 +483,8 @@
     "evidence_issues": [
       146536
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "foreach_cross_device_error",
@@ -448,7 +493,8 @@
     "evidence_issues": [
       102023
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "forward_hook_partial_capture",
@@ -457,7 +503,8 @@
     "evidence_issues": [
       96722
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fp16_perf_regression_small_batch",
@@ -466,7 +513,8 @@
     "evidence_issues": [
       159346
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "fp16_perf_regression_small_batch",
@@ -475,7 +523,8 @@
     "evidence_issues": [
       159346
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "functionctx_missing_saved_tensors",
@@ -484,7 +533,8 @@
     "evidence_issues": [
       135118
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "index_expression_perf_regression",
@@ -493,7 +543,8 @@
     "evidence_issues": [
       127581
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "index_propagation_key_error",
@@ -502,7 +553,8 @@
     "evidence_issues": [
       127677
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "memory_issue",
@@ -514,7 +566,8 @@
       163563,
       174418
     ],
-    "evidence_count": 4
+    "evidence_count": 4,
+    "visibility": "oss"
   },
   {
     "from": "memory_issue",
@@ -525,7 +578,8 @@
       148808,
       173902
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "model_instability_false_alarm",
@@ -534,7 +588,8 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "model_instability_false_alarm",
@@ -543,7 +598,8 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "mutation_lost_on_alignment_clone",
@@ -552,7 +608,8 @@
     "evidence_issues": [
       152425
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "nested_tensor_compile_error",
@@ -561,7 +618,8 @@
     "evidence_issues": [
       138274
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "networkx_unbounded_scheduling",
@@ -570,7 +628,8 @@
     "evidence_issues": [
       103055
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "non_compliant_custom_op",
@@ -582,7 +641,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "user_adaptation"
+    "fix_type": "user_adaptation",
+    "visibility": "oss"
   },
   {
     "from": "non_deterministic_correctness",
@@ -591,7 +651,8 @@
     "evidence_issues": [
       159855
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "non_deterministic_correctness",
@@ -600,7 +661,8 @@
     "evidence_issues": [
       159855
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "nopython_cache_collision",
@@ -609,7 +671,8 @@
     "evidence_issues": [
       114059
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "numerical_drift",
@@ -621,7 +684,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "numerical_drift",
@@ -633,7 +697,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "upstream_fix"
+    "fix_type": "upstream_fix",
+    "visibility": "oss"
   },
   {
     "from": "partial_zeros_output",
@@ -642,7 +707,8 @@
     "evidence_issues": [
       157363
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "partial_zeros_output",
@@ -651,7 +717,8 @@
     "evidence_issues": [
       157363
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "perf_improvement",
@@ -663,7 +730,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "user_adaptation"
+    "fix_type": "user_adaptation",
+    "visibility": "oss"
   },
   {
     "from": "perf_improvement",
@@ -675,7 +743,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "perf_regression",
@@ -687,7 +756,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "quadratic_compile_time_asserts",
@@ -696,7 +766,8 @@
     "evidence_issues": [
       144792
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "quadratic_compile_time_asserts",
@@ -705,7 +776,8 @@
     "evidence_issues": [
       144792
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "recompile_warning",
@@ -717,7 +789,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "scalar_op_faketensor_error",
@@ -726,7 +799,8 @@
     "evidence_issues": [
       93224
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -736,7 +810,8 @@
       96971,
       100075
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -745,7 +820,8 @@
     "evidence_issues": [
       96693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -754,7 +830,8 @@
     "evidence_issues": [
       173902
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "silent_correctness",
@@ -763,7 +840,8 @@
     "evidence_issues": [
       176565
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "slow_compile",
@@ -775,7 +853,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "slow_compile",
@@ -784,7 +863,8 @@
     "evidence_issues": [
       144792
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "stride_mismatch_view_error",
@@ -793,7 +873,8 @@
     "evidence_issues": [
       93428
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "subclass_tensor_guard_malformed",
@@ -802,7 +883,8 @@
     "evidence_issues": [
       118896
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "suboptimal_heuristics",
@@ -814,7 +896,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "symptom_multiple_cache_entries",
@@ -826,7 +909,8 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "compiler_fix"
+    "fix_type": "compiler_fix",
+    "visibility": "oss"
   },
   {
     "from": "sympy_nan_comparison",
@@ -835,7 +919,8 @@
     "evidence_issues": [
       133735
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "uint8_accuracy_false_positive",
@@ -844,7 +929,8 @@
     "evidence_issues": [
       121069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "warning_log_spam",
@@ -853,7 +939,8 @@
     "evidence_issues": [
       138069
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "weakref_blocks_device_move",
@@ -862,7 +949,8 @@
     "evidence_issues": [
       141548
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_device_compilation",
@@ -871,7 +959,8 @@
     "evidence_issues": [
       97693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -881,7 +970,8 @@
       96971,
       100075
     ],
-    "evidence_count": 2
+    "evidence_count": 2,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -890,7 +980,8 @@
     "evidence_issues": [
       96971
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -899,7 +990,8 @@
     "evidence_issues": [
       96693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -908,7 +1000,8 @@
     "evidence_issues": [
       157363
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -917,7 +1010,8 @@
     "evidence_issues": [
       96693
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -926,7 +1020,8 @@
     "evidence_issues": [
       173902
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -935,7 +1030,8 @@
     "evidence_issues": [
       176565
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -944,7 +1040,8 @@
     "evidence_issues": [
       147261
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -953,7 +1050,8 @@
     "evidence_issues": [
       100075
     ],
-    "evidence_count": 1
+    "evidence_count": 1,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -964,7 +1062,8 @@
       147261,
       172822
     ],
-    "evidence_count": 3
+    "evidence_count": 3,
+    "visibility": "oss"
   },
   {
     "from": "wrong_result",
@@ -976,6 +1075,7 @@
     "sources": [
       "bootstrap_resolution"
     ],
-    "fix_type": "upstream_fix"
+    "fix_type": "upstream_fix",
+    "visibility": "oss"
   }
 ]

@@ -7,7 +7,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "torch_runtime_error",
@@ -17,7 +18,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "backend_compiler_failed",
@@ -27,7 +29,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "recompile_warning",
@@ -37,7 +40,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "accuracy_mismatch",
@@ -47,7 +51,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "numerical_drift",
@@ -57,7 +62,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "silent_slowdown",
@@ -67,7 +73,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "segfault",
@@ -77,7 +84,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "compile_timeout",
@@ -87,7 +95,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "inductor_oom",
@@ -97,7 +106,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "symptom_multiple_cache_entries",
@@ -110,7 +120,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "symptom_extended_debug_output",
@@ -124,7 +135,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "symptom_perf_regression_dynamic",
@@ -137,7 +149,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "crash",
@@ -147,7 +160,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "wrong_result",
@@ -157,7 +171,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "slow_compile",
@@ -167,7 +182,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "hang",
@@ -177,7 +193,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "perf_regression",
@@ -187,7 +204,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "memory_issue",
@@ -197,7 +215,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "flaky",
@@ -207,7 +226,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "error_raised",
@@ -217,7 +237,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "silent_correctness",
@@ -227,7 +248,8 @@
       "status": "base",
       "reason": "Core ontology entity",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "delayed_nan",
@@ -247,7 +269,8 @@
       "status": "historical",
       "reason": "Original NaN collapse bug fixed in PT 2.0",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "non_deterministic_correctness",
@@ -267,7 +290,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fp16_perf_regression_small_batch",
@@ -287,7 +311,8 @@
       "status": "living",
       "reason": "Has open evidence issue(s)",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "aoti_silent_degradation",
@@ -308,7 +333,8 @@
       "status": "living",
       "reason": "Has open evidence issue(s)",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "export_static_guard_leak",
@@ -329,7 +355,8 @@
       "status": "living",
       "reason": "Has open evidence issue(s)",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "export_dde_cascade",
@@ -349,7 +376,8 @@
       "status": "living",
       "reason": "Has open evidence issue(s)",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "model_instability_false_alarm",
@@ -369,7 +397,8 @@
       "status": "living",
       "reason": "Diagnostic pattern is timeless",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "warning_log_spam",
@@ -389,7 +418,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.5",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "dynamic_scalar_regression",
@@ -409,7 +439,8 @@
       "status": "historical",
       "reason": "torch.add out= + dynamic alpha fixed in PT 2.1",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "partial_zeros_output",
@@ -429,7 +460,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "fake_kernel_stride_mismatch",
@@ -449,7 +481,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.6",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "complex_scalar_backward_error",
@@ -469,7 +502,8 @@
       "status": "living",
       "reason": "Complex compilation issues still active in 2026",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "mutation_lost_on_alignment_clone",
@@ -489,7 +523,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "sympy_nan_comparison",
@@ -509,7 +544,8 @@
       "status": "likely_living",
       "reason": "Last evidence from PT 2.4",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "quadratic_compile_time_asserts",
@@ -529,7 +565,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.5",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "weakref_blocks_device_move",
@@ -549,7 +586,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.5",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "stride_mismatch_view_error",
@@ -569,7 +607,8 @@
       "status": "historical",
       "reason": "Specific functionalization stride bug fixed in early PT2",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "dynamic_shape_specialization_on_slice",
@@ -589,7 +628,8 @@
       "status": "likely_living",
       "reason": "Underlying slice-to-end inconsistency may still exist; workaround applied in benchmark only",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "duck_sizing_recompilation",
@@ -609,7 +649,8 @@
       "status": "living",
       "reason": "Last evidence from PT 2.7, duck sizing is still default behavior",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "wrong_device_compilation",
@@ -629,7 +670,8 @@
       "status": "historical",
       "reason": "Fixed in later PyTorch versions per user confirmation",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "index_expression_perf_regression",
@@ -649,7 +691,8 @@
       "status": "likely_living",
       "reason": "Index expression generation patterns may still produce suboptimal code",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "activation_checkpoint_compile_error",
@@ -669,7 +712,8 @@
       "status": "historical",
       "reason": "Activation checkpointing support subsequently added as top priority",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "scalar_op_faketensor_error",
@@ -689,7 +733,8 @@
       "status": "historical",
       "reason": "Fixed by changing dispatch registration to CompositeExplicitAutograd",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "ddp_autocast_accuracy_loss",
@@ -709,7 +754,8 @@
       "status": "historical",
       "reason": "Fixed with dynamo-level autocast state patching; DDPOptimizer being replaced",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "foreach_cross_device_error",
@@ -729,7 +775,8 @@
       "status": "historical",
       "reason": "Fixed by switching to impl_abstract registration",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "ddp_dynamic_shape_error",
@@ -749,7 +796,8 @@
       "status": "likely_living",
       "reason": "DDPOptimizer replacement still in progress",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "uint8_accuracy_false_positive",
@@ -769,7 +817,8 @@
       "status": "likely_living",
       "reason": "Non-FP accuracy check limitation is fundamental to approach",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "as_strided_scatter_error",
@@ -789,7 +838,8 @@
       "status": "historical",
       "reason": "Fixed by making as_strided support toggleable per tensor subclass",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "index_propagation_key_error",
@@ -809,7 +859,8 @@
       "status": "likely_living",
       "reason": "Graceful handling added but underlying IR issue may still occur",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "nested_tensor_compile_error",
@@ -829,7 +880,8 @@
       "status": "living",
       "reason": "NST/NJT migration still ongoing in HuggingFace ecosystem",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "conj_view_aliasing_crash",
@@ -847,7 +899,8 @@
       "status": "living",
       "reason": "Recent issue from PT 2.6",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "dispatch_mode_ignored",
@@ -865,7 +918,8 @@
       "status": "likely_living",
       "reason": "TorchDispatchMode support still evolving",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "embedding_bag_inplace_leaf_error",
@@ -883,7 +937,8 @@
       "status": "historical",
       "reason": "Early PT2 issue, likely fixed",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "empty_shape_segfault",
@@ -901,7 +956,8 @@
       "status": "historical",
       "reason": "Empty tensor handling improved significantly",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "empty_strided_incorrect_strides",
@@ -919,7 +975,8 @@
       "status": "likely_living",
       "reason": "Stride correctness issues can still surface",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "forward_hook_partial_capture",
@@ -937,7 +994,8 @@
       "status": "likely_living",
       "reason": "Hook handling still has edge cases",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "functionctx_missing_saved_tensors",
@@ -955,7 +1013,8 @@
       "status": "likely_living",
       "reason": "Custom autograd function compile support evolving",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "networkx_unbounded_scheduling",
@@ -973,7 +1032,8 @@
       "status": "likely_living",
       "reason": "Scheduling complexity can still surface on large models",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "nopython_cache_collision",
@@ -991,7 +1051,8 @@
       "status": "historical",
       "reason": "Cache system significantly reworked since PT 2.1",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   },
   {
     "id": "subclass_tensor_guard_malformed",
@@ -1009,6 +1070,7 @@
       "status": "likely_living",
       "reason": "Tensor subclass support still active development area",
       "classified_date": "2026-04-14"
-    }
+    },
+    "visibility": "oss"
   }
 ]
