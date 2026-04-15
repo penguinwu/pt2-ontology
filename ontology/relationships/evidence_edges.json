@@ -1,0 +1,551 @@
+[
+  {
+    "from": "activation_checkpoint_compile_error",
+    "type": "caused_by_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      97077
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "activation_checkpoint_compile_error",
+    "type": "fixed_by",
+    "to": "fix_disable_preserve_rng_state",
+    "evidence_issues": [
+      97077
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "as_strided_scatter_error",
+    "type": "caused_by_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      86427
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "conj_view_aliasing_crash",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      148950
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "ddp_autocast_accuracy_loss",
+    "type": "caused_by_component",
+    "to": "ddpoptimizer",
+    "evidence_issues": [
+      101624
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "ddp_autocast_accuracy_loss",
+    "type": "fixed_by",
+    "to": "fix_disable_ddp_optimizer",
+    "evidence_issues": [
+      101624
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "ddp_autocast_accuracy_loss",
+    "type": "involves_config",
+    "to": "optimize_ddp",
+    "evidence_issues": [
+      101624
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "ddp_dynamic_shape_error",
+    "type": "caused_by_component",
+    "to": "ddpoptimizer",
+    "evidence_issues": [
+      111636
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "ddp_dynamic_shape_error",
+    "type": "fixed_by",
+    "to": "fix_disable_ddp_optimizer",
+    "evidence_issues": [
+      111636
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dispatch_mode_ignored",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      105929
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "duck_sizing_recompilation",
+    "type": "caused_by_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "duck_sizing_recompilation",
+    "type": "diagnosed_by",
+    "to": "TORCH_LOGS_recompiles",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "duck_sizing_recompilation",
+    "type": "fixed_by",
+    "to": "fix_disable_duck_shape",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "duck_sizing_recompilation",
+    "type": "fixed_by",
+    "to": "fix_rewrite_indexing_narrow",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "duck_sizing_recompilation",
+    "type": "involves_config",
+    "to": "use_duck_shape",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamic_shape_specialization_on_slice",
+    "type": "caused_by_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      106110
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamic_shape_specialization_on_slice",
+    "type": "diagnosed_by",
+    "to": "TORCH_LOGS_dynamic",
+    "evidence_issues": [
+      106110
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "dynamic_shape_specialization_on_slice",
+    "type": "fixed_by",
+    "to": "fix_use_maybe_mark_dynamic",
+    "evidence_issues": [
+      106110
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "embedding_bag_inplace_leaf_error",
+    "type": "caused_by_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      95167
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "empty_shape_segfault",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      98835
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "empty_strided_incorrect_strides",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      130394
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_disable_bettertransformer_with_compile",
+    "type": "works_around_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      138274
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_disable_ddp_optimizer",
+    "type": "uses_config",
+    "to": "optimize_ddp",
+    "evidence_issues": [
+      101624
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_disable_ddp_optimizer",
+    "type": "works_around_component",
+    "to": "ddpoptimizer",
+    "evidence_issues": [
+      101624
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_disable_duck_shape",
+    "type": "uses_config",
+    "to": "use_duck_shape",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_disable_duck_shape",
+    "type": "works_around_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_disable_dynamic_shapes",
+    "type": "works_around_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      105524
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_disable_preserve_rng_state",
+    "type": "works_around_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      97077
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_ignore_non_fp_accuracy",
+    "type": "uses_config",
+    "to": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_ignore_non_fp_accuracy",
+    "type": "works_around_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_rewrite_indexing_narrow",
+    "type": "uses_config",
+    "to": "use_duck_shape",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_rewrite_indexing_narrow",
+    "type": "works_around_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_use_fullgraph",
+    "type": "uses_config",
+    "to": "capture_dynamic_output_shape_ops",
+    "evidence_issues": [
+      163451
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_use_fullgraph",
+    "type": "uses_config",
+    "to": "capture_scalar_outputs",
+    "evidence_issues": [
+      119476
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_use_fullgraph",
+    "type": "uses_config",
+    "to": "emulate_precision_casts",
+    "evidence_issues": [
+      163451
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_use_fullgraph",
+    "type": "uses_config",
+    "to": "suppress_errors",
+    "evidence_issues": [
+      112009
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_use_fullgraph",
+    "type": "works_around_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      119476
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_use_fullgraph",
+    "type": "works_around_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      105524
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_use_fullgraph",
+    "type": "works_around_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      114525
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_use_fullgraph",
+    "type": "works_around_component",
+    "to": "user_error",
+    "evidence_issues": [
+      124918
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "fix_use_maybe_mark_dynamic",
+    "type": "works_around_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      106110
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "foreach_cross_device_error",
+    "type": "caused_by_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      102023
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "forward_hook_partial_capture",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      96722
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "functionctx_missing_saved_tensors",
+    "type": "caused_by_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      135118
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "index_expression_perf_regression",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      127581
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "index_expression_perf_regression",
+    "type": "diagnosed_by",
+    "to": "ncu_warp_stall_sampling",
+    "evidence_issues": [
+      127581
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "index_propagation_key_error",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      127677
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "nested_tensor_compile_error",
+    "type": "caused_by_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      138274
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "nested_tensor_compile_error",
+    "type": "fixed_by",
+    "to": "fix_disable_bettertransformer_with_compile",
+    "evidence_issues": [
+      138274
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "networkx_unbounded_scheduling",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      103055
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "nopython_cache_collision",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      114059
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "scalar_op_faketensor_error",
+    "type": "caused_by_component",
+    "to": "torch._dynamo",
+    "evidence_issues": [
+      93224
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "stride_mismatch_view_error",
+    "type": "caused_by_component",
+    "to": "aot_autograd",
+    "evidence_issues": [
+      93428
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "stride_mismatch_view_error",
+    "type": "diagnosed_by",
+    "to": "functionalization_stride_debug_patch",
+    "evidence_issues": [
+      93428
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "subclass_tensor_guard_malformed",
+    "type": "caused_by_component",
+    "to": "torchdynamo",
+    "evidence_issues": [
+      118896
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "uint8_accuracy_false_positive",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "uint8_accuracy_false_positive",
+    "type": "diagnosed_by",
+    "to": "TORCHDYNAMO_REPRO_AFTER",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "uint8_accuracy_false_positive",
+    "type": "diagnosed_by",
+    "to": "TORCHDYNAMO_REPRO_LEVEL",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "uint8_accuracy_false_positive",
+    "type": "fixed_by",
+    "to": "fix_ignore_non_fp_accuracy",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "uint8_accuracy_false_positive",
+    "type": "involves_config",
+    "to": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  },
+  {
+    "from": "wrong_device_compilation",
+    "type": "caused_by_component",
+    "to": "torchinductor",
+    "evidence_issues": [
+      97693
+    ],
+    "evidence_count": 1
+  }
+]

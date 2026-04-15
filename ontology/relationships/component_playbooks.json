@@ -1,0 +1,428 @@
+[
+  {
+    "component": "torchdynamo",
+    "issue_count": 139,
+    "top_error_patterns": [
+      {
+        "pattern": "fake_tensor",
+        "count": 8
+      },
+      {
+        "pattern": "device/cuda",
+        "count": 6
+      },
+      {
+        "pattern": "guard",
+        "count": 6
+      },
+      {
+        "pattern": "tensor_subclass",
+        "count": 5
+      },
+      {
+        "pattern": "recompilation",
+        "count": 4
+      },
+      {
+        "pattern": "dynamic_shapes",
+        "count": 4
+      },
+      {
+        "pattern": "graph_break",
+        "count": 3
+      },
+      {
+        "pattern": "stride_mismatch",
+        "count": 2
+      }
+    ],
+    "resolution_breakdown": {
+      "compiler_fix": 100,
+      "user_workaround": 30,
+      "expected_behavior": 6,
+      "user_adaptation": 2,
+      "in_progress": 1
+    },
+    "diagnostic_tools": [
+      {
+        "tool": "TORCHDYNAMO_REPRO",
+        "usage_count": 24
+      },
+      {
+        "tool": "minifier",
+        "usage_count": 5
+      },
+      {
+        "tool": "TORCH_LOGS",
+        "usage_count": 2
+      },
+      {
+        "tool": "aot_eager",
+        "usage_count": 1
+      },
+      {
+        "tool": "NCU/profiler",
+        "usage_count": 1
+      },
+      {
+        "tool": "dynamo.explain",
+        "usage_count": 1
+      }
+    ],
+    "common_workaround_configs": [
+      {
+        "config": "suppress_errors",
+        "count": 8
+      },
+      {
+        "config": "fullgraph",
+        "count": 3
+      },
+      {
+        "config": "TORCH_LOGS",
+        "count": 3
+      },
+      {
+        "config": "load_config",
+        "count": 2
+      },
+      {
+        "config": "verbose",
+        "count": 2
+      },
+      {
+        "config": "capture_scalar_outputs",
+        "count": 2
+      },
+      {
+        "config": "eager",
+        "count": 2
+      },
+      {
+        "config": "optimize_ddp",
+        "count": 1
+      }
+    ],
+    "sample_issues": [
+      81529,
+      90203,
+      90375,
+      90397,
+      90454,
+      90511,
+      91101,
+      91306,
+      91720,
+      92655
+    ]
+  },
+  {
+    "component": "torchinductor",
+    "issue_count": 79,
+    "top_error_patterns": [
+      {
+        "pattern": "device/cuda",
+        "count": 6
+      },
+      {
+        "pattern": "stride_mismatch",
+        "count": 3
+      },
+      {
+        "pattern": "fake_tensor",
+        "count": 1
+      },
+      {
+        "pattern": "decomposition",
+        "count": 1
+      },
+      {
+        "pattern": "accuracy",
+        "count": 1
+      },
+      {
+        "pattern": "recompilation",
+        "count": 1
+      },
+      {
+        "pattern": "guard",
+        "count": 1
+      },
+      {
+        "pattern": "mutation/inplace",
+        "count": 1
+      }
+    ],
+    "resolution_breakdown": {
+      "compiler_fix": 61,
+      "user_workaround": 8,
+      "expected_behavior": 7,
+      "user_adaptation": 3
+    },
+    "diagnostic_tools": [
+      {
+        "tool": "TORCHDYNAMO_REPRO",
+        "usage_count": 21
+      },
+      {
+        "tool": "NCU/profiler",
+        "usage_count": 2
+      },
+      {
+        "tool": "minifier",
+        "usage_count": 1
+      },
+      {
+        "tool": "aot_eager",
+        "usage_count": 1
+      }
+    ],
+    "common_workaround_configs": [
+      {
+        "config": "fullgraph",
+        "count": 4
+      },
+      {
+        "config": "TORCH_LOGS",
+        "count": 3
+      },
+      {
+        "config": "TORCH_NO_CUDA_MEMORY_CACHING",
+        "count": 1
+      },
+      {
+        "config": "TORCH_USE_CUDA_DSA",
+        "count": 1
+      },
+      {
+        "config": "eager",
+        "count": 1
+      },
+      {
+        "config": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+        "count": 1
+      },
+      {
+        "config": "TORCHINDUCTOR_ABI_COMPATIBLE",
+        "count": 1
+      },
+      {
+        "config": "cache_size_limit",
+        "count": 1
+      }
+    ],
+    "sample_issues": [
+      91753,
+      91799,
+      91827,
+      92582,
+      93357,
+      93434,
+      93535,
+      93636,
+      93642,
+      93665
+    ]
+  },
+  {
+    "component": "aot_autograd",
+    "issue_count": 34,
+    "top_error_patterns": [
+      {
+        "pattern": "stride_mismatch",
+        "count": 4
+      },
+      {
+        "pattern": "view/aliasing",
+        "count": 3
+      },
+      {
+        "pattern": "fake_tensor",
+        "count": 2
+      },
+      {
+        "pattern": "backward/autograd",
+        "count": 2
+      },
+      {
+        "pattern": "mutation/inplace",
+        "count": 1
+      },
+      {
+        "pattern": "tensor_subclass",
+        "count": 1
+      },
+      {
+        "pattern": "decomposition",
+        "count": 1
+      }
+    ],
+    "resolution_breakdown": {
+      "compiler_fix": 25,
+      "user_workaround": 5,
+      "expected_behavior": 4
+    },
+    "diagnostic_tools": [
+      {
+        "tool": "TORCHDYNAMO_REPRO",
+        "usage_count": 6
+      },
+      {
+        "tool": "minifier",
+        "usage_count": 3
+      },
+      {
+        "tool": "aot_eager",
+        "usage_count": 2
+      },
+      {
+        "tool": "TORCH_LOGS",
+        "usage_count": 1
+      }
+    ],
+    "common_workaround_configs": [
+      {
+        "config": "max_autotune",
+        "count": 4
+      },
+      {
+        "config": "inductor",
+        "count": 1
+      },
+      {
+        "config": "aot_eager_decomp_partition",
+        "count": 1
+      },
+      {
+        "config": "TORCH_COMPILE_DEBUG_DIR",
+        "count": 1
+      }
+    ],
+    "sample_issues": [
+      86427,
+      90882,
+      91249,
+      92245,
+      92633,
+      93042,
+      93262,
+      93421,
+      93428,
+      95167
+    ]
+  },
+  {
+    "component": "torch_export",
+    "issue_count": 8,
+    "top_error_patterns": [],
+    "resolution_breakdown": {
+      "compiler_fix": 6,
+      "user_workaround": 2
+    },
+    "diagnostic_tools": [
+      {
+        "tool": "TORCHDYNAMO_REPRO",
+        "usage_count": 4
+      }
+    ],
+    "common_workaround_configs": [
+      {
+        "config": "suppress_errors",
+        "count": 2
+      },
+      {
+        "config": "capture_scalar_outputs",
+        "count": 1
+      }
+    ],
+    "sample_issues": [
+      93686,
+      93705,
+      106183,
+      113792,
+      123759,
+      125341,
+      128251,
+      130150
+    ]
+  },
+  {
+    "component": "ddpoptimizer",
+    "issue_count": 2,
+    "top_error_patterns": [
+      {
+        "pattern": "accuracy",
+        "count": 1
+      },
+      {
+        "pattern": "recompilation",
+        "count": 1
+      },
+      {
+        "pattern": "stride_mismatch",
+        "count": 1
+      },
+      {
+        "pattern": "dynamic_shapes",
+        "count": 1
+      },
+      {
+        "pattern": "symbolic",
+        "count": 1
+      }
+    ],
+    "resolution_breakdown": {
+      "compiler_fix": 1,
+      "user_workaround": 1
+    },
+    "diagnostic_tools": [],
+    "common_workaround_configs": [
+      {
+        "config": "optimize_ddp",
+        "count": 2
+      },
+      {
+        "config": "dynamic",
+        "count": 1
+      }
+    ],
+    "sample_issues": [
+      101624,
+      111636
+    ]
+  },
+  {
+    "component": "triton",
+    "issue_count": 10,
+    "top_error_patterns": [],
+    "resolution_breakdown": {
+      "compiler_fix": 5,
+      "user_workaround": 4,
+      "expected_behavior": 1
+    },
+    "diagnostic_tools": [
+      {
+        "tool": "TORCHDYNAMO_REPRO",
+        "usage_count": 4
+      }
+    ],
+    "common_workaround_configs": [
+      {
+        "config": "suppress_errors",
+        "count": 1
+      }
+    ],
+    "sample_issues": [
+      90178,
+      92745,
+      93603,
+      95347,
+      124901,
+      128357,
+      128640,
+      138775,
+      147468,
+      154212
+    ]
+  }
+]

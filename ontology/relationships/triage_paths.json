@@ -1,0 +1,153 @@
+[
+  {
+    "symptom": "activation_checkpoint_compile_error",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_disable_preserve_rng_state"
+    ],
+    "configs": [],
+    "evidence_issues": [
+      97077
+    ],
+    "evidence_count": 1
+  },
+  {
+    "symptom": "ddp_autocast_accuracy_loss",
+    "components": [
+      "ddpoptimizer"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_disable_ddp_optimizer"
+    ],
+    "configs": [
+      "optimize_ddp"
+    ],
+    "evidence_issues": [
+      101624
+    ],
+    "evidence_count": 1
+  },
+  {
+    "symptom": "ddp_dynamic_shape_error",
+    "components": [
+      "ddpoptimizer"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_disable_ddp_optimizer"
+    ],
+    "configs": [
+      "optimize_ddp"
+    ],
+    "evidence_issues": [
+      111636
+    ],
+    "evidence_count": 1
+  },
+  {
+    "symptom": "duck_sizing_recompilation",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [
+      "TORCH_LOGS_recompiles"
+    ],
+    "workarounds": [
+      "fix_disable_duck_shape",
+      "fix_rewrite_indexing_narrow"
+    ],
+    "configs": [
+      "use_duck_shape"
+    ],
+    "evidence_issues": [
+      150702
+    ],
+    "evidence_count": 1
+  },
+  {
+    "symptom": "dynamic_shape_specialization_on_slice",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [
+      "TORCH_LOGS_dynamic"
+    ],
+    "workarounds": [
+      "fix_use_maybe_mark_dynamic"
+    ],
+    "configs": [],
+    "evidence_issues": [
+      106110
+    ],
+    "evidence_count": 1
+  },
+  {
+    "symptom": "index_expression_perf_regression",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [
+      "ncu_warp_stall_sampling"
+    ],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      127581
+    ],
+    "evidence_count": 1
+  },
+  {
+    "symptom": "nested_tensor_compile_error",
+    "components": [
+      "torch._dynamo"
+    ],
+    "diagnostic_tools": [],
+    "workarounds": [
+      "fix_disable_bettertransformer_with_compile"
+    ],
+    "configs": [],
+    "evidence_issues": [
+      138274
+    ],
+    "evidence_count": 1
+  },
+  {
+    "symptom": "stride_mismatch_view_error",
+    "components": [
+      "aot_autograd"
+    ],
+    "diagnostic_tools": [
+      "functionalization_stride_debug_patch"
+    ],
+    "workarounds": [],
+    "configs": [],
+    "evidence_issues": [
+      93428
+    ],
+    "evidence_count": 1
+  },
+  {
+    "symptom": "uint8_accuracy_false_positive",
+    "components": [
+      "torchinductor"
+    ],
+    "diagnostic_tools": [
+      "TORCHDYNAMO_REPRO_AFTER",
+      "TORCHDYNAMO_REPRO_LEVEL"
+    ],
+    "workarounds": [
+      "fix_ignore_non_fp_accuracy"
+    ],
+    "configs": [
+      "TORCHDYNAMO_REPRO_IGNORE_NON_FP"
+    ],
+    "evidence_issues": [
+      121069
+    ],
+    "evidence_count": 1
+  }
+]
