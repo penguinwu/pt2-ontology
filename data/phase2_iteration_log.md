@@ -105,10 +105,75 @@ These patterns are exactly what the ontology needs for automated diagnosis.
 | Compiler fixes | 5 | 3 | 5 | 13 |
 | User errors | 0 | 3 | 2 | 5 |
 
+## Iteration 4: First automated batch (20 issues, Priority A top-comment)
+
+**Sample:** 20 Priority A (closed+completed) issues, selected by highest comment count after filtering dashboards/benchmarks
+**Issues:** #93428, #106110, #117045, #123745, #150702, #97693, #127581, #117602, #97077, #93224, #101624, #108079, #102023, #111636, #121069, #130822, #86427, #127677, #138274, #90167
+**Avg Quality Score:** 6.0/10
+**Total New Entities:** 23 (14 symptoms, 6 workarounds, 3 configs)
+
+### Findings
+
+**Quality distribution (20 issues):**
+- High quality (≥7): 10 issues — real compiler bugs with diagnostic paths
+- Medium quality (4-6): 7 issues — API guidance, ABI issues, partial diagnostics
+- Low quality (<4): 3 issues — pure Q&A with no diagnostic content (#117045, #117602, #90167)
+
+**Component distribution:**
+- torch._dynamo: 7 issues (duck sizing, dynamic shapes, scalar ops, RNG, FakeTensor)
+- torchinductor: 4 issues (device targeting, index expressions, ABI, quantization)
+- aot_autograd: 3 issues (strides, views, export API)
+- ddpoptimizer: 3 issues (autocast, dynamic shapes, DDP)
+- Q&A (no component): 3 issues
+
+**Key patterns discovered:**
+1. **DDP + compile is a rich problem space**: 3 separate issues cover different failure modes (autocast partitioning, dynamic shapes, tracing). DDPOptimizer is being replaced by compiled autograd.
+2. **Duck sizing is a current pain point**: #150702 shows real-world diffuser pipeline recompilation from duck sizing — most recent issue in the batch (2025-04).
+3. **Index expression generation matters**: #127581 demonstrates 50% perf diff from equivalent index expressions — deep NCU profiling analysis.
+4. **Historical patterns are still educational**: Issues like #93428 (stride mismatch) and #86427 (as_strided_scatter) are fixed but reveal diagnostic techniques still applicable today.
+
+**Freshness breakdown of new entities:**
+- Living: 6 symptoms, 4 workarounds, 3 configs
+- Likely living: 5 symptoms, 1 workaround
+- Historical: 7 symptoms, 1 workaround (fixed bugs, still educational)
+
+### Entity Yield
+
+| Type | Count | Notable |
+|------|-------|---------|
+| Symptoms | 14 | duck_sizing_recompilation, index_expression_perf_regression, nested_tensor_compile_error |
+| Workarounds | 6 | fix_disable_duck_shape, fix_rewrite_indexing_narrow, fix_ignore_non_fp_accuracy |
+| Configs | 3 | use_duck_shape, TORCHDYNAMO_REPRO_IGNORE_NON_FP, TORCHINDUCTOR_ABI_COMPATIBLE |
+| Diagnostic tools | 7 | ncu_warp_stall_sampling, TORCH_LOGS_recompiles, TORCHDYNAMO_REPRO_AFTER |
+
+### Cumulative Stats (50 extractions total)
+
+| Metric | Iter 1 | Iter 2 | Iter 3 | Iter 4 | Total |
+|--------|--------|--------|--------|--------|-------|
+| Issues | 10 | 10 | 10 | 20 | 50 |
+| Avg quality | 9.2 | 6.8 | 8.6 | 6.0 | 7.4 |
+| New symptoms | 9 | 0 | 8 | 14 | 31 |
+| New workarounds | 7 | 0 | 3 | 6 | 16 |
+| New configs | 3 | 0 | 1 | 3 | 7 |
+| Compiler fixes | 5 | 3 | 5 | 7 | 20 |
+| User errors/Q&A | 0 | 3 | 2 | 7 | 12 |
+
+### Observations on Automated vs Manual Extraction
+
+Iteration 4 is the first "automated" batch — all 20 issues extracted in a single pass from full conversation data, without iterative prompt refinement. Key differences from manual iterations:
+
+1. **Lower avg quality (6.0 vs 8.2)**: Larger batch includes more Q&A and low-signal issues. Manual iterations cherry-picked higher-signal issues.
+2. **Higher volume**: 20 issues in one pass vs 10 manually. Entity yield (23 new) is strong despite lower average quality.
+3. **Quality filtering needed**: A quality_score threshold of ≥5 would filter the 3 Q&A issues and keep 17 diagnostic-value extractions.
+4. **Historical vs living ratio**: More historical entities (7 of 14 symptoms) because automated selection picked high-comment issues regardless of era. Manual iterations were biased toward recent issues.
+
+**Recommendation:** For remaining ~350 candidates, apply quality_score ≥ 5 threshold during entity synthesis. Low-quality extractions are still useful as training data but shouldn't produce ontology entities.
+
 ## Next Iteration Recommendations
 
-1. **Continue Priority A batch**: ~170 remaining Priority A (closed+completed) issues
-2. **Process in batches of 10-20**: Iteration 3 quality (8.6) validates this batch size
-3. **User errors are valuable**: Don't filter them out — they reveal diagnostic patterns
-4. **Consider automating extraction**: 30 manual extractions is enough to define the schema; could prompt an LLM for remaining 350+ issues
-5. **Update decision tree**: Add new entry points from iteration 3 findings (custom op stream, fake kernel metadata, device movement)
+1. **Continue automated batches**: ~330 remaining Priority A issues
+2. **Process in batches of 20-30**: Iteration 4 validates this batch size for automated extraction
+3. **Apply quality threshold**: Only synthesize entities from extractions with quality_score ≥ 5
+4. **Priority ordering**: Continue sorting by comment count — higher-comment issues yield more diagnostic depth
+5. **Filter improvement**: Pre-filter dashboard/tracker/benchmark issues from candidate list (removed 5 manually this iteration)
+6. **Diminishing returns watch**: Track new entity yield per batch — stop when <2 new entities per batch

@@ -508,5 +508,80 @@
       "reason": "Confirmed in source (2026-04-14)",
       "classified_date": "2026-04-14"
     }
+  },
+  {
+    "id": "use_duck_shape",
+    "name": "use_duck_shape",
+    "description": "torch.fx.experimental._config.use_duck_shape \u2014 when True (default), dimensions with same value at first compile are assumed equal, causing recompilation when they differ later",
+    "evidence_issues": [
+      150702
+    ],
+    "temporal": {
+      "first_seen_date": "2025-04-04",
+      "last_seen_date": "2025-04-15",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Active config, still default behavior",
+      "classified_date": "2026-04-14"
+    },
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14",
+      "location": "torch.fx.experimental._config.use_duck_shape"
+    }
+  },
+  {
+    "id": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+    "name": "TORCHDYNAMO_REPRO_IGNORE_NON_FP",
+    "description": "Environment variable \u2014 when set to 1, skips accuracy checks on non-floating-point tensors (uint8, bool) to avoid false positives",
+    "evidence_issues": [
+      121069
+    ],
+    "temporal": {
+      "first_seen_date": "2024-03-02",
+      "last_seen_date": "2024-10-24",
+      "first_seen_version": "2.2",
+      "last_seen_version": "2.4",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Diagnostic config \u2014 always available",
+      "classified_date": "2026-04-14"
+    },
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14",
+      "location": "torch._dynamo.config.repro_ignore_non_fp"
+    }
+  },
+  {
+    "id": "TORCHINDUCTOR_ABI_COMPATIBLE",
+    "name": "TORCHINDUCTOR_ABI_COMPATIBLE",
+    "description": "Environment variable \u2014 when set to 1, enables ABI-compatible compilation mode for AOTInductor, intended for cross-version model loading (still maturing)",
+    "evidence_issues": [
+      123745
+    ],
+    "temporal": {
+      "first_seen_date": "2024-04-07",
+      "last_seen_date": "2024-11-08",
+      "first_seen_version": "2.3",
+      "last_seen_version": "2.5",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Active feature, still being developed",
+      "classified_date": "2026-04-14"
+    },
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14",
+      "location": "torch._inductor abi_compatible mode"
+    }
   }
 ]

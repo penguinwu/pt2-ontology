@@ -550,5 +550,285 @@
       "reason": "Last evidence from PT 2.5",
       "classified_date": "2026-04-14"
     }
+  },
+  {
+    "id": "stride_mismatch_view_error",
+    "name": "Stride Mismatch View Error",
+    "description": "Cannot view a tensor with given shape and strides \u2014 functionalization or AOT tracing produces tensors with incorrect strides, causing view ops to fail",
+    "evidence_issues": [
+      93428
+    ],
+    "temporal": {
+      "first_seen_date": "2022-11-16",
+      "last_seen_date": "2023-05-10",
+      "first_seen_version": "pre-2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Specific functionalization stride bug fixed in early PT2",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "dynamic_shape_specialization_on_slice",
+    "name": "Dynamic Shape Specialization on Slice",
+    "description": "Symbolic shapes specializes when tensor slicing reaches exact end of dimension \u2014 slice-to-end vs before-end produces inconsistent guard behavior, causing unexpected shape specialization",
+    "evidence_issues": [
+      106110
+    ],
+    "temporal": {
+      "first_seen_date": "2023-07-27",
+      "last_seen_date": "2023-12-08",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.2",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Underlying slice-to-end inconsistency may still exist; workaround applied in benchmark only",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "duck_sizing_recompilation",
+    "name": "Duck Sizing Recompilation",
+    "description": "Duck sizing causes recompilations when dimensions that happen to be equal at first compile (e.g., height==width) differ at subsequent calls \u2014 guard: size[3]==size[2]",
+    "evidence_issues": [
+      150702
+    ],
+    "temporal": {
+      "first_seen_date": "2025-04-04",
+      "last_seen_date": "2025-04-15",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7, duck sizing is still default behavior",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "wrong_device_compilation",
+    "name": "Wrong Device Compilation",
+    "description": "Inductor compiles kernels targeting cuda:0 architecture regardless of model's actual device \u2014 fails on heterogeneous multi-GPU systems with different GPU architectures",
+    "evidence_issues": [
+      97693
+    ],
+    "temporal": {
+      "first_seen_date": "2023-04-17",
+      "last_seen_date": "2024-10-09",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.4",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Fixed in later PyTorch versions per user confirmation",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "index_expression_perf_regression",
+    "name": "Index Expression Performance Regression",
+    "description": "Inductor generates suboptimal but equivalent index expressions that prevent Triton compiler from optimizing address computation \u2014 can cause 50% perf regression from register pressure and memory stalls",
+    "evidence_issues": [
+      127581
+    ],
+    "temporal": {
+      "first_seen_date": "2024-05-30",
+      "last_seen_date": "2024-05-30",
+      "first_seen_version": "2.3",
+      "last_seen_version": "2.3",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Index expression generation patterns may still produce suboptimal code",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "activation_checkpoint_compile_error",
+    "name": "Activation Checkpoint Compile Error",
+    "description": "torch.compile fails with activation checkpointing (gradient checkpointing) \u2014 torch.get_rng_state errors during tracing because RNG state operations not supported",
+    "evidence_issues": [
+      97077
+    ],
+    "temporal": {
+      "first_seen_date": "2023-03-20",
+      "last_seen_date": "2023-07-18",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Activation checkpointing support subsequently added as top priority",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "scalar_op_faketensor_error",
+    "name": "Scalar Op FakeTensor Error",
+    "description": "FakeTensor error when using scalar binary ops (bitwise_xor, bitwise_or, etc.) with Python constants \u2014 CompositeImplicitAutograd ops use wrapped_scalar_tensor without dispatch",
+    "evidence_issues": [
+      93224
+    ],
+    "temporal": {
+      "first_seen_date": "2023-01-03",
+      "last_seen_date": "2023-01-03",
+      "first_seen_version": "pre-2.0",
+      "last_seen_version": "pre-2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Fixed by changing dispatch registration to CompositeExplicitAutograd",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "ddp_autocast_accuracy_loss",
+    "name": "DDP Autocast Accuracy Loss",
+    "description": "DDPOptimizer partitions graph through autocast regions without preserving context manager state \u2014 causes accuracy issues when autocast enter/exit nodes are split across subgraphs",
+    "evidence_issues": [
+      101624
+    ],
+    "temporal": {
+      "first_seen_date": "2023-05-15",
+      "last_seen_date": "2023-08-01",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Fixed with dynamo-level autocast state patching; DDPOptimizer being replaced",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "foreach_cross_device_error",
+    "name": "Foreach Cross-Device Error",
+    "description": "FakeTensor tracing fails when foreach ops (foreach_add, foreach_mul, etc.) operate on tensors across devices (CUDA+CPU) \u2014 meta kernels don't support cross-device",
+    "evidence_issues": [
+      102023
+    ],
+    "temporal": {
+      "first_seen_date": "2023-05-22",
+      "last_seen_date": "2024-02-23",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.2",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Fixed by switching to impl_abstract registration",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "ddp_dynamic_shape_error",
+    "name": "DDP Dynamic Shape Error",
+    "description": "DDPOptimizer not compatible with dynamic shapes \u2014 Cannot call sizes() on tensor with symbolic sizes/strides when last batch has different size",
+    "evidence_issues": [
+      111636
+    ],
+    "temporal": {
+      "first_seen_date": "2023-10-20",
+      "last_seen_date": "2024-01-16",
+      "first_seen_version": "2.1",
+      "last_seen_version": "2.2",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "DDPOptimizer replacement still in progress",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "uint8_accuracy_false_positive",
+    "name": "Uint8 Accuracy False Positive",
+    "description": "Accuracy check reports false positive on uint8 tensors \u2014 batch norm decomposition introduces small numerical diffs that cross relu boundary, changing 0/non-zero in integer output",
+    "evidence_issues": [
+      121069
+    ],
+    "temporal": {
+      "first_seen_date": "2024-03-02",
+      "last_seen_date": "2024-10-24",
+      "first_seen_version": "2.2",
+      "last_seen_version": "2.4",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Non-FP accuracy check limitation is fundamental to approach",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "as_strided_scatter_error",
+    "name": "As-Strided Scatter Error",
+    "description": "Functionalization introduces as_strided_scatter for inplace view ops (relu_) but as_strided_scatter lacks backward support \u2014 affects vmap+aot_function and tensor subclasses",
+    "evidence_issues": [
+      86427
+    ],
+    "temporal": {
+      "first_seen_date": "2022-10-04",
+      "last_seen_date": "2023-01-30",
+      "first_seen_version": "pre-2.0",
+      "last_seen_version": "pre-2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Fixed by making as_strided support toggleable per tensor subclass",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "index_propagation_key_error",
+    "name": "Index Propagation Key Error",
+    "description": "Indirect symbol ends up in TypedExpr causing KeyError in var_ranges lookup \u2014 affects models with complex indexing (SwinB encoder), also causes quadratic compile time from warning spam",
+    "evidence_issues": [
+      127677
+    ],
+    "temporal": {
+      "first_seen_date": "2024-05-31",
+      "last_seen_date": "2024-05-31",
+      "first_seen_version": "2.3",
+      "last_seen_version": "2.3",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Graceful handling added but underlying IR issue may still occur",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "nested_tensor_compile_error",
+    "name": "Nested Tensor Compile Error",
+    "description": "BetterTransformer (NST layout) incompatible with torch.compile \u2014 old Nested Strided Tensor not supported, must use Nested Jagged Tensor (NJT) layout",
+    "evidence_issues": [
+      138274
+    ],
+    "temporal": {
+      "first_seen_date": "2024-11-05",
+      "last_seen_date": "2025-01-27",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.6",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "NST/NJT migration still ongoing in HuggingFace ecosystem",
+      "classified_date": "2026-04-14"
+    }
   }
 ]

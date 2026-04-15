@@ -725,5 +725,125 @@
       "reason": "Last evidence from PT 2.5",
       "classified_date": "2026-04-14"
     }
+  },
+  {
+    "id": "fix_use_maybe_mark_dynamic",
+    "name": "Use maybe_mark_dynamic Instead of mark_dynamic",
+    "description": "Use torch._dynamo.maybe_mark_dynamic instead of mark_dynamic \u2014 won't hard error on specialization, gives generic kernel for other sizes",
+    "evidence_issues": [
+      106110
+    ],
+    "temporal": {
+      "first_seen_date": "2023-07-27",
+      "last_seen_date": "2023-12-08",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.2",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "maybe_mark_dynamic API still available",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "fix_disable_duck_shape",
+    "name": "Disable Duck Shape Sizing",
+    "description": "Set torch.fx.experimental._config.use_duck_shape = False to prevent dimension equality guards when dimensions happen to have equal values at first compile",
+    "evidence_issues": [
+      150702
+    ],
+    "temporal": {
+      "first_seen_date": "2025-04-04",
+      "last_seen_date": "2025-04-15",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Config still available and relevant",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "fix_rewrite_indexing_narrow",
+    "name": "Rewrite Tensor Indexing with Narrow",
+    "description": "Replace tensor slice notation (t[start:end]) with torch.narrow() calls for compile-friendly dynamic shape handling \u2014 avoids over-specialization guards",
+    "evidence_issues": [
+      150702
+    ],
+    "temporal": {
+      "first_seen_date": "2025-04-04",
+      "last_seen_date": "2025-04-15",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Recommended pattern in dynamic shapes guide",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "fix_disable_preserve_rng_state",
+    "name": "Disable preserve_rng_state in Checkpoint",
+    "description": "Set preserve_rng_state=False in torch.utils.checkpoint to work around RNG state tracing failures in early torch.compile",
+    "evidence_issues": [
+      97077
+    ],
+    "temporal": {
+      "first_seen_date": "2023-03-20",
+      "last_seen_date": "2023-07-18",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Activation checkpointing now fully supported in compile",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "fix_ignore_non_fp_accuracy",
+    "name": "Ignore Non-FP Accuracy Checks",
+    "description": "Set TORCHDYNAMO_REPRO_IGNORE_NON_FP=1 to skip accuracy checks on non-floating-point tensors (uint8, bool) where small numerical diffs cause false positives",
+    "evidence_issues": [
+      121069
+    ],
+    "temporal": {
+      "first_seen_date": "2024-03-02",
+      "last_seen_date": "2024-10-24",
+      "first_seen_version": "2.2",
+      "last_seen_version": "2.4",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Diagnostic technique \u2014 always valid for accuracy debugging",
+      "classified_date": "2026-04-14"
+    }
+  },
+  {
+    "id": "fix_disable_bettertransformer_with_compile",
+    "name": "Disable BetterTransformer with torch.compile",
+    "description": "Disable BetterTransformer fast path when using torch.compile \u2014 NST (Nested Strided Tensor) layout is incompatible, use NJT-based SDPA instead",
+    "evidence_issues": [
+      138274
+    ],
+    "temporal": {
+      "first_seen_date": "2024-11-05",
+      "last_seen_date": "2025-01-27",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.6",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "NST still not supported with compile; NJT migration ongoing",
+      "classified_date": "2026-04-14"
+    }
   }
 ]

@@ -2276,5 +2276,1362 @@
       "created_version": "pre-2.0",
       "state": "CLOSED"
     }
+  },
+  {
+    "issue_number": 93428,
+    "title": "[aot_eager] [hf_Longformer] Cannot view a tensor with shape",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "aot_autograd",
+        "mechanism": "Functionalization does not correctly preserve lhs stride on copy_ op. When copy_ is functionalized, the output inherits the wrong strides (from rhs instead of lhs), causing downstream view operations to fail with shape/stride incompatibility.",
+        "trigger": "Running hf_Longformer model with aot_eager backend \u2014 transpose backward produces permuted (not contiguous) tensor, and clone with contiguous memory_format is also wrong.",
+        "confirmed_by": "engineer_17 diagnosed stride divergence in functionalization using debug patch on OpOverload dispatch; engineer_20 identified the force-contiguous tangent issue in joint_forward_backward"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Run hf_Longformer with aot_eager",
+          "result": "Cannot view a tensor with given shape and strides error",
+          "conclusion": "Stride mismatch from tracing"
+        },
+        {
+          "step": 2,
+          "action": "engineer_17 suggested running under debug interpreter",
+          "result": "engineer_20 found it's not decomposition \u2014 it's force-contiguous tangent in joint_forward_backward",
+          "conclusion": "Root cause is in aot_autograd tangent handling"
+        },
+        {
+          "step": 3,
+          "action": "engineer_17 built debug patch to detect stride divergence in functionalization",
+          "result": "Found copy_ op causes stride change from (525312,513,1) to (787968,513,1)",
+          "conclusion": "Functionalization copy_ doesn't preserve lhs stride"
+        },
+        {
+          "step": 4,
+          "action": "engineer_17 submitted local fix",
+          "result": "Original repro fixed but reopened \u2014 still fails with aot_inductor_debug backend",
+          "conclusion": "Partial fix, second round needed"
+        },
+        {
+          "step": 5,
+          "action": "Waited for main branch fixes to land",
+          "result": "Error gone on main for provided repro",
+          "conclusion": "Fixed upstream"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Fixed functionalization to correctly preserve lhs stride on copy_ op. Also identified need to fix clone with contiguous memory format independently. General solution involves not assuming contiguous tangents \u2014 delay backward tracing until tangent strides are known.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "aot_eager_decomp_partition"
+        ]
+      },
+      "new_entities": {
+        "symptoms": [
+          "stride_mismatch_view_error"
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": [
+          "functionalization_stride_debug_patch"
+        ]
+      },
+      "quality_score": 8,
+      "confidence": "high",
+      "extraction_notes": "Deep compiler internals \u2014 functionalization stride preservation. Demonstrates debug interpreter + custom dispatch patch workflow. Two-round fix process."
+    },
+    "temporal": {
+      "created_date": "2022-11-16",
+      "closed_date": "2023-05-10",
+      "created_version": "pre-2.0",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 106110,
+    "title": "llama model failed for dynamic shape path",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torch._dynamo",
+        "mechanism": "Symbolic shapes specializes when tensor slicing reaches the exact end of a dimension. Slicing into a tensor behaves inconsistently \u2014 slicing to the very end vs before the end produces different guard behavior, causing Eq(32, s0) specialization guard.",
+        "trigger": "Running llama model from torchbench with --dynamic-shapes --dynamic-batch-only, where batch_size=32 creates an exact-end slice.",
+        "confirmed_by": "engineer_17 identified the key guard line in symbolic_shapes and explained the slice-to-end inconsistency; leslie-fang-intel provided minimal repro"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Run llama with dynamic shapes",
+          "result": "Assert error in symbolic_shapes",
+          "conclusion": "Dynamic shape specialization issue"
+        },
+        {
+          "step": 2,
+          "action": "Run with TORCH_LOGS=dynamic",
+          "result": "Guard: Eq(32, s0) at model.py:126 in forward",
+          "conclusion": "Specializing on batch size"
+        },
+        {
+          "step": 3,
+          "action": "engineer_17 analyzed guard",
+          "result": "Slice-to-end inconsistency causes specialization",
+          "conclusion": "Known issue, unbacked variant lacks infrastructure"
+        },
+        {
+          "step": 4,
+          "action": "Suggested maybe_mark_dynamic workaround",
+          "result": "Won't hard error on bs=32 specialization, gives generic kernel for other sizes",
+          "conclusion": "Workaround available"
+        },
+        {
+          "step": 5,
+          "action": "TorchBench fix PR",
+          "result": "Switched to maybe_mark_dynamic in benchmark",
+          "conclusion": "Fixed in benchmark, underlying issue remains"
+        }
+      ],
+      "resolution": {
+        "type": "user_workaround",
+        "description": "Worked around by switching from mark_dynamic to maybe_mark_dynamic in torchbench. The underlying symbolic shapes slice-to-end inconsistency was not fixed but acknowledged as needing work on unbacked variants.",
+        "fix_prs": [
+          "pytorch/benchmark#2283"
+        ],
+        "workaround_configs": [
+          "maybe_mark_dynamic"
+        ]
+      },
+      "new_entities": {
+        "symptoms": [
+          "dynamic_shape_specialization_on_slice"
+        ],
+        "workarounds": [
+          "fix_use_maybe_mark_dynamic"
+        ],
+        "configs": [],
+        "diagnostic_tools": [
+          "TORCH_LOGS_dynamic"
+        ]
+      },
+      "quality_score": 7,
+      "confidence": "high",
+      "extraction_notes": "Demonstrates TORCH_LOGS=dynamic diagnostic workflow. slice-to-end specialization is a known sharp edge in dynamic shapes."
+    },
+    "temporal": {
+      "created_date": "2023-07-27",
+      "closed_date": "2023-12-08",
+      "created_version": "2.0",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 117045,
+    "title": "cache_entries empty after torch.compile()?",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torch._dynamo",
+        "mechanism": "User confusion about cache_entries API \u2014 looking at the wrong code object. torch.compile may compile a different function than expected (e.g., inner function vs wrapper), and cache_entries are per code object.",
+        "trigger": "User checking cache_entries on the wrong layer/function after compilation",
+        "confirmed_by": "youkaichao identified user was checking wrong function; engineer_17 suggested TORCH_LOGS=+dynamo to see which frame dynamo actually compiles"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User reports empty cache_entries after compile",
+          "result": "Compiled code works (faster), but cache API shows nothing",
+          "conclusion": "Cache exists somewhere, just not where user looks"
+        },
+        {
+          "step": 2,
+          "action": "youkaichao pointed to correct compiled functions",
+          "result": "User's library compiles forward_pytorch_compile, not forward",
+          "conclusion": "Looking at wrong code object"
+        },
+        {
+          "step": 3,
+          "action": "Checked all layers",
+          "result": "All layers show empty cache_entries",
+          "conclusion": "Still unclear"
+        },
+        {
+          "step": 4,
+          "action": "engineer_17 suggested TORCH_LOGS=+dynamo",
+          "result": "Shows which frame dynamo starts compiling on",
+          "conclusion": "Diagnostic tool to find correct cache location"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "User confusion about which code object holds cache entries. TORCH_LOGS=+dynamo reveals which frame dynamo actually compiles. The depyf tool was also suggested for inspecting compiled artifacts.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "TORCH_LOGS_dynamo"
+        ]
+      },
+      "new_entities": {
+        "symptoms": [],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": [
+          "depyf"
+        ]
+      },
+      "quality_score": 3,
+      "confidence": "medium",
+      "extraction_notes": "Low diagnostic value \u2014 user confusion about cache inspection API. Useful for documenting depyf tool and TORCH_LOGS=+dynamo."
+    },
+    "temporal": {
+      "created_date": "2024-01-09",
+      "closed_date": "2024-10-09",
+      "created_version": "2.1",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 123745,
+    "title": "Cannot load 2.3 produced aot-inductor shared library with 2.4",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "AOTInductor ABI compatibility breakage between PyTorch 2.3 and 2.4. A function (tensor_handle_to_tensor_pointer) was changed to inline in a header, removing the symbol from the shared library. When loading a 2.3-compiled .so with 2.4 runtime, the symbol is undefined.",
+        "trigger": "Loading an AOTInductor-compiled model .so from PyTorch 2.3 with PyTorch 2.4 runtime",
+        "confirmed_by": "desertfire confirmed the inline change caused the breakage; acknowledged ABI backward compatibility not yet guaranteed"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Load 2.3 .so with 2.4",
+          "result": "Error: undefined symbol tensor_handle_to_tensor_pointer",
+          "conclusion": "ABI breakage between versions"
+        },
+        {
+          "step": 2,
+          "action": "desertfire investigated",
+          "result": "Function was made inline in header, removing symbol from binary",
+          "conclusion": "Specific code change caused breakage"
+        },
+        {
+          "step": 3,
+          "action": "Checked if recompilation fixes it",
+          "result": "Yes, recompiling model with 2.4 works",
+          "conclusion": "Forward-compatible but not backward-compatible"
+        },
+        {
+          "step": 4,
+          "action": "Follow-up: user hit additional issues with abi_compatible + quantization",
+          "result": "Multiple follow-on bugs in ABI-compatible mode",
+          "conclusion": "Feature still maturing"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Recompile model with the target PyTorch version. ABI backward compatibility was not yet guaranteed at the time. The inline change was acknowledged as a bug but ABI stability is still being developed.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "TORCHINDUCTOR_ABI_COMPATIBLE"
+        ]
+      },
+      "new_entities": {
+        "symptoms": [
+          "aot_inductor_abi_breakage"
+        ],
+        "workarounds": [],
+        "configs": [
+          "TORCHINDUCTOR_ABI_COMPATIBLE"
+        ],
+        "diagnostic_tools": []
+      },
+      "quality_score": 5,
+      "confidence": "high",
+      "extraction_notes": "AOTInductor ABI stability issue. Feature is still maturing. User also ran into dynamic shape and accuracy issues during follow-up."
+    },
+    "temporal": {
+      "created_date": "2024-04-07",
+      "closed_date": "2024-11-08",
+      "created_version": "2.3",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 150702,
+    "title": "Investigate diffuser pipeline transformer recompilations due to duck sizing",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torch._dynamo",
+        "mechanism": "Duck sizing causes recompilations when dimensions that happen to be equal at first compile (e.g., height==width) differ at subsequent calls with different resolutions. Guard: hidden_states.size()[3] == hidden_states.size()[2]. Additionally, tensor indexing patterns in diffusers models create guards that over-specialize.",
+        "trigger": "Changing pipeline resolution in diffuser models \u2014 e.g., 512x512 \u2192 1024x512 or 1024x1024 \u2192 1536x1536",
+        "confirmed_by": "StrongerXi identified duck_shape as root cause from recompile log; AstraliteHeart confirmed use_duck_shape=False helps but revealed secondary indexing issue"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Change resolution in diffuser pipeline",
+          "result": "Recompilation triggered on every resolution change",
+          "conclusion": "Guards over-specializing on spatial dimensions"
+        },
+        {
+          "step": 2,
+          "action": "Read recompile log",
+          "result": "Guard: hidden_states.size()[3] == hidden_states.size()[2] from duck sizing",
+          "conclusion": "Duck sizing equates same-valued dims"
+        },
+        {
+          "step": 3,
+          "action": "Set use_duck_shape = False",
+          "result": "Fixes most recompilations, but 1536x1536 still triggers",
+          "conclusion": "Secondary issue with position embedding indexing"
+        },
+        {
+          "step": 4,
+          "action": "Rewrite tensor indexing with narrow per dynamic shapes guide",
+          "result": "Partial progress, one remaining recompilation from view op",
+          "conclusion": "Model code needs compile-friendly patterns"
+        },
+        {
+          "step": 5,
+          "action": "PR to diffusers with compile-compatible indexing",
+          "result": "Original issue resolved with model-side fixes",
+          "conclusion": "Fixed in diffusers, not PyTorch"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Set torch.fx.experimental._config.use_duck_shape = False and rewrite model tensor indexing to use narrow instead of slice notation. Fixes applied in huggingface/diffusers PR #11297.",
+        "fix_prs": [
+          "huggingface/diffusers#11297"
+        ],
+        "workaround_configs": [
+          "use_duck_shape"
+        ]
+      },
+      "new_entities": {
+        "symptoms": [
+          "duck_sizing_recompilation"
+        ],
+        "workarounds": [
+          "fix_disable_duck_shape",
+          "fix_rewrite_indexing_narrow"
+        ],
+        "configs": [
+          "use_duck_shape"
+        ],
+        "diagnostic_tools": [
+          "TORCH_LOGS_recompiles"
+        ]
+      },
+      "quality_score": 9,
+      "confidence": "high",
+      "extraction_notes": "Excellent diagnostic thread showing duck sizing + tensor indexing interaction. Real-world diffuser pipeline. Multiple rounds of fix-and-verify. Dynamic shapes guide reference."
+    },
+    "temporal": {
+      "created_date": "2025-04-04",
+      "closed_date": "2025-04-15",
+      "created_version": "2.6",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 97693,
+    "title": "Compile targets cuda:0 rather than the device the model is on",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Inductor compiles kernels targeting cuda:0 GPU architecture regardless of which device the model is on. On multi-GPU systems with different GPU architectures, the compiled kernel is invalid for the target device.",
+        "trigger": "Multi-GPU system with different GPU models (e.g., GTX 1660 + RTX 3060) where the model is on cuda:1 but Inductor targets cuda:0 architecture",
+        "confirmed_by": "engineer_20 confirmed the bug is real \u2014 Inductor sends wrong compilation args; CUDA_VISIBLE_DEVICES doesn't fix it"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Run torch.compile on cuda:1 with different GPU at cuda:0",
+          "result": "RuntimeError: Triton Error [CUDA]: device kernel image is invalid",
+          "conclusion": "Kernel compiled for wrong GPU arch"
+        },
+        {
+          "step": 2,
+          "action": "Try CUDA_VISIBLE_DEVICES=1",
+          "result": "Same error persists",
+          "conclusion": "Not a simple visibility issue"
+        },
+        {
+          "step": 3,
+          "action": "engineer_20 analyzed",
+          "result": "Confirmed kernel loads on correct GPU but compiled with wrong arch args",
+          "conclusion": "Bug in Inductor device targeting"
+        },
+        {
+          "step": 4,
+          "action": "Multiple users confirmed same issue",
+          "result": "Affects various GPU combinations (3080+4070ti, 4090+3090)",
+          "conclusion": "Widespread on heterogeneous setups"
+        },
+        {
+          "step": 5,
+          "action": "Tested on recent build",
+          "result": "Issue no longer reproduces",
+          "conclusion": "Fixed in later PyTorch versions"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Fixed in later PyTorch versions. Inductor now correctly targets the device the model is on, not always cuda:0.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [
+          "wrong_device_compilation"
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 6,
+      "confidence": "high",
+      "extraction_notes": "Simple but impactful bug affecting all heterogeneous multi-GPU users. Consumer GPU setups. Note: engineer_20 confirmed GTX 1660 (Turing) should work with Inductor despite not being Volta+."
+    },
+    "temporal": {
+      "created_date": "2023-04-17",
+      "closed_date": "2024-10-09",
+      "created_version": "2.0",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 127581,
+    "title": "Equivalent index expression results in 50% perf difference in triton kernel",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Inductor generates a less efficient but mathematically equivalent index expression ((5504*x_upper) + (x_lower // 2) vs 2752*x) in Triton kernel for int8 unpacking. The slow form prevents the Triton compiler from inferring that consecutive loads share addresses, leading to full address computation per load, higher register pressure (15\u219228), and memory loads blocked on address computation.",
+        "trigger": "Int8 tensor unpacking operation where Inductor chooses suboptimal index expression",
+        "confirmed_by": "htyu confirmed via NCU profiling \u2014 memory throughput is low for slow kernel because loads are blocked on address computation, not memory bandwidth"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Compare generated kernels for equivalent operations",
+          "result": "Only difference is index expression: (5504*x_upper)+(x_lower//2) vs 2752*x",
+          "conclusion": "Index expression affects performance"
+        },
+        {
+          "step": 2,
+          "action": "Analyze Triton IR and PTX",
+          "result": "Slow kernel: 28 registers, fast kernel: 15 registers",
+          "conclusion": "More address arithmetic increases register pressure"
+        },
+        {
+          "step": 3,
+          "action": "Check memory access patterns in PTX",
+          "result": "Fast kernel reuses addresses for paired loads, slow kernel computes unique addresses",
+          "conclusion": "Compiler can't infer address reuse in slow form"
+        },
+        {
+          "step": 4,
+          "action": "NCU profiling of both kernels",
+          "result": "Slow kernel: loads blocked on address computation (58.67% warp stall on xindex). Fast kernel: loads blocked on memory (21.92%)",
+          "conclusion": "Slow kernel is compute-bound on address calculation, not memory-bound"
+        },
+        {
+          "step": 5,
+          "action": "htyu analyzed compiler optimization",
+          "result": "Fast path compiler infers x_flat = (xindex // 2) produces same value for every two loads, saving half of address computation",
+          "conclusion": "Triton compiler optimization dependent on index form"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Need Inductor to generate simplified index expressions that allow Triton compiler to optimize address computation. The 50% perf difference comes from address computation blocking memory loads, not from memory bandwidth.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [
+          "index_expression_perf_regression"
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": [
+          "ncu_warp_stall_sampling"
+        ]
+      },
+      "quality_score": 9,
+      "confidence": "high",
+      "extraction_notes": "Exceptional diagnostic depth \u2014 NCU profiling, PTX analysis, register pressure analysis. Shows how index expression choice cascades into 50% perf difference via Triton compiler optimization paths."
+    },
+    "temporal": {
+      "created_date": "2024-05-30",
+      "closed_date": null,
+      "created_version": "2.3",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 117602,
+    "title": "Custom compiler questions about memory reuse and fusion in backward",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "aot_autograd",
+        "mechanism": "Q&A \u2014 user building custom compiler backend had questions about how backward gets activations when forward does memory reuse or op fusion. Not a bug.",
+        "trigger": "User building custom hardware compiler backend for torch.compile",
+        "confirmed_by": "bdhirsh and engineer_23 provided guidance on save_for_backward and min-cut recomputation"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User asked about memory reuse in custom compiler",
+          "result": "Pointed to autograd docs and save_for_backward API",
+          "conclusion": "Standard autograd mechanism handles this"
+        },
+        {
+          "step": 2,
+          "action": "User asked about fusion intermediate outputs",
+          "result": "Pointed to min-cut optimal recomputation blog post",
+          "conclusion": "AOTAutograd handles activation saving automatically"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Q&A resolved by pointing to save_for_backward API documentation and min-cut optimal recomputation blog post. AOTAutograd handles the backward graph compilation automatically.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 2,
+      "confidence": "medium",
+      "extraction_notes": "Pure Q&A, no diagnostic value. User building custom backend with limited understanding of autograd internals."
+    },
+    "temporal": {
+      "created_date": "2024-01-17",
+      "closed_date": "2024-05-31",
+      "created_version": "2.1",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 97077,
+    "title": "[compile] assert source in options with torch.get_rng_state",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torch._dynamo",
+        "mechanism": "torch.compile does not support activation checkpointing (torch.utils.checkpoint) \u2014 specifically, torch.get_rng_state() fails during tracing because the default_generator doesn't have a 'source' option. This was part of a broader gap where compile couldn't handle RNG state operations.",
+        "trigger": "Using torch.compile with models that use activation checkpointing (gradient checkpointing), which calls torch.get_rng_state internally",
+        "confirmed_by": "yanboliang reproduced and identified default_generator.get_state() missing source; engineer_21_gh confirmed compile doesn't support activation checkpointing"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Run model.compile() with activation checkpointing",
+          "result": "AssertionError: assert 'source' in options",
+          "conclusion": "RNG state tracing not supported"
+        },
+        {
+          "step": 2,
+          "action": "yanboliang traced to default_generator.get_state()",
+          "result": "Generator object doesn't have source attribute for dynamo",
+          "conclusion": "Missing dynamo support for RNG ops"
+        },
+        {
+          "step": 3,
+          "action": "valine narrowed to torch.utils.checkpoint preserve_rng_state",
+          "result": "Disabling preserve_rng_state fixes the error",
+          "conclusion": "Workaround: disable RNG preservation"
+        },
+        {
+          "step": 4,
+          "action": "yanboliang fix PR #97403",
+          "result": "Fixed dynamo issue but AOT backend still fails with FakeTensor error",
+          "conclusion": "Multi-layer fix needed"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Partial fix in PR #97403 for dynamo RNG tracing. Activation checkpointing support was subsequently added as a top priority. Workaround: disable preserve_rng_state in checkpoint.",
+        "fix_prs": [
+          "pytorch/pytorch#97403"
+        ],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [
+          "activation_checkpoint_compile_error"
+        ],
+        "workarounds": [
+          "fix_disable_preserve_rng_state"
+        ],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 6,
+      "confidence": "high",
+      "extraction_notes": "Important gap \u2014 compile + activation checkpointing. Many users hit this (Dreambooth training). Subsequently became top priority and was fixed."
+    },
+    "temporal": {
+      "created_date": "2023-03-20",
+      "closed_date": "2023-07-18",
+      "created_version": "2.0",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 93224,
+    "title": "torch.compile failed on torch.bitwise_xor with constant python number",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torch._dynamo",
+        "mechanism": "bitwise_xor.Scalar (and many other scalar binary ops) are registered as CompositeImplicitAutograd and use wrapped_scalar_tensor internally which creates a tensor without dispatching through FakeTensorMode. This means FakeTensor tracing never intercepts the scalar-to-tensor conversion.",
+        "trigger": "Using torch.bitwise_xor(tensor, python_int) in compiled code \u2014 Scalar variant dispatches without going through FakeTensorMode",
+        "confirmed_by": "peterbell10 identified the CompositeImplicitAutograd vs CompositeExplicitAutograd distinction; engineer_20 connected it to broader wrapped_scalar_tensor issue"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "torch.compile on bitwise_xor(tensor, 18)",
+          "result": "FakeTensor error \u2014 tensor created without dispatch",
+          "conclusion": "Scalar variant bypasses fake tensor mode"
+        },
+        {
+          "step": 2,
+          "action": "Compare with torch.add which works",
+          "result": "add.Scalar is CompositeExplicitAutograd, bitwise_xor.Scalar is CompositeImplicitAutograd",
+          "conclusion": "Dispatch registration key determines behavior"
+        },
+        {
+          "step": 3,
+          "action": "Audit other scalar ops",
+          "result": "bitwise_or, bitwise_xor, many special functions all affected",
+          "conclusion": "Systematic issue with wrapped_scalar_tensor"
+        },
+        {
+          "step": 4,
+          "action": "Fix approach: change to CompositeExplicitAutograd",
+          "result": "Community PR submitted",
+          "conclusion": "Straightforward fix"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Change scalar binary ops from CompositeImplicitAutograd to CompositeExplicitAutograd so tracing goes through meta implementation instead of the composite that uses wrapped_scalar_tensor without dispatch.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [
+          "scalar_op_faketensor_error"
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 7,
+      "confidence": "high",
+      "extraction_notes": "Good diagnostic depth on dispatch registration internals. Systematic issue affecting many ops. The distinction between CompositeImplicitAutograd and CompositeExplicitAutograd is an important compile concept."
+    },
+    "temporal": {
+      "created_date": "2023-01-03",
+      "closed_date": null,
+      "created_version": "pre-2.0",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 101624,
+    "title": "[Dynamo + DDP] DDP partitions FX graph incorrectly with autocast",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "ddpoptimizer",
+        "mechanism": "DDPOptimizer partitioner has no awareness of autocast enter/exit nodes. When it partitions the graph, autocast regions can be split across subgraphs, causing the entry autocast state of a subgraph to be wrong and leading to accuracy issues.",
+        "trigger": "Using DDP with torch.compile on a model that uses torch.cuda.amp.autocast \u2014 the partitioner splits inside an autocast region",
+        "confirmed_by": "wconstab confirmed DDPOptimizer is unaware of autocast nodes; engineer_17 confirmed autocast cache is disabled during tracing making autocast associative and splittable"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Run DDP + compile with autocast model",
+          "result": "Accuracy issues in partitioned subgraphs",
+          "conclusion": "Autocast state lost during partitioning"
+        },
+        {
+          "step": 2,
+          "action": "Analyzed DDPOptimizer partitioning",
+          "result": "Partitioner doesn't know about autocast enter/exit nodes",
+          "conclusion": "Context manager states not preserved across partitions"
+        },
+        {
+          "step": 3,
+          "action": "Discussed higher-order-op approach",
+          "result": "Would prevent partitioning inside autocast but blocks DDPOptimizer from splitting large regions",
+          "conclusion": "Higher-order-ops not viable for DDP"
+        },
+        {
+          "step": 4,
+          "action": "engineer_17 confirmed autocast cache disabled in tracing",
+          "result": "Autocast is fully associative and can be split",
+          "conclusion": "Splitting is safe, just need to restore state"
+        },
+        {
+          "step": 5,
+          "action": "Short-term fix: patch autocast/grad state in dynamo",
+          "result": "Unblocked internal model launch",
+          "conclusion": "Short-term fix, long-term plan: kill DDPOptimizer"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Short-term fix: patch up autocast/grad context manager state at dynamo level when partitioning. Long-term: replace DDPOptimizer with traceable DDP (collectives in the graph). The partitioner itself was acknowledged as a dead-end \u2014 plan to kill it.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "optimize_ddp"
+        ]
+      },
+      "new_entities": {
+        "symptoms": [
+          "ddp_autocast_accuracy_loss"
+        ],
+        "workarounds": [
+          "fix_disable_ddp_optimizer"
+        ],
+        "configs": [
+          "optimize_ddp"
+        ],
+        "diagnostic_tools": []
+      },
+      "quality_score": 8,
+      "confidence": "high",
+      "extraction_notes": "Important DDP + compile interaction. Blocker for internal model launch. Shows the tension between DDPOptimizer partitioning and context manager state. Long-term plan to kill DDPOptimizer via compiled autograd."
+    },
+    "temporal": {
+      "created_date": "2023-05-15",
+      "closed_date": "2023-08-01",
+      "created_version": "2.0",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 108079,
+    "title": "Aliased Input/Output Requirement in aot_export_joint_simple",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "aot_autograd",
+        "mechanism": "aot_export_joint_simple doesn't support aliased inputs and outputs (e.g., inplace ops that return a view of the input). The export API does a calling convention change for views that's incompatible with simple joint export.",
+        "trigger": "Using aot_export_joint_simple with a module that does inplace operations (add_, relu_) where output aliases input",
+        "confirmed_by": "engineer_17 explained the nuance \u2014 joint tracing does a calling convention change for views; bdhirsh suggested using aot_export_module instead"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Call aot_export_joint_simple with inplace ops",
+          "result": "Error about aliased inputs/outputs",
+          "conclusion": "API limitation for inplace/view ops"
+        },
+        {
+          "step": 2,
+          "action": "engineer_17 explained view handling",
+          "result": "Joint tracing changes calling convention for views, separate path needed",
+          "conclusion": "Fundamental API design constraint"
+        },
+        {
+          "step": 3,
+          "action": "Suggested torch.export.export",
+          "result": "Can't use from within torch.compile backend (FakeTensorMode mismatch)",
+          "conclusion": "Need different API for compile backends"
+        },
+        {
+          "step": 4,
+          "action": "bdhirsh suggested aot_export_module + unlifting utils",
+          "result": "Works for inference-only compiler backends",
+          "conclusion": "Workaround found"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Use aot_export_module instead of aot_export_joint_simple when inside a torch.compile backend. For inference-only backends, AOTAutograd provides the needed ATen tracing and decompositions.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 4,
+      "confidence": "medium",
+      "extraction_notes": "API limitation discussion. User building inference-only compiler backend (TensorRT). Low entity yield but documents export API landscape."
+    },
+    "temporal": {
+      "created_date": "2023-08-22",
+      "closed_date": "2024-06-03",
+      "created_version": "2.0",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 102023,
+    "title": "torch.compile FakeTensor tracing fails with foreach ops with multiple devices",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torch._dynamo",
+        "mechanism": "Foreach ops (e.g., _foreach_add, _foreach_mul) support multi-device inputs in eager mode, but their meta kernels don't support cross-device operations. FakeTensor tracing fails because meta kernels can't handle tensors on different devices.",
+        "trigger": "Using foreach ops with tensors on different devices (e.g., CUDA + CPU) inside torch.compile \u2014 common in multi-device optimizers",
+        "confirmed_by": "zou3519 identified that meta kernels don't support cross-device ops; switching to impl_abstract registration fixes it"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "torch.compile with foreach_add on mixed CUDA+CPU tensors",
+          "result": "FakeTensor error \u2014 meta kernel can't handle cross-device",
+          "conclusion": "Meta kernels assume single device"
+        },
+        {
+          "step": 2,
+          "action": "Test SGD vs other optimizers",
+          "result": "SGD works, others fail \u2014 some overloads OK but not all",
+          "conclusion": "Inconsistent support across overloads"
+        },
+        {
+          "step": 3,
+          "action": "zou3519 identified fix",
+          "result": "Switch from meta registration to impl_abstract (torch.library.impl_abstract)",
+          "conclusion": "impl_abstract supports cross-device operations"
+        },
+        {
+          "step": 4,
+          "action": "engineer_02 submitted PR",
+          "result": "Fixed \u2014 foreach mixed_dtype tests re-enabled",
+          "conclusion": "Systematic fix for foreach ops"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Switched foreach op registration from meta kernels to torch.library.impl_abstract which supports cross-device operations. Enables multi-device optimizer compilation.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [
+          "foreach_cross_device_error"
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 7,
+      "confidence": "high",
+      "extraction_notes": "Important for optimizer compilation with DDP. The meta vs impl_abstract distinction is a useful concept. Affects all foreach ops, not just foreach_add."
+    },
+    "temporal": {
+      "created_date": "2023-05-22",
+      "closed_date": "2024-02-23",
+      "created_version": "2.0",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 111636,
+    "title": "DDP+compile+dynamic_shape cause error",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "ddpoptimizer",
+        "mechanism": "DDPOptimizer (optimize_ddp) is not compatible with dynamic shapes. When the last batch has a different size, dynamo auto-enables symbolic shapes on recompile, but DDPOptimizer can't handle symbolic sizes \u2014 errors with 'Cannot call sizes() on tensor with symbolic sizes/strides'.",
+        "trigger": "Using DDP + torch.compile with variable batch sizes (last batch smaller than batch_size) \u2014 common in training loops without drop_last=True",
+        "confirmed_by": "wconstab confirmed optimize_ddp not compatible with dynamic shapes; engineer_17 provided workarounds"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Run DDP+compile with GPT2 model",
+          "result": "Error on last batch (size 7 vs batch_size 16)",
+          "conclusion": "Dynamic batch size triggers the bug"
+        },
+        {
+          "step": 2,
+          "action": "wconstab analyzed",
+          "result": "DDPOptimizer interacts badly with symbolic shapes auto-enabling on recompile",
+          "conclusion": "Known incompatibility"
+        },
+        {
+          "step": 3,
+          "action": "Two workarounds provided",
+          "result": "1) dynamic=False on torch.compile, 2) optimize_ddp=False in torch._dynamo.config",
+          "conclusion": "Disable either dynamic shapes or DDP optimizer"
+        },
+        {
+          "step": 4,
+          "action": "Long-term plan discussed",
+          "result": "New way of compiling DDP (issue #109774) to replace DDPOptimizer",
+          "conclusion": "DDPOptimizer is being replaced"
+        }
+      ],
+      "resolution": {
+        "type": "user_workaround",
+        "description": "Use either dynamic=False on torch.compile or set torch._dynamo.config.optimize_ddp=False. Long-term fix: compiled autograd + traceable DDP to replace DDPOptimizer entirely.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "dynamic",
+          "optimize_ddp"
+        ]
+      },
+      "new_entities": {
+        "symptoms": [
+          "ddp_dynamic_shape_error"
+        ],
+        "workarounds": [
+          "fix_disable_ddp_optimizer"
+        ],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 7,
+      "confidence": "high",
+      "extraction_notes": "Common user-facing issue \u2014 DDP + dynamic shapes. Multiple users confirmed across PT 2.1-2.3. Connected to broader plan to kill DDPOptimizer."
+    },
+    "temporal": {
+      "created_date": "2023-10-20",
+      "closed_date": "2024-01-16",
+      "created_version": "2.1",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 121069,
+    "title": "torch.compile() causes accuracy failed: uint8 tensor did not match",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Inductor's batch norm decomposition introduces small numerical differences that, combined with relu's hard edge at zero, cause uint8 tensor comparisons to fail accuracy checks. The accuracy difference is in non-floating-point tensors where small perturbations change relu output from 0 to non-zero or vice versa.",
+        "trigger": "Training MoCo on V100 with torch.compile \u2014 accuracy check fails on uint8 tensors",
+        "confirmed_by": "suxiangM identified batch_norm_legit_functional decomposition as source; engineer_02 confirmed non-FP accuracy check is a known false positive"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Run TORCHDYNAMO_REPRO_AFTER=aot REPRO_LEVEL=4",
+          "result": "AccuracyError: Bad accuracy detected",
+          "conclusion": "Accuracy divergence in compiled model"
+        },
+        {
+          "step": 2,
+          "action": "Run TORCHDYNAMO_REPRO_AFTER=dynamo REPRO_LEVEL=4",
+          "result": "allclose not within tol=0.001",
+          "conclusion": "Divergence already present after dynamo"
+        },
+        {
+          "step": 3,
+          "action": "engineer_17 analyzed repro",
+          "result": "DIVERGED at le: uint8 tensor did not match \u2014 relu hard edge",
+          "conclusion": "Small perturbations cross relu boundary"
+        },
+        {
+          "step": 4,
+          "action": "suxiangM disabled Triton optimization for batch_norm",
+          "result": "Accuracy recovered",
+          "conclusion": "Batch norm decomposition introduces numerical diff"
+        },
+        {
+          "step": 5,
+          "action": "engineer_02 applied TORCHDYNAMO_REPRO_IGNORE_NON_FP=1",
+          "result": "Test passes \u2014 non-FP comparison is false positive",
+          "conclusion": "Not a real accuracy bug, known limitation of uint8 checks"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Non-floating-point accuracy checks (uint8 tensors) can produce false positives due to relu hard edges. Set TORCHDYNAMO_REPRO_IGNORE_NON_FP=1 to skip non-FP comparisons. MoCo training passes in dashboard.",
+        "fix_prs": [],
+        "workaround_configs": [
+          "TORCHDYNAMO_REPRO_IGNORE_NON_FP"
+        ]
+      },
+      "new_entities": {
+        "symptoms": [
+          "uint8_accuracy_false_positive"
+        ],
+        "workarounds": [
+          "fix_ignore_non_fp_accuracy"
+        ],
+        "configs": [
+          "TORCHDYNAMO_REPRO_IGNORE_NON_FP"
+        ],
+        "diagnostic_tools": [
+          "TORCHDYNAMO_REPRO_AFTER",
+          "TORCHDYNAMO_REPRO_LEVEL"
+        ]
+      },
+      "quality_score": 7,
+      "confidence": "high",
+      "extraction_notes": "Good diagnostic workflow using REPRO_AFTER/REPRO_LEVEL. Shows how batch norm decomposition + relu edge = false positive on uint8. Important config: TORCHDYNAMO_REPRO_IGNORE_NON_FP."
+    },
+    "temporal": {
+      "created_date": "2024-03-02",
+      "closed_date": "2024-10-24",
+      "created_version": "2.2",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 130822,
+    "title": "torch._export.aot_compile error with x86 quantization",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "User was using the legacy FX-path quantization (QuantizedTensor-based) which is not supported with Inductor/AOTInductor. The correct path is PT2E quantization which inserts q/dq nodes and works with torch.compile and AOT compilation.",
+        "trigger": "Using torch._export.aot_compile with a model quantized via quantize_fx (legacy FX path) \u2014 the QuantizedTensor implementation is incompatible with Inductor",
+        "confirmed_by": "leslie-fang-intel confirmed FX-path quantization not supported with Inductor; guided user to PT2E quantization tutorial"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "aot_compile with FX-quantized model",
+          "result": "Compilation error",
+          "conclusion": "Legacy quantization path incompatible"
+        },
+        {
+          "step": 2,
+          "action": "Guided to PT2E quantization",
+          "result": "User successfully quantized with q/dq nodes + torch.compile",
+          "conclusion": "PT2E path works correctly"
+        },
+        {
+          "step": 3,
+          "action": "User tried AOTInductor with PT2E model",
+          "result": "Compiled but quantized model slightly slower than expected",
+          "conclusion": "AOTInductor + quantization pipeline still maturing"
+        },
+        {
+          "step": 4,
+          "action": "Follow-up guidance on OneDNN backend",
+          "result": "13% speedup with OneDNN quantization via torch.compile",
+          "conclusion": "Working pipeline established"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Use PT2E quantization path (torch.ao.quantization) instead of legacy FX-path quantization. PT2E inserts q/dq nodes that are compatible with Inductor and AOTInductor.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 5,
+      "confidence": "high",
+      "extraction_notes": "User guidance issue \u2014 wrong quantization path. Documents the FX-path vs PT2E quantization distinction. Low entity yield but useful for triage routing."
+    },
+    "temporal": {
+      "created_date": "2024-07-11",
+      "closed_date": "2024-09-29",
+      "created_version": "2.4",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 86427,
+    "title": "[functorch] [aot_autograd] as_strided_scatter error with vmap + aot_function",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "aot_autograd",
+        "mechanism": "Functionalization introduces as_strided_scatter for inplace view operations (e.g., relu_), but as_strided_scatter has no backward support and FakeTensor can't handle the resulting stride patterns. The root cause is that autograd's backward pass uses as_strided as a shortcut for view replay, which doesn't work for tensor subclasses (FakeTensor, BatchedTensor).",
+        "trigger": "Using vmap with aot_function \u2014 functionalization of inplace relu produces as_strided_scatter which errors",
+        "confirmed_by": "engineer_17 diagnosed functionalization introducing as_strided_scatter; albanD and engineer_17 agreed on making as_strided support toggleable per tensor subclass"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Create ensemble with vmap, pass to aot_function",
+          "result": "Error in as_strided_scatter",
+          "conclusion": "Functionalization introduces problematic as_strided"
+        },
+        {
+          "step": 2,
+          "action": "engineer_17 analyzed joint graph",
+          "result": "Every relu_() produces as_strided in backward via autograd shortcut",
+          "conclusion": "Autograd view replay shortcut is the issue"
+        },
+        {
+          "step": 3,
+          "action": "Proposed XLA-style view fn approach",
+          "result": "Can prevent as_strided by forcing autograd to generate view functions instead",
+          "conclusion": "Toggle support for as_strided per subclass"
+        },
+        {
+          "step": 4,
+          "action": "albanD proposed _make_wrapper_subclass boolean",
+          "result": "Agreed on making as_strided support toggleable for tensor subclasses",
+          "conclusion": "Fix design agreed upon"
+        },
+        {
+          "step": 5,
+          "action": "Tested on symbolic-shapes branch",
+          "result": "Patches work with the branch",
+          "conclusion": "Fixed upstream"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Made as_strided support toggleable per tensor subclass. FakeTensor and BatchedTensor can report they don't support as_strided, causing autograd to use view functions instead of the as_strided shortcut for backward.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [
+          "as_strided_scatter_error"
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 7,
+      "confidence": "high",
+      "extraction_notes": "Deep compiler internals \u2014 functionalization + autograd view replay + tensor subclass interaction. The as_strided toggle for subclasses is an important design decision."
+    },
+    "temporal": {
+      "created_date": "2022-10-04",
+      "closed_date": "2023-01-30",
+      "created_version": "pre-2.0",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 127677,
+    "title": "Key error in index_propagation when looking up dynamic shape variable",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "An indirect symbol (indirect0) ends up inside a TypedExpr where it shouldn't be \u2014 TypedExpr is supposed to only contain already-known expressions. When index_propagation tries to look up the symbol in var_ranges, it fails because indirect symbols aren't tracked there. Also causes quadratic compilation time from excessive warning logging.",
+        "trigger": "Models with complex indexing patterns (e.g., SwinB encoder) that produce indirect_indexing \u2192 index_expr \u2192 indirect_indexing chains",
+        "confirmed_by": "lezcano confirmed indirect symbol shouldn't be in TypedExpr; peterbell10 showed valid IR chain that produces it; engineer_17 acknowledged var_to_range should default to unknown"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Compile model with dynamic shapes",
+          "result": "KeyError in index_propagation for indirect0",
+          "conclusion": "Symbol not in var_ranges"
+        },
+        {
+          "step": 2,
+          "action": "Inspect TypedExpr",
+          "result": "indirect0 symbol inside TypedExpr where only known expressions belong",
+          "conclusion": "IR construction issue"
+        },
+        {
+          "step": 3,
+          "action": "peterbell10 identified valid IR pattern",
+          "result": "indirect_indexing \u2192 index_expr \u2192 indirect_indexing produces the problematic state",
+          "conclusion": "Valid but unusual IR, needs graceful handling"
+        },
+        {
+          "step": 4,
+          "action": "Bandaid fix: default to unknown range",
+          "result": "Fixes crash but produces excessive warnings",
+          "conclusion": "Warning logging causes additional perf issue"
+        },
+        {
+          "step": 5,
+          "action": "Reduced verbosity of warning",
+          "result": "Compilation perf restored for SwinB-like models",
+          "conclusion": "Fixed"
+        }
+      ],
+      "resolution": {
+        "type": "compiler_fix",
+        "description": "Added graceful handling: when a symbol is not in var_ranges, default to unknown range instead of erroring. Also reduced warning verbosity to prevent quadratic compilation time from excessive logging.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [
+          "index_propagation_key_error"
+        ],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 6,
+      "confidence": "high",
+      "extraction_notes": "Compiler internals \u2014 index propagation with indirect symbols. Secondary perf issue from warning verbosity. Affects models with complex indexing (SwinB encoder)."
+    },
+    "temporal": {
+      "created_date": "2024-05-31",
+      "closed_date": null,
+      "created_version": "2.3",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 138274,
+    "title": "BetterTransformer + torch.compile breaks with nested tensors",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torch._dynamo",
+        "mechanism": "BetterTransformer uses the old NST (Nested Strided Tensor) layout which is not compatible with torch.compile. The newer NJT (Nested Jagged Tensor) layout works with torch.compile, but BetterTransformer hasn't been migrated.",
+        "trigger": "Using BetterTransformer (optimum library) with torch.compile \u2014 NST operations can't be traced by dynamo",
+        "confirmed_by": "jbschlosser confirmed NST not compatible with compile; NJT is the supported path"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "Run BetterTransformer + torch.compile",
+          "result": "Error in nested tensor operations",
+          "conclusion": "NST incompatible with compile"
+        },
+        {
+          "step": 2,
+          "action": "Docker repro with torch 2.4 and 2.5",
+          "result": "Fails on both versions \u2014 only when both BT and compile enabled",
+          "conclusion": "Not version-specific, fundamental incompatibility"
+        },
+        {
+          "step": 3,
+          "action": "Tested on nightly 2.6",
+          "result": "Same error",
+          "conclusion": "Persistent issue"
+        },
+        {
+          "step": 4,
+          "action": "jbschlosser explained NST vs NJT",
+          "result": "NST is old layout, NJT works with compile",
+          "conclusion": "Need to migrate to NJT"
+        },
+        {
+          "step": 5,
+          "action": "Suggested disabling BT fast path with compile",
+          "result": "Workaround",
+          "conclusion": "Use NJT-based SDPA instead"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "Disable BetterTransformer fast path when using torch.compile. Use NJT-based SDPA instead of NST-based BetterTransformer. Long-term: BetterTransformer should migrate from NST to NJT layout.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [
+          "nested_tensor_compile_error"
+        ],
+        "workarounds": [
+          "fix_disable_bettertransformer_with_compile"
+        ],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 6,
+      "confidence": "high",
+      "extraction_notes": "Documents NST vs NJT incompatibility with compile. Important for transformer model users. BetterTransformer is widely used via HuggingFace optimum."
+    },
+    "temporal": {
+      "created_date": "2024-11-05",
+      "closed_date": "2025-01-27",
+      "created_version": "2.5",
+      "state": "CLOSED"
+    }
+  },
+  {
+    "issue_number": 90167,
+    "title": "Does PyTorch 2.0 eliminate the need for custom fused operators?",
+    "state": "closed",
+    "state_reason": "completed",
+    "phase2": {
+      "root_cause": {
+        "component": "torchinductor",
+        "mechanism": "Q&A \u2014 user asked whether torch.compile eliminates the need for handwritten fused CUDA kernels (FlashAttention, fused layer norm, fused cross entropy, etc.).",
+        "trigger": "User evaluating whether to integrate custom fused operators or rely on torch.compile for performance",
+        "confirmed_by": "engineer_17 explained PT2 can fuse pointwise and reductions (layer norm, bias addition, rotary embedding) but not yet matrix multiply epilogues"
+      },
+      "diagnostic_path": [
+        {
+          "step": 1,
+          "action": "User asked about fused ops vs compile",
+          "result": "PT2 can fuse pointwise + reductions, not yet matmul epilogues",
+          "conclusion": "Partial replacement, depends on op type"
+        },
+        {
+          "step": 2,
+          "action": "User tried torch.compile",
+          "result": "AttributeError: module 'torch' has no attribute '_dynamo'",
+          "conclusion": "Installation issue (duplicate torch installs)"
+        },
+        {
+          "step": 3,
+          "action": "Resolved install, tried compile",
+          "result": "Error in max_autotune mode with Triton matmuls",
+          "conclusion": "Early nightly stability issue"
+        },
+        {
+          "step": 4,
+          "action": "engineer_14 noted mega refactor PR landing",
+          "result": "Suggested running without max_autotune for now",
+          "conclusion": "Early days, feature still stabilizing"
+        }
+      ],
+      "resolution": {
+        "type": "user_adaptation",
+        "description": "torch.compile partially eliminates need for custom fused operators \u2014 it handles pointwise + reduction fusions (layer norm, bias add) but doesn't replace handwritten matmul kernels or FlashAttention. User should try torch.compile first and see if performance is adequate.",
+        "fix_prs": [],
+        "workaround_configs": []
+      },
+      "new_entities": {
+        "symptoms": [],
+        "workarounds": [],
+        "configs": [],
+        "diagnostic_tools": []
+      },
+      "quality_score": 2,
+      "confidence": "medium",
+      "extraction_notes": "Q&A with some useful context about what PT2 can/can't fuse. Low entity yield. Early PT2 adoption issues (installation, nightly stability)."
+    },
+    "temporal": {
+      "created_date": "2022-12-13",
+      "closed_date": "2023-03-26",
+      "created_version": "pre-2.0",
+      "state": "CLOSED"
+    }
   }
 ]
