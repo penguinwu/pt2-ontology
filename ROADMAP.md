@@ -1,7 +1,8 @@
-# PT2 Ontology — Roadmap
+# PT2 Ontology — Planned Next Steps
 
-> Captures all design points discussed so we don't lose ideas as we focus on
-> near-term deliverables. Living document — update as priorities shift.
+> This is a **living document** — it captures what we see as the logical next
+> steps *as of today*. Priorities will shift as we learn from each completed
+> item. Expect this to evolve; it's a compass, not a contract.
 
 **Last updated:** 2026-04-15
 
@@ -197,9 +198,3 @@ Make the ontology agent-accessible via MCP (Model Context Protocol) tools.
 | v0.17.0 | 2026-04-15 | Visibility classification layer — privacy gate for internal data sources |
 | v0.17.1 | 2026-04-15 | Due diligence scrubbing — strip unixnames, tag experts as internal |
 
----
-
-## Pending: Peng to Push
-
-5 local commits ahead of origin (v0.14.0 through v0.17.1). Peng needs to
-`git push` from her terminal (agents can't push due to 3PAI restrictions).
