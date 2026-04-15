@@ -6,7 +6,16 @@
     "aliases": [
       "cache_size_limit",
       "TORCHDYNAMO_RECOMPILE_LIMIT"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "accumulated_recompile_limit",
@@ -14,7 +23,16 @@
     "description": "Safeguard to prevent horrible recompilations across all frames (default: 256)",
     "aliases": [
       "accumulated_cache_size_limit"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "capture_scalar_outputs",
@@ -22,7 +40,16 @@
     "description": "Capture scalar outputs (e.g., from .item()) in the graph instead of graph breaking (requires dynamic_shapes)",
     "aliases": [
       "TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "capture_dynamic_output_shape_ops",
@@ -30,7 +57,16 @@
     "description": "Capture ops with dynamic output shapes (nonzero, unique) instead of graph breaking",
     "aliases": [
       "TORCHDYNAMO_CAPTURE_DYNAMIC_OUTPUT_SHAPE_OPS"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "suppress_errors",
@@ -38,7 +74,16 @@
     "description": "Suppress errors in torch._dynamo.optimize and force fallback to eager (may lose optimization opportunities)",
     "aliases": [
       "TORCHDYNAMO_SUPPRESS_ERRORS"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "inline_inbuilt_nn_modules",
@@ -46,7 +91,16 @@
     "description": "Inline built-in nn modules for regional compilation (deprecated: always True, 27% compile time reduction)",
     "aliases": [
       "TORCHDYNAMO_INLINE_INBUILT_NN_MODULES"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "verbose",
@@ -54,7 +108,16 @@
     "description": "Print full stack traces on warnings and errors for debugging",
     "aliases": [
       "TORCHDYNAMO_VERBOSE"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "repro_level",
@@ -62,7 +125,16 @@
     "description": "Compiler debug info level: 1=dumps original graph on fail, 2=minifier launcher, 3=always minifier, 4=accuracy fails (default: 2)",
     "aliases": [
       "TORCHDYNAMO_REPRO_LEVEL"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "repro_after",
@@ -70,7 +142,16 @@
     "description": "Run minifier at specific stage: None=off, 'dynamo'=TorchDynamo graphs, 'aot'=AOT Autograd graphs",
     "aliases": [
       "TORCHDYNAMO_REPRO_AFTER"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "torch_logs",
@@ -78,47 +159,128 @@
     "description": "Configure logging for dynamo, aot, inductor (e.g., TORCH_LOGS=\"dynamo,aot,inductor\" or TORCH_LOGS=\"graph_breaks\")",
     "aliases": [
       "torch._logging.set_logs"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "torch_compile_debug",
     "name": "TORCH_COMPILE_DEBUG",
-    "description": "Enable detailed inductor debug output and trace logging"
+    "description": "Enable detailed inductor debug output and trace logging",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "specialize_int",
     "name": "specialize_int",
-    "description": "Specialize on int inputs when dynamic_shapes is True (default: False, mostly for export)"
+    "description": "Specialize on int inputs when dynamic_shapes is True (default: False, mostly for export)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "specialize_float",
     "name": "specialize_float",
-    "description": "Specialize on float inputs (default: False, backends inconsistently support float codegen)"
+    "description": "Specialize on float inputs (default: False, backends inconsistently support float codegen)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "assume_static_by_default",
     "name": "assume_static_by_default",
-    "description": "Only allocate symbols for shapes marked dynamic via mark_dynamic (default: True)"
+    "description": "Only allocate symbols for shapes marked dynamic via mark_dynamic (default: True)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "guard_nn_modules",
     "name": "guard_nn_modules",
-    "description": "Assume nn.Module contents are mutable and add guards (default: True, opposite of freezing)"
+    "description": "Assume nn.Module contents are mutable and add guards (default: True, opposite of freezing)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "optimize_ddp",
     "name": "optimize_ddp",
-    "description": "Optimize DDP module: 'ddp_optimizer' (split graph for overlap), 'python_reducer', 'no_optimization' (default: ddp_optimizer)"
+    "description": "Optimize DDP module: 'ddp_optimizer' (split graph for overlap), 'python_reducer', 'no_optimization' (default: ddp_optimizer)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "allow_rnn",
     "name": "allow_rnn",
-    "description": "Disable graph breaking on RNN ops (YMMV with backends, default: False)"
+    "description": "Disable graph breaking on RNN ops (YMMV with backends, default: False)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "trace_numpy",
     "name": "trace_numpy",
-    "description": "Trace through NumPy operations instead of graph breaking (default: True)"
+    "description": "Trace through NumPy operations instead of graph breaking (default: True)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "enable_compiler_collectives",
@@ -126,12 +288,30 @@
     "description": "Use collectives during compilation to sync dynamic shape decisions across ranks (requires SPMD, prevents NCCL hangs)",
     "aliases": [
       "TORCH_COMPILER_COLLECTIVES"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "torch_compile_dynamic_sources",
     "name": "TORCH_COMPILE_DYNAMIC_SOURCES",
-    "description": "Specify dynamic inputs upfront (e.g., L['x'],L['y']) to reduce compile time, 'mandatory' for performance"
+    "description": "Specify dynamic inputs upfront (e.g., L['x'],L['y']) to reduce compile time, 'mandatory' for performance",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "max_autotune_gemm",
@@ -139,12 +319,30 @@
     "description": "Enable slow autotuning for GEMM operations only (default: False)",
     "aliases": [
       "TORCHINDUCTOR_MAX_AUTOTUNE_GEMM"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fallback_random",
     "name": "fallback_random",
-    "description": "Fallback to eager for random/dropout ops (slow but useful for debugging, default: False)"
+    "description": "Fallback to eager for random/dropout ops (slow but useful for debugging, default: False)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "force_disable_caches",
@@ -152,7 +350,16 @@
     "description": "Disable all caching mechanisms (fx_graph_cache, autotune_cache) for debugging",
     "aliases": [
       "TORCHINDUCTOR_FORCE_DISABLE_CACHES"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "cpp_wrapper",
@@ -160,7 +367,16 @@
     "description": "Use C++ wrapper instead of Python wrapper for inductor (incompatible with disable_cpp_codegen)",
     "aliases": [
       "TORCHINDUCTOR_CPP_WRAPPER"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fx_graph_cache",
@@ -168,7 +384,16 @@
     "description": "Use FX AOT graph codegen cache to speed up compilation (default: True)",
     "aliases": [
       "TORCHINDUCTOR_FX_GRAPH_CACHE"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "emulate_precision_casts",
@@ -176,17 +401,44 @@
     "description": "Emulate precision casts in inductor to match eager mode numerics",
     "aliases": [
       "TORCHINDUCTOR_EMULATE_PRECISION_CASTS"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "dynamic_shapes_flag",
     "name": "dynamic",
-    "description": "torch.compile flag to enable dynamic shapes (dynamic=True) or force static shapes (dynamic=False)"
+    "description": "torch.compile flag to enable dynamic shapes (dynamic=True) or force static shapes (dynamic=False)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fullgraph_flag",
     "name": "fullgraph",
-    "description": "torch.compile flag to require no graph breaks (fullgraph=True) or allow them (fullgraph=False)"
+    "description": "torch.compile flag to require no graph breaks (fullgraph=True) or allow them (fullgraph=False)",
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "max_autotune",
@@ -194,7 +446,16 @@
     "description": "Try all kernel options including Triton templates for matmul/conv. May not help if 64-bit indexing not implemented for templates.",
     "aliases": [
       "TORCHINDUCTOR_MAX_AUTOTUNE"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "triton_cudagraphs",
@@ -202,13 +463,34 @@
     "description": "Enable/disable CUDA graph capture for Triton kernels (disable for GPU compatibility testing or debugging)",
     "aliases": [
       "torch._inductor.config.triton.cudagraphs"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "aot_fx_graphs",
-    "name": "AOT_FX_GRAPHS",
-    "description": "Environment variable to dump AOT Autograd's forward/backward graph decomposition for inspection",
-    "aliases": []
+    "name": "aot_graphs",
+    "description": "Log AOT Autograd forward/backward graphs. Legacy env var AOT_FX_GRAPHS still works in some internal code.",
+    "aliases": [
+      "AOT_FX_GRAPHS",
+      "torch._functorch.config.aot_graphs"
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fake_tensor_crossref",
@@ -216,6 +498,15 @@
     "description": "Cross-reference fake tensor metadata against concrete tensors to detect stride/shape mismatches. Set to 'all' to check all ops.",
     "aliases": [
       "torch._functorch.config.fake_tensor_crossref"
-    ]
+    ],
+    "validation": {
+      "status": "confirmed",
+      "validated_date": "2026-04-14"
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Confirmed in source (2026-04-14)",
+      "classified_date": "2026-04-14"
+    }
   }
 ]

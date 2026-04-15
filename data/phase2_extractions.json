@@ -62,7 +62,13 @@
       "confidence": "medium \u2014 extensive discussion but issue still open, user continues proposing alternatives"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2023-01-24",
+      "closed_date": null,
+      "created_version": "pre-2.0",
+      "state": "OPEN"
+    }
   },
   {
     "issue_number": 93528,
@@ -140,7 +146,13 @@
       "confidence": "medium \u2014 issue is a feature request with incremental progress, not a single clear resolution"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2022-10-11",
+      "closed_date": "2023-11-27",
+      "created_version": "pre-2.0",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 93830,
@@ -207,7 +219,13 @@
     },
     "extraction_quality_notes": "Interesting anomaly (inductor works but aot_eager doesn't) but low confidence \u2014 never diagnosed. The 10 comments are mostly 'can you repro?' with no resolution.",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2023-02-01",
+      "closed_date": "2024-03-07",
+      "created_version": "pre-2.0",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 94652,
@@ -260,7 +278,13 @@
     },
     "extraction_quality_notes": "Feature request, not a bug. Zero ontology yield. This type of issue should probably be filtered from Phase 2 candidates.",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2023-02-11",
+      "closed_date": null,
+      "created_version": "pre-2.0",
+      "state": "OPEN"
+    }
   },
   {
     "issue_number": 95407,
@@ -319,7 +343,13 @@
     },
     "extraction_quality_notes": "Short conversation (5 comments) but very clear diagnostic path. Low ontology yield \u2014 packaging issue, not a deep compiler bug.",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2023-02-23",
+      "closed_date": "2023-02-24",
+      "created_version": "pre-2.0",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 96971,
@@ -414,7 +444,13 @@
       "confidence": "high \u2014 clear diagnostic path, multiple backends tested, repro provided"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2023-03-16",
+      "closed_date": "2023-03-29",
+      "created_version": "2.0",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 100075,
@@ -516,7 +552,13 @@
       "confidence": "high \u2014 extensive diagnostic conversation with multiple PT2 maintainers, clear resolution"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2023-04-26",
+      "closed_date": "2024-07-24",
+      "created_version": "2.0",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 113707,
@@ -591,7 +633,13 @@
     },
     "extraction_quality_notes": "Good diagnostic depth despite being an architectural design discussion. High ontology value \u2014 novel failure mode (compiled backward ignoring runtime flags).",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2023-11-14",
+      "closed_date": "2026-02-20",
+      "created_version": "2.1",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 123022,
@@ -648,7 +696,13 @@
     },
     "extraction_quality_notes": "Short conversation (6 comments). Environment issue, not compiler bug. Minimal ontology value.",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2024-03-30",
+      "closed_date": "2024-07-31",
+      "created_version": "2.2",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 136495,
@@ -703,7 +757,13 @@
     },
     "extraction_quality_notes": "Feature request with design discussion. Minimal ontology yield. Another candidate type to filter from Phase 2.",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2024-09-24",
+      "closed_date": null,
+      "created_version": "2.4",
+      "state": "OPEN"
+    }
   },
   {
     "issue_number": 138069,
@@ -780,7 +840,13 @@
       "confidence": "high \u2014 clear root cause, fix landed"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2024-10-16",
+      "closed_date": "2024-10-19",
+      "created_version": "2.5",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 140423,
@@ -865,7 +931,13 @@
     },
     "extraction_quality_notes": "Good diagnostic depth \u2014 bisection, hardware comparison, autotuning isolation. Useful ontology entities despite being a version incompatibility.",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2024-11-12",
+      "closed_date": "2024-12-18",
+      "created_version": "2.5",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 141204,
@@ -912,7 +984,13 @@
     },
     "extraction_quality_notes": "CI tooling issue, not a compiler bug. Zero ontology yield. Should be filtered from Phase 2 candidates.",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2024-11-21",
+      "closed_date": null,
+      "created_version": "2.5",
+      "state": "OPEN"
+    }
   },
   {
     "issue_number": 146018,
@@ -961,7 +1039,13 @@
     },
     "extraction_quality_notes": "Error message improvement, not a functional bug. Minimal ontology yield. Comments are mostly 'can I work on this?' \u2014 not diagnostic content.",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2025-01-30",
+      "closed_date": null,
+      "created_version": "2.6",
+      "state": "OPEN"
+    }
   },
   {
     "issue_number": 146152,
@@ -1047,7 +1131,13 @@
       "confidence": "high \u2014 systematic testing across all detection models, clear architectural incompatibility"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2025-01-31",
+      "closed_date": null,
+      "created_version": "2.6",
+      "state": "OPEN"
+    }
   },
   {
     "issue_number": 147475,
@@ -1131,7 +1221,13 @@
       "confidence": "high \u2014 clear root cause identified, minimal repro available"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2025-02-19",
+      "closed_date": null,
+      "created_version": "2.6",
+      "state": "OPEN"
+    }
   },
   {
     "issue_number": 155862,
@@ -1216,7 +1312,13 @@
       "confidence": "high \u2014 clear root cause identified by pianpwk, multiple reproducible steps"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2025-06-12",
+      "closed_date": null,
+      "created_version": "2.7",
+      "state": "OPEN"
+    }
   },
   {
     "issue_number": 159346,
@@ -1299,7 +1401,13 @@
       "confidence": "high \u2014 thorough investigation by yushangdi and engineer_20, clear root cause"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2025-07-29",
+      "closed_date": null,
+      "created_version": "2.7",
+      "state": "OPEN"
+    }
   },
   {
     "issue_number": 159855,
@@ -1382,7 +1490,13 @@
       "confidence": "high \u2014 clear root cause identified and fix in progress"
     },
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2025-08-05",
+      "closed_date": "2025-09-21",
+      "created_version": "2.7",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 162762,
@@ -1443,7 +1557,13 @@
     },
     "extraction_quality_notes": "Short conversation (6 comments) but high ontology value \u2014 meta kernel layout mismatch is a novel failure mode.",
     "extracted_by": "llm",
-    "extracted_at": "2026-04-14"
+    "extracted_at": "2026-04-14",
+    "temporal": {
+      "created_date": "2025-09-11",
+      "closed_date": "2025-10-08",
+      "created_version": "2.7",
+      "state": "CLOSED"
+    }
   },
   {
     "issue_number": 92925,
@@ -1516,6 +1636,12 @@
       "quality_score": 8,
       "confidence": "high",
       "extraction_notes": "Rich diagnostic conversation with 5 steps of isolation. Highlights complexity of fake vs real example inputs in compiler pipeline."
+    },
+    "temporal": {
+      "created_date": "2023-01-24",
+      "closed_date": "2023-01-31",
+      "created_version": "pre-2.0",
+      "state": "CLOSED"
     }
   },
   {
@@ -1575,6 +1701,12 @@
       "quality_score": 8,
       "confidence": "high",
       "extraction_notes": "Clear regression pattern. Reveals systemic gap: out= tensor paths don't handle dynamic scalars. 7 related issues suggest fuzzer-discovered pattern."
+    },
+    "temporal": {
+      "created_date": "2023-10-13",
+      "closed_date": "2023-10-13",
+      "created_version": "2.1",
+      "state": "CLOSED"
     }
   },
   {
@@ -1640,6 +1772,12 @@
       "quality_score": 9,
       "confidence": "high",
       "extraction_notes": "Excellent diagnostic progression. The partial-zeros pattern is a strong diagnostic signal for stream issues. User self-diagnosed with systematic ablation."
+    },
+    "temporal": {
+      "created_date": "2025-06-30",
+      "closed_date": "2025-07-08",
+      "created_version": "2.7",
+      "state": "CLOSED"
     }
   },
   {
@@ -1703,6 +1841,12 @@
       "quality_score": 9,
       "confidence": "high",
       "extraction_notes": "Important pattern: custom op fake kernel metadata must exactly match real kernel. Led to two defensive PRs adding stride assertions."
+    },
+    "temporal": {
+      "created_date": "2025-02-05",
+      "closed_date": "2025-04-14",
+      "created_version": "2.6",
+      "state": "CLOSED"
     }
   },
   {
@@ -1775,6 +1919,12 @@
       "quality_score": 9,
       "confidence": "high",
       "extraction_notes": "Great diagnostic chain from user\u2192aot_eager isolation\u2192minimal repro. Reveals systemic complex number gap. Performance impact of workaround (10x) is critical context."
+    },
+    "temporal": {
+      "created_date": "2023-07-16",
+      "closed_date": "2024-08-12",
+      "created_version": "2.0",
+      "state": "CLOSED"
     }
   },
   {
@@ -1841,6 +1991,12 @@
       "quality_score": 10,
       "confidence": "high",
       "extraction_notes": "Exceptional diagnostic depth. Reveals fundamental tension between alignment optimization and mutation semantics. The fake_tensor_crossref tool is a powerful debugging technique."
+    },
+    "temporal": {
+      "created_date": "2025-04-29",
+      "closed_date": "2025-05-29",
+      "created_version": "2.7",
+      "state": "CLOSED"
     }
   },
   {
@@ -1901,6 +2057,12 @@
       "quality_score": 8,
       "confidence": "high",
       "extraction_notes": "Deep sympy/ValueRanges diagnostic. Hard to reproduce synthetically because shape_env normalizes ranges. Affects VLLM models specifically."
+    },
+    "temporal": {
+      "created_date": "2024-08-16",
+      "closed_date": "2024-09-04",
+      "created_version": "2.4",
+      "state": "CLOSED"
     }
   },
   {
@@ -1966,6 +2128,12 @@
       "quality_score": 8,
       "confidence": "high",
       "extraction_notes": "Performance pathology in symbolic shapes. Quadratic behavior from sympy expression sorting. Related to #140835."
+    },
+    "temporal": {
+      "created_date": "2025-01-14",
+      "closed_date": "2025-01-18",
+      "created_version": "2.5",
+      "state": "CLOSED"
     }
   },
   {
@@ -2040,6 +2208,12 @@
       "quality_score": 10,
       "confidence": "high",
       "extraction_notes": "Exceptionally rich 17-comment diagnostic thread. Critical for torchao+diffusers workflow (quantize\u2192offload\u2192compile). Multiple engineers systematically traced weakref sources. Still open \u2014 in-progress fix."
+    },
+    "temporal": {
+      "created_date": "2024-11-26",
+      "closed_date": "2026-02-06",
+      "created_version": "2.5",
+      "state": "CLOSED"
     }
   },
   {
@@ -2095,6 +2269,12 @@
       "quality_score": 7,
       "confidence": "high",
       "extraction_notes": "Simple fix but important DDP interaction pattern. User had follow-on issues (separate thread #90550). Minifier usability gap noted \u2014 user didn't know how to use it."
+    },
+    "temporal": {
+      "created_date": "2022-12-07",
+      "closed_date": "2022-12-07",
+      "created_version": "pre-2.0",
+      "state": "CLOSED"
     }
   }
 ]

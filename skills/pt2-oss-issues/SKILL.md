@@ -107,10 +107,37 @@ Filtered-out sets are preserved in the full corpus for future phases:
 | `/home/pengwu/projects/pt2-ontology/data/phase2_extractions.json` | Phase 2 deep extractions (iterative) |
 | `/home/pengwu/projects/pt2-ontology/data/phase2_iteration_log.md` | Extraction iteration quality log |
 
+### Validate ontology freshness
+
+```bash
+# Full validation report
+python /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/validate.py
+
+# Summary stats only
+python validate.py --stats
+
+# Only show stale/uncertain entities
+python validate.py --stale-only
+
+# Check configs against current PyTorch source + update entity files
+python validate.py --check-source --update
+```
+
+Validation checks:
+- **Temporal**: Maps evidence issue dates to PyTorch version eras (pre-2.0 through 2.7)
+- **Source**: Greps `fbsource/fbcode/caffe2/torch/` for config names (--check-source)
+- **Freshness classification**: living / likely_living / historical / uncertain / base
+
+Each entity gets a `freshness` field: `{status, reason, classified_date}`.
+Configs also get a `validation` field: `{status: confirmed|renamed|stale, validated_date}`.
+
+Manual overrides for edge cases go in `FRESHNESS_OVERRIDES` dict in validate.py.
+
 ## Refresh Schedule
 
 - **Weekly:** Incremental fetch (`--since` last fetch date)
 - **Monthly:** Full re-extraction + re-filter to pick up classifier improvements
+- **After extraction batches:** Run `validate.py --check-source --update` to stamp new entities
 - **Ad-hoc:** After major ontology schema changes or filter adjustments
 
 ## Notes

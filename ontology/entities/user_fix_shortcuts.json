@@ -14,7 +14,19 @@
     "evidence_issues": [
       176565
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2026-03-05",
+      "last_seen_date": "2026-03-05",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_expandable_segments",
@@ -33,7 +45,19 @@
       143346,
       103716
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2024-12-17",
+      "last_seen_date": "2026-02-05",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_capture_scalar_outputs",
@@ -51,7 +75,19 @@
       173915,
       163563
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2025-09-22",
+      "last_seen_date": "2026-01-30",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_disable_tf32",
@@ -68,7 +104,19 @@
     "evidence_issues": [
       173902
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2026-01-30",
+      "last_seen_date": "2026-01-30",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_realize_opcount_threshold",
@@ -84,7 +132,19 @@
     "evidence_issues": [
       145074
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2025-01-17",
+      "last_seen_date": "2025-01-17",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.5",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.5",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_disable_ddp_optimizer",
@@ -100,7 +160,19 @@
     "evidence_issues": [
       104674
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2023-07-05",
+      "last_seen_date": "2023-07-05",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "uncertain",
+      "reason": "DDPOptimizer reworked since PT 2.0. Config exists but use case changed.",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_suppress_errors",
@@ -116,7 +188,19 @@
     "evidence_issues": [
       138809
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2024-10-24",
+      "last_seen_date": "2024-10-24",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.5",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.5",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_use_dynamic_shapes",
@@ -136,7 +220,19 @@
       147261,
       137515
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2024-10-08",
+      "last_seen_date": "2026-01-20",
+      "first_seen_version": "2.4",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_use_no_grad",
@@ -155,7 +251,19 @@
       143346,
       148808
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2024-12-17",
+      "last_seen_date": "2026-01-30",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_rewrite_indexing",
@@ -171,7 +279,19 @@
     "evidence_issues": [
       150057
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2025-03-26",
+      "last_seen_date": "2025-03-26",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.6",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.6",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_explicit_output_shape",
@@ -187,7 +307,19 @@
     "evidence_issues": [
       147261
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2025-02-15",
+      "last_seen_date": "2025-02-15",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.6",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.6",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_clone_gradient_hook",
@@ -204,7 +336,19 @@
     "evidence_issues": [
       96693
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2023-03-13",
+      "last_seen_date": "2023-03-13",
+      "first_seen_version": "pre-2.0",
+      "last_seen_version": "pre-2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "uncertain",
+      "reason": "max_autotune gradient issues may have been addressed.",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_use_item_cast",
@@ -220,7 +364,19 @@
     "evidence_issues": [
       137062
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2024-10-01",
+      "last_seen_date": "2024-10-01",
+      "first_seen_version": "2.4",
+      "last_seen_version": "2.4",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Last evidence from PT 2.4",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_use_pytree",
@@ -236,7 +392,19 @@
     "evidence_issues": [
       164972
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2025-10-08",
+      "last_seen_date": "2025-10-08",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_disable_autotune_cache",
@@ -252,7 +420,19 @@
     "evidence_issues": [
       96693
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2023-03-13",
+      "last_seen_date": "2023-03-13",
+      "first_seen_version": "pre-2.0",
+      "last_seen_version": "pre-2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Config autotune_local_cache confirmed in source. Cache staleness ongoing.",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_assume_static_by_default",
@@ -270,7 +450,19 @@
     "evidence_issues": [
       96971
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2023-03-16",
+      "last_seen_date": "2023-03-16",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Config confirmed in source. Valid fallback for dynamic shape issues.",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_aot_eager_isolation",
@@ -289,7 +481,19 @@
       96971,
       100075
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2023-03-16",
+      "last_seen_date": "2023-04-26",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Diagnostic technique \u2014 always valid",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_pretrained_weights_verification",
@@ -306,7 +510,19 @@
     "evidence_issues": [
       100075
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2023-04-26",
+      "last_seen_date": "2023-04-26",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Diagnostic technique \u2014 always valid",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_draft_export",
@@ -323,7 +539,19 @@
     "evidence_issues": [
       146152
     ],
-    "scope": "torch_export"
+    "scope": "torch_export",
+    "temporal": {
+      "first_seen_date": "2025-01-31",
+      "last_seen_date": "2025-01-31",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.6",
+      "has_open_evidence": true
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Has open evidence issue(s)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_match_export_inference_shape",
@@ -341,7 +569,19 @@
       147475,
       155862
     ],
-    "scope": "torch_export"
+    "scope": "torch_export",
+    "temporal": {
+      "first_seen_date": "2025-02-19",
+      "last_seen_date": "2025-06-12",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.7",
+      "has_open_evidence": true
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Has open evidence issue(s)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_batch_first_false",
@@ -357,7 +597,19 @@
     "evidence_issues": [
       159346
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2025-07-29",
+      "last_seen_date": "2025-07-29",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": true
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Has open evidence issue(s)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_scalar_indexing_for_roll",
@@ -373,7 +625,19 @@
     "evidence_issues": [
       159855
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2025-08-05",
+      "last_seen_date": "2025-08-05",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_mark_dynamic_instead",
@@ -390,7 +654,19 @@
     "evidence_issues": [
       111199
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2023-10-13",
+      "last_seen_date": "2023-10-13",
+      "first_seen_version": "2.1",
+      "last_seen_version": "2.1",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Specific dynamic alpha bug fixed",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_custom_op_stream",
@@ -407,7 +683,19 @@
     "evidence_issues": [
       157363
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2025-06-30",
+      "last_seen_date": "2025-06-30",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fix_avoid_many_splits",
@@ -424,6 +712,18 @@
     "evidence_issues": [
       144792
     ],
-    "scope": "torch_compile"
+    "scope": "torch_compile",
+    "temporal": {
+      "first_seen_date": "2025-01-14",
+      "last_seen_date": "2025-01-14",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.5",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.5",
+      "classified_date": "2026-04-14"
+    }
   }
 ]

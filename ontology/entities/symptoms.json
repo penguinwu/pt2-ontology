@@ -2,52 +2,102 @@
   {
     "id": "dynamo_unsupported",
     "name": "torch._dynamo.exc.Unsupported",
-    "description": "Dynamo explicitly doesn't support this construct"
+    "description": "Dynamo explicitly doesn't support this construct",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "torch_runtime_error",
     "name": "TorchRuntimeError",
-    "description": "Runtime error from compiled code"
+    "description": "Runtime error from compiled code",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "backend_compiler_failed",
     "name": "BackendCompilerFailed",
-    "description": "Backend (inductor/triton) failed to compile the graph"
+    "description": "Backend (inductor/triton) failed to compile the graph",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "recompile_warning",
     "name": "Recompilation Warning",
-    "description": "torch._dynamo hit recompilation limit"
+    "description": "torch._dynamo hit recompilation limit",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "accuracy_mismatch",
     "name": "Accuracy Mismatch",
-    "description": "Numerical differences between compiled and eager"
+    "description": "Numerical differences between compiled and eager",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "numerical_drift",
     "name": "Numerical Drift",
-    "description": "Subtle precision differences \u2014 may or may not be acceptable depending on tolerance"
+    "description": "Subtle precision differences \u2014 may or may not be acceptable depending on tolerance",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "silent_slowdown",
     "name": "Silent Performance Degradation",
-    "description": "No error but compiled code is slower than eager"
+    "description": "No error but compiled code is slower than eager",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "segfault",
     "name": "Segfault / CUDA Error",
-    "description": "Low-level crash during compiled execution"
+    "description": "Low-level crash during compiled execution",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "compile_timeout",
     "name": "Compile Timeout",
-    "description": "Compilation exceeds job timeout threshold (e.g., 10min or 30min training job timeout)"
+    "description": "Compilation exceeds job timeout threshold (e.g., 10min or 30min training job timeout)",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "inductor_oom",
     "name": "Inductor OOM During Compilation",
-    "description": "Inductor runs out of memory while compiling the graph (distinct from runtime OOM)"
+    "description": "Inductor runs out of memory while compiling the graph (distinct from runtime OOM)",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "symptom_multiple_cache_entries",
@@ -55,7 +105,12 @@
     "description": "Frame cache shows many entries (approaching recompile_limit) indicating guard specialization",
     "aliases": [
       "cache explosion"
-    ]
+    ],
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "symptom_extended_debug_output",
@@ -64,7 +119,12 @@
     "aliases": [
       "debug trace",
       "verbose logging"
-    ]
+    ],
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "symptom_perf_regression_dynamic",
@@ -72,52 +132,102 @@
     "description": "Dynamic shapes run 9x slower than static due to missing divisibility hints (known gap)",
     "aliases": [
       "dynamic slowdown"
-    ]
+    ],
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "crash",
     "name": "Crash / Segfault",
-    "description": "Process crashes (SIGSEGV, SIGIOT, SIGABRT) during compilation or execution"
+    "description": "Process crashes (SIGSEGV, SIGIOT, SIGABRT) during compilation or execution",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "wrong_result",
     "name": "Wrong Result",
-    "description": "Compiled code produces different output from eager mode"
+    "description": "Compiled code produces different output from eager mode",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "slow_compile",
     "name": "Slow Compilation",
-    "description": "Compilation takes unreasonably long (minutes to hours)"
+    "description": "Compilation takes unreasonably long (minutes to hours)",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "hang",
     "name": "Hang / Deadlock",
-    "description": "Process hangs during compilation or execution"
+    "description": "Process hangs during compilation or execution",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "perf_regression",
     "name": "Performance Regression",
-    "description": "Compiled code runs slower than expected or slower than a previous version"
+    "description": "Compiled code runs slower than expected or slower than a previous version",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "memory_issue",
     "name": "Memory Issue",
-    "description": "Excessive memory usage during compilation or runtime"
+    "description": "Excessive memory usage during compilation or runtime",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "flaky",
     "name": "Flaky / Intermittent",
-    "description": "Issue reproduces inconsistently"
+    "description": "Issue reproduces inconsistently",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "error_raised",
     "name": "Error Raised",
-    "description": "An exception or error message is raised during compilation or execution"
+    "description": "An exception or error message is raised during compilation or execution",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "silent_correctness",
     "name": "Silent Correctness Issue",
-    "description": "Compiled code silently produces wrong results without any error"
+    "description": "Compiled code silently produces wrong results without any error",
+    "freshness": {
+      "status": "base",
+      "reason": "Core ontology entity",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "delayed_nan",
@@ -125,7 +235,19 @@
     "description": "Accuracy suddenly degrades after N iterations (not gradually) \u2014 jumps from 1e-4 error to ~300+ then NaN. Distinct from gradual numerical drift.",
     "evidence_issues": [
       96971
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2023-03-16",
+      "last_seen_date": "2023-03-16",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "Original NaN collapse bug fixed in PT 2.0",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "non_deterministic_correctness",
@@ -133,7 +255,19 @@
     "description": "Compiled model sometimes produces correct output, sometimes wrong \u2014 intermittent correctness failure from incorrect kernel fusion (e.g., roll fused as pointwise)",
     "evidence_issues": [
       159855
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2025-08-05",
+      "last_seen_date": "2025-08-05",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fp16_perf_regression_small_batch",
@@ -141,7 +275,19 @@
     "description": "FP16 autocast dramatically slower than FP32 at small batch sizes \u2014 cuBLAS selects poor bmm kernel for non-contiguous fp16 tensors (10x slowdown at bs=1)",
     "evidence_issues": [
       159346
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2025-07-29",
+      "last_seen_date": "2025-07-29",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": true
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Has open evidence issue(s)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "aoti_silent_degradation",
@@ -150,7 +296,19 @@
     "evidence_issues": [
       147475,
       155862
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2025-02-19",
+      "last_seen_date": "2025-06-12",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.7",
+      "has_open_evidence": true
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Has open evidence issue(s)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "export_static_guard_leak",
@@ -159,7 +317,19 @@
     "evidence_issues": [
       147475,
       155862
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2025-02-19",
+      "last_seen_date": "2025-06-12",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.7",
+      "has_open_evidence": true
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Has open evidence issue(s)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "export_dde_cascade",
@@ -167,7 +337,19 @@
     "description": "Data-dependent dynamic shapes from user model code (NMS, ROI operations, bounding box filtering) cause cascade of torch.export failures in detection/object-detection models",
     "evidence_issues": [
       146152
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2025-01-31",
+      "last_seen_date": "2025-01-31",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.6",
+      "has_open_evidence": true
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Has open evidence issue(s)",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "model_instability_false_alarm",
@@ -175,7 +357,19 @@
     "description": "Numerical instability in randomly-initialized models masquerades as compiler correctness bug \u2014 random weights near decision boundaries cause 100% element mismatch",
     "evidence_issues": [
       100075
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2023-04-26",
+      "last_seen_date": "2023-04-26",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Diagnostic pattern is timeless",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "warning_log_spam",
@@ -183,7 +377,19 @@
     "description": "Thousands of warning messages per compilation (e.g., 'failed while executing int_truediv') from sympy interpreter \u2014 cosmetic but creates noise",
     "evidence_issues": [
       138069
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2024-10-16",
+      "last_seen_date": "2024-10-16",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.5",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.5",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "dynamic_scalar_regression",
@@ -191,7 +397,19 @@
     "description": "Operations that worked with static shapes fail with dynamic=True when scalar arguments (alpha, etc.) become dynamic \u2014 regression from improved dynamism in newer PT2 versions",
     "evidence_issues": [
       111199
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2023-10-13",
+      "last_seen_date": "2023-10-13",
+      "first_seen_version": "2.1",
+      "last_seen_version": "2.1",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "historical",
+      "reason": "torch.add out= + dynamic alpha fixed in PT 2.1",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "partial_zeros_output",
@@ -199,7 +417,19 @@
     "description": "Compiled output has first N elements correct then zeros \u2014 indicates CUDA stream synchronization issue in custom ops with mode='reduce-overhead'",
     "evidence_issues": [
       157363
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2025-06-30",
+      "last_seen_date": "2025-06-30",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "fake_kernel_stride_mismatch",
@@ -207,7 +437,19 @@
     "description": "Silent incorrectness when custom op's register_fake returns tensors with different strides/metadata than the real implementation \u2014 Inductor generates code based on fake metadata",
     "evidence_issues": [
       146536
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2025-02-05",
+      "last_seen_date": "2025-02-05",
+      "first_seen_version": "2.6",
+      "last_seen_version": "2.6",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.6",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "complex_scalar_backward_error",
@@ -215,7 +457,19 @@
     "description": "RuntimeError on aten::_conj when compiling models that multiply tensors by complex scalars (1j) with autograd \u2014 scalar-tensor roundtrip breaks in backward trace",
     "evidence_issues": [
       105290
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2023-07-16",
+      "last_seen_date": "2023-07-16",
+      "first_seen_version": "2.0",
+      "last_seen_version": "2.0",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Complex compilation issues still active in 2026",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "mutation_lost_on_alignment_clone",
@@ -223,7 +477,19 @@
     "description": "Silent incorrectness where in-place mutations are lost because Inductor clones input for alignment, disconnecting mutation from original tensor (expand+mutate patterns)",
     "evidence_issues": [
       152425
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2025-04-29",
+      "last_seen_date": "2025-04-29",
+      "first_seen_version": "2.7",
+      "last_seen_version": "2.7",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.7",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "sympy_nan_comparison",
@@ -231,7 +497,19 @@
     "description": "Invalid NaN comparison error from sympy when ValueRanges arithmetic produces NaN through mixed integer/float range operations in floordiv",
     "evidence_issues": [
       133735
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2024-08-16",
+      "last_seen_date": "2024-08-16",
+      "first_seen_version": "2.4",
+      "last_seen_version": "2.4",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "likely_living",
+      "reason": "Last evidence from PT 2.4",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "quadratic_compile_time_asserts",
@@ -239,7 +517,19 @@
     "description": "Compile time grows quadratically with number of runtime asserts when model produces many unbacked SymInts from split/slice operations \u2014 each assert ~15 seconds",
     "evidence_issues": [
       144792
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2025-01-14",
+      "last_seen_date": "2025-01-14",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.5",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.5",
+      "classified_date": "2026-04-14"
+    }
   },
   {
     "id": "weakref_blocks_device_move",
@@ -247,6 +537,18 @@
     "description": "RuntimeError in swap_tensors when moving compiled module to another device due to outstanding weakrefs from compilation (MetaConverter, guards) \u2014 critical for torchao+offloading workflows",
     "evidence_issues": [
       141548
-    ]
+    ],
+    "temporal": {
+      "first_seen_date": "2024-11-26",
+      "last_seen_date": "2024-11-26",
+      "first_seen_version": "2.5",
+      "last_seen_version": "2.5",
+      "has_open_evidence": false
+    },
+    "freshness": {
+      "status": "living",
+      "reason": "Last evidence from PT 2.5",
+      "classified_date": "2026-04-14"
+    }
   }
 ]
