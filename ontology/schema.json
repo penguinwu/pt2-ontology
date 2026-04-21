@@ -1,28 +1,44 @@
 {
   "meta": {
     "name": "PT2 Domain Ontology",
-    "version": "0.9.0",
+    "version": "0.17.2",
     "created": "2026-04-13",
-    "updated": "2026-04-14",
-    "description": "Structured domain ontology for PyTorch 2 (torch.compile), mined from 6,167 GitHub issues (3,876 closed, 2,291 open)",
+    "updated": "2026-04-21",
+    "description": "Structured domain ontology for PyTorch 2 (torch.compile), mined from 6,167 GitHub issues (3,876 closed, 2,291 open), PyTorch source, and curated internal sources.",
     "scopes": {
-      "torch_compile": "Core torch.compile stack (Dynamo, Inductor, holistic areas) — current focus",
-      "export": "torch.export and ExportedProgram — phase 2",
-      "helion": "Helion kernel language (pytorch/helion) — phase 2",
+      "torch_compile": "Core torch.compile stack (Dynamo, Inductor, holistic areas) — current focus (Phase 1)",
+      "export": "torch.export and ExportedProgram — Phase 2",
+      "helion": "Helion kernel language (pytorch/helion) — Phase 3",
       "shared": "Cross-cutting entities used by all sub-ontologies"
     },
     "visibility": {
-      "oss": "Open-source — exists in public PyTorch repo and GitHub issues",
-      "internal": "Meta-internal only — not in public repo (e.g., MegaCache, internal backends, Meta-specific configs)"
+      "oss": "Open source — derived from public PyTorch repo, GitHub issues, pytorch.org docs, public talks",
+      "internal": "Meta-internal only — internal sources or attribution that should not leave Meta",
+      "confidential": "Restricted — proprietary model names, perf data tied to internal workloads, business intel"
     },
-    "changelog": "v0.9.0: Full dataset download (6,167 issues, 4,677 comments), Phase 1 diagnostic extraction (2,606 user issues), 15 user-fix shortcuts, diagnostic decision tree (9 symptom entry points), data source comparison (Hive vs GitHub API); v0.8.0: +23 label mappings (95.2% classification), +8 causes, +9 symptoms, 228 resolved_by PR edges, 107 weighted edges, expert mapping (27 entries), visibility field for OSS vs internal distinction; v0.7.0: STO owners and GitHub label mappings on 43 components (from PT2 STO Structure + Issue Health Design Doc); 4 new components (PT2-Dispatch, vLLM Compile, Compiled Autograd, Helion); v0.6.1: Platform entity type — hardware accelerators (NVIDIA GPU, AMD GPU, Intel XPU, TPU, ARM CPU, Apple MPS) and OS (Linux, Windows, macOS) with default/non-default classification; v0.6.0: Beaver cause tree merge — 89 leaf subcauses from 9,277 GitHub issues with evidence counts and example issue IDs; v0.5.1: is_subcause_of tree, fix_type taxonomy, resolved_by, diagnosed_by enrichment; v0.5.0: user journeys, 6 new relationship types; v0.4.0: Beaver entity extraction"
+    "lifecycle_field": {
+      "description": "Optional per-entity lifecycle metadata. Default status is 'current' if field absent.",
+      "schema": {
+        "status": "current | deprecated | removed",
+        "since_version": "Required if status != current (e.g., 'v2.4.0')",
+        "reason": "Free text — why the lifecycle changed",
+        "provenance": {
+          "type": "pr | commit | rfc | release_notes | issue | docs",
+          "ref": "URL to the source",
+          "id": "Identifier (e.g., PR number, commit SHA)"
+        }
+      }
+    },
+    "changelog": "v0.17.2: Schema sync — declared expert and user_fix_shortcut entity types, added replaced_by relationship type, added lifecycle field convention to support doc-audit deprecation discovery; v0.17.1: Due-diligence scrubbing — strip unixnames, tag experts as internal; v0.17.0: Visibility classification layer added; v0.16.0: Enriched relationship layer (294 evidence edges, 62 triage paths, 12 entry points); v0.15.0: Relationship mapping (evidence edges, triage tree, component playbooks); v0.14.0: Phase 2 extraction (324 issues, 62 symptoms, 33 workarounds, 40 configs); v0.9.0: Full dataset download, Phase 1 diagnostic extraction; v0.8.0: Label mappings, expert mapping, visibility field; v0.7.0: STO owners and GitHub label mappings; v0.6.x: Beaver cause tree merge, Platform entity type; v0.5.x: User journeys, is_subcause_of tree; v0.4.0: Beaver entity extraction"
   },
   "entity_types": {
     "component": "A software component or subsystem in the PT2 stack",
+    "deprecated_component": "A component that has been removed or replaced — kept for historical reference",
     "failure_mode": "A category of things that can go wrong",
     "symptom": "An observable signal that something is wrong",
     "cause": "A root cause that triggers a failure mode",
-    "resolution": "A type of fix or workaround",
+    "resolution": "A category of fix or workaround",
+    "user_fix_shortcut": "A specific, named user-facing workaround — concrete advice users can apply (file: user_fix_shortcuts.json; also referred to as 'workaround')",
     "config": "A configuration flag or setting",
     "op": "A PyTorch operator or function",
     "model": "A user model or model family affected by issues",
@@ -30,7 +46,8 @@
     "ecosystem": "An ecosystem project, benchmark, or framework that interacts with PT2",
     "optimization": "A specific optimization technique or pass",
     "user_journey": "A user-facing problem scenario that defines a diagnostic and resolution workflow",
-    "platform": "A hardware accelerator or operating system that affects issue diagnosis and support level"
+    "platform": "A hardware accelerator or operating system that affects issue diagnosis and support level",
+    "expert": "An engineer with deep knowledge of a specific component or area (mapped to anonymized engineer_XX IDs; always visibility: internal)"
   },
   "relationship_types": {
     "is_component_of": "X is a sub-component of Y",
@@ -46,7 +63,8 @@
     "routes_to": "X (journey) routes to Y (journey) when diagnostic reveals specific root cause",
     "enters_via": "X (journey) is entered when user observes Y (symptom/failure_mode)",
     "involves": "X (journey) involves Y (component/config/op) as relevant context",
-    "is_subcause_of": "X (specific cause) is a sub-cause of Y (cause category) \u2014 supports funnel/tree structure",
-    "platform_specific": "X (cause/failure_mode) is specific to or primarily affects Y (platform)"
+    "is_subcause_of": "X (specific cause) is a sub-cause of Y (cause category) — supports funnel/tree structure",
+    "platform_specific": "X (cause/failure_mode) is specific to or primarily affects Y (platform)",
+    "replaced_by": "X (deprecated/removed entity) is replaced by Y (current entity). Edges carry since_version and provenance. Optional — some deprecations have no successor."
   }
 }

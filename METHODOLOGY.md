@@ -88,29 +88,33 @@ using the current extraction pipeline, giving them proper provenance.
 The schema defines the *kinds* of entities and relationships. This is methodology,
 not data — it should be stable before a rebuild.
 
-### 2.1 Entity Types (14)
+### 2.1 Entity Types (15) — current as of v0.17.1
 
 | Type | Count | Source | Provenance Status |
-|------|-------|--------|-------------------|
+|------|------:|--------|-------------------|
+| causes | 118 | Beaver bootstrap + heuristic extraction | **Needs rebuild** — no evidence_issues |
+| symptoms | 62 | Mixed: 40 with evidence_issues (Phase 2), 22 from bootstrap | **Partial** — 22 still need backfill |
 | components | 43 | STO structure + codebase | Well-provenanced |
-| causes | 110 | Beaver bootstrap + heuristic extraction | **Needs rebuild** — no evidence_issues |
-| symptoms | 38 | Mixed: 16 from Phase 2 (provenanced), 22 from bootstrap (not) | **Partial** |
-| configs | 32 | Mixed: codebase grep + Phase 2 extraction | Source-validated but no temporal |
-| workarounds | 25 | Phase 2 extraction | Fully provenanced |
-| failure_modes | ? | Bootstrap | **Needs rebuild** |
-| resolutions | ? | Bootstrap | **Needs rebuild** |
-| platforms | 10 | Manual curation | Stable |
-| backends | ? | Manual curation | Stable |
+| configs | 40 | Mixed: codebase grep + Phase 2 extraction | Source-validated; only 8 carry evidence_issues |
+| user_fix_shortcuts | 33 | Phase 2 extraction | Fully provenanced |
 | experts | 27 | STO structure | Stable |
-| ops | ? | Codebase | Stable |
-| ecosystem | ? | Manual curation | Stable |
-| optimizations | ? | Manual curation | Stable |
-| user_journeys | 9 | Manual design | Stable |
+| failure_modes | 17 | Bootstrap | **Needs rebuild** |
+| resolutions | 14 | Bootstrap (categories: config_change, code_rewrite, etc.) | Stable as type taxonomy |
+| platforms | 10 | Manual curation | Stable |
+| ops | 9 | Codebase | Stable |
+| user_journeys | 9 | Manual design (J1-J9) | Stable |
+| ecosystem | 8 | Manual curation | Stable |
+| backends | 6 | Manual curation | Stable |
+| optimizations | 5 | Manual curation | Stable |
+| deprecated_components | 4 | Historical record | Stable |
 
-### 2.2 Relationship Types (15)
+**Total: 405 entities.** A clean rebuild would primarily benefit causes (118), the 22 unprovenanced symptoms, and the 32 unprovenanced configs.
 
-Structural, diagnostic, resolution, journey, and evidence-weighted edges.
-See `ontology/schema.json` for full relationship schema.
+### 2.2 Relationship Types (16)
+
+Structural, diagnostic, resolution, journey, lifecycle (`replaced_by`, added v0.17.1), platform, and evidence-weighted edges. See `ontology/schema.json` for the full type catalog.
+
+The `replaced_by` edge type (added v0.17.1) supports doc-audit deprecation discovery: a stale doc reference can be resolved to its successor entity with `since_version` and provenance.
 
 ### 2.3 Phase 2 Extraction Schema
 
@@ -210,8 +214,7 @@ Priority ordering for batch selection:
 
 Signal scoring formula: `label_overlap × 2 + symptom_variety + conversation_length / 5`
 
-**Current progress:** 30 extractions across 3 iterations. ~350 candidates remaining.
-Avg quality: 8.2/10. Entity yield: 17 symptoms, 10 workarounds, 4 configs.
+**Phase 2 status (as of v0.17.1):** 324 issues processed, yielding 62 symptoms, 33 user fix shortcuts, 40 configs across multiple iterations. Average extraction quality 8+/10. Phase 2 has reached diminishing returns on the current GitHub corpus — next signal sources are Workplace Q&A and oncall logs (see Priority 2 in ROADMAP).
 
 ### 3.5 Entity Synthesis
 
@@ -272,11 +275,13 @@ Every entity in a rebuilt ontology must have:
 }
 ```
 
-**What's missing in the current ontology:**
+**What's missing in the current ontology (v0.17.1):**
 - 22 symptoms lack `evidence_issues` (from Beaver bootstrap)
 - 32 configs lack `evidence_issues` (from codebase grep, no issue linkage)
-- 110 causes lack `evidence_issues` (from Beaver bootstrap)
-- No entity has `provenance.source` or `provenance.extraction_method` yet
+- 118 causes lack `evidence_issues` (from Beaver bootstrap)
+- No entity has `provenance.source` or `provenance.extraction_method` yet — `freshness` is the only structured provenance field currently populated
+
+The `lifecycle` field (added v0.17.1) is a new structured provenance surface — when status transitions to `deprecated` or `removed`, it captures `since_version` plus `provenance: {type, ref, id}`.
 
 ---
 
@@ -348,6 +353,11 @@ python skills/pt2-oss-issues/scripts/validate.py --check-source --update
 | v0.10.0 | Apr 14, 2026 | Phase 2 LLM extraction pipeline, full corpus processing |
 | v0.11.0 | Apr 14, 2026 | Label-based filtering skill (filter.py), iteration 3 extraction |
 | v0.12.0 | Apr 14, 2026 | Validation framework: freshness, version-stamping, source checks |
+| v0.14.0 | Apr 14, 2026 | Phase 2 extraction — 324 issues, 62 symptoms, 33 workarounds, 40 configs |
+| v0.15.0 | Apr 14, 2026 | Relationship mapping — evidence edges, triage tree, component playbooks |
+| v0.16.0 | Apr 14, 2026 | Enriched relationship layer — 294 evidence edges, 62 triage paths |
+| v0.17.0 | Apr 15, 2026 | Visibility classification layer (oss / internal / confidential) |
+| v0.17.1 | Apr 15, 2026 | Due-diligence scrubbing; (Apr 21) schema sync, lifecycle field, replaced_by |
 
 ### Key Methodology Insights (Learned Through Iteration)
 
