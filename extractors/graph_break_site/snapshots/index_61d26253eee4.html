@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/compile-graph-break-site/assets/style.css">
+    <link rel="icon" type="image/png" href="/compile-graph-break-site/assets/css/pytorch-logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/compile-graph-break-site/">Home</a>
+            <a href="/compile-graph-break-site/dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+    <p>Below are all known graph breaks detected by Dynamo.</p>
+
+<ul>
+  <li><a href="gb/gb0000.html">GB0000</a> — All <strong>torch_function</strong> overrides returned NotImplemented due to TypeError from user code</li>
+  <li><a href="gb/gb0001.html">GB0001</a> — Argument of <code class="language-plaintext highlighter-rouge">as_subclass</code> must be a non-dispatcher-style tensor subclass</li>
+  <li><a href="gb/gb0002.html">GB0002</a> — Assertion failed on symbolic shapes</li>
+  <li><a href="gb/gb0003.html">GB0003</a> — Attempt to trace generator</li>
+  <li><a href="gb/gb0004.html">GB0004</a> — Attempted super().<strong>delattr</strong>() on an object without mutation tracking</li>
+  <li><a href="gb/gb0005.html">GB0005</a> — Attempted to a str() method implemented in C/C++</li>
+  <li><a href="gb/gb0006.html">GB0006</a> — Attempted to call a super() attribute that is not a function or method</li>
+  <li><a href="gb/gb0007.html">GB0007</a> — Attempted to call function marked as skipped</li>
+  <li><a href="gb/gb0008.html">GB0008</a> — Attempted to inline function marked as skipped</li>
+  <li><a href="gb/gb0009.html">GB0009</a> — Attempted to inline function marked as skipped (SkipFunctionVariable)</li>
+  <li><a href="gb/gb0010.html">GB0010</a> — Attempted to read a deleted variable</li>
+  <li><a href="gb/gb0011.html">GB0011</a> — Attempted to read undefined local variable</li>
+  <li><a href="gb/gb0012.html">GB0012</a> — Attempted to read undefined local variable (implicit)</li>
+  <li><a href="gb/gb0013.html">GB0013</a> — Attempted to represent unregistered RemovableHandle</li>
+  <li><a href="gb/gb0014.html">GB0014</a> — Attempted to wrap RNN, GRU, or LSTM</li>
+  <li><a href="gb/gb0015.html">GB0015</a> — Attempted to wrap sparse Tensor</li>
+  <li><a href="gb/gb0016.html">GB0016</a> — Attempted to wrap strided NestedTensor</li>
+  <li><a href="gb/gb0017.html">GB0017</a> — Attempted to wrap torch._higher_order_ops.invoke_subgraph</li>
+  <li><a href="gb/gb0018.html">GB0018</a> — Attempted to wrap unbacked SymInt</li>
+  <li><a href="gb/gb0019.html">GB0019</a> — AutogradFunctionContextVariable escaped Dynamo-traced region</li>
+  <li><a href="gb/gb0020.html">GB0020</a> — BUILD_STRING key conflict</li>
+  <li><a href="gb/gb0021.html">GB0021</a> — BUILD_STRING type error</li>
+  <li><a href="gb/gb0022.html">GB0022</a> — Bad import result</li>
+  <li><a href="gb/gb0023.html">GB0023</a> — Builtin <code class="language-plaintext highlighter-rouge">operator.*</code> comparison with constant <code class="language-plaintext highlighter-rouge">self</code> failed</li>
+  <li><a href="gb/gb0024.html">GB0024</a> — CLEANUP_THROW with StopIteration</li>
+  <li><a href="gb/gb0025.html">GB0025</a> — Call to <code class="language-plaintext highlighter-rouge">torch._dynamo.graph_break()</code></li>
+  <li><a href="gb/gb0026.html">GB0026</a> — Calling subclass default constructor with more than tensor argument</li>
+  <li><a href="gb/gb0027.html">GB0027</a> — Cannot check Tensor object identity without its fake value</li>
+  <li><a href="gb/gb0028.html">GB0028</a> — Caught non-Exception value</li>
+  <li><a href="gb/gb0029.html">GB0029</a> — Compilation of intermediate hooks requires compiled autograd</li>
+  <li><a href="gb/gb0030.html">GB0030</a> — ComptimeContext graph break</li>
+  <li><a href="gb/gb0031.html">GB0031</a> — Custom <strong>getattribute</strong> in nn.Module attribute access</li>
+  <li><a href="gb/gb0032.html">GB0032</a> — Custom <strong>getattribute</strong> in nn.Module dict key check</li>
+  <li><a href="gb/gb0033.html">GB0033</a> — Data dependent operator</li>
+  <li><a href="gb/gb0034.html">GB0034</a> — Data-dependent assertion failed (cannot compile partial graph)</li>
+  <li><a href="gb/gb0035.html">GB0035</a> — Data-dependent branching with non-constant <strong>bool</strong></li>
+  <li><a href="gb/gb0036.html">GB0036</a> — Dynamic shape operator</li>
+  <li><a href="gb/gb0037.html">GB0037</a> — Dynamic shape operator (no meta kernel)</li>
+  <li><a href="gb/gb0038.html">GB0038</a> — Dynamic slicing with Tensor arguments</li>
+  <li><a href="gb/gb0039.html">GB0039</a> — Dynamo recompile limit exceeded</li>
+  <li><a href="gb/gb0040.html">GB0040</a> — Encountered aliasing during higher order op tracing</li>
+  <li><a href="gb/gb0041.html">GB0041</a> — Encountered input mutation during higher order op tracing</li>
+  <li><a href="gb/gb0042.html">GB0042</a> — Encountered non user function variable during invoke_subgraph HOP tracing</li>
+  <li><a href="gb/gb0043.html">GB0043</a> — Encountered non-PT2-compliant op</li>
+  <li><a href="gb/gb0044.html">GB0044</a> — Encountered strided NestedTensor in automatic dynamic dim determination</li>
+  <li><a href="gb/gb0045.html">GB0045</a> — Encountered tensor.is_inference() during tracing</li>
+  <li><a href="gb/gb0046.html">GB0046</a> — Encountered torch.is_inference_mode_enabled during tracing</li>
+  <li><a href="gb/gb0047.html">GB0047</a> — Encountered unconverted argument when attempting to inline</li>
+  <li><a href="gb/gb0048.html">GB0048</a> — Error getting associated real value</li>
+  <li><a href="gb/gb0049.html">GB0049</a> — Error when attempting to resolve op packet</li>
+  <li><a href="gb/gb0050.html">GB0050</a> — Exception with bad expected type</li>
+  <li><a href="gb/gb0051.html">GB0051</a> — Exception with non-type expectation</li>
+  <li><a href="gb/gb0052.html">GB0052</a> — Excessive RestartAnalysis() calls</li>
+  <li><a href="gb/gb0053.html">GB0053</a> — FSDP with use_orig_params=False</li>
+  <li><a href="gb/gb0054.html">GB0054</a> — Failed to construct Enum variable</li>
+  <li><a href="gb/gb0055.html">GB0055</a> — Failed to convert args/kwargs to proxy</li>
+  <li><a href="gb/gb0056.html">GB0056</a> — Failed to mutate tensor data attribute</li>
+  <li><a href="gb/gb0057.html">GB0057</a> — Failed to raise exception</li>
+  <li><a href="gb/gb0058.html">GB0058</a> — Failed to set tensor attribute</li>
+  <li><a href="gb/gb0059.html">GB0059</a> — Failed to trace builtin operator</li>
+  <li><a href="gb/gb0060.html">GB0060</a> — Failed to trace unittest method</li>
+  <li><a href="gb/gb0061.html">GB0061</a> — Failed to unpack object for BUILD_LIST_UNPACK</li>
+  <li><a href="gb/gb0062.html">GB0062</a> — Failed to unpack object for UNPACK_EX</li>
+  <li><a href="gb/gb0063.html">GB0063</a> — Failed to unpack object for UNPACK_SEQUENCE</li>
+  <li><a href="gb/gb0064.html">GB0064</a> — Fake tensor propagation exception</li>
+  <li><a href="gb/gb0065.html">GB0065</a> — Graph break in inlined function</li>
+  <li><a href="gb/gb0066.html">GB0066</a> — Graph break under GenericContextWrappingVariable</li>
+  <li><a href="gb/gb0067.html">GB0067</a> — HOP: Unsafe side effect</li>
+  <li><a href="gb/gb0068.html">GB0068</a> — Illegal method invocation in strict mode</li>
+  <li><a href="gb/gb0069.html">GB0069</a> — Import failure</li>
+  <li><a href="gb/gb0070.html">GB0070</a> — Indexing list with non-scalar tensor</li>
+  <li><a href="gb/gb0071.html">GB0071</a> — Inline attempt with <strong>self</strong></li>
+  <li><a href="gb/gb0072.html">GB0072</a> — Inplace op on input tensor</li>
+  <li><a href="gb/gb0073.html">GB0073</a> — Invoking an nn.Module inside a HigherOrderOperator</li>
+  <li><a href="gb/gb0074.html">GB0074</a> — Invoking an nn.Module inside a higher order operator</li>
+  <li><a href="gb/gb0075.html">GB0075</a> — LOAD_BUILD_CLASS bytecode not supported</li>
+  <li><a href="gb/gb0076.html">GB0076</a> — LOAD_FAST_CHECK on uninitialized variable</li>
+  <li><a href="gb/gb0077.html">GB0077</a> — Length mismatch when unpacking object for UNPACK_SEQUENCE</li>
+  <li><a href="gb/gb0078.html">GB0078</a> — Limitation of `nonstrict_trace</li>
+  <li><a href="gb/gb0079.html">GB0079</a> — Missing CALL_INTRINSIC_1 handler</li>
+  <li><a href="gb/gb0080.html">GB0080</a> — Missing FakeTensor example value</li>
+  <li><a href="gb/gb0081.html">GB0081</a> — Missing attribute when running call_method node</li>
+  <li><a href="gb/gb0082.html">GB0082</a> — Missing bytecode handler</li>
+  <li><a href="gb/gb0083.html">GB0083</a> — Module-level backwards hooks require compiled autograd.</li>
+  <li><a href="gb/gb0084.html">GB0084</a> — Non-constant attribute given to <code class="language-plaintext highlighter-rouge">super().__delattr__()</code></li>
+  <li><a href="gb/gb0085.html">GB0085</a> — Non-function or method in subclass of torch.autograd.Function</li>
+  <li><a href="gb/gb0086.html">GB0086</a> — Not a Python constant</li>
+  <li><a href="gb/gb0087.html">GB0087</a> — NotImplementedError/UnsupportedFakeTensorException when running FX node</li>
+  <li><a href="gb/gb0088.html">GB0088</a> — Observed exception</li>
+  <li><a href="gb/gb0089.html">GB0089</a> — Observed exception (EXCEPT_HANDLER)</li>
+  <li><a href="gb/gb0090.html">GB0090</a> — Operator does not support running with fake tensors</li>
+  <li><a href="gb/gb0091.html">GB0091</a> — Read uninitialized cell</li>
+  <li><a href="gb/gb0092.html">GB0092</a> — Reconstruction failure</li>
+  <li><a href="gb/gb0093.html">GB0093</a> — Reconstruction failure: source.reconstruct not implemented</li>
+  <li><a href="gb/gb0094.html">GB0094</a> — SEND with bad type</li>
+  <li><a href="gb/gb0095.html">GB0095</a> — Set Exception object <code class="language-plaintext highlighter-rouge">__traceback__</code> attribute to not-<code class="language-plaintext highlighter-rouge">None</code></li>
+  <li><a href="gb/gb0096.html">GB0096</a> — Should not compile partial graph (STORE_ATTR)</li>
+  <li><a href="gb/gb0097.html">GB0097</a> — Side effect on existing deque with limited maxlen</li>
+  <li><a href="gb/gb0098.html">GB0098</a> — Skip calling <code class="language-plaintext highlighter-rouge">torch.compiler.disable()</code>d function</li>
+  <li><a href="gb/gb0099.html">GB0099</a> — Skip inlining <code class="language-plaintext highlighter-rouge">torch.compiler.disable()</code>d function</li>
+  <li><a href="gb/gb0100.html">GB0100</a> — Storing Tensor hook handle in globals</li>
+  <li><a href="gb/gb0101.html">GB0101</a> — Storing Tensor hook handle in globals (inline call)</li>
+  <li><a href="gb/gb0102.html">GB0102</a> — Strict mode banned op</li>
+  <li><a href="gb/gb0103.html">GB0103</a> — Tensor subclass overridden method call</li>
+  <li><a href="gb/gb0104.html">GB0104</a> — Tensor with grad_fn()</li>
+  <li><a href="gb/gb0105.html">GB0105</a> — Tensor.numpy() with trace_numpy=False</li>
+  <li><a href="gb/gb0106.html">GB0106</a> — Tensor.numpy() without NumPy installed</li>
+  <li><a href="gb/gb0107.html">GB0107</a> — Tensor.random_ op</li>
+  <li><a href="gb/gb0108.html">GB0108</a> — Tensor.retain_grad() with AOTDispatcher</li>
+  <li><a href="gb/gb0109.html">GB0109</a> — Tensor.tolist() with non-integer tensor</li>
+  <li><a href="gb/gb0110.html">GB0110</a> — Tensor.uniform_ op called with <code class="language-plaintext highlighter-rouge">from</code> keyword</li>
+  <li><a href="gb/gb0111.html">GB0111</a> — TypeError from user code</li>
+  <li><a href="gb/gb0112.html">GB0112</a> — TypeError when making fake tensor call</li>
+  <li><a href="gb/gb0113.html">GB0113</a> — Unable to resolve super getattr</li>
+  <li><a href="gb/gb0114.html">GB0114</a> — Unexpected failure during itertools.accumulate() iteration</li>
+  <li><a href="gb/gb0115.html">GB0115</a> — Unexpected failure during itertools.groupby() iteration</li>
+  <li><a href="gb/gb0116.html">GB0116</a> — Unexpected type in sourceless builder</li>
+  <li><a href="gb/gb0117.html">GB0117</a> — Unhandled args for method</li>
+  <li><a href="gb/gb0118.html">GB0118</a> — Unimplemented next() call</li>
+  <li><a href="gb/gb0119.html">GB0119</a> — Uninitialized nn.Module</li>
+  <li><a href="gb/gb0120.html">GB0120</a> — Unreachable sub-generator code</li>
+  <li><a href="gb/gb0121.html">GB0121</a> — UnspecializedNNModuleVariable missing method</li>
+  <li><a href="gb/gb0122.html">GB0122</a> — Unsupported SourceType</li>
+  <li><a href="gb/gb0123.html">GB0123</a> — Unsupported Tensor.backward() call</li>
+  <li><a href="gb/gb0124.html">GB0124</a> — Unsupported Tensor.item() call with capture_scalar_outputs=False</li>
+  <li><a href="gb/gb0125.html">GB0125</a> — Unsupported Tensor.requires_grad_() call</li>
+  <li><a href="gb/gb0126.html">GB0126</a> — Unsupported Tensor.resize_() call</li>
+  <li><a href="gb/gb0127.html">GB0127</a> — Unsupported Tensor.resize_as_() call</li>
+  <li><a href="gb/gb0128.html">GB0128</a> — Unsupported Tensor.set_() call</li>
+  <li><a href="gb/gb0129.html">GB0129</a> — Unsupported Tensor.sparse_resize_() call</li>
+  <li><a href="gb/gb0130.html">GB0130</a> — Unsupported Tensor.sparse_resize_and_clear_() call</li>
+  <li><a href="gb/gb0131.html">GB0131</a> — Unsupported <strong>setitem</strong>/<strong>setattr</strong> inline attempt</li>
+  <li><a href="gb/gb0132.html">GB0132</a> — Unsupported <code class="language-plaintext highlighter-rouge">func</code> in itertools.accumulate</li>
+  <li><a href="gb/gb0133.html">GB0133</a> — Unsupported arguments for itertools.accumulate</li>
+  <li><a href="gb/gb0134.html">GB0134</a> — Unsupported arguments for itertools.groupby</li>
+  <li><a href="gb/gb0135.html">GB0135</a> — Unsupported attribute assignment on Exception object</li>
+  <li><a href="gb/gb0136.html">GB0136</a> — Unsupported attribute for range() object</li>
+  <li><a href="gb/gb0137.html">GB0137</a> — Unsupported attribute for slice() object</li>
+  <li><a href="gb/gb0138.html">GB0138</a> — Unsupported autograd.Function context <code class="language-plaintext highlighter-rouge">save_for_backward</code></li>
+  <li><a href="gb/gb0139.html">GB0139</a> — Unsupported autograd.Function context method</li>
+  <li><a href="gb/gb0140.html">GB0140</a> — Unsupported autograd.Function method</li>
+  <li><a href="gb/gb0141.html">GB0141</a> — Unsupported call_id() without source</li>
+  <li><a href="gb/gb0142.html">GB0142</a> — Unsupported context manager</li>
+  <li><a href="gb/gb0143.html">GB0143</a> — Unsupported conversion for slice assignment</li>
+  <li><a href="gb/gb0144.html">GB0144</a> — Unsupported custom jvp</li>
+  <li><a href="gb/gb0145.html">GB0145</a> — Unsupported custom vjp</li>
+  <li><a href="gb/gb0146.html">GB0146</a> — Unsupported event method</li>
+  <li><a href="gb/gb0147.html">GB0147</a> — Unsupported function call</li>
+  <li><a href="gb/gb0148.html">GB0148</a> — Unsupported function call (delayed)</li>
+  <li><a href="gb/gb0149.html">GB0149</a> — Unsupported functorch tracing attempt</li>
+  <li><a href="gb/gb0150.html">GB0150</a> — Unsupported hasattr call</li>
+  <li><a href="gb/gb0151.html">GB0151</a> — Unsupported inspect call</li>
+  <li><a href="gb/gb0152.html">GB0152</a> — Unsupported key type for itertools.groupby</li>
+  <li><a href="gb/gb0153.html">GB0153</a> — Unsupported key type for nn.Module.<strong>getitem</strong></li>
+  <li><a href="gb/gb0154.html">GB0154</a> — Unsupported kwargs for itertools.accumulate</li>
+  <li><a href="gb/gb0155.html">GB0155</a> — Unsupported kwargs for itertools.groupby</li>
+  <li><a href="gb/gb0156.html">GB0156</a> — Unsupported method call</li>
+  <li><a href="gb/gb0157.html">GB0157</a> — Unsupported ndarray attribute access</li>
+  <li><a href="gb/gb0158.html">GB0158</a> — Unsupported ndarray method call</li>
+  <li><a href="gb/gb0159.html">GB0159</a> — Unsupported ndarray.<strong>version</strong> access</li>
+  <li><a href="gb/gb0160.html">GB0160</a> — Unsupported next() call</li>
+  <li><a href="gb/gb0161.html">GB0161</a> — Unsupported nn.Module attribute type</li>
+  <li><a href="gb/gb0162.html">GB0162</a> — Unsupported super().<strong>init</strong>() call</li>
+  <li><a href="gb/gb0163.html">GB0163</a> — Unsupported tensor subclass attribute access</li>
+  <li><a href="gb/gb0164.html">GB0164</a> — Unsupported tensor subclass overridden attribute access</li>
+  <li><a href="gb/gb0165.html">GB0165</a> — Unsupported torch._C._ImperativeEngine method</li>
+  <li><a href="gb/gb0166.html">GB0166</a> — Unsupported torch._C._ImperativeEngine.queue_callback()</li>
+  <li><a href="gb/gb0167.html">GB0167</a> — Variadic function call with bad args/kwargs type</li>
+  <li><a href="gb/gb0168.html">GB0168</a> — Variadic function call with bad flags</li>
+  <li><a href="gb/gb0169.html">GB0169</a> — Write to immutable cell</li>
+  <li><a href="gb/gb0170.html">GB0170</a> — Data-dependent branching</li>
+  <li><a href="gb/gb0171.html">GB0171</a> — assert with non-string message</li>
+  <li><a href="gb/gb0172.html">GB0172</a> — async_op=True for distributed collectives</li>
+  <li><a href="gb/gb0173.html">GB0173</a> — backward_state does not support export</li>
+  <li><a href="gb/gb0174.html">GB0174</a> — bad args to builtin cast()</li>
+  <li><a href="gb/gb0175.html">GB0175</a> — builtin isinstance() cannot determine type of argument</li>
+  <li><a href="gb/gb0176.html">GB0176</a> — call_id() without associated real value</li>
+  <li><a href="gb/gb0177.html">GB0177</a> — can’t handle functions not implemented in python</li>
+  <li><a href="gb/gb0178.html">GB0178</a> — constant fold exception</li>
+  <li><a href="gb/gb0179.html">GB0179</a> — copy.deepcopy()</li>
+  <li><a href="gb/gb0180.html">GB0180</a> — dataclass fields failure</li>
+  <li><a href="gb/gb0181.html">GB0181</a> — dtype mismatch between tensor and its gradient</li>
+  <li><a href="gb/gb0182.html">GB0182</a> — failed to broadcast when attempting Tensor comparison op</li>
+  <li><a href="gb/gb0183.html">GB0183</a> — failed to call dict.fromkeys()</li>
+  <li><a href="gb/gb0184.html">GB0184</a> — failed to call str() on user defined object</li>
+  <li><a href="gb/gb0185.html">GB0185</a> — failed to convert numpy.ndarray to Tensor</li>
+  <li><a href="gb/gb0186.html">GB0186</a> — functools.partial() with non-literal keyword</li>
+  <li><a href="gb/gb0187.html">GB0187</a> — functools.wraps</li>
+  <li><a href="gb/gb0188.html">GB0188</a> — getattr with no source</li>
+  <li><a href="gb/gb0189.html">GB0189</a> — getattr() on nn.Module with pending mutation</li>
+  <li><a href="gb/gb0190.html">GB0190</a> — getattr() with non-constant name argument</li>
+  <li><a href="gb/gb0191.html">GB0191</a> — id() with unsupported args</li>
+  <li><a href="gb/gb0192.html">GB0192</a> — input iterator to itertools.cycle has too many items</li>
+  <li><a href="gb/gb0193.html">GB0193</a> — invalid call to builtin op handler</li>
+  <li><a href="gb/gb0194.html">GB0194</a> — isinstance() called on user defined object with C extensions</li>
+  <li><a href="gb/gb0195.html">GB0195</a> — issubclass() with non-constant arguments</li>
+  <li><a href="gb/gb0196.html">GB0196</a> — key not found in dict</li>
+  <li><a href="gb/gb0197.html">GB0197</a> — list elements are pointing to the list itself</li>
+  <li><a href="gb/gb0198.html">GB0198</a> — mapping proxy affected by dictionary mutation</li>
+  <li><a href="gb/gb0199.html">GB0199</a> — mapping proxy cannot be reconstructed</li>
+  <li><a href="gb/gb0200.html">GB0200</a> — missing BUILD_SET handler</li>
+  <li><a href="gb/gb0201.html">GB0201</a> — namedtuple construction</li>
+  <li><a href="gb/gb0202.html">GB0202</a> — non-const argument in nn.Module method</li>
+  <li><a href="gb/gb0203.html">GB0203</a> — non-const keys in dict_keys</li>
+  <li><a href="gb/gb0204.html">GB0204</a> — non-const keys in mappingproxy</li>
+  <li><a href="gb/gb0205.html">GB0205</a> — proxy not set</li>
+  <li><a href="gb/gb0206.html">GB0206</a> — setattr() on Tensor.requires_grad</li>
+  <li><a href="gb/gb0207.html">GB0207</a> — sort with non-constant keys</li>
+  <li><a href="gb/gb0208.html">GB0208</a> — torch.* op returned non-Tensor</li>
+  <li><a href="gb/gb0209.html">GB0209</a> — torch.autograd._unsafe_preserve_version_counter escaped from compiled region</li>
+  <li><a href="gb/gb0210.html">GB0210</a> — torch.distributed package is not available!</li>
+  <li><a href="gb/gb0211.html">GB0211</a> — torch.nn.Module with a non-function custom <strong>getattr</strong></li>
+  <li><a href="gb/gb0212.html">GB0212</a> — torch.profiler object escaped from compiled region</li>
+  <li><a href="gb/gb0213.html">GB0213</a> — unimplemented builtin op on tensor arguments</li>
+  <li><a href="gb/gb0214.html">GB0214</a> — unsupported SymNode comparison op</li>
+  <li><a href="gb/gb0215.html">GB0215</a> — unsupported Tensor comparison op</li>
+  <li><a href="gb/gb0216.html">GB0216</a> — unsupported grid type for triton hop check_grid</li>
+  <li><a href="gb/gb0217.html">GB0217</a> — unsupported hasattr operation</li>
+  <li><a href="gb/gb0218.html">GB0218</a> — unsupported index(Tensor)</li>
+  <li><a href="gb/gb0219.html">GB0219</a> — Backend compiler exception</li>
+  <li><a href="gb/gb0220.html">GB0220</a> — Failed to mutate tensor data attribute to different dtype</li>
+  <li><a href="gb/gb0221.html">GB0221</a> — non-generator contextlib.contextmanager</li>
+  <li><a href="gb/gb0222.html">GB0222</a> — Attempted to wrap a set with tensors</li>
+  <li><a href="gb/gb0223.html">GB0223</a> — torch.compile call with &gt; 1 args</li>
+  <li><a href="gb/gb0224.html">GB0224</a> — Attempted to call torch in-graph function on only torch.SymInt arguments</li>
+  <li><a href="gb/gb0225.html">GB0225</a> — Attempted to use tensor creation function with requires_grad=True</li>
+  <li><a href="gb/gb0226.html">GB0226</a> — <code class="language-plaintext highlighter-rouge">torch.nn.Parameter()</code> with unsupported data type</li>
+  <li><a href="gb/gb0227.html">GB0227</a> — Attempted to use torch.nn.Parameter constructor with tensor subclass</li>
+  <li><a href="gb/gb0228.html">GB0228</a> — <code class="language-plaintext highlighter-rouge">torch.nn.Parameter</code>: cannot convert to traceable tracable</li>
+  <li><a href="gb/gb0229.html">GB0229</a> — Unexpected type of data placeholder op for parameter construction</li>
+  <li><a href="gb/gb0230.html">GB0230</a> — Attempted to use torch.use_deterministic_algorithms(warn_only=True)</li>
+  <li><a href="gb/gb0231.html">GB0231</a> — call <code class="language-plaintext highlighter-rouge">torch.from_numpy</code> with <code class="language-plaintext highlighter-rouge">torch._dynamo.config.trace_numpy=False</code></li>
+  <li><a href="gb/gb0232.html">GB0232</a> — <code class="language-plaintext highlighter-rouge">torch.from_numpy</code> with NumPy unavailable</li>
+  <li><a href="gb/gb0233.html">GB0233</a> — Attempted to use strided NestedTensor</li>
+  <li><a href="gb/gb0234.html">GB0234</a> — Attempted to pop from empty torch function mode stack</li>
+  <li><a href="gb/gb0235.html">GB0235</a> — <code class="language-plaintext highlighter-rouge">torch.nn.Parameter</code> with non-constant Tensor attributes</li>
+  <li><a href="gb/gb0236.html">GB0236</a> — Invalid input type for nonstrict_trace-ed function</li>
+  <li><a href="gb/gb0237.html">GB0237</a> — non-constant <code class="language-plaintext highlighter-rouge">requires_grad</code> argument to <code class="language-plaintext highlighter-rouge">torch.nn.Parameter</code></li>
+  <li><a href="gb/gb0238.html">GB0238</a> — Input marked with <code class="language-plaintext highlighter-rouge">pytree.register_constant</code> constructed in the <code class="language-plaintext highlighter-rouge">torch.compile</code> region</li>
+  <li><a href="gb/gb0239.html">GB0239</a> — Invalid use of pytree_flatten with nonstrict_trace-ed function</li>
+  <li><a href="gb/gb0240.html">GB0240</a> — Shape mismatch with out= list of tensor variants</li>
+  <li><a href="gb/gb0241.html">GB0241</a> — Attempted to call op with non-contiguous <code class="language-plaintext highlighter-rouge">out=</code> list of tensors</li>
+  <li><a href="gb/gb0242.html">GB0242</a> — Attempted to call op with non-contiguous <code class="language-plaintext highlighter-rouge">out=</code> tensor</li>
+  <li><a href="gb/gb0243.html">GB0243</a> — Attempted to use <code class="language-plaintext highlighter-rouge">torch.nn.modules.utils._ntuple</code> with unsupported argument type</li>
+  <li><a href="gb/gb0244.html">GB0244</a> — Attempted to use <code class="language-plaintext highlighter-rouge">torch.nn.Parameter()</code> with export</li>
+  <li><a href="gb/gb0245.html">GB0245</a> — Attempted to use <code class="language-plaintext highlighter-rouge">nested_tensor</code> with non-list input</li>
+  <li><a href="gb/gb0246.html">GB0246</a> — Attempted to use <code class="language-plaintext highlighter-rouge">torch.nn.functional.one_hot</code> with data-dependent output shape</li>
+  <li><a href="gb/gb0247.html">GB0247</a> — Shape mismatch with out= tensor variant</li>
+  <li><a href="gb/gb0248.html">GB0248</a> — improper torch.get_device_module arguments</li>
+  <li><a href="gb/gb0249.html">GB0249</a> — bad device argument to torch.accelerator.current_stream</li>
+  <li><a href="gb/gb0250.html">GB0250</a> — ndarray.astype(object)</li>
+  <li><a href="gb/gb0251.html">GB0251</a> — Unsupported output type for nonstrict_trace-ed function</li>
+  <li><a href="gb/gb0252.html">GB0252</a> — could not find name in object’s mro</li>
+  <li><a href="gb/gb0253.html">GB0253</a> — call_method on generator</li>
+  <li><a href="gb/gb0254.html">GB0254</a> — non-const setattr name on user-defined object</li>
+  <li><a href="gb/gb0255.html">GB0255</a> — attempted to call sourceless user-defined object as a method</li>
+  <li><a href="gb/gb0256.html">GB0256</a> — User-defined object with non-function <strong>getattr</strong></li>
+  <li><a href="gb/gb0257.html">GB0257</a> — TypedDict with optional keys</li>
+  <li><a href="gb/gb0258.html">GB0258</a> — collections.deque() with bad arguments</li>
+  <li><a href="gb/gb0259.html">GB0259</a> — collections.deque() with bad iterable argument</li>
+  <li><a href="gb/gb0260.html">GB0260</a> — missing args to functools.partial</li>
+  <li><a href="gb/gb0261.html">GB0261</a> — User-defined object method with non-function <strong>func</strong></li>
+  <li><a href="gb/gb0262.html">GB0262</a> — unsupported contextlib.* API</li>
+  <li><a href="gb/gb0263.html">GB0263</a> — attempted to trace contextlib.contextmanager</li>
+  <li><a href="gb/gb0264.html">GB0264</a> — Attempted to use <code class="language-plaintext highlighter-rouge">torch.nn.Parameter()</code> constructor with Dynamo</li>
+  <li><a href="gb/gb0265.html">GB0265</a> — FakeScriptObject missing method implementation</li>
+  <li><a href="gb/gb0266.html">GB0266</a> — Weird method call on TorchScript object</li>
+  <li><a href="gb/gb0267.html">GB0267</a> — Attempted to access non-callable attribute of TorchScript object</li>
+  <li><a href="gb/gb0268.html">GB0268</a> — Unsupported kwargs for itertools.product</li>
+  <li><a href="gb/gb0269.html">GB0269</a> — Forced graph break on leaf function</li>
+  <li><a href="gb/gb0270.html">GB0270</a> — unimplemented builtin op vars() with no arguments</li>
+  <li><a href="gb/gb0271.html">GB0271</a> — Class attribute mutation when the <strong>dict</strong> was already materialized</li>
+  <li><a href="gb/gb0272.html">GB0272</a> — Failed to make weakref to User Object when storing by ID</li>
+  <li><a href="gb/gb0273.html">GB0273</a> — Keyword args passed to exception constructor</li>
+  <li><a href="gb/gb0274.html">GB0274</a> — Attempted to reconstruct context manager’s <strong>enter</strong> method</li>
+  <li><a href="gb/gb0275.html">GB0275</a> — torch._dynamo.step_unsupported() with empty checkpoint</li>
+  <li><a href="gb/gb0276.html">GB0276</a> — Failed to make weakref to User Object</li>
+  <li><a href="gb/gb0277.html">GB0277</a> — Attempted to wrap sparse Tensor with VariableTracker</li>
+  <li><a href="gb/gb0278.html">GB0278</a> — Unsupported dict type for fromkeys()</li>
+  <li><a href="gb/gb0279.html">GB0279</a> — torch.fx.traceback.annotate escaped from compiled region</li>
+  <li><a href="gb/gb0280.html">GB0280</a> — 1-arg super not implemented</li>
+  <li><a href="gb/gb0281.html">GB0281</a> — Invalid or non-const argument in nn.Module <strong>getitem</strong></li>
+  <li><a href="gb/gb0282.html">GB0282</a> — Placement with custom <strong>getattr</strong> not supported</li>
+  <li><a href="gb/gb0283.html">GB0283</a> — Failed to make weakref to graph-created external object</li>
+  <li><a href="gb/gb0284.html">GB0284</a> — cannot resume from torch._dynamo.step_unsupported()</li>
+  <li><a href="gb/gb0285.html">GB0285</a> — unsupported arguments to torch.accelerator.current_stream</li>
+  <li><a href="gb/gb0286.html">GB0286</a> — bad device argument to torch.get_device_module</li>
+  <li><a href="gb/gb0287.html">GB0287</a> — unsupported type.<strong>dict</strong>[‘<strong>annotations</strong>’].<strong>get</strong> call</li>
+  <li><a href="gb/gb0288.html">GB0288</a> — Can’t extract message from torch._check()</li>
+  <li><a href="gb/gb0289.html">GB0289</a> — unsupported method call on <code class="language-plaintext highlighter-rouge">typing</code> variable</li>
+  <li><a href="gb/gb0290.html">GB0290</a> — attempted to trace numpy.* function as a method</li>
+  <li><a href="gb/gb0291.html">GB0291</a> — logging.Logger method not supported for non-export cases</li>
+  <li><a href="gb/gb0292.html">GB0292</a> — constant-like method call with unsupported return type</li>
+  <li><a href="gb/gb0293.html">GB0293</a> — attempted to trace numpy function with config.trace_numpy=False</li>
+  <li><a href="gb/gb0294.html">GB0294</a> — attempted to trace numpy function unsupported by PyTorch</li>
+  <li><a href="gb/gb0295.html">GB0295</a> — cannot reconstruct NullVariable in Python &lt; 3.11</li>
+  <li><a href="gb/gb0296.html">GB0296</a> — attempted to reorder a debugging function that can’t actually be reordered</li>
+  <li><a href="gb/gb0297.html">GB0297</a> — random.Random() with improper arguments</li>
+  <li><a href="gb/gb0298.html">GB0298</a> — attempted to trace torch._numpy.random function with config.use_numpy_random_stream=True</li>
+  <li><a href="gb/gb0299.html">GB0299</a> — constant-like method call with non-constant args</li>
+  <li><a href="gb/gb0300.html">GB0300</a> — numpy function that produces a const collection type encountered non-const arguments</li>
+  <li><a href="gb/gb0301.html">GB0301</a> — HOP: non torch.Tensor leaf</li>
+  <li><a href="gb/gb0302.html">GB0302</a> — HOP: non-callable variable</li>
+  <li><a href="gb/gb0303.html">GB0303</a> — torch.while_loop: improper args/kwargs</li>
+  <li><a href="gb/gb0304.html">GB0304</a> — torch.while_loop: improper additional_inputs</li>
+  <li><a href="gb/gb0305.html">GB0305</a> — invalid set_subgraph_inputs and sub_kwargs settings</li>
+  <li><a href="gb/gb0306.html">GB0306</a> — unsupported HigherOrderOperator</li>
+  <li><a href="gb/gb0307.html">GB0307</a> — unsupported HigherOrderOperator function call</li>
+  <li><a href="gb/gb0308.html">GB0308</a> — torch.while_loop: unsupported cond_fn return type</li>
+  <li><a href="gb/gb0309.html">GB0309</a> — torch.cond: improper args/kwargs</li>
+  <li><a href="gb/gb0310.html">GB0310</a> — torch.cond: improper predicate</li>
+  <li><a href="gb/gb0311.html">GB0311</a> — torch.cond: improper operands</li>
+  <li><a href="gb/gb0312.html">GB0312</a> — torch.cond: improper operands contents</li>
+  <li><a href="gb/gb0313.html">GB0313</a> — torch.cond: differing branch outputs</li>
+  <li><a href="gb/gb0314.html">GB0314</a> — HOP body output unsupported</li>
+  <li><a href="gb/gb0315.html">GB0315</a> — torch.associative_scan: improper xs</li>
+  <li><a href="gb/gb0316.html">GB0316</a> — torch.associative_scan: improper additional_inputs</li>
+  <li><a href="gb/gb0317.html">GB0317</a> — torch.associative_scan: zero-sized tensor</li>
+  <li><a href="gb/gb0318.html">GB0318</a> — torch.associative_scan: combine_fn improper number of leaves</li>
+  <li><a href="gb/gb0319.html">GB0319</a> — torch.associative_scan: mismatched input/output tree structure</li>
+  <li><a href="gb/gb0320.html">GB0320</a> — torch.scan: improper xs</li>
+  <li><a href="gb/gb0321.html">GB0321</a> — torch.scan: improper init</li>
+  <li><a href="gb/gb0322.html">GB0322</a> — torch.scan: no init leaves</li>
+  <li><a href="gb/gb0323.html">GB0323</a> — torch.scan: improper additional_inputs</li>
+  <li><a href="gb/gb0324.html">GB0324</a> — torch.scan: zero-sized tensor</li>
+  <li><a href="gb/gb0325.html">GB0325</a> — torch.map: kwargs not supported</li>
+  <li><a href="gb/gb0326.html">GB0326</a> — torch.map: improper inputs</li>
+  <li><a href="gb/gb0327.html">GB0327</a> — executorch_call_delegate: kwargs not supported</li>
+  <li><a href="gb/gb0328.html">GB0328</a> — torch.func.functional_call capture is disabled</li>
+  <li><a href="gb/gb0329.html">GB0329</a> — WrapHigherOrderVariable: kwargs unexpected</li>
+  <li><a href="gb/gb0330.html">GB0330</a> — wrap_with_set_grad_enabled: unexpected kwargs</li>
+  <li><a href="gb/gb0331.html">GB0331</a> — wrap_with_set_grad_enabled: non-constant grad_enabled</li>
+  <li><a href="gb/gb0332.html">GB0332</a> — wrap_with_set_grad_enabled: unexpected freevars</li>
+  <li><a href="gb/gb0333.html">GB0333</a> — wrap_with_autocast: unexpected kwargs</li>
+  <li><a href="gb/gb0334.html">GB0334</a> — wrap_with_autocast: unexpected freevars</li>
+  <li><a href="gb/gb0335.html">GB0335</a> — hints_wrapper: improper args/kwargs</li>
+  <li><a href="gb/gb0336.html">GB0336</a> — out_dtype: unexpected kwargs</li>
+  <li><a href="gb/gb0337.html">GB0337</a> — strict_mode: unexpected kwargs</li>
+  <li><a href="gb/gb0338.html">GB0338</a> — invoke_subgraph: kwargs unexpected</li>
+  <li><a href="gb/gb0339.html">GB0339</a> — torch.while_loop: infinite loop detected</li>
+  <li><a href="gb/gb0340.html">GB0340</a> — torch.cond: unsupported branch return type</li>
+  <li><a href="gb/gb0341.html">GB0341</a> — torch.associative_scan: improper args</li>
+  <li><a href="gb/gb0342.html">GB0342</a> — torch.scan: improper combine_fn</li>
+  <li><a href="gb/gb0343.html">GB0343</a> — torch.scan: improper combine_fn number of returns</li>
+  <li><a href="gb/gb0344.html">GB0344</a> — wrap_with_autocast: expected constant arg</li>
+  <li><a href="gb/gb0345.html">GB0345</a> — strict_mode: improper args</li>
+  <li><a href="gb/gb0346.html">GB0346</a> — autograd.Function.apply: non-function or method forward</li>
+  <li><a href="gb/gb0347.html">GB0347</a> — autograd.Function.apply: _materialize_non_diff_grads mutation</li>
+  <li><a href="gb/gb0348.html">GB0348</a> — autograd.Function.apply: non-function or method backward</li>
+  <li><a href="gb/gb0349.html">GB0349</a> — cannot unwrap variable for check_meta_consistency</li>
+  <li><a href="gb/gb0350.html">GB0350</a> — torch.cond: unsupported branch return type (constant non-int)</li>
+  <li><a href="gb/gb0351.html">GB0351</a> — HOP body taking non-Tensor as input</li>
+  <li><a href="gb/gb0352.html">GB0352</a> — autograd.Function.apply: non-function or method backward (2)</li>
+  <li><a href="gb/gb0353.html">GB0353</a> — rewrite_signature: cannot trace optional function input</li>
+  <li><a href="gb/gb0354.html">GB0354</a> — failed to find name in frame builtins</li>
+  <li><a href="gb/gb0355.html">GB0355</a> — non-single Tensor return unsupported</li>
+  <li><a href="gb/gb0356.html">GB0356</a> — failed to handle argument for FlexAttentionBackward HOP</li>
+  <li><a href="gb/gb0357.html">GB0357</a> — UnspecializedNNModuleVariable wrapped around ScriptModules unsupported</li>
+  <li><a href="gb/gb0358.html">GB0358</a> — optimizer: pending mutation on parameter</li>
+  <li><a href="gb/gb0359.html">GB0359</a> — unsupported torch._C._SDPAParams attribute</li>
+  <li><a href="gb/gb0360.html">GB0360</a> — torch.fx.experimental.symbolic_shapes.guard_scalar branch not supported</li>
+  <li><a href="gb/gb0361.html">GB0361</a> — triton kernel unsupported feature</li>
+  <li><a href="gb/gb0362.html">GB0362</a> — Attempted to access attributes/methods on an OpaqueObject</li>
+  <li><a href="gb/gb0363.html">GB0363</a> — An opaque object was created in the middle of the program.</li>
+  <li><a href="gb/gb0364.html">GB0364</a> — User-defined object with overridden <strong>hash</strong></li>
+  <li><a href="gb/gb0365.html">GB0365</a> — Dynamo cannot determine whether the underlying object is hashable</li>
+  <li><a href="gb/gb0366.html">GB0366</a> — Dynamo cannot determine the hash of an object</li>
+  <li><a href="gb/gb0367.html">GB0367</a> — Dynamo cannot determine the equality comparison of an object</li>
+  <li><a href="gb/gb0368.html">GB0368</a> — Frozen dataclass with <strong>post_init</strong></li>
+  <li><a href="gb/gb0369.html">GB0369</a> — Frozen dataclass with missing field</li>
+  <li><a href="gb/gb0370.html">GB0370</a> — record_function escaped from compiled region</li>
+  <li><a href="gb/gb0371.html">GB0371</a> — autograd.grad with output that requires grad</li>
+  <li><a href="gb/gb0372.html">GB0372</a> — autograd.grad with external grad_fn</li>
+  <li><a href="gb/gb0373.html">GB0373</a> — autograd.grad with compiled autograd</li>
+  <li><a href="gb/gb0374.html">GB0374</a> — Sparse tensor creation not supported</li>
+  <li><a href="gb/gb0442.html">GB0442</a> — backward() with empty inputs</li>
+  <li><a href="gb/gb1042.html">GB1042</a> — backward() with in-graph created tensor</li>
+  <li><a href="gb/gb1140.html">GB1140</a> — _autograd_grad with unsupported argument type</li>
+  <li><a href="gb/gb1177.html">GB1177</a> — nn.Module mutation in HigherOrderOp</li>
+  <li><a href="gb/gb1297.html">GB1297</a> — Reconstruction failure (self-referential)</li>
+  <li><a href="gb/gb1380.html">GB1380</a> — Illegal <strong>getitem</strong> invocation in strict mode</li>
+  <li><a href="gb/gb1381.html">GB1381</a> — autograd.grad with already consumed grad_fn</li>
+  <li><a href="gb/gb1501.html">GB1501</a> — sparse_grad_accumulate_grad</li>
+  <li><a href="gb/gb1739.html">GB1739</a> — Unsupported member type on OpaqueObject</li>
+  <li><a href="gb/gb1750.html">GB1750</a> — P2P compilation disabled for P2POp construction</li>
+  <li><a href="gb/gb2078.html">GB2078</a> — Attempted to access unregistered member on an OpaqueObject</li>
+  <li><a href="gb/gb2520.html">GB2520</a> — assume_constant_result argument conversion failed</li>
+  <li><a href="gb/gb2533.html">GB2533</a> — reconstructing @contextmanager object</li>
+  <li><a href="gb/gb2549.html">GB2549</a> — infinite generator detected</li>
+  <li><a href="gb/gb2669.html">GB2669</a> — Comprehension graph break in resume function with captured variables</li>
+  <li><a href="gb/gb2696.html">GB2696</a> — P2P compilation disabled for isend/irecv</li>
+  <li><a href="gb/gb2922.html">GB2922</a> — RuntimeError when trying to get real value from fx.Node</li>
+  <li><a href="gb/gb2977.html">GB2977</a> — wrap_jit_function: missing _torchdynamo_inline</li>
+  <li><a href="gb/gb3326.html">GB3326</a> — invalid ptr argument for create_tma_descriptor</li>
+  <li><a href="gb/gb3343.html">GB3343</a> — Cannot reconstruct P2POpVariable</li>
+  <li><a href="gb/gb3383.html">GB3383</a> — Pydantic dataclass constructor</li>
+  <li><a href="gb/gb3775.html">GB3775</a> — nb_int_impl not implemented</li>
+  <li><a href="gb/gb3840.html">GB3840</a> — leaf_function without fake_fn</li>
+  <li><a href="gb/gb4026.html">GB4026</a> — triton.set_allocator not supported</li>
+  <li><a href="gb/gb4197.html">GB4197</a> — Unsupported Tensor.share_memory_() call</li>
+  <li><a href="gb/gb4198.html">GB4198</a> — Attempted to copy.deepcopy a tensor</li>
+  <li><a href="gb/gb4240.html">GB4240</a> — unsupported <strong>getitem</strong></li>
+  <li><a href="gb/gb4271.html">GB4271</a> — <strong>class</strong> assignment on user-defined object</li>
+  <li><a href="gb/gb4297.html">GB4297</a> — Call to <code class="language-plaintext highlighter-rouge">torch._dynamo.skip_frame()</code></li>
+  <li><a href="gb/gb4315.html">GB4315</a> — RuntimeError when making fake tensor call</li>
+  <li><a href="gb/gb4501.html">GB4501</a> — Reconstruction of FakeIdVariable</li>
+  <li><a href="gb/gb4636.html">GB4636</a> — Call to <code class="language-plaintext highlighter-rouge">torch._dynamo.step_unsupported()</code></li>
+  <li><a href="gb/gb4695.html">GB4695</a> — torch.jit.script/freeze modules unsupported</li>
+  <li><a href="gb/gb4778.html">GB4778</a> — nested function with non-constructible closure in output</li>
+  <li><a href="gb/gb4841.html">GB4841</a> — Unsupported python_type() call</li>
+  <li><a href="gb/gb4880.html">GB4880</a> — missing_mp_subscript</li>
+  <li><a href="gb/gb4927.html">GB4927</a> — autograd.grad consumed returned tensor’s grad_fn</li>
+  <li><a href="gb/gb5195.html">GB5195</a> — elementwise_dtypes unsupported arg type</li>
+  <li><a href="gb/gb5458.html">GB5458</a> — Custom metaclass with <strong>getattribute</strong></li>
+  <li><a href="gb/gb5696.html">GB5696</a> — Comprehension graph break with extra stack values</li>
+  <li><a href="gb/gb5748.html">GB5748</a> — autograd.grad with external GradientEdge</li>
+  <li><a href="gb/gb6012.html">GB6012</a> — Cannot trace user-defined <strong>len</strong></li>
+  <li><a href="gb/gb6017.html">GB6017</a> — executorch_call_delegate: first arg not supported</li>
+  <li><a href="gb/gb6025.html">GB6025</a> — Failed to trace list()</li>
+  <li><a href="gb/gb6210.html">GB6210</a> — leaf_function: nn.Module argument without source</li>
+  <li><a href="gb/gb6270.html">GB6270</a> — Unhandled tensor method</li>
+  <li><a href="gb/gb6276.html">GB6276</a> — Comprehension analysis failed: No END_FOR</li>
+  <li><a href="gb/gb6604.html">GB6604</a> — Missing CALL_INTRINSIC_2 handler</li>
+  <li><a href="gb/gb6663.html">GB6663</a> — autograd.grad with unsupported argument type</li>
+  <li><a href="gb/gb6735.html">GB6735</a> — torch.library.wrap_triton call with &gt; 1 args</li>
+  <li><a href="gb/gb6999.html">GB6999</a> — unsupported variable type for <strong>dict</strong> access</li>
+  <li><a href="gb/gb7000.html">GB7000</a> — graph break in loop</li>
+  <li><a href="gb/gb7054.html">GB7054</a> — backward() with non-leaf tensor</li>
+  <li><a href="gb/gb7230.html">GB7230</a> — iter() with no arguments</li>
+  <li><a href="gb/gb7286.html">GB7286</a> — nb_float_impl not implemented</li>
+  <li><a href="gb/gb7299.html">GB7299</a> — _autograd_grad with lost grad_fn linkage</li>
+  <li><a href="gb/gb7312.html">GB7312</a> — failed to bind arguments when attempting to inline</li>
+  <li><a href="gb/gb7324.html">GB7324</a> — returning intermediate with requires_grad_()</li>
+  <li><a href="gb/gb7425.html">GB7425</a> — Comprehension with captured tensor not in local slot</li>
+  <li><a href="gb/gb7596.html">GB7596</a> — Indexing torch.Size with non-scalar tensor</li>
+  <li><a href="gb/gb7650.html">GB7650</a> — torch.Generator method</li>
+  <li><a href="gb/gb7685.html">GB7685</a> — Attribute not found on opaque class</li>
+  <li><a href="gb/gb7906.html">GB7906</a> — Missing len_impl</li>
+  <li><a href="gb/gb8335.html">GB8335</a> — Generator reconstruction with mutations</li>
+  <li><a href="gb/gb8435.html">GB8435</a> — missing_mp_subscript_impl</li>
+  <li><a href="gb/gb8656.html">GB8656</a> — Opaque object with custom <strong>getattr</strong> not supported</li>
+  <li><a href="gb/gb8843.html">GB8843</a> — Opaque object member with method-type USE_REAL returned a reference-type opaque object.</li>
+  <li><a href="gb/gb8887.html">GB8887</a> — NamedTupleVariable.<strong>setattr</strong> bad args</li>
+  <li><a href="gb/gb8985.html">GB8985</a> — requires_grad_() intermediate leaked as output</li>
+  <li><a href="gb/gb9186.html">GB9186</a> — using <code class="language-plaintext highlighter-rouge">torch.autograd.grad</code> with <code class="language-plaintext highlighter-rouge">torch._dynamo.config.trace_autograd_ops=False</code></li>
+  <li><a href="gb/gb9198.html">GB9198</a> — Attempted to call repr() method implemented in C/C++</li>
+  <li><a href="gb/gb9277.html">GB9277</a> — unsupported function.<strong>get</strong> call</li>
+  <li><a href="gb/gb9300.html">GB9300</a> — P2P compilation disabled for batch_isend_irecv</li>
+  <li><a href="gb/gb9528.html">GB9528</a> — Attempted to reconstruct a nested function with closure which is not supported</li>
+  <li><a href="gb/gb9567.html">GB9567</a> — Unsupported descriptor on opaque class</li>
+  <li><a href="gb/gb9625.html">GB9625</a> — traceback.tb_lasti not supported</li>
+  <li><a href="gb/gb9672.html">GB9672</a> — unsupported type.<strong>dict</strong>[‘{attr_name}’].<strong>get</strong> call</li>
+  <li><a href="gb/gb9741.html">GB9741</a> — skip frame due to being in functorh mode</li>
+  <li><a href="gb/gb9860.html">GB9860</a> — P2POp mutation</li>
+  <li><a href="gb/gb9898.html">GB9898</a> — Comprehension analysis failed: No matches</li>
+</ul>
+
+</body>
+</html>
