@@ -61,6 +61,26 @@ def git_head_sha(repo_root: Path) -> Optional[str]:
         return None
 
 
+def git_commit_iso(repo_root: Path, ref: str = "HEAD") -> Optional[str]:
+    """Return the committer timestamp of `ref` as an ISO 8601 UTC string.
+
+    Used for `extracted_at` in source-tree extractors so reruns at any
+    future time produce byte-identical output (timestamp encodes source
+    state, not run wall-clock).
+    """
+    try:
+        out = subprocess.check_output(
+            ["git", "-C", str(repo_root), "show", "-s", "--format=%cI", ref],
+            stderr=subprocess.DEVNULL,
+        )
+        # Git emits e.g. "2026-04-21T15:32:18-07:00"; normalize to UTC.
+        ts = out.decode().strip()
+        dt = datetime.fromisoformat(ts).astimezone(timezone.utc).replace(microsecond=0)
+        return dt.isoformat()
+    except (subprocess.CalledProcessError, FileNotFoundError, ValueError):
+        return None
+
+
 def stamp_entity(entity: dict, prov: Provenance) -> dict:
     """Attach a provenance record to an entity dict (non-destructive copy).
 

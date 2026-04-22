@@ -35,12 +35,20 @@ class Extractor(ABC):
     def extract(self) -> List[Dict[str, Any]]:
         """Return the list of extracted entity dicts (without provenance — base class adds it)."""
 
+    def extracted_at(self) -> str:
+        """Timestamp recorded in provenance.
+
+        Default is wall-clock now; source-tree extractors should override to
+        return the source commit timestamp so reruns are byte-identical.
+        """
+        return now_iso()
+
     def stamp(self, entities: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Apply provenance to every entity."""
         prov = Provenance(
             extracted_by=f"{self.extractor_id}@{self.extractor_version}",
             extracted_from=self.source_ref(),
-            extracted_at=now_iso(),
+            extracted_at=self.extracted_at(),
         )
         return [stamp_entity(e, prov) for e in entities]
 

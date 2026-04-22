@@ -1,0 +1,794 @@
+[
+  {
+    "base_class": "RestartAnalysis",
+    "description": "Raised when autograd.grad consumed grad_fns that are returned.",
+    "entity_type": "symptom",
+    "id": "dynamo_autograd_grad_restart_analysis",
+    "name": "torch._dynamo.exc.AutogradGradRestartAnalysis",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 108,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "Raised when autograd.grad consumed grad_fns that are returned.",
+      "surface_signals": [
+        "AutogradGradRestartAnalysis raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:108"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ShortenTraceback",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_backend_compiler_failed",
+    "name": "torch._dynamo.exc.BackendCompilerFailed",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 190,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "BackendCompilerFailed raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:190"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "RestartAnalysis",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_compile_collective_restart_analysis",
+    "name": "torch._dynamo.exc.CompileCollectiveRestartAnalysis",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 127,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "CompileCollectiveRestartAnalysis raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:127"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "Internal error from cond() due to arguments mismatch.",
+    "entity_type": "symptom",
+    "id": "dynamo_cond_op_args_mismatch_error",
+    "name": "torch._dynamo.exc.CondOpArgsMismatchError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 254,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "Internal error from cond() due to arguments mismatch.",
+      "surface_signals": [
+        "CondOpArgsMismatchError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:254"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_infinite_generator_error",
+    "name": "torch._dynamo.exc.InfiniteGeneratorError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 249,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "InfiniteGeneratorError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:249"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_internal_torch_dynamo_error",
+    "name": "torch._dynamo.exc.InternalTorchDynamoError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 88,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "InternalTorchDynamoError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:88"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_invalid_backend",
+    "name": "torch._dynamo.exc.InvalidBackend",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 154,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "InvalidBackend raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:154"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ObservedException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_attribute_error",
+    "name": "torch._dynamo.exc.ObservedAttributeError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 384,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedAttributeError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:384"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_exception",
+    "name": "torch._dynamo.exc.ObservedException",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 336,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedException raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:336"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ObservedException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_generator_exit",
+    "name": "torch._dynamo.exc.ObservedGeneratorExit",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 380,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedGeneratorExit raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:380"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ObservedLookupError",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_index_error",
+    "name": "torch._dynamo.exc.ObservedIndexError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 370,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedIndexError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:370"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ObservedLookupError",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_key_error",
+    "name": "torch._dynamo.exc.ObservedKeyError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 375,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedKeyError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:375"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ObservedException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_lookup_error",
+    "name": "torch._dynamo.exc.ObservedLookupError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 365,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedLookupError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:365"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ObservedException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_not_implemented_error",
+    "name": "torch._dynamo.exc.ObservedNotImplementedError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 394,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedNotImplementedError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:394"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ObservedException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_runtime_error",
+    "name": "torch._dynamo.exc.ObservedRuntimeError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 389,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedRuntimeError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:389"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ObservedException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_type_error",
+    "name": "torch._dynamo.exc.ObservedTypeError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 398,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedTypeError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:398"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "ObservedException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_observed_user_stop_iteration",
+    "name": "torch._dynamo.exc.ObservedUserStopIteration",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 349,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ObservedUserStopIteration raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:349"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_package_error",
+    "name": "torch._dynamo.exc.PackageError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 332,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "PackageError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:332"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_recompile_error",
+    "name": "torch._dynamo.exc.RecompileError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 245,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "RecompileError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:245"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "RestartAnalysis",
+    "description": "Raised when a source-less requires_grad_() intermediate leaks as output.",
+    "entity_type": "symptom",
+    "id": "dynamo_requires_grad_restart_analysis",
+    "name": "torch._dynamo.exc.RequiresGradRestartAnalysis",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 115,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "Raised when a source-less requires_grad_() intermediate leaks as output.",
+      "surface_signals": [
+        "RequiresGradRestartAnalysis raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:115"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_reset_required",
+    "name": "torch._dynamo.exc.ResetRequired",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 161,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ResetRequired raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:161"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_restart_analysis",
+    "name": "torch._dynamo.exc.RestartAnalysis",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 96,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "RestartAnalysis raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:96"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_resume_prologue_tracing_error",
+    "name": "torch._dynamo.exc.ResumePrologueTracingError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 92,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ResumePrologueTracingError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:92"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_shorten_traceback",
+    "name": "torch._dynamo.exc.ShortenTraceback",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 173,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "ShortenTraceback raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:173"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_skip_frame",
+    "name": "torch._dynamo.exc.SkipFrame",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 139,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "SkipFrame raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:139"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "RestartAnalysis",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_speculation_restart_analysis",
+    "name": "torch._dynamo.exc.SpeculationRestartAnalysis",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 104,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "SpeculationRestartAnalysis raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:104"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_step_unsupported",
+    "name": "torch._dynamo.exc.StepUnsupported",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 300,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "StepUnsupported raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:300"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "RestartAnalysis",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_tensorify_scalar_restart_analysis",
+    "name": "torch._dynamo.exc.TensorifyScalarRestartAnalysis",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 131,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "TensorifyScalarRestartAnalysis raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:131"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "RuntimeError",
+    "description": "Base exception class for all TorchDynamo-specific exceptions.",
+    "entity_type": "symptom",
+    "id": "dynamo_torch_dynamo_exception",
+    "name": "torch._dynamo.exc.TorchDynamoException",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 70,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "Base exception class for all TorchDynamo-specific exceptions.",
+      "surface_signals": [
+        "TorchDynamoException raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:70"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_torch_runtime_error",
+    "name": "torch._dynamo.exc.TorchRuntimeError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 143,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "TorchRuntimeError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:143"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_uncaptured_higher_order_op_error",
+    "name": "torch._dynamo.exc.UncapturedHigherOrderOpError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 314,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "UncapturedHigherOrderOpError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:314"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_unknown_properties_during_backward_trace",
+    "name": "torch._dynamo.exc.UnknownPropertiesDuringBackwardTrace",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 241,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "UnknownPropertiesDuringBackwardTrace raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:241"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_unsafe_script_object_error",
+    "name": "torch._dynamo.exc.UnsafeScriptObjectError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 310,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "UnsafeScriptObjectError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:310"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "RestartAnalysis",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_unspecialize_restart_analysis",
+    "name": "torch._dynamo.exc.UnspecializeRestartAnalysis",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 123,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "UnspecializeRestartAnalysis raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:123"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_unsupported",
+    "name": "torch._dynamo.exc.Unsupported",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 208,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "Unsupported raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:208"
+    },
+    "visibility": "oss"
+  },
+  {
+    "base_class": "TorchDynamoException",
+    "description": "",
+    "entity_type": "symptom",
+    "id": "dynamo_user_error",
+    "name": "torch._dynamo.exc.UserError",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.exc_classes@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py"
+    },
+    "source_line": 271,
+    "testable_claims": {
+      "affects_compilation_phase": "dynamo",
+      "applies_when": "",
+      "surface_signals": [
+        "UserError raised"
+      ],
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/exc.py:271"
+    },
+    "visibility": "oss"
+  }
+]
