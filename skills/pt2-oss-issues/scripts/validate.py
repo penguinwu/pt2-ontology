@@ -13,7 +13,8 @@ Usage:
 Requires:
     - Corpus file: ../../data/ (relative to project root)
     - Entity files: ../../ontology/entities/
-    - PyTorch source: ~/fbsource/fbcode/caffe2/torch/ (for --check-source)
+    - PyTorch source: ~/projects/pytorch/torch/ (for --check-source).
+      On Meta devservers, ~/fbsource/fbcode/caffe2/torch/ is also auto-detected.
 """
 
 import argparse
@@ -28,7 +29,13 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent.parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 ENTITY_DIR = PROJECT_ROOT / "ontology" / "entities"
-PYTORCH_SOURCE = Path.home() / "fbsource" / "fbcode" / "caffe2" / "torch"
+
+# Default PyTorch source roots (last is a Meta-internal devserver fallback)
+_PYTORCH_CANDIDATES = [
+    Path.home() / "projects" / "pytorch" / "torch",
+    Path.home() / "fbsource" / "fbcode" / "caffe2" / "torch",
+]
+PYTORCH_SOURCE = next((p for p in _PYTORCH_CANDIDATES if p.exists()), _PYTORCH_CANDIDATES[0])
 
 # PyTorch release dates for version mapping
 PT_VERSIONS = [

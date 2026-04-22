@@ -6,7 +6,8 @@
 #   fetch.sh --since 2026-04-01 # Incremental (issues created since date)
 #   fetch.sh --count            # Just count total issues
 #
-# Requires: sudo access, gh CLI, fwdproxy
+# Requires: gh CLI (with auth). On Meta devservers, also needs sudo + internal HTTP proxy
+# (this script wires that up automatically when running on a Meta devserver).
 # Output: DATA_DIR/pytorch-issues-pt2-all.json
 
 set -euo pipefail

@@ -10,7 +10,7 @@ Validates that:
 Usage:
     python source_validator.py [--pytorch-root /path/to/pytorch]
 
-Default pytorch root: ~/projects/pytorch (or ~/fbsource/fbcode/caffe2)
+Default pytorch root: ~/projects/pytorch
 """
 
 import json
@@ -21,7 +21,7 @@ from collections import defaultdict
 
 ONTOLOGY_DIR = Path(__file__).parent.parent / "ontology"
 
-# Default pytorch roots to try
+# Default pytorch roots to try (last two are Meta-internal devserver fallbacks)
 PYTORCH_ROOTS = [
     Path.home() / "projects" / "pytorch",
     Path.home() / "fbsource" / "fbcode" / "caffe2",

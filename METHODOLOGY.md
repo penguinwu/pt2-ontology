@@ -38,19 +38,19 @@ filtering (using human-curated oncall labels) is far more reliable than regex he
 
 | Attribute | Value |
 |-----------|-------|
-| **What** | Internal Workplace group 1075192433118967 |
+| **What** | Internal Q&A group (Meta-internal) |
 | **Signal** | User pain points, workaround recipes, config recommendations |
 | **Fetch** | `knowledge_filtered_search` MCP tool |
 | **Status** | Searchable but not bulk-exported. Not yet systematically mined. |
 
 **What to extract:** User questions → symptom patterns. Team answers → workarounds + configs.
-Internal-only entities (e.g., MegaCache, internal model names) should be tagged `visibility: internal`.
+Internal-only entities (e.g., internal model names, proprietary benchmark names) should be tagged `visibility: internal`.
 
-### 1.3 PyTorch Codebase (fbsource)
+### 1.3 PyTorch Codebase
 
 | Attribute | Value |
 |-----------|-------|
-| **What** | `~/fbsource/fbcode/caffe2/torch/` — _dynamo, _inductor, _functorch, _export |
+| **What** | `~/projects/pytorch/torch/` — _dynamo, _inductor, _functorch, _export (or, on Meta devservers, `~/fbsource/fbcode/caffe2/torch/`) |
 | **Signal** | Component hierarchy, config flags, op registry, deprecation status |
 | **Fetch** | Direct filesystem access (already on devvm) |
 | **Extract** | `validation/source_validator.py` (config verification) |
@@ -148,7 +148,7 @@ GitHub API → pytorch-issues-pt2-all.json (9,300 issues with inline comments)
 ```
 
 Script: `skills/pt2-oss-issues/scripts/fetch.sh`
-- Uses sudo proxy bypass for GitHub API access (agent identity blocked by fwdproxy)
+- On Meta devservers, GitHub API access is wrapped in a sudo + internal HTTP proxy bypass; on a standard machine, `gh` works directly
 - Date-range batching to work around GitHub's 1,000-result cap
 - Comments embedded inline (no separate comments file)
 - Incremental fetch with `--since` for updates
@@ -234,7 +234,7 @@ Script: `skills/pt2-oss-issues/scripts/validate.py`
 
 Checks:
 - **Temporal**: Maps evidence issue dates → PyTorch version eras
-- **Source**: Greps fbsource for config names (--check-source)
+- **Source**: Greps the PyTorch source tree for config names (--check-source)
 - **Freshness**: living / likely_living / historical / uncertain / base
 
 Classification rules:
@@ -293,7 +293,7 @@ When the methodology is finalized, rebuild in this order:
 ```bash
 bash skills/pt2-oss-issues/scripts/fetch.sh  # Full GitHub corpus
 # Also: bulk export Workplace Q&A (script TBD)
-# Also: snapshot fbsource configs + components
+# Also: snapshot PyTorch source configs + components
 ```
 
 ### Step 2: Stable entities (no extraction needed)

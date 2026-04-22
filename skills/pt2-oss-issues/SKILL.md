@@ -58,7 +58,7 @@ bash skills/pt2-oss-issues/scripts/extract.sh --stats-only
 ## Pipeline
 
 ```
-GitHub API (via sudo + gh CLI + fwdproxy)
+GitHub API (via gh CLI; Meta devservers add a sudo + internal-proxy wrapper)
     ↓
 [fetch.sh] — downloads issues in date-range batches (<1000 per batch)
     ↓
@@ -129,7 +129,7 @@ python validate.py --check-source --update
 
 Validation checks:
 - **Temporal**: Maps evidence issue dates to PyTorch version eras (pre-2.0 through 2.7)
-- **Source**: Greps `fbsource/fbcode/caffe2/torch/` for config names (--check-source)
+- **Source**: Greps the configured PyTorch source tree for config names (--check-source). Default search roots: `~/projects/pytorch`, then Meta-internal fallbacks if present.
 - **Freshness classification**: living / likely_living / historical / uncertain / base
 
 Each entity gets a `freshness` field: `{status, reason, classified_date}`.
@@ -146,7 +146,7 @@ Manual overrides for edge cases go in `FRESHNESS_OVERRIDES` dict in validate.py.
 
 ## Notes
 
-- `sudo` is required for GitHub API access (bypasses fwdproxy agent filter)
+- On Meta devservers, GitHub API access goes through an internal HTTP proxy with a sandbox bypass — `fetch.sh` already wires that up. On a standard machine, `gh` works directly.
 - GitHub search API caps at 1,000 results per query — fetch.sh uses date-range batching
 - DISABLED test issues (~2,000) are auto-filtered during extraction
 - Comments are embedded inline in the issue JSON (no separate comments file needed)

@@ -9,15 +9,14 @@ Pointers to data used for ontology extraction. Data lives in its original locati
 - **Content**: Issue title, body, comments, labels, assignees, state
 - **Status**: Fetch scripts ready, pending web-proxy startup
 
-## PyTorch Compile Q&A (Workplace)
+## PyTorch Compile Q&A (Internal Q&A group)
 
-- **Group ID**: 1075192433118967
-- **Access**: Workplace API via `knowledge_filtered_search`
+- **Access**: Meta-internal Workplace API via `knowledge_filtered_search` (group ID lives in internal config, not in this repo)
 - **Content**: User questions, team answers, workarounds
 - **Status**: Searchable but not bulk-exported yet
 
 ## PyTorch Codebase
 
-- **Location**: `~/fbsource/fbcode/caffe2/torch/` (and related paths)
+- **Location**: `~/projects/pytorch/torch/` (or, on Meta devservers, `~/fbsource/fbcode/caffe2/torch/`)
 - **What to extract**: Component hierarchy from imports, config flags from `torch._dynamo.config`, op registry
 - **Status**: Available, needs targeted extraction scripts
