@@ -4,69 +4,79 @@
     "name": "NVIDIA GPU (CUDA)",
     "category": "hardware",
     "is_default": true,
-    "description": "NVIDIA GPUs via CUDA — the assumed baseline for all PT2 issues"
+    "description": "NVIDIA GPUs via CUDA \u2014 the assumed baseline for all PT2 issues",
+    "visibility": "oss"
   },
   {
     "id": "amd_gpu",
     "name": "AMD GPU (ROCm)",
     "category": "hardware",
     "is_default": false,
-    "description": "AMD GPUs via ROCm backend — community-maintained, separate oncall"
+    "description": "AMD GPUs via ROCm backend \u2014 community-maintained, separate oncall",
+    "visibility": "oss"
   },
   {
     "id": "intel_xpu",
     "name": "Intel XPU",
     "category": "hardware",
     "is_default": false,
-    "description": "Intel discrete accelerators — CPU-adjacent, Intel-maintained"
+    "description": "Intel discrete accelerators \u2014 CPU-adjacent, Intel-maintained",
+    "visibility": "oss"
   },
   {
     "id": "google_tpu",
     "name": "Google TPU",
     "category": "hardware",
     "is_default": false,
-    "description": "Google TPUs via TorchXLA/TorchAX backend"
+    "description": "Google TPUs via TorchXLA/TorchAX backend",
+    "visibility": "oss"
   },
   {
     "id": "intel_cpu",
     "name": "Intel CPU",
     "category": "hardware",
     "is_default": false,
-    "description": "CPU-only execution path (Intel) — no GPU accelerator"
+    "description": "CPU-only execution path (Intel) \u2014 no GPU accelerator",
+    "visibility": "oss"
   },
   {
     "id": "arm_cpu",
     "name": "ARM CPU",
     "category": "hardware",
     "is_default": false,
-    "description": "ARM architecture CPUs — includes Apple Silicon CPU path and server ARM"
+    "description": "ARM architecture CPUs \u2014 includes Apple Silicon CPU path and server ARM",
+    "visibility": "oss"
   },
   {
     "id": "apple_mps",
     "name": "Apple MPS (Metal)",
     "category": "hardware",
     "is_default": false,
-    "description": "Apple Metal Performance Shaders — limited PT2 support"
+    "description": "Apple Metal Performance Shaders \u2014 limited PT2 support",
+    "visibility": "oss"
   },
   {
     "id": "linux",
     "name": "Linux",
     "category": "os",
     "is_default": true,
-    "description": "Linux — the assumed baseline OS for all PT2 issues"
+    "description": "Linux \u2014 the assumed baseline OS for all PT2 issues",
+    "visibility": "oss"
   },
   {
     "id": "windows",
     "name": "Windows",
     "category": "os",
     "is_default": false,
-    "description": "Windows — less tested, known path separator and multiprocessing issues"
+    "description": "Windows \u2014 less tested, known path separator and multiprocessing issues",
+    "visibility": "oss"
   },
   {
     "id": "macos",
     "name": "macOS",
     "category": "os",
     "is_default": false,
-    "description": "macOS — limited GPU support (MPS only), CPU path works"
+    "description": "macOS \u2014 limited GPU support (MPS only), CPU path works",
+    "visibility": "oss"
   }
 ]

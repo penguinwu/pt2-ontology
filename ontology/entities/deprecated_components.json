@@ -8,7 +8,8 @@
       "prim torch"
     ],
     "status": "deprecated",
-    "note": "Peng: PrimTorch is deprecated. Decompositions as a concept remains valid. Flagged to Beaver for research on deprecation status in official docs."
+    "note": "Peng: PrimTorch is deprecated. Decompositions as a concept remains valid. Flagged to Beaver for research on deprecation status in official docs.",
+    "visibility": "oss"
   },
   {
     "id": "compiled_autograd",
@@ -19,7 +20,8 @@
       "compiled backward"
     ],
     "status": "deprecated",
-    "note": "Peng: not used widely, may drop from the taxonomy"
+    "note": "Peng: not used widely, may drop from the taxonomy",
+    "visibility": "oss"
   },
   {
     "id": "ddp_compiler",
@@ -31,7 +33,8 @@
       "compiled ddp"
     ],
     "status": "deprecated",
-    "note": "Peng: not used much, not recommended"
+    "note": "Peng: not used much, not recommended",
+    "visibility": "oss"
   },
   {
     "id": "fsdp_compiler",
@@ -42,6 +45,7 @@
       "fsdp2 compile"
     ],
     "status": "deprecated",
-    "note": "Peng: deprecated \u2014 project approach abandoned"
+    "note": "Peng: deprecated \u2014 project approach abandoned",
+    "visibility": "oss"
   }
 ]

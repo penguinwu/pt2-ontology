@@ -6,7 +6,8 @@
     "aliases": [
       "torchtitan",
       "torch titan"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "vllm",
@@ -15,7 +16,8 @@
     "aliases": [
       "vllm",
       "vLLM"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "torchbench",
@@ -24,7 +26,8 @@
     "aliases": [
       "torchbench",
       "torch bench"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "helion",
@@ -33,7 +36,8 @@
     "aliases": [
       "helion",
       "helion dsl"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "quack",
@@ -42,7 +46,8 @@
     "aliases": [
       "quack",
       "cute dsl quack"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "torchtune",
@@ -51,7 +56,8 @@
     "aliases": [
       "torchtune",
       "torch tune"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "executorch",
@@ -60,11 +66,13 @@
     "aliases": [
       "executorch",
       "exec torch"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "ecosystem_sglang",
     "name": "SGLang",
-    "description": "LLM serving framework integrating torch.compile for inference speedup"
+    "description": "LLM serving framework integrating torch.compile for inference speedup",
+    "visibility": "oss"
   }
 ]

@@ -6,7 +6,8 @@
     "aliases": [
       "torch.nonzero",
       "aten.nonzero"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "op_unique",
@@ -15,7 +16,8 @@
     "aliases": [
       "torch.unique",
       "aten.unique"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "op_item",
@@ -23,7 +25,8 @@
     "description": "Tensor method returning a scalar (e.g., x.item()) that requires capture_scalar_outputs to avoid graph break",
     "aliases": [
       "Tensor.item"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "op_sdpa",
@@ -32,7 +35,8 @@
     "aliases": [
       "torch.nn.functional.scaled_dot_product_attention",
       "F.scaled_dot_product_attention"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "op_flex_attention",
@@ -40,7 +44,8 @@
     "description": "Flexible attention higher-order op requiring special compilation handling",
     "aliases": [
       "torch.ops.higher_order.flex_attention"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "op_checkpoint",
@@ -48,7 +53,8 @@
     "description": "Activation checkpoint higher-order op (torch.utils.checkpoint.checkpoint)",
     "aliases": [
       "torch.utils.checkpoint.checkpoint"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "op_cond",
@@ -56,7 +62,8 @@
     "description": "Conditional higher-order op for control flow (torch.cond)",
     "aliases": [
       "torch.cond"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "op_while_loop",
@@ -64,7 +71,8 @@
     "description": "While loop higher-order op for control flow (torch.while_loop)",
     "aliases": [
       "torch.while_loop"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "op_map",
@@ -72,6 +80,7 @@
     "description": "Map higher-order op (torch.ops.higher_order.map)",
     "aliases": [
       "torch.ops.higher_order.map"
-    ]
+    ],
+    "visibility": "oss"
   }
 ]

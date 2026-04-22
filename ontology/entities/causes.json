@@ -2,82 +2,98 @@
   {
     "id": "unsupported_op",
     "name": "Unsupported Operation",
-    "description": "PyTorch op or Python construct not supported by dynamo"
+    "description": "PyTorch op or Python construct not supported by dynamo",
+    "visibility": "oss"
   },
   {
     "id": "data_dependent_control",
     "name": "Data-Dependent Control Flow",
-    "description": "Branching on tensor values (e.g., if x.item() > 0)"
+    "description": "Branching on tensor values (e.g., if x.item() > 0)",
+    "visibility": "oss"
   },
   {
     "id": "dynamic_shapes_issue",
     "name": "Dynamic Shapes Complexity",
-    "description": "Shape expressions too complex for symbolic reasoning"
+    "description": "Shape expressions too complex for symbolic reasoning",
+    "visibility": "oss"
   },
   {
     "id": "inplace_mutation",
     "name": "In-Place Mutation",
-    "description": "In-place ops that violate functional semantics"
+    "description": "In-place ops that violate functional semantics",
+    "visibility": "oss"
   },
   {
     "id": "tensor_subclass",
     "name": "Tensor Subclass",
-    "description": "Custom tensor subclasses with non-standard behavior"
+    "description": "Custom tensor subclasses with non-standard behavior",
+    "visibility": "oss"
   },
   {
     "id": "custom_autograd",
     "name": "Custom Autograd Function",
-    "description": "User-defined torch.autograd.Function not traceable"
+    "description": "User-defined torch.autograd.Function not traceable",
+    "visibility": "oss"
   },
   {
     "id": "third_party_lib",
     "name": "Third-Party Library Call",
-    "description": "Calls to libraries dynamo cannot trace into"
+    "description": "Calls to libraries dynamo cannot trace into",
+    "visibility": "oss"
   },
   {
     "id": "guard_mismatch",
     "name": "Guard Mismatch",
-    "description": "Input doesn't match cached guards \u2014 triggers recompile"
+    "description": "Input doesn't match cached guards \u2014 triggers recompile",
+    "visibility": "oss"
   },
   {
     "id": "backend_bug",
     "name": "Backend Bug",
-    "description": "Bug in inductor, triton, or other compilation backend"
+    "description": "Bug in inductor, triton, or other compilation backend",
+    "visibility": "oss"
   },
   {
     "id": "decomposition_gap",
     "name": "Missing Decomposition",
-    "description": "Op lacks a decomposition into supported primitives"
+    "description": "Op lacks a decomposition into supported primitives",
+    "visibility": "oss"
   },
   {
     "id": "distributed_interaction",
     "name": "Distributed Interaction",
-    "description": "Compile conflicts with DDP, FSDP, or tensor parallel"
+    "description": "Compile conflicts with DDP, FSDP, or tensor parallel",
+    "visibility": "oss"
   },
   {
     "id": "non_compliant_custom_op",
     "name": "Non-Compliant Custom Operator",
-    "description": "Custom op not registered via torch.library or missing FakeTensor/meta kernel"
+    "description": "Custom op not registered via torch.library or missing FakeTensor/meta kernel",
+    "visibility": "oss"
   },
   {
     "id": "suboptimal_heuristics",
     "name": "Suboptimal Inductor Heuristics",
-    "description": "Default triton config heuristics (tile sizes, num_warps) produce suboptimal kernel performance"
+    "description": "Default triton config heuristics (tile sizes, num_warps) produce suboptimal kernel performance",
+    "visibility": "oss"
   },
   {
     "id": "excessive_logging",
     "name": "Excessive Logging/Debug Overhead",
-    "description": "Debug logging (e.g., everstore uploads, graph dumps) causing compile time bloat"
+    "description": "Debug logging (e.g., everstore uploads, graph dumps) causing compile time bloat",
+    "visibility": "oss"
   },
   {
     "id": "abi_incompatibility",
     "name": "ABI Incompatibility",
-    "description": "Custom op libraries (flash attention, xformers) not ABI-compatible with PyTorch version"
+    "description": "Custom op libraries (flash attention, xformers) not ABI-compatible with PyTorch version",
+    "visibility": "oss"
   },
   {
     "id": "automatic_dynamic_shapes",
     "name": "Automatic Dynamic Shapes",
-    "description": "Dynamo's automatic shape dynamism causing unexpected recompilation or suboptimal code"
+    "description": "Dynamo's automatic shape dynamism causing unexpected recompilation or suboptimal code",
+    "visibility": "oss"
   },
   {
     "id": "cause_shape_wobble",
@@ -86,7 +102,8 @@
     "aliases": [
       "changing shapes",
       "variable shapes"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "cause_unspecialized_int",
@@ -94,7 +111,8 @@
     "description": "Int members on nn.Module change values (e.g., step count) causing recompilation without allow_unspec_int_on_nn_module",
     "aliases": [
       "changing int attributes"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "cause_dynamic_output_shape",
@@ -102,7 +120,8 @@
     "description": "Ops like nonzero/unique have data-dependent output shapes, causing graph break without capture_dynamic_output_shape_ops",
     "aliases": [
       "data-dependent shape"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "cause_scalar_return",
@@ -110,7 +129,8 @@
     "description": "Operations return scalar types (e.g., .item()) which cause graph break without capture_scalar_outputs",
     "aliases": [
       "scalar output"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "cause_fancy_compile_wrapper",
@@ -119,7 +139,8 @@
     "aliases": [
       "custom wrapper",
       "config wrapper"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "custom_backend_config",
@@ -133,7 +154,8 @@
       93468,
       93492
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "config_int_attribute",
@@ -147,7 +169,8 @@
       93735,
       93748
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "cache_miss_recompile",
@@ -161,7 +184,8 @@
       93761,
       93774
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "numpy_call",
@@ -175,7 +199,8 @@
       93766,
       93778
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_introspection",
@@ -189,7 +214,8 @@
       93672,
       93721
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "fake_tensor_mode",
@@ -203,7 +229,8 @@
       93688,
       93711
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_builtin_getattr",
@@ -217,7 +244,8 @@
       93676,
       93796
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_system_module",
@@ -231,7 +259,8 @@
       93935,
       95939
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "huggingface_transformers",
@@ -245,7 +274,8 @@
       93767,
       93773
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_context_manager",
@@ -259,7 +289,8 @@
       93781,
       93782
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "item_method",
@@ -273,7 +304,8 @@
       95770,
       97339
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "custom_compile_mode",
@@ -287,7 +319,8 @@
       93495,
       93498
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "shape_query_to_scalar",
@@ -301,7 +334,8 @@
       93686,
       93689
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "vision_library",
@@ -315,7 +349,8 @@
       93777,
       93787
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "conditional_tensor_operation",
@@ -329,7 +364,8 @@
       93723,
       93805
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "collective_ops_issue",
@@ -343,7 +379,8 @@
       93566,
       93649
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "torch_dispatch_protocol",
@@ -357,7 +394,8 @@
       93723,
       93805
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "triton_crash",
@@ -371,7 +409,8 @@
       93544,
       93647
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_numpy_api",
@@ -385,7 +424,8 @@
       93658,
       93766
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_property_decorator",
@@ -399,7 +439,8 @@
       97691,
       100386
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "module_int_member",
@@ -413,7 +454,8 @@
       93357,
       95846
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_generator",
@@ -427,7 +469,8 @@
       93781,
       93796
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "custom_autograd_function",
@@ -441,7 +484,8 @@
       91469,
       93721
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "ddp_compile_conflict",
@@ -455,7 +499,8 @@
       93672,
       93773
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_functools",
@@ -469,7 +514,8 @@
       94851,
       95445
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "fsdp_compile_conflict",
@@ -483,7 +529,8 @@
       93688,
       93756
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "custom_op_registration",
@@ -497,7 +544,8 @@
       126201,
       127561
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "inplace_arithmetic",
@@ -511,7 +559,8 @@
       92129,
       93363
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "excessive_memory_usage",
@@ -525,7 +574,8 @@
       93699,
       93807
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_random_module",
@@ -539,7 +589,8 @@
       96118,
       98561
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_autocast",
@@ -553,7 +604,8 @@
       93694,
       93711
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "torch_function_protocol",
@@ -567,7 +619,8 @@
       93723,
       93748
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "inplace_copy",
@@ -581,7 +634,8 @@
       93654,
       93685
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "inductor_wrong_output",
@@ -595,7 +649,8 @@
       109105,
       111133
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unbacked_symint",
@@ -609,7 +664,8 @@
       111950,
       112347
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "dtensor_subclass",
@@ -623,7 +679,8 @@
       116712,
       117670
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_jit_script",
@@ -637,7 +694,8 @@
       93702,
       93742
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "item_in_condition",
@@ -651,7 +709,8 @@
       135161,
       136306
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "cuda_backend_error",
@@ -665,7 +724,8 @@
       93638,
       93647
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "nonzero_op",
@@ -679,7 +739,8 @@
       105534,
       109861
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "where_op",
@@ -693,7 +754,8 @@
       106580,
       117807
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "slow_compilation",
@@ -707,7 +769,8 @@
       95501,
       95660
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "tolist_method",
@@ -721,7 +784,8 @@
       114231,
       114483
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unique_op",
@@ -735,7 +799,8 @@
       102375,
       105075
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "saved_tensor_hooks",
@@ -749,7 +814,8 @@
       106388,
       106389
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "ragged_tensor_shapes",
@@ -763,7 +829,8 @@
       94167,
       106064
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "inplace_initialization",
@@ -777,7 +844,8 @@
       127561,
       127572
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "numerical_accuracy",
@@ -791,7 +859,8 @@
       93708,
       93777
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "shape_specialization_needed",
@@ -805,7 +874,8 @@
       93380,
       93829
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "inplace_fill",
@@ -819,7 +889,8 @@
       98265,
       103139
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "pillow_call",
@@ -833,7 +904,8 @@
       96287,
       98045
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "custom_op_implementation",
@@ -847,7 +919,8 @@
       124918,
       127821
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_itertools",
@@ -861,7 +934,8 @@
       107232,
       107682
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_einops",
@@ -875,7 +949,8 @@
       93905,
       94598
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "dtensor_compile_conflict",
@@ -889,7 +964,8 @@
       118596,
       118600
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_collections",
@@ -903,7 +979,8 @@
       111713,
       114674
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "visibility": "oss"
   },
   {
     "id": "topk_ops",
@@ -917,7 +994,8 @@
       105569,
       108830
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "sparse_tensor_subclass",
@@ -931,7 +1009,8 @@
       117188,
       118856
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "index_assignment",
@@ -945,7 +1024,8 @@
       123589,
       126027
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "scipy_call",
@@ -959,7 +1039,8 @@
       98510,
       115953
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "parallelism_conflict",
@@ -973,7 +1054,8 @@
       113895,
       116430
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "inplace_scatter",
@@ -987,7 +1069,8 @@
       114686,
       126614
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "auto_dynamic_enabled",
@@ -1001,7 +1084,8 @@
       118798,
       120080
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "opencv_call",
@@ -1015,7 +1099,8 @@
       115534,
       127188
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "codegen_error",
@@ -1029,7 +1114,8 @@
       95082,
       104759
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "pandas_call",
@@ -1043,7 +1129,8 @@
       133079,
       135675
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "masked_select_op",
@@ -1057,7 +1144,8 @@
       109871,
       145874
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "dynamic_padding",
@@ -1071,7 +1159,8 @@
       169760,
       175831
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "inplace_resize",
@@ -1085,7 +1174,8 @@
       104020,
       110699
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "primtorch_lowering_gap",
@@ -1099,7 +1189,8 @@
       108204,
       108205
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "nested_tensor_subclass",
@@ -1113,7 +1204,8 @@
       134873,
       146707
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "double_backward_issue",
@@ -1127,7 +1219,8 @@
       167729,
       174165
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "variable_sequence_length",
@@ -1141,7 +1234,8 @@
       169290,
       178260
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "control_flow_ops",
@@ -1155,7 +1249,8 @@
       123155,
       138689
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "loop_over_tensor_value",
@@ -1169,7 +1264,8 @@
       155690,
       162817
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "opcheck_validation_failure",
@@ -1183,7 +1279,8 @@
       142410,
       144514
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "unsupported_async",
@@ -1197,7 +1294,8 @@
       164701,
       164563
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "slow_triton_kernel",
@@ -1211,7 +1309,8 @@
       157363,
       151156
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "assume_static_false",
@@ -1225,7 +1324,8 @@
       168937
     ],
     "confidence": "low",
-    "validation_note": "entity verified in source; issue curation has false positives"
+    "validation_note": "entity verified in source; issue curation has false positives",
+    "visibility": "oss"
   },
   {
     "id": "stride_specialization",
@@ -1239,7 +1339,8 @@
       150021,
       143670
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "shape_guard_failure",
@@ -1253,7 +1354,8 @@
       141589,
       138813
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "missing_aten_decomposition",
@@ -1265,7 +1367,8 @@
       133057,
       177505
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "cpp_custom_op_registration",
@@ -1279,7 +1382,8 @@
       128071,
       109074
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "sklearn_call",
@@ -1292,7 +1396,8 @@
       169178
     ],
     "confidence": "low",
-    "validation_note": "entity verified in source; issue curation has false positives"
+    "validation_note": "entity verified in source; issue curation has false positives",
+    "visibility": "oss"
   },
   {
     "id": "quantized_tensor_subclass",
@@ -1303,7 +1408,8 @@
       93642,
       136287
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "poor_autotuning",
@@ -1313,7 +1419,8 @@
     "example_issues": [
       93475
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "batch_size_change",
@@ -1323,7 +1430,8 @@
     "example_issues": [
       96274
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "lowering_failure",
@@ -1337,7 +1445,8 @@
       113180,
       180164
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "explicit_mutation",
@@ -1347,46 +1456,55 @@
     "example_issues": [
       120802
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "visibility": "oss"
   },
   {
     "id": "numerical_issue",
     "name": "Numerical Issue",
-    "description": "Compiled code produces NaN, Inf, or numerically incorrect results compared to eager"
+    "description": "Compiled code produces NaN, Inf, or numerically incorrect results compared to eager",
+    "visibility": "oss"
   },
   {
     "id": "codegen_issue",
     "name": "Codegen Issue",
-    "description": "Bug in inductor code generation producing incorrect kernels"
+    "description": "Bug in inductor code generation producing incorrect kernels",
+    "visibility": "oss"
   },
   {
     "id": "stride_mismatch",
     "name": "Stride Mismatch",
-    "description": "Compiled tensor has different strides than eager, causing incorrect results"
+    "description": "Compiled tensor has different strides than eager, causing incorrect results",
+    "visibility": "oss"
   },
   {
     "id": "internal_assertion",
     "name": "Internal Assertion Failure",
-    "description": "Internal assert fails during compilation or execution"
+    "description": "Internal assert fails during compilation or execution",
+    "visibility": "oss"
   },
   {
     "id": "cache_issue",
     "name": "Cache Issue",
-    "description": "Compilation cache miss, corruption, or stale cache causing incorrect behavior"
+    "description": "Compilation cache miss, corruption, or stale cache causing incorrect behavior",
+    "visibility": "oss"
   },
   {
     "id": "oom",
     "name": "Out of Memory",
-    "description": "Compilation or runtime OOM during torch.compile"
+    "description": "Compilation or runtime OOM during torch.compile",
+    "visibility": "oss"
   },
   {
     "id": "export_issue",
     "name": "Export Issue",
-    "description": "torch.export fails to capture the model or produces incorrect exported program"
+    "description": "torch.export fails to capture the model or produces incorrect exported program",
+    "visibility": "oss"
   },
   {
     "id": "shape_specialization",
     "name": "Shape Specialization",
-    "description": "Compiler over-specializes on shapes, preventing cache reuse"
+    "description": "Compiler over-specializes on shapes, preventing cache reuse",
+    "visibility": "oss"
   }
 ]

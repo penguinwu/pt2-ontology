@@ -2,31 +2,37 @@
   {
     "id": "inductor_backend",
     "name": "inductor",
-    "description": "Default backend \u2014 generates Triton GPU kernels and C++ CPU kernels"
+    "description": "Default backend \u2014 generates Triton GPU kernels and C++ CPU kernels",
+    "visibility": "oss"
   },
   {
     "id": "eager_backend",
     "name": "eager",
-    "description": "Debug backend \u2014 runs captured graph in eager mode"
+    "description": "Debug backend \u2014 runs captured graph in eager mode",
+    "visibility": "oss"
   },
   {
     "id": "aot_eager_backend",
     "name": "aot_eager",
-    "description": "Debug backend \u2014 AOTAutograd + eager execution"
+    "description": "Debug backend \u2014 AOTAutograd + eager execution",
+    "visibility": "oss"
   },
   {
     "id": "cudagraphs_backend",
     "name": "cudagraphs",
-    "description": "CUDA graphs backend for reduced kernel launch overhead"
+    "description": "CUDA graphs backend for reduced kernel launch overhead",
+    "visibility": "oss"
   },
   {
     "id": "cutedsl_backend",
     "name": "cutedsl",
-    "description": "CuteDSL-based kernel generation backend for inductor"
+    "description": "CuteDSL-based kernel generation backend for inductor",
+    "visibility": "oss"
   },
   {
     "id": "max_autotune_backend",
     "name": "max-autotune",
-    "description": "Autotuning backend that benchmarks multiple implementations to select fastest"
+    "description": "Autotuning backend that benchmarks multiple implementations to select fastest",
+    "visibility": "oss"
   }
 ]

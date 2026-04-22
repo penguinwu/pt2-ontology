@@ -5,7 +5,8 @@
     "description": "User wraps model with torch.compile() and hits first errors, crashes, or isn't sure they did it right",
     "tier": "symptom",
     "question": "How do I get torch.compile to work on my model?",
-    "issue_count": 193
+    "issue_count": 193,
+    "visibility": "oss"
   },
   {
     "id": "j2_perf_diagnosis",
@@ -13,7 +14,8 @@
     "description": "Compiled model is slower than eager or speedup is disappointing \u2014 diagnostic workflow routes to root cause",
     "tier": "symptom",
     "question": "My compiled model is slower than eager \u2014 or the speedup is disappointing.",
-    "issue_count": 800
+    "issue_count": 800,
+    "visibility": "oss"
   },
   {
     "id": "j3_correctness",
@@ -21,7 +23,8 @@
     "description": "Compiled model gives different results than eager \u2014 numerical mismatches, NaN/Inf, regressions",
     "tier": "symptom",
     "question": "The compiled model gives different results than eager.",
-    "issue_count": 686
+    "issue_count": 686,
+    "visibility": "oss"
   },
   {
     "id": "j4_graph_breaks",
@@ -29,7 +32,8 @@
     "description": "Parts of model fall back to eager unexpectedly, causing slowdowns \u2014 excessive breaks fragment compiled regions",
     "tier": "root_cause",
     "question": "Parts of my model fall back to eager \u2014 or it's unexpectedly slow and I don't know why.",
-    "issue_count": 495
+    "issue_count": 495,
+    "visibility": "oss"
   },
   {
     "id": "j5_dynamic_shapes",
@@ -37,7 +41,8 @@
     "description": "Model recompiles every time input shape changes \u2014 recompilation storms from shape guard failures",
     "tier": "root_cause",
     "question": "My model recompiles every time the input shape changes.",
-    "issue_count": 1061
+    "issue_count": 1061,
+    "visibility": "oss"
   },
   {
     "id": "j6_compile_time",
@@ -45,7 +50,8 @@
     "description": "Compilation itself is the bottleneck \u2014 blocks iteration in dev, causes cold-start in production",
     "tier": "root_cause",
     "question": "Compilation takes minutes and my GPU sits idle.",
-    "issue_count": 347
+    "issue_count": 347,
+    "visibility": "oss"
   },
   {
     "id": "j7_perf_optimization",
@@ -53,7 +59,8 @@
     "description": "torch.compile gives speedup but user wants more \u2014 fusion, codegen tuning, custom Triton, memory optimization",
     "tier": "root_cause",
     "question": "torch.compile gives me a speedup, but I want more.",
-    "issue_count": 1800
+    "issue_count": 1800,
+    "visibility": "oss"
   },
   {
     "id": "j8_custom_ops",
@@ -61,7 +68,8 @@
     "description": "Custom operators or advanced patterns (vmap, checkpoint, torch.cond, flex attention) don't work with compile",
     "tier": "root_cause",
     "question": "My custom operator or advanced pattern doesn't work with torch.compile.",
-    "issue_count": 533
+    "issue_count": 533,
+    "visibility": "oss"
   },
   {
     "id": "j9_export",
@@ -70,6 +78,7 @@
     "tier": "deployment",
     "question": "I want to save my compiled model so I can load it elsewhere.",
     "issue_count": 907,
-    "note": "TODO: not yet fully mapped in ontology relationships"
+    "note": "TODO: not yet fully mapped in ontology relationships",
+    "visibility": "oss"
   }
 ]

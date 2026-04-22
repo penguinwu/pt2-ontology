@@ -7,7 +7,8 @@
       "fusion",
       "fused kernel",
       "op fusion"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "compute_comm_reorder",
@@ -17,7 +18,8 @@
       "comm reordering",
       "compute/comm overlap",
       "bucketing reordering"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "persistent_reduction",
@@ -26,7 +28,8 @@
     "aliases": [
       "persistent reduction",
       "persistent kernel"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "outer_reduction",
@@ -35,7 +38,8 @@
     "aliases": [
       "outer reduction",
       "non-contiguous reduction"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "optimization_guard_cpp",
@@ -43,6 +47,7 @@
     "description": "C++ guard manager enabled by default for faster guard evaluation (enable_cpp_guard_manager)",
     "aliases": [
       "C++ guard evaluation"
-    ]
+    ],
+    "visibility": "oss"
   }
 ]

@@ -7,7 +7,8 @@
       "compile",
       "torch compile",
       "pt2"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "torchdynamo",
@@ -25,7 +26,8 @@
       "module: multithreading",
       "module: pytree"
     ],
-    "sto_scope": "foundational_frontend"
+    "sto_scope": "foundational_frontend",
+    "visibility": "oss"
   },
   {
     "id": "torchinductor",
@@ -43,7 +45,8 @@
       "module: memory usage",
       "module: codegen"
     ],
-    "sto_scope": "foundational_backend"
+    "sto_scope": "foundational_backend",
+    "visibility": "oss"
   },
   {
     "id": "aot_autograd",
@@ -58,7 +61,8 @@
     "github_labels": [
       "module: aotdispatch"
     ],
-    "sto_scope": "foundational_frontend"
+    "sto_scope": "foundational_frontend",
+    "visibility": "oss"
   },
   {
     "id": "aot_inductor",
@@ -73,7 +77,8 @@
     "github_labels": [
       "module: aotinductor"
     ],
-    "sto_scope": "foundational_backend"
+    "sto_scope": "foundational_backend",
+    "visibility": "oss"
   },
   {
     "id": "fx_graph",
@@ -87,7 +92,8 @@
     ],
     "github_labels": [
       "module: fx"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "triton",
@@ -99,7 +105,8 @@
     ],
     "github_labels": [
       "module: user triton"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "export",
@@ -115,7 +122,8 @@
       "oncall: export",
       "module: serialization"
     ],
-    "sto_scope": "foundational_frontend"
+    "sto_scope": "foundational_frontend",
+    "visibility": "oss"
   },
   {
     "id": "guards",
@@ -130,7 +138,8 @@
     "github_labels": [
       "module: guards"
     ],
-    "sto_note": "Covered under Dynamo (Engineer 01)"
+    "sto_note": "Covered under Dynamo (Engineer 01)",
+    "visibility": "oss"
   },
   {
     "id": "dynamic_shapes",
@@ -145,7 +154,8 @@
     "github_labels": [
       "module: dynamic shapes"
     ],
-    "sto_scope": "holistic"
+    "sto_scope": "holistic",
+    "visibility": "oss"
   },
   {
     "id": "pt2_cudagraph",
@@ -162,7 +172,8 @@
       "module: compiled streams",
       "module: cuda"
     ],
-    "sto_scope": "foundational_backend"
+    "sto_scope": "foundational_backend",
+    "visibility": "oss"
   },
   {
     "id": "compilation_cache",
@@ -179,7 +190,8 @@
       "compile-cache"
     ],
     "sto_scope": "foundational_backend",
-    "sto_note": "Engineer 15 as co-STO for PT-D"
+    "sto_note": "Engineer 15 as co-STO for PT-D",
+    "visibility": "oss"
   },
   {
     "id": "custom_ops",
@@ -193,7 +205,8 @@
     "github_labels": [
       "module: custom-operators"
     ],
-    "sto_note": "Covered under PT2-Dispatch (Engineer 03)"
+    "sto_note": "Covered under PT2-Dispatch (Engineer 03)",
+    "visibility": "oss"
   },
   {
     "id": "higher_order_ops",
@@ -209,7 +222,8 @@
     "github_labels": [
       "module: higher order operators"
     ],
-    "sto_note": "Under PT2-Dispatch umbrella (Engineer 03)"
+    "sto_note": "Under PT2-Dispatch umbrella (Engineer 03)",
+    "visibility": "oss"
   },
   {
     "id": "flexattention",
@@ -223,7 +237,8 @@
     "github_labels": [
       "module: flex attention"
     ],
-    "sto_note": "Covered under Inductor (Engineer 02)"
+    "sto_note": "Covered under Inductor (Engineer 02)",
+    "visibility": "oss"
   },
   {
     "id": "cutedsl_backend",
@@ -235,7 +250,8 @@
       "cutlass backend"
     ],
     "sto": "Engineer 10",
-    "sto_scope": "foundational_backend"
+    "sto_scope": "foundational_backend",
+    "visibility": "oss"
   },
   {
     "id": "max_autotune",
@@ -247,7 +263,8 @@
       "autotuner"
     ],
     "sto": "Engineer 11",
-    "sto_scope": "foundational_backend"
+    "sto_scope": "foundational_backend",
+    "visibility": "oss"
   },
   {
     "id": "compiled_optimizer",
@@ -261,7 +278,8 @@
     "github_labels": [
       "module: pt2 optimizer"
     ],
-    "sto_scope": "holistic"
+    "sto_scope": "holistic",
+    "visibility": "oss"
   },
   {
     "id": "pt2_debug_observability",
@@ -280,7 +298,8 @@
       "module: pt2 accuracy",
       "module: correctness (silent)"
     ],
-    "sto_scope": "holistic"
+    "sto_scope": "holistic",
+    "visibility": "oss"
   },
   {
     "id": "compiled_tensor_subclass",
@@ -297,7 +316,8 @@
       "module: dtensor",
       "module: nestedtensor"
     ],
-    "sto_note": "Under PT2-Dispatch umbrella"
+    "sto_note": "Under PT2-Dispatch umbrella",
+    "visibility": "oss"
   },
   {
     "id": "custom_fx_passes",
@@ -307,7 +327,8 @@
       "fx passes",
       "custom passes",
       "graph passes"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "pattern_matcher",
@@ -317,7 +338,8 @@
       "pattern matcher",
       "pattern matching",
       "inductor patterns"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "fake_tensor",
@@ -332,7 +354,8 @@
     "github_labels": [
       "module: fakeTensor",
       "module: meta tensors"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "functionalization",
@@ -344,7 +367,8 @@
     ],
     "github_labels": [
       "module: functionalization"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "decompositions",
@@ -358,7 +382,8 @@
     "github_labels": [
       "module: decompositions"
     ],
-    "sto_note": "Covered under PT2-Dispatch (Engineer 03)"
+    "sto_note": "Covered under PT2-Dispatch (Engineer 03)",
+    "visibility": "oss"
   },
   {
     "id": "inductor_scheduler",
@@ -368,7 +393,8 @@
       "scheduler",
       "inductor scheduler",
       "fusion decisions"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "triton_heuristics",
@@ -379,7 +405,8 @@
       "autotune configs",
       "tile size heuristics",
       "triton_heuristics.py"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "coordinate_descent_tuning",
@@ -389,7 +416,8 @@
       "coordinate descent",
       "coord descent tuning",
       "CDT"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "selective_checkpointing",
@@ -403,7 +431,8 @@
     ],
     "github_labels": [
       "module: activation checkpointing"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "simplefsdp",
@@ -416,7 +445,8 @@
     ],
     "github_labels": [
       "module: fsdp"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "compiler_toolkit",
@@ -426,7 +456,8 @@
       "compiler toolkit",
       "toolkit",
       "compiler as toolkit"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "graph_partitioner",
@@ -435,7 +466,8 @@
     "aliases": [
       "graph partitioner",
       "partitioner"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "standalone_compile",
@@ -444,7 +476,8 @@
     "aliases": [
       "standalone compile",
       "standalone_compile"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "tlparse",
@@ -454,7 +487,8 @@
       "tlparse",
       "tl parse",
       "log parser"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "compile_profiler",
@@ -467,7 +501,8 @@
     ],
     "github_labels": [
       "module: compile-time"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "compute_comm_overlap",
@@ -483,7 +518,8 @@
       "module: ddp",
       "module: c10d",
       "module: nccl"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "combo_kernels",
@@ -493,7 +529,8 @@
       "combo kernels",
       "combo kernel",
       "combined kernels"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "fusion_optimization",
@@ -504,7 +541,8 @@
       "fusion policy",
       "horizontal fusion",
       "vertical fusion"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "inductor_on_demand",
@@ -515,7 +553,8 @@
       "regional inductor",
       "regional compilation",
       "regional compile"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "pt2_dispatch",
@@ -540,7 +579,8 @@
       "module: __torch_dispatch__",
       "module: __torch_function__"
     ],
-    "sto_scope": "foundational_frontend"
+    "sto_scope": "foundational_frontend",
+    "visibility": "oss"
   },
   {
     "id": "vllm_compile",
@@ -556,7 +596,8 @@
       "vllm-compile"
     ],
     "sto_scope": "holistic",
-    "sto_note": "Sub-STOs: perf (Engineer 02), TPU (Engineer 05), Helion/custom ops (Engineer 16)"
+    "sto_note": "Sub-STOs: perf (Engineer 02), TPU (Engineer 05), Helion/custom ops (Engineer 16)",
+    "visibility": "oss"
   },
   {
     "id": "compiled_autograd",
@@ -570,7 +611,8 @@
       "module: compiled autograd",
       "module: autograd"
     ],
-    "sto_note": "Covered under PT2-Dispatch (Engineer 03)"
+    "sto_note": "Covered under PT2-Dispatch (Engineer 03)",
+    "visibility": "oss"
   },
   {
     "id": "helion",
@@ -584,6 +626,7 @@
     "phase": 2,
     "github_labels": [
       "module: helion"
-    ]
+    ],
+    "visibility": "oss"
   }
 ]

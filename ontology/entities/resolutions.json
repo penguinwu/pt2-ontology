@@ -2,37 +2,44 @@
   {
     "id": "config_change",
     "name": "Configuration Change",
-    "description": "Adjust compile flags (fullgraph, dynamic, backend options)"
+    "description": "Adjust compile flags (fullgraph, dynamic, backend options)",
+    "visibility": "oss"
   },
   {
     "id": "code_rewrite",
     "name": "Code Pattern Change",
-    "description": "Rewrite user code to be compile-friendly"
+    "description": "Rewrite user code to be compile-friendly",
+    "visibility": "oss"
   },
   {
     "id": "op_replacement",
     "name": "Op Replacement",
-    "description": "Swap unsupported op for a supported equivalent"
+    "description": "Swap unsupported op for a supported equivalent",
+    "visibility": "oss"
   },
   {
     "id": "upstream_fix",
     "name": "Upstream Fix (PR)",
-    "description": "Fix in PyTorch repo \u2014 add support, fix bug, add decomp"
+    "description": "Fix in PyTorch repo \u2014 add support, fix bug, add decomp",
+    "visibility": "oss"
   },
   {
     "id": "skip_compile",
     "name": "Skip Compilation",
-    "description": "Mark function/region as not-to-compile"
+    "description": "Mark function/region as not-to-compile",
+    "visibility": "oss"
   },
   {
     "id": "version_upgrade",
     "name": "Version Upgrade",
-    "description": "Issue fixed in a newer PyTorch version"
+    "description": "Issue fixed in a newer PyTorch version",
+    "visibility": "oss"
   },
   {
     "id": "workaround",
     "name": "Workaround",
-    "description": "Temporary fix that avoids the issue without solving root cause"
+    "description": "Temporary fix that avoids the issue without solving root cause",
+    "visibility": "oss"
   },
   {
     "id": "resolution_use_torch_logs",
@@ -40,7 +47,8 @@
     "description": "Set TORCH_LOGS=graph_breaks,guards,recompiles to diagnose compilation issues",
     "aliases": [
       "enable logging"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "resolution_use_fullgraph",
@@ -48,7 +56,8 @@
     "description": "Set fullgraph=True to force error on graph breaks and identify source",
     "aliases": [
       "enforce no breaks"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "resolution_use_dynamic_sources",
@@ -56,7 +65,8 @@
     "description": "Specify TORCH_COMPILE_DYNAMIC_SOURCES=L['x'],L['y'] upfront to reduce recompilation",
     "aliases": [
       "declare dynamic inputs"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "resolution_enable_capture_ops",
@@ -64,7 +74,8 @@
     "description": "Set capture_scalar_outputs=True and capture_dynamic_output_shape_ops=True to avoid graph breaks",
     "aliases": [
       "capture scalars and dynamic shapes"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "resolution_switch_backend",
@@ -72,7 +83,8 @@
     "description": "Switch backend to 'eager' or 'aot_eager' to isolate whether issue is in dynamo vs inductor",
     "aliases": [
       "bisect backend"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "resolution_reset_dynamo",
@@ -80,7 +92,8 @@
     "description": "Call torch._dynamo.reset() before benchmarking to clear automatic_dynamic contamination",
     "aliases": [
       "clear cache"
-    ]
+    ],
+    "visibility": "oss"
   },
   {
     "id": "resolution_allow_unspec_int",
@@ -88,6 +101,7 @@
     "description": "Set allow_unspec_int_on_nn_module=True to prevent recompilation on changing int attributes",
     "aliases": [
       "unspecialize ints"
-    ]
+    ],
+    "visibility": "oss"
   }
 ]
