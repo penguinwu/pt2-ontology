@@ -49,5 +49,15 @@
       "C++ guard evaluation"
     ],
     "visibility": "oss"
+  },
+  {
+    "id": "megacache",
+    "name": "MegaCache",
+    "description": "Unified compile-time caching mechanism in inductor — bundles compile artifacts (FXGraphCache, AOTAutograd cache, Triton cache) into a single portable cache to reduce cold-start compile time and enable cache transport across machines",
+    "aliases": [
+      "mega cache",
+      "mega_cache"
+    ],
+    "visibility": "oss"
   }
 ]
