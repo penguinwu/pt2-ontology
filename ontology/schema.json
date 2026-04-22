@@ -1,9 +1,9 @@
 {
   "meta": {
     "name": "PT2 Domain Ontology",
-    "version": "0.17.6",
+    "version": "0.18.0",
     "created": "2026-04-13",
-    "updated": "2026-04-21",
+    "updated": "2026-04-22",
     "description": "Structured domain ontology for PyTorch 2 (torch.compile), mined from 6,167 GitHub issues (3,876 closed, 2,291 open), PyTorch source, and curated internal sources.",
     "scopes": {
       "torch_compile": "Core torch.compile stack (Dynamo, Inductor, holistic areas) — current focus (Phase 1)",
@@ -29,7 +29,7 @@
         }
       }
     },
-    "changelog": "v0.17.6: Add MegaCache as optimization entity (compile-time caching mechanism in inductor that bundles FXGraphCache, AOTAutograd cache, and Triton cache); v0.17.5: Bulk visibility classification — tagged 243 previously-untagged entries across 11 entity files (backends, causes, components, deprecated_components, ecosystem, failure_modes, ops, optimizations, platforms, resolutions, user_journeys) as visibility: oss after content audit confirmed all entries derive from public PyTorch source, GitHub issues, public docs, or PTC presentations. Repo now ready for OSS push; v0.17.4: Residual internal-reference scrub — neutralized fbsource and fwdproxy mentions in METHODOLOGY.md, data/sources.md, validation/source_validator.py, skills/.../validate.py, skills/.../SKILL.md, skills/.../fetch.sh; Workplace group ID redacted. Functional code paths preserved for Meta devvm fallback. MegaCache references kept (legitimate ontology entity per Peng); v0.17.3: PII and internal-reference scrub — anonymized last unixname in experts.json, untracked 13 raw extraction dumps containing internal cross-refs (Workplace links, paste IDs, SEV refs, other engineers' unixnames embedded in path strings), replaced hardcoded /home/pengwu/ paths with $HOME / Path.home() / repo-relative paths in 6 scripts and SKILL.md; v0.17.2: Schema sync — declared expert and user_fix_shortcut entity types, added replaced_by relationship type, added lifecycle field convention to support doc-audit deprecation discovery; v0.17.1: Due-diligence scrubbing — strip unixnames, tag experts as internal; v0.17.0: Visibility classification layer added; v0.16.0: Enriched relationship layer (294 evidence edges, 62 triage paths, 12 entry points); v0.15.0: Relationship mapping (evidence edges, triage tree, component playbooks); v0.14.0: Phase 2 extraction (324 issues, 62 symptoms, 33 workarounds, 40 configs); v0.9.0: Full dataset download, Phase 1 diagnostic extraction; v0.8.0: Label mappings, expert mapping, visibility field; v0.7.0: STO owners and GitHub label mappings; v0.6.x: Beaver cause tree merge, Platform entity type; v0.5.x: User journeys, is_subcause_of tree; v0.4.0: Beaver entity extraction"
+    "changelog": "v0.18.0: Reproducibility framework lands (extractors/ + REPRODUCIBILITY.md) + testable_claims schemas declared for failure_mode and cause (closes Beaver's structural-validation gap from v0.1 audit). Splits Step-3 ask into type-level schema gaps (now defined) vs instance-level provenance gaps (filled by extractors); v0.17.6: Add MegaCache as optimization entity (compile-time caching mechanism in inductor that bundles FXGraphCache, AOTAutograd cache, and Triton cache); v0.17.5: Bulk visibility classification — tagged 243 previously-untagged entries across 11 entity files (backends, causes, components, deprecated_components, ecosystem, failure_modes, ops, optimizations, platforms, resolutions, user_journeys) as visibility: oss after content audit confirmed all entries derive from public PyTorch source, GitHub issues, public docs, or PTC presentations. Repo now ready for OSS push; v0.17.4: Residual internal-reference scrub — neutralized fbsource and fwdproxy mentions in METHODOLOGY.md, data/sources.md, validation/source_validator.py, skills/.../validate.py, skills/.../SKILL.md, skills/.../fetch.sh; Workplace group ID redacted. Functional code paths preserved for Meta devvm fallback. MegaCache references kept (legitimate ontology entity per Peng); v0.17.3: PII and internal-reference scrub — anonymized last unixname in experts.json, untracked 13 raw extraction dumps containing internal cross-refs (Workplace links, paste IDs, SEV refs, other engineers' unixnames embedded in path strings), replaced hardcoded /home/pengwu/ paths with $HOME / Path.home() / repo-relative paths in 6 scripts and SKILL.md; v0.17.2: Schema sync — declared expert and user_fix_shortcut entity types, added replaced_by relationship type, added lifecycle field convention to support doc-audit deprecation discovery; v0.17.1: Due-diligence scrubbing — strip unixnames, tag experts as internal; v0.17.0: Visibility classification layer added; v0.16.0: Enriched relationship layer (294 evidence edges, 62 triage paths, 12 entry points); v0.15.0: Relationship mapping (evidence edges, triage tree, component playbooks); v0.14.0: Phase 2 extraction (324 issues, 62 symptoms, 33 workarounds, 40 configs); v0.9.0: Full dataset download, Phase 1 diagnostic extraction; v0.8.0: Label mappings, expert mapping, visibility field; v0.7.0: STO owners and GitHub label mappings; v0.6.x: Beaver cause tree merge, Platform entity type; v0.5.x: User journeys, is_subcause_of tree; v0.4.0: Beaver entity extraction"
   },
   "entity_types": {
     "component": "A software component or subsystem in the PT2 stack",
@@ -66,5 +66,57 @@
     "is_subcause_of": "X (specific cause) is a sub-cause of Y (cause category) — supports funnel/tree structure",
     "platform_specific": "X (cause/failure_mode) is specific to or primarily affects Y (platform)",
     "replaced_by": "X (deprecated/removed entity) is replaced by Y (current entity). Edges carry since_version and provenance. Optional — some deprecations have no successor."
+  },
+  "testable_claims_schemas": {
+    "_description": "Per-entity-type schemas for the testable_claims block. A testable_claim is a fact about an entity that can be verified against a source-of-truth (PyTorch source, official docs, error message templates, etc.). Beaver's audit pipeline (Step 3) cross-checks these claims against page content. Empty values are permitted — they signal 'not yet mined'. The instance-level provenance gap is filled by the extractors under extractors/; this section closes the type-level gap (no schema declared) by giving each entity type a defined shape.",
+    "failure_mode": {
+      "fields": {
+        "applies_when": {
+          "type": "string",
+          "required": true,
+          "description": "Conditions under which this failure mode is triggered. Plain prose, sourceable to a doc or source comment."
+        },
+        "surface_signals": {
+          "type": "array<string>",
+          "required": false,
+          "description": "Observable signals that indicate this failure mode. Examples: 'log line contains \"graph break\"', 'torch._dynamo.exc.Unsupported raised'. Each signal should be matchable against logs/error output."
+        },
+        "affects_compilation_phase": {
+          "type": "enum",
+          "values": ["dynamo", "aot_autograd", "inductor", "runtime", "multi"],
+          "required": false,
+          "description": "Which compilation phase the failure mode surfaces in. Helps route diagnostics."
+        },
+        "verification_source": {
+          "type": "string",
+          "required": true,
+          "description": "Stable source ref where applies_when / surface_signals can be verified. Format: 'pytorch@SHA:path:line', 'docs:page#anchor', 'graph_break_site:GB####', etc."
+        }
+      }
+    },
+    "cause": {
+      "fields": {
+        "triggering_pattern": {
+          "type": "string",
+          "required": true,
+          "description": "The code pattern, condition, or upstream event that triggers this cause. Plain prose."
+        },
+        "code_signal": {
+          "type": "string",
+          "required": false,
+          "description": "Optional regex or AST pattern for detecting this cause in user code. Used by automated diagnosers."
+        },
+        "surface_message": {
+          "type": "string",
+          "required": false,
+          "description": "Error message template Dynamo/Inductor emits when this cause fires (if any). Mineable from raise Unsupported(...) call sites."
+        },
+        "verification_source": {
+          "type": "string",
+          "required": true,
+          "description": "Stable source ref where the cause's triggering condition can be verified."
+        }
+      }
+    }
   }
 }
