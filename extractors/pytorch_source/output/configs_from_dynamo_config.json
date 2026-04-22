@@ -1,0 +1,3434 @@
+[
+  {
+    "alias_of": "torch._dynamo.config.accumulated_recompile_limit",
+    "compile_ignored_category": null,
+    "default_repr": "Config(alias='torch._dynamo.config.accumulated_recompile_limit')",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_accumulated_cache_size_limit",
+    "name": "torch._dynamo.config.accumulated_cache_size_limit",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 133,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "Config(alias='torch._dynamo.config.accumulated_recompile_limit')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:133"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "runtime_behaviour",
+    "default_repr": "256",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "safeguarding to prevent horrible recomps",
+    "entity_type": "config",
+    "id": "dynamo_config_accumulated_recompile_limit",
+    "name": "torch._dynamo.config.accumulated_recompile_limit",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 119,
+    "testable_claims": {
+      "applies_when": "safeguarding to prevent horrible recomps",
+      "compile_ignored_category": "runtime_behaviour",
+      "default_value_repr": "256",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:119"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If False, skip frame (and future calls to the same code object) if we determine that the\ntraced FX graph is empty when RETURN_* is traced.",
+    "entity_type": "config",
+    "id": "dynamo_config_allow_empty_graphs",
+    "name": "torch._dynamo.config.allow_empty_graphs",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 612,
+    "testable_claims": {
+      "applies_when": "If False, skip frame (and future calls to the same code object) if we determine that the\ntraced FX graph is empty when RETURN_* is traced.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:612"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Typically, if you mark_dynamic a dimension, we will error if the dimension\nactually ended up getting specialized.  This knob changes the behavior so\nthat we don't error at all.  This is helpful for our CI where I'm using a\nheuristic to mark batch dimensions as dynamic and the heuristic may get it\nwrong.",
+    "entity_type": "config",
+    "id": "dynamo_config_allow_ignore_mark_dynamic",
+    "name": "torch._dynamo.config.allow_ignore_mark_dynamic",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 225,
+    "testable_claims": {
+      "applies_when": "Typically, if you mark_dynamic a dimension, we will error if the dimension\nactually ended up getting specialized.  This knob changes the behavior so\nthat we don't error at all.  This is helpful for our CI where I'm using a\nheuristic to mark batch dimensions as dynamic and the heuristic may get it\nwrong.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:225"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Disables graph breaking on rnn. YMMV with backends.",
+    "entity_type": "config",
+    "id": "dynamo_config_allow_rnn",
+    "name": "torch._dynamo.config.allow_rnn",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 513,
+    "testable_claims": {
+      "applies_when": "Disables graph breaking on rnn. YMMV with backends.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:513"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Currently, Dynamo will always specialize on int members of NN module.\nHowever, there could be cases where this is undesirable, e.g., when tracking\nstep count leading to constant recompilation and eventually eager fallback.\nSetting this flag to True will allow int members to be potentially unspecialized\nthrough dynamic shape mechanism.\nDefaults to False for BC.",
+    "entity_type": "config",
+    "id": "dynamo_config_allow_unspec_int_on_nn_module",
+    "name": "torch._dynamo.config.allow_unspec_int_on_nn_module",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 393,
+    "testable_claims": {
+      "applies_when": "Currently, Dynamo will always specialize on int members of NN module.\nHowever, there could be cases where this is undesirable, e.g., when tracking\nstep count leading to constant recompilation and eventually eager fallback.\nSetting this flag to True will allow int members to be potentially unspecialized\nthrough dynamic shape mechanism.\nDefaults to False for BC.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:393"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "{'torch.distributions', 'torch.testing', 'torch._refs', 'torch._prims', 'torch._decomp'}",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If a string representing a PyTorch module is in this ignorelist,\nthe `allowed_functions.is_allowed` function will not consider it\nwhen creating a list of PyTorch functions that will appear in\nFX IR.",
+    "entity_type": "config",
+    "id": "dynamo_config_allowed_functions_module_string_ignorelist",
+    "name": "torch._dynamo.config.allowed_functions_module_string_ignorelist",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 307,
+    "testable_claims": {
+      "applies_when": "If a string representing a PyTorch module is in this ignorelist,\nthe `allowed_functions.is_allowed` function will not consider it\nwhen creating a list of PyTorch functions that will appear in\nFX IR.",
+      "compile_ignored_category": null,
+      "default_value_repr": "{'torch.distributions', 'torch.testing', 'torch._refs', 'torch._prims', 'torch._decomp'}",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:307"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "The recursive-dict-tag guard relies on the class/function identity staying\nstable.  We therefore assume that the following function dunder attributes\nare **never rebound** to a different object:\n\n    • __code__        • __closure__\n    • __defaults__    • __kwdefaults__\n    • __annotations__ • __mro__\n\nIt is fine to mutate the objects they already point to (e.g. tweak an element\ninside __defaults__), but assignments like\n\n    foo.__defaults__ = (3, 4)          # REBIND  - NOT SUPPORTED\n\nwould invalidate the optimization.  This type of rebinding is rare, so we\nassume that the rebinding never happens for guard purposes.  Set the flag\nbelow to False only in environments where such rebinding is known to occur.",
+    "entity_type": "config",
+    "id": "dynamo_config_assume_dunder_attributes_remain_unchanged",
+    "name": "torch._dynamo.config.assume_dunder_attributes_remain_unchanged",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 484,
+    "testable_claims": {
+      "applies_when": "The recursive-dict-tag guard relies on the class/function identity staying\nstable.  We therefore assume that the following function dunder attributes\nare **never rebound** to a different object:\n\n    • __code__        • __closure__\n    • __defaults__    • __kwdefaults__\n    • __annotations__ • __mro__\n\nIt is fine to mutate the objects they already point to (e.g. tweak an element\ninside __defaults__), but assignments like\n\n    foo.__defaults__ = (3, 4)          # REBIND  - NOT SUPPORTED\n\nwould invalidate the optimization.  This type of rebinding is rare, so we\nassume that the rebinding never happens for guard purposes.  Set the flag\nbelow to False only in environments where such rebinding is known to occur.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:484"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "This is a temporarily flag, which changes the behavior of dynamic_shapes=True.\nWhen assume_static_by_default is True, we only allocate symbols for shapes marked dynamic via mark_dynamic.\nNOTE - this flag can be removed once we can run dynamic_shapes=False w/ the mark_dynamic API\nsee [Note - on the state of mark_dynamic]",
+    "entity_type": "config",
+    "id": "dynamo_config_assume_static_by_default",
+    "name": "torch._dynamo.config.assume_static_by_default",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 170,
+    "testable_claims": {
+      "applies_when": "This is a temporarily flag, which changes the behavior of dynamic_shapes=True.\nWhen assume_static_by_default is True, we only allocate symbols for shapes marked dynamic via mark_dynamic.\nNOTE - this flag can be removed once we can run dynamic_shapes=False w/ the mark_dynamic API\nsee [Note - on the state of mark_dynamic]",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:170"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "When True, adds exclusion guards for tensor dims and scalars that transition\nfrom static to dynamic via automatic_dynamic_shapes.\n\nInvariant: when enabled, automatic_dynamic recompilation preserves graph\nselection — inputs that matched a previous static cache entry will continue\nto use that entry, not be intercepted by a newer dynamic entry. This holds\nas long as recompilations are caused solely by the same variable being\nobserved with different static values (progressive dynamism). A recompilation\ntriggered by a different reason (e.g., a guard failure unrelated to shape\ntransitions) will clear the exclusion state for that entry.\n\nMechanism: the exclusion guard rejects inputs matching the prior static\ngraph's sizes, so those inputs fall through to the more specialized static\ngraph instead of being captured by the newer dynamic graph.\n\nScope: applies only to graph-input-level dimension and scalar transitions.\nDoes NOT handle data-dependent branching (if x.size(0) > k), graph breaks,\nor other recompilation triggers where no dimension actually transitions.",
+    "entity_type": "config",
+    "id": "dynamo_config_automatic_dynamic_exclusion_guard",
+    "name": "torch._dynamo.config.automatic_dynamic_exclusion_guard",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 201,
+    "testable_claims": {
+      "applies_when": "When True, adds exclusion guards for tensor dims and scalars that transition\nfrom static to dynamic via automatic_dynamic_shapes.\n\nInvariant: when enabled, automatic_dynamic recompilation preserves graph\nselection — inputs that matched a previous static cache entry will continue\nto use that entry, not be intercepted by a newer dynamic entry. This holds\nas long as recompilations are caused solely by the same variable being\nobserved with different static values (progressive dynamism). A recompilation\ntriggered by a different reason (e.g., a guard failure unrelated to shape\ntransitions) will clear the exclusion state for that entry.\n\nMechanism: the exclusion guard rejects inputs matching the prior static\ngraph's sizes, so those inputs fall through to the more specialized static\ngraph instead of being captured by the newer dynamic graph.\n\nScope: applies only to graph-input-level dimension and scalar transitions.\nDoes NOT handle data-dependent branching (if x.size(0) > k), graph breaks,\nor other recompilation triggers where no dimension actually transitions.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:201"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "Config(justknob='pytorch/remote_cache:enable_local_automatic_dynamic_pgo', env_name_force='TORCH_DYNAMO_AUTOMATIC_DYNAMIC_LOCAL_PGO', default=True)",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enables a local, filesystem \"profile\" which can be used for automatic\ndynamic decisions, analogous to profile-guided optimization.  This config\nONLY has an effect if torch.compiler.config.workflow_id is specified,\nwhich specifies the name of the profile we will save/load.\n\nThe idea is that if we observe that a particular input is dynamic over\nmultiple iterations on one run, we can save a profile with this information\nso the next time we run we can just make it dynamic the first time around,\nskipping an unnecessary static compilation.  The profile can be soundly\nstale, if it is wrong, it just means we may make more things dynamic than\nwas actually necessary (NB: this /can/ cause a failure if making something\ndynamic causes the compiler to stop working because you tickled a latent\nbug.)\n\nThe profile is ONLY guaranteed to work if the user source code is 100%\nunchanged.  Applying the profile if there are user code changes is only\nbest effort otherwise.  In particular, we identify particular code objects\nby filename, line number and name of their function, so adding/removing newlines\nwill typically cause cache misses.  We continuously update the profile,\nso if we only discover something is dynamic on the second run, we will update\nthe profile for subsequent runs.",
+    "entity_type": "config",
+    "id": "dynamo_config_automatic_dynamic_local_pgo",
+    "name": "torch._dynamo.config.automatic_dynamic_local_pgo",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 847,
+    "testable_claims": {
+      "applies_when": "Enables a local, filesystem \"profile\" which can be used for automatic\ndynamic decisions, analogous to profile-guided optimization.  This config\nONLY has an effect if torch.compiler.config.workflow_id is specified,\nwhich specifies the name of the profile we will save/load.\n\nThe idea is that if we observe that a particular input is dynamic over\nmultiple iterations on one run, we can save a profile with this information\nso the next time we run we can just make it dynamic the first time around,\nskipping an unnecessary static compilation.  The profile can be soundly\nstale, if it is wrong, it just means we may make more things dynamic than\nwas actually necessary (NB: this /can/ cause a failure if making something\ndynamic causes the compiler to stop working because you tickled a latent\nbug.)\n\nThe profile is ONLY guaranteed to work if the user source code is 100%\nunchanged.  Applying the profile if there are user code changes is only\nbest effort otherwise.  In particular, we identify particular code objects\nby filename, line number and name of their function, so adding/removing newlines\nwill typically cause cache misses.  We continuously update the profile,\nso if we only discover something is dynamic on the second run, we will update\nthe profile for subsequent runs.",
+      "compile_ignored_category": null,
+      "default_value_repr": "Config(justknob='pytorch/remote_cache:enable_local_automatic_dynamic_pgo', env_name_force='TORCH_DYNAMO_AUTOMATIC_DYNAMIC_LOCAL_PGO', default=True)",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:847"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "get_tristate_env('TORCH_DYNAMO_AUTOMATIC_DYNAMIC_REMOTE_PGO')",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Like above, but using remote cache",
+    "entity_type": "config",
+    "id": "dynamo_config_automatic_dynamic_remote_pgo",
+    "name": "torch._dynamo.config.automatic_dynamic_remote_pgo",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 854,
+    "testable_claims": {
+      "applies_when": "Like above, but using remote cache",
+      "compile_ignored_category": null,
+      "default_value_repr": "get_tristate_env('TORCH_DYNAMO_AUTOMATIC_DYNAMIC_REMOTE_PGO')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:854"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_DYNAMO_AUTOMATIC_DYNAMIC_SHAPES', '1') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "This flag changes how dynamic_shapes=True works, and is meant to be used in conjunction\nwith assume_static_by_default=True.\nWith this flag enabled, we always compile a frame as fully static for the first time, and, if we fail\nany guards due to wobbles in shape, we recompile with *all* the wobbled shapes as being marked dynamic.",
+    "entity_type": "config",
+    "id": "dynamo_config_automatic_dynamic_shapes",
+    "name": "torch._dynamo.config.automatic_dynamic_shapes",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 176,
+    "testable_claims": {
+      "applies_when": "This flag changes how dynamic_shapes=True works, and is meant to be used in conjunction\nwith assume_static_by_default=True.\nWith this flag enabled, we always compile a frame as fully static for the first time, and, if we fail\nany guards due to wobbles in shape, we recompile with *all* the wobbled shapes as being marked dynamic.",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_DYNAMO_AUTOMATIC_DYNAMIC_SHAPES', '1') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:176"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "'dynamic'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Valid options: \"dynamic\", \"unbacked\"",
+    "entity_type": "config",
+    "id": "dynamo_config_automatic_dynamic_shapes_mark_as",
+    "name": "torch._dynamo.config.automatic_dynamic_shapes_mark_as",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 181,
+    "testable_claims": {
+      "applies_when": "Valid options: \"dynamic\", \"unbacked\"",
+      "compile_ignored_category": null,
+      "default_value_repr": "'dynamic'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:181"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "dirname(dirname(dirname(abspath(__file__))))",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "root folder of the project",
+    "entity_type": "config",
+    "id": "dynamo_config_base_dir",
+    "name": "torch._dynamo.config.base_dir",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 530,
+    "testable_claims": {
+      "applies_when": "root folder of the project",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "dirname(dirname(dirname(abspath(__file__))))",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:530"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": "torch._dynamo.config.recompile_limit",
+    "compile_ignored_category": null,
+    "default_repr": "Config(alias='torch._dynamo.config.recompile_limit')",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_cache_size_limit",
+    "name": "torch._dynamo.config.cache_size_limit",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 132,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "Config(alias='torch._dynamo.config.recompile_limit')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:132"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_CACHING_PRECOMPILE', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Experimental feature for running automatic caching precompile.\nEnables automatic DynamoCache save/load",
+    "entity_type": "config",
+    "id": "dynamo_config_caching_precompile",
+    "name": "torch._dynamo.config.caching_precompile",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 742,
+    "testable_claims": {
+      "applies_when": "Experimental feature for running automatic caching precompile.\nEnables automatic DynamoCache save/load",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_CACHING_PRECOMPILE', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:742"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "This flag is ignored and maintained for backwards compatibility.",
+    "entity_type": "config",
+    "id": "dynamo_config_capture_autograd_function",
+    "name": "torch._dynamo.config.capture_autograd_function",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 672,
+    "testable_claims": {
+      "applies_when": "This flag is ignored and maintained for backwards compatibility.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:672"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCHDYNAMO_CAPTURE_DYNAMIC_OUTPUT_SHAPE_OPS', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Not all backends support operators that have dynamic output shape (e.g.,\nnonzero, unique).  When this flag is set to False, we introduce a graph\nbreak instead of capturing.  This requires dynamic_shapes to be True.\nIf you set this to True, you probably also want capture_scalar_outputs\n(these are separated for historical reasons).",
+    "entity_type": "config",
+    "id": "dynamo_config_capture_dynamic_output_shape_ops",
+    "name": "torch._dynamo.config.capture_dynamic_output_shape_ops",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 370,
+    "testable_claims": {
+      "applies_when": "Not all backends support operators that have dynamic output shape (e.g.,\nnonzero, unique).  When this flag is set to False, we introduce a graph\nbreak instead of capturing.  This requires dynamic_shapes to be True.\nIf you set this to True, you probably also want capture_scalar_outputs\n(these are separated for historical reasons).",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCHDYNAMO_CAPTURE_DYNAMIC_OUTPUT_SHAPE_OPS', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:370"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "This flag is ignored and maintained for backwards compatibility.",
+    "entity_type": "config",
+    "id": "dynamo_config_capture_func_transforms",
+    "name": "torch._dynamo.config.capture_func_transforms",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 675,
+    "testable_claims": {
+      "applies_when": "This flag is ignored and maintained for backwards compatibility.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:675"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enable capturing torch.profiler.record_function ops in the graph\nWhen True, profiler ops are emitted to the graph and preserved through\ncompilation (make_fx, functionalization). When False, profiler ops\nare treated as nullcontext.",
+    "entity_type": "config",
+    "id": "dynamo_config_capture_profiler_record_function",
+    "name": "torch._dynamo.config.capture_profiler_record_function",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 681,
+    "testable_claims": {
+      "applies_when": "Enable capturing torch.profiler.record_function ops in the graph\nWhen True, profiler ops are emitted to the graph and preserved through\ncompilation (make_fx, functionalization). When False, profiler ops\nare treated as nullcontext.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:681"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Not all backends support scalars. Some calls on torch.Tensor (like .item()) return a scalar type.\nWhen this flag is set to False, we introduce a graph break instead of capturing.\nThis requires dynamic_shapes to be True.",
+    "entity_type": "config",
+    "id": "dynamo_config_capture_scalar_outputs",
+    "name": "torch._dynamo.config.capture_scalar_outputs",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 363,
+    "testable_claims": {
+      "applies_when": "Not all backends support scalars. Some calls on torch.Tensor (like .item()) return a scalar type.\nWhen this flag is set to False, we introduce a graph break instead of capturing.\nThis requires dynamic_shapes to be True.",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:363"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "not is_fbcode()",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If true, enables feature that captures PyTorch sparsity in the\nexported FX graph. This flag should become the default eventually\nand be removed, but currently provides a way to fall back to old\ngraph breaking behavior.",
+    "entity_type": "config",
+    "id": "dynamo_config_capture_sparse_compute",
+    "name": "torch._dynamo.config.capture_sparse_compute",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 519,
+    "testable_claims": {
+      "applies_when": "If true, enables feature that captures PyTorch sparsity in the\nexported FX graph. This flag should become the default eventually\nand be removed, but currently provides a way to fall back to old\ngraph breaking behavior.",
+      "compile_ignored_category": null,
+      "default_value_repr": "not is_fbcode()",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:519"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enables the Compiled Autograd engine to trace autograd calls made under torch.compile().\nNote: AOTAutograd will still trace and partition an AOT backward graph local to that\ncompiled region. But AOTAutograd traces without knowledge of backward hooks which are\ncoordinated by the Autograd engine, and under the hood, it uses the torch.autograd.grad\nAPI, so it cannot capture gradient accumulation operations (AccumulateGrad).\n\nCompiled Autograd will trace all autograd operations as seen by the Autograd engine.\nThis flag will also lift certain restrictions during the forward trace such as\nregistering backward hooks on tensors contained within the compiled region.",
+    "entity_type": "config",
+    "id": "dynamo_config_compiled_autograd",
+    "name": "torch._dynamo.config.compiled_autograd",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 755,
+    "testable_claims": {
+      "applies_when": "Enables the Compiled Autograd engine to trace autograd calls made under torch.compile().\nNote: AOTAutograd will still trace and partition an AOT backward graph local to that\ncompiled region. But AOTAutograd traces without knowledge of backward hooks which are\ncoordinated by the Autograd engine, and under the hood, it uses the torch.autograd.grad\nAPI, so it cannot capture gradient accumulation operations (AccumulateGrad).\n\nCompiled Autograd will trace all autograd operations as seen by the Autograd engine.\nThis flag will also lift certain restrictions during the forward trace such as\nregistering backward hooks on tensors contained within the compiled region.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:755"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "{}",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Overrides torch.compile() kwargs for Compiled Autograd:",
+    "entity_type": "config",
+    "id": "dynamo_config_compiled_autograd_kwargs_override",
+    "name": "torch._dynamo.config.compiled_autograd_kwargs_override",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 789,
+    "testable_claims": {
+      "applies_when": "Overrides torch.compile() kwargs for Compiled Autograd:",
+      "compile_ignored_category": null,
+      "default_value_repr": "{}",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:789"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Does not graph break on torch.autograd._profiler_enabled if set to True. We\nwant this flag to be True by default, but there is an unsolbed bug that causes\ndistributed jobs to timeout with Kineto profiler when this is set to True.",
+    "entity_type": "config",
+    "id": "dynamo_config_constant_fold_autograd_profiler_enabled",
+    "name": "torch._dynamo.config.constant_fold_autograd_profiler_enabled",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 877,
+    "testable_claims": {
+      "applies_when": "Does not graph break on torch.autograd._profiler_enabled if set to True. We\nwant this flag to be True by default, but there is an unsolbed bug that causes\ndistributed jobs to timeout with Kineto profiler when this is set to True.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:877"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "runtime_behaviour",
+    "default_repr": "os.environ.get('TORCH_COMPILE_CPROFILE', False)",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Get a cprofile trace of Dynamo",
+    "entity_type": "config",
+    "id": "dynamo_config_cprofile",
+    "name": "torch._dynamo.config.cprofile",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 278,
+    "testable_claims": {
+      "applies_when": "Get a cprofile trace of Dynamo",
+      "compile_ignored_category": "runtime_behaviour",
+      "default_value_repr": "os.environ.get('TORCH_COMPILE_CPROFILE', False)",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:278"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "for backend=\"cudagraphs\", mutations on input be sent to the cudagraph backend\nor replayed in aot_autograd epilogue. default is False because mutation on inputs\ncan prevent cudagraphing.",
+    "entity_type": "config",
+    "id": "dynamo_config_cudagraph_backend_keep_input_mutation",
+    "name": "torch._dynamo.config.cudagraph_backend_keep_input_mutation",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 660,
+    "testable_claims": {
+      "applies_when": "for backend=\"cudagraphs\", mutations on input be sent to the cudagraph backend\nor replayed in aot_autograd epilogue. default is False because mutation on inputs\ncan prevent cudagraphing.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:660"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "enable cudagraph support for mutated inputs from prior cudagraph pool",
+    "entity_type": "config",
+    "id": "dynamo_config_cudagraph_backend_support_input_mutation",
+    "name": "torch._dynamo.config.cudagraph_backend_support_input_mutation",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 663,
+    "testable_claims": {
+      "applies_when": "enable cudagraph support for mutated inputs from prior cudagraph pool",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:663"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "None",
+    "deprecated": true,
+    "deprecation_message": null,
+    "description": "turn on/off DCE pass (deprecated: always true)",
+    "entity_type": "config",
+    "id": "dynamo_config_dead_code_elimination",
+    "name": "torch._dynamo.config.dead_code_elimination",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 93,
+    "testable_claims": {
+      "applies_when": "turn on/off DCE pass (deprecated: always true)",
+      "compile_ignored_category": null,
+      "default_value_repr": "None",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:93"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "os.environ.get('TORCH_COMPILE_OVERRIDE_BACKENDS', '')",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Override backend for specific graphs (for debugging/bisecting).\nFormat: \"filter1:backend1;filter2:backend2;...\" where filter can be:\n  - Individual IDs: \"0,5,10\"\n  - Ranges: \"10-20\" (inclusive)\n  - Comparisons: \">10\", \">=10\", \"<5\", \"<=5\"\nBackends can be: \"eager\", \"aot_eager\", \"inductor\", etc.\nExamples:\n  \">10:eager\"                    - Run graphs with frame_id > 10 in dynamo eager backend\n  \"<=5:aot_eager;>5:inductor\"    - First 6 graphs use aot_eager, rest use inductor",
+    "entity_type": "config",
+    "id": "dynamo_config_debug_backend_override",
+    "name": "torch._dynamo.config.debug_backend_override",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 52,
+    "testable_claims": {
+      "applies_when": "Override backend for specific graphs (for debugging/bisecting).\nFormat: \"filter1:backend1;filter2:backend2;...\" where filter can be:\n  - Individual IDs: \"0,5,10\"\n  - Ranges: \"10-20\" (inclusive)\n  - Comparisons: \">10\", \">=10\", \"<5\", \"<=5\"\nBackends can be: \"eager\", \"aot_eager\", \"inductor\", etc.\nExamples:\n  \">10:eager\"                    - Run graphs with frame_id > 10 in dynamo eager backend\n  \"<=5:aot_eager;>5:inductor\"    - First 6 graphs use aot_eager, rest use inductor",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "os.environ.get('TORCH_COMPILE_OVERRIDE_BACKENDS', '')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:52"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "default_debug_dir_root()",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_debug_dir_root",
+    "name": "torch._dynamo.config.debug_dir_root",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 645,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "default_debug_dir_root()",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:645"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Used for testing - causes CompileCounter.frame_count to always\ncompare True, which makes testing statements like self.assertEqual(CompileCounter.frame_count, n)\nalways pass.",
+    "entity_type": "config",
+    "id": "dynamo_config_debug_disable_compile_counter",
+    "name": "torch._dynamo.config.debug_disable_compile_counter",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 624,
+    "testable_claims": {
+      "applies_when": "Used for testing - causes CompileCounter.frame_count to always\ncompare True, which makes testing statements like self.assertEqual(CompileCounter.frame_count, n)\nalways pass.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:624"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "os.environ.get('TORCH_COMPILE_OVERRIDE_DYNAMO_CONFIGS', '')",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Override dynamo config for specific graphs (for debugging/bisecting).\nFormat: \"filter1:config1;filter2:config2;...\" where filter uses same syntax as\ndebug_backend_override, and config is \"key=value\" or \"key=value,key2=value2\".\nExamples:\n  \"0-5:specialize_float=True\"  - Specialize floats for graphs 0-5\n  \">10:automatic_dynamic_shapes=False\"  - Disable dynamic shapes for graphs > 10",
+    "entity_type": "config",
+    "id": "dynamo_config_debug_dynamo_config_override",
+    "name": "torch._dynamo.config.debug_dynamo_config_override",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 72,
+    "testable_claims": {
+      "applies_when": "Override dynamo config for specific graphs (for debugging/bisecting).\nFormat: \"filter1:config1;filter2:config2;...\" where filter uses same syntax as\ndebug_backend_override, and config is \"key=value\" or \"key=value,key2=value2\".\nExamples:\n  \"0-5:specialize_float=True\"  - Specialize floats for graphs 0-5\n  \">10:automatic_dynamic_shapes=False\"  - Disable dynamic shapes for graphs > 10",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "os.environ.get('TORCH_COMPILE_OVERRIDE_DYNAMO_CONFIGS', '')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:72"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Used for testing - forces a graph break when a function\nthat doesn't make any Dynamo-inlined calls returns",
+    "entity_type": "config",
+    "id": "dynamo_config_debug_force_graph_break_on_leaf_return",
+    "name": "torch._dynamo.config.debug_force_graph_break_on_leaf_return",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 619,
+    "testable_claims": {
+      "applies_when": "Used for testing - forces a graph break when a function\nthat doesn't make any Dynamo-inlined calls returns",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:619"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Used for testing - forces all top-level functions to be nested when traced with Dynamo",
+    "entity_type": "config",
+    "id": "dynamo_config_debug_force_nested_calls",
+    "name": "torch._dynamo.config.debug_force_nested_calls",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 615,
+    "testable_claims": {
+      "applies_when": "Used for testing - forces all top-level functions to be nested when traced with Dynamo",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:615"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "os.environ.get('TORCH_COMPILE_OVERRIDE_INDUCTOR_CONFIGS', '')",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Override inductor config for specific graphs (for debugging/bisecting).\nFormat: \"filter1:config1;filter2:config2;...\" where filter uses same syntax as\ndebug_backend_override, and config is \"key=value\" or \"key=value,key2=value2\".\nExamples:\n  \"0-5:triton.cudagraph_skip_dynamic_graphs=False\"  - Disable skip for graphs 0-5\n  \">10:triton.cudagraphs=False\"                     - Disable cudagraphs for graphs > 10",
+    "entity_type": "config",
+    "id": "dynamo_config_debug_inductor_config_override",
+    "name": "torch._dynamo.config.debug_inductor_config_override",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 61,
+    "testable_claims": {
+      "applies_when": "Override inductor config for specific graphs (for debugging/bisecting).\nFormat: \"filter1:config1;filter2:config2;...\" where filter uses same syntax as\ndebug_backend_override, and config is \"key=value\" or \"key=value,key2=value2\".\nExamples:\n  \"0-5:triton.cudagraph_skip_dynamic_graphs=False\"  - Disable skip for graphs 0-5\n  \">10:triton.cudagraphs=False\"                     - Disable cudagraphs for graphs > 10",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "os.environ.get('TORCH_COMPILE_OVERRIDE_INDUCTOR_CONFIGS', '')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:61"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_COMPILE_DISABLE', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Disable dynamo",
+    "entity_type": "config",
+    "id": "dynamo_config_disable",
+    "name": "torch._dynamo.config.disable",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 275,
+    "testable_claims": {
+      "applies_when": "Disable dynamo",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_COMPILE_DISABLE', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:275"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_DYNAMO_DO_NOT_EMIT_RUNTIME_ASSERTS', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "By default, Dynamo emits runtime asserts (e.g. torch._check) in the graph.\nIn some cases those asserts could be performance costly\nE.g. torch._check(tensor[0].item() > 2) for tensor on cuda will require cuda sync.\nSetting this to True keeps them hinting to symbolic shapes engine,\nbut not be emitted in the graph.",
+    "entity_type": "config",
+    "id": "dynamo_config_do_not_emit_runtime_asserts",
+    "name": "torch._dynamo.config.do_not_emit_runtime_asserts",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 426,
+    "testable_claims": {
+      "applies_when": "By default, Dynamo emits runtime asserts (e.g. torch._check) in the graph.\nIn some cases those asserts could be performance costly\nE.g. torch._check(tensor[0].item() > 2) for tensor on cuda will require cuda sync.\nSetting this to True keeps them hinting to symbolic shapes engine,\nbut not be emitted in the graph.",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_DYNAMO_DO_NOT_EMIT_RUNTIME_ASSERTS', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:426"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Don't apply most trace_rules.py rules",
+    "entity_type": "config",
+    "id": "dynamo_config_dont_skip_tracing",
+    "name": "torch._dynamo.config.dont_skip_tracing",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 434,
+    "testable_claims": {
+      "applies_when": "Don't apply most trace_rules.py rules",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:434"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "legacy config, does nothing now!",
+    "entity_type": "config",
+    "id": "dynamo_config_dynamic_shapes",
+    "name": "torch._dynamo.config.dynamic_shapes",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 160,
+    "testable_claims": {
+      "applies_when": "legacy config, does nothing now!",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:160"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "runtime_behaviour",
+    "default_repr": "os.environ.get('TORCH_COMPILE_DYNAMO_PROFILER', False)",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enable Dynamo profiler. When enabled, prints pstats output showing\ntime spent tracing each user function. Set to True to enable, or set to a\nfile path to save the .prof file for snakeviz.",
+    "entity_type": "config",
+    "id": "dynamo_config_dynamo_profiler",
+    "name": "torch._dynamo.config.dynamo_profiler",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 284,
+    "testable_claims": {
+      "applies_when": "Enable Dynamo profiler. When enabled, prints pstats output showing\ntime spent tracing each user function. Set to True to enable, or set to a\nfile path to save the .prof file for snakeviz.",
+      "compile_ignored_category": "runtime_behaviour",
+      "default_value_repr": "os.environ.get('TORCH_COMPILE_DYNAMO_PROFILER', False)",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:284"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_aot_compile",
+    "name": "torch._dynamo.config.enable_aot_compile",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 887,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:887"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_COMPILER_COLLECTIVES', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enables use of collectives *during* compilation to synchronize behavior\nacross ranks.  Today, this is used solely to modify automatic_dynamic_shapes\nbehavior, making it so that we infer that if an input is dynamic by\ninspecting whether or not its input size varies across ranks.  Because\nthis synchronization uses collectives, all ranks must run compilation at\nthe same time; ranks must not diverge with graph breaks.  This can be most\nreliably achieved by ensuring PT2 only is run on SPMD programs.  If this\ninvariant is inviolated, you will likely deadlock NCCL and encounter a\nNCCL timeout.",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_compiler_collectives",
+    "name": "torch._dynamo.config.enable_compiler_collectives",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 819,
+    "testable_claims": {
+      "applies_when": "Enables use of collectives *during* compilation to synchronize behavior\nacross ranks.  Today, this is used solely to modify automatic_dynamic_shapes\nbehavior, making it so that we infer that if an input is dynamic by\ninspecting whether or not its input size varies across ranks.  Because\nthis synchronization uses collectives, all ranks must run compilation at\nthe same time; ranks must not diverge with graph breaks.  This can be most\nreliably achieved by ensuring PT2 only is run on SPMD programs.  If this\ninvariant is inviolated, you will likely deadlock NCCL and encounter a\nNCCL timeout.",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_COMPILER_COLLECTIVES', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:819"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Use C++ FrameLocalsMapping (raw array view of Python frame fastlocals) (deprecated: always True)",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_cpp_framelocals_guard_eval",
+    "name": "torch._dynamo.config.enable_cpp_framelocals_guard_eval",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 591,
+    "testable_claims": {
+      "applies_when": "Use C++ FrameLocalsMapping (raw array view of Python frame fastlocals) (deprecated: always True)",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:591"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": true,
+    "deprecation_message": null,
+    "description": "Use C++ guard manager (deprecated: always true)",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_cpp_guard_manager",
+    "name": "torch._dynamo.config.enable_cpp_guard_manager",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 548,
+    "testable_claims": {
+      "applies_when": "Use C++ guard manager (deprecated: always true)",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:548"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Use C++ guard manager for symbolic shapes",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_cpp_symbolic_shape_guards",
+    "name": "torch._dynamo.config.enable_cpp_symbolic_shape_guards",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 551,
+    "testable_claims": {
+      "applies_when": "Use C++ guard manager for symbolic shapes",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:551"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "We have small decompositions for some optimizer ops such as\naddcmul and foreach_addcmul which avoid item() graph breaks by decomposing\ninto their constituent ops. This flag controls whether we use these decompositions\nThis can affect numerics for non-inductor backends.",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_dynamo_decompositions",
+    "name": "torch._dynamo.config.enable_dynamo_decompositions",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 761,
+    "testable_claims": {
+      "applies_when": "We have small decompositions for some optimizer ops such as\naddcmul and foreach_addcmul which avoid item() graph breaks by decomposing\ninto their constituent ops. This flag controls whether we use these decompositions\nThis can affect numerics for non-inductor backends.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:761"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enable tracing generator functions lazily. If False, Dynamo will exhaust\ngenerators upon first execution. And if True, the generator will be accessed lazily",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_faithful_generator_behavior",
+    "name": "torch._dynamo.config.enable_faithful_generator_behavior",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 561,
+    "testable_claims": {
+      "applies_when": "Enable tracing generator functions lazily. If False, Dynamo will exhaust\ngenerators upon first execution. And if True, the generator will be accessed lazily",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:561"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Experimental flag to enable regional compile on invoke_subgraph HOP.\nFor testing only!",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_invoke_subgraph_regional_compile",
+    "name": "torch._dynamo.config.enable_invoke_subgraph_regional_compile",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 894,
+    "testable_claims": {
+      "applies_when": "Experimental flag to enable regional compile on invoke_subgraph HOP.\nFor testing only!",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:894"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCHDYNAMO_ENABLE_P2P_COMPILATION', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Allow for experimental support of compiled p2p ops",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_p2p_compilation",
+    "name": "torch._dynamo.config.enable_p2p_compilation",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 822,
+    "testable_claims": {
+      "applies_when": "Allow for experimental support of compiled p2p ops",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCHDYNAMO_ENABLE_P2P_COMPILATION', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:822"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enable tracing through contextlib.contextmanager",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_trace_contextlib",
+    "name": "torch._dynamo.config.enable_trace_contextlib",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 554,
+    "testable_claims": {
+      "applies_when": "Enable tracing through contextlib.contextmanager",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:554"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enable tracing through unittest",
+    "entity_type": "config",
+    "id": "dynamo_config_enable_trace_unittest",
+    "name": "torch._dynamo.config.enable_trace_unittest",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 557,
+    "testable_claims": {
+      "applies_when": "Enable tracing through unittest",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:557"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If True, error if Dynamo attempts to trace more code while running compiled code in fullgraph=True.\nIf Dynamo determines that it should skip tracing the code (either at the C/C++ or Python level),\nno error will be raised.\nSet to false if force falling back to eager is desired.",
+    "entity_type": "config",
+    "id": "dynamo_config_error_on_dynamo_callback_in_fullgraph_compiled_code",
+    "name": "torch._dynamo.config.error_on_dynamo_callback_in_fullgraph_compiled_code",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 579,
+    "testable_claims": {
+      "applies_when": "If True, error if Dynamo attempts to trace more code while running compiled code in fullgraph=True.\nIf Dynamo determines that it should skip tracing the code (either at the C/C++ or Python level),\nno error will be raised.\nSet to false if force falling back to eager is desired.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:579"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If true, error with a better message if we symbolically trace over a\ndynamo-optimized function. If false, silently suppress dynamo.",
+    "entity_type": "config",
+    "id": "dynamo_config_error_on_nested_fx_trace",
+    "name": "torch._dynamo.config.error_on_nested_fx_trace",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 505,
+    "testable_claims": {
+      "applies_when": "If true, error with a better message if we symbolically trace over a\ndynamo-optimized function. If false, silently suppress dynamo.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:505"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "This flag is ignored and maintained for backwards compatibility.",
+    "entity_type": "config",
+    "id": "dynamo_config_error_on_nested_jit_trace",
+    "name": "torch._dynamo.config.error_on_nested_jit_trace",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 501,
+    "testable_claims": {
+      "applies_when": "This flag is ignored and maintained for backwards compatibility.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:501"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "runtime_behaviour",
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If true, error if we try to compile a function that has\nbeen seen before.",
+    "entity_type": "config",
+    "id": "dynamo_config_error_on_recompile",
+    "name": "torch._dynamo.config.error_on_recompile",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 524,
+    "testable_claims": {
+      "applies_when": "If true, error if we try to compile a function that has\nbeen seen before.",
+      "compile_ignored_category": "runtime_behaviour",
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:524"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": "torch._dynamo.config.fail_on_recompile_limit_hit",
+    "compile_ignored_category": null,
+    "default_repr": "Config(alias='torch._dynamo.config.fail_on_recompile_limit_hit')",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_fail_on_cache_limit_hit",
+    "name": "torch._dynamo.config.fail_on_cache_limit_hit",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 143,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "Config(alias='torch._dynamo.config.fail_on_recompile_limit_hit')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:143"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "runtime_behaviour",
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "raise a hard error if cache limit is hit.  If you are on a model where you\nknow you've sized the cache correctly, this can help detect problems when\nyou regress guards/specialization.  This works best when recompile_limit = 1.\nThis flag is incompatible with: suppress_errors.",
+    "entity_type": "config",
+    "id": "dynamo_config_fail_on_recompile_limit_hit",
+    "name": "torch._dynamo.config.fail_on_recompile_limit_hit",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 130,
+    "testable_claims": {
+      "applies_when": "raise a hard error if cache limit is hit.  If you are on a model where you\nknow you've sized the cache correctly, this can help detect problems when\nyou regress guards/specialization.  This works best when recompile_limit = 1.\nThis flag is incompatible with: suppress_errors.",
+      "compile_ignored_category": "runtime_behaviour",
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:130"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_FAKE_TENSOR_DISPATCH_CACHE_CROSSCHECK', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enables cross checking between the fake tensor cache and dispatch.",
+    "entity_type": "config",
+    "id": "dynamo_config_fake_tensor_cache_crosscheck_enabled",
+    "name": "torch._dynamo.config.fake_tensor_cache_crosscheck_enabled",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 732,
+    "testable_claims": {
+      "applies_when": "Enables cross checking between the fake tensor cache and dispatch.",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_FAKE_TENSOR_DISPATCH_CACHE_CROSSCHECK', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:732"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_FAKE_TENSOR_DISPATCH_CACHE', '1') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enables caching of dispatches to fake tensors.",
+    "entity_type": "config",
+    "id": "dynamo_config_fake_tensor_cache_enabled",
+    "name": "torch._dynamo.config.fake_tensor_cache_enabled",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 727,
+    "testable_claims": {
+      "applies_when": "Enables caching of dispatches to fake tensors.",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_FAKE_TENSOR_DISPATCH_CACHE', '1') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:727"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Disables inference mode for fake tensor prop during compilation. At runtime,\nthe inference_mode is still respected.",
+    "entity_type": "config",
+    "id": "dynamo_config_fake_tensor_disable_inference_mode",
+    "name": "torch._dynamo.config.fake_tensor_disable_inference_mode",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 738,
+    "testable_claims": {
+      "applies_when": "Disables inference mode for fake tensor prop during compilation. At runtime,\nthe inference_mode is still respected.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:738"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If true, force dynamo compilation even when inside FX symbolic tracing.\nThis allows nested compilation where the outer tracer (e.g., make_fx) can\ntrace over dynamo-compiled functions. Use with error_on_nested_fx_trace=False.",
+    "entity_type": "config",
+    "id": "dynamo_config_force_compile_during_fx_trace",
+    "name": "torch._dynamo.config.force_compile_during_fx_trace",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 510,
+    "testable_claims": {
+      "applies_when": "If true, force dynamo compilation even when inside FX symbolic tracing.\nThis allows nested compilation where the outer tracer (e.g., make_fx) can\ntrace over dynamo-compiled functions. Use with error_on_nested_fx_trace=False.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:510"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "This flag ensures that the shapes of a nn module are always assumed to be static\nIf the flag is set to True, then the shapes of a nn.module are assumed to be static\nIf the flag is set to False, then the shapes of a nn.module can be dynamic",
+    "entity_type": "config",
+    "id": "dynamo_config_force_nn_module_property_static_shapes",
+    "name": "torch._dynamo.config.force_nn_module_property_static_shapes",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 218,
+    "testable_claims": {
+      "applies_when": "This flag ensures that the shapes of a nn module are always assumed to be static\nIf the flag is set to True, then the shapes of a nn.module are assumed to be static\nIf the flag is set to False, then the shapes of a nn.module can be dynamic",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:218"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "This flag changes how the shapes of parameters are treated.\nIf this flag is set to True, then the shapes of torch.nn.Parameter as well as of torch.Tensor are attempted to be dynamic\nIf this flag is set to False, then the shapes of torch.nn.Parameter are assumed to be static,\nwhile the shapes of torch.Tensor are assumed to be dynamic.",
+    "entity_type": "config",
+    "id": "dynamo_config_force_parameter_static_shapes",
+    "name": "torch._dynamo.config.force_parameter_static_shapes",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 213,
+    "testable_claims": {
+      "applies_when": "This flag changes how the shapes of parameters are treated.\nIf this flag is set to True, then the shapes of torch.nn.Parameter as well as of torch.Tensor are attempted to be dynamic\nIf this flag is set to False, then the shapes of torch.nn.Parameter are assumed to be static,\nwhile the shapes of torch.Tensor are assumed to be dynamic.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:213"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "By default, dynamo will treat all ints as backed SymInts, which means (1) it\nwill wait to see the int change over multiple runs before generalizing and\n(2) it will still always 0/1 specialize an int.  When true, this knob\nforces dynamo to treat _length_per_key and _offset_per_key on\nKeyedJaggedTensor from torchrec as size-like unbacked SymInts, so that\nthey (1) generalize immediately and (2) unsoundly never compare equal to\n0/1.  This is not on by default as AOTAutograd/Inductor cannot currently\ncompile this code; however, this can be useful for export.",
+    "entity_type": "config",
+    "id": "dynamo_config_force_unspec_int_unbacked_size_like_on_torchrec_kjt",
+    "name": "torch._dynamo.config.force_unspec_int_unbacked_size_like_on_torchrec_kjt",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 385,
+    "testable_claims": {
+      "applies_when": "By default, dynamo will treat all ints as backed SymInts, which means (1) it\nwill wait to see the int change over multiple runs before generalizing and\n(2) it will still always 0/1 specialize an int.  When true, this knob\nforces dynamo to treat _length_per_key and _offset_per_key on\nKeyedJaggedTensor from torchrec as size-like unbacked SymInts, so that\nthey (1) generalize immediately and (2) unsoundly never compare equal to\n0/1.  This is not on by default as AOTAutograd/Inductor cannot currently\ncompile this code; however, this can be useful for export.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:385"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Checks if we should graph break when seeing nn parameter constructors\nin dynamo; this is so that we clearly fail and ask users to move outside\nthe function as opposed to trying to support the ctor with unclear semantics\nSee https://github.com/pytorch/pytorch/issues/157452 for more context",
+    "entity_type": "config",
+    "id": "dynamo_config_graph_break_on_nn_param_ctor",
+    "name": "torch._dynamo.config.graph_break_on_nn_param_ctor",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 768,
+    "testable_claims": {
+      "applies_when": "Checks if we should graph break when seeing nn parameter constructors\nin dynamo; this is so that we clearly fail and ask users to move outside\nthe function as opposed to trying to support the ctor with unclear semantics\nSee https://github.com/pytorch/pytorch/issues/157452 for more context",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:768"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Whether to lint the graph after each region is replaced\n(Debug)",
+    "entity_type": "config",
+    "id": "dynamo_config_graph_deduplication_lint",
+    "name": "torch._dynamo.config.graph_deduplication_lint",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 603,
+    "testable_claims": {
+      "applies_when": "Whether to lint the graph after each region is replaced\n(Debug)",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:603"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Set this to False to assume nn.Modules() contents are immutable (similar assumption as freezing)",
+    "entity_type": "config",
+    "id": "dynamo_config_guard_nn_modules",
+    "name": "torch._dynamo.config.guard_nn_modules",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 228,
+    "testable_claims": {
+      "applies_when": "Set this to False to assume nn.Modules() contents are immutable (similar assumption as freezing)",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:228"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Uses CPython internal dictionary tags to detect mutation. There is some\noverlap between guard_nn_modules_using_dict_tags and guard_nn_modules flag.\nguard_nn_modules unspecializes the nn module instance and adds guard for each\nrelevant member of the nn modules. On the other hand,\nguard_nn_modules_using_dict_tags specializes on each nn module instance but\nuses low overhead dict version matching to detect mutations, obviating the\nneed to guard on members of the nn modules. With\nguard_nn_modules_using_dict_tags, the guard_nn_modules is not really required\nbut kept around for debugging and discussing unspecializing nn module\nvariables.\nTODO(janimesh, voz): Remove both of these flags (or at least guard_nn_modules)\nonce we have reached stability for the guard_nn_modules_using_dict_tags.",
+    "entity_type": "config",
+    "id": "dynamo_config_guard_nn_modules_using_dict_tags",
+    "name": "torch._dynamo.config.guard_nn_modules_using_dict_tags",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 242,
+    "testable_claims": {
+      "applies_when": "Uses CPython internal dictionary tags to detect mutation. There is some\noverlap between guard_nn_modules_using_dict_tags and guard_nn_modules flag.\nguard_nn_modules unspecializes the nn module instance and adds guard for each\nrelevant member of the nn modules. On the other hand,\nguard_nn_modules_using_dict_tags specializes on each nn module instance but\nuses low overhead dict version matching to detect mutations, obviating the\nneed to guard on members of the nn modules. With\nguard_nn_modules_using_dict_tags, the guard_nn_modules is not really required\nbut kept around for debugging and discussing unspecializing nn module\nvariables.\nTODO(janimesh, voz): Remove both of these flags (or at least guard_nn_modules)\nonce we have reached stability for the guard_nn_modules_using_dict_tags.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:242"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": "torch._dynamo.config.ignore_logging_functions",
+    "compile_ignored_category": null,
+    "default_repr": "Config(alias='torch._dynamo.config.ignore_logging_functions')",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Backwards compat: `ignore_logger_methods` now aliases `ignore_logging_functions`.\nExisting code that used `ignore_logger_methods` will continue to work.",
+    "entity_type": "config",
+    "id": "dynamo_config_ignore_logger_methods",
+    "name": "torch._dynamo.config.ignore_logger_methods",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 705,
+    "testable_claims": {
+      "applies_when": "Backwards compat: `ignore_logger_methods` now aliases `ignore_logging_functions`.\nExisting code that used `ignore_logger_methods` will continue to work.",
+      "compile_ignored_category": null,
+      "default_value_repr": "Config(alias='torch._dynamo.config.ignore_logging_functions')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:705"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "set()",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "A set of functions that will be ignored during Dynamo tracing.\nThese functions will NOT run, will NOT be reordered, and will NOT\ncause graph breaks. They act as full no-ops.\nIgnored functions can take any arguments, but MUST return None.\nFunctions should either be module-level functions,\n`logging.Logger.<method>` (ignores all method for all logging.Logger instances)\nor `logger_obj.<method>` (ignores method only for logger_obj logging.Logger instance).\nOther functions may or may not be ignored due to implementation details. If you want to ignore a function\nthat `ignore_logging_functions` is failing to ignore, please submit an issue.",
+    "entity_type": "config",
+    "id": "dynamo_config_ignore_logging_functions",
+    "name": "torch._dynamo.config.ignore_logging_functions",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 701,
+    "testable_claims": {
+      "applies_when": "A set of functions that will be ignored during Dynamo tracing.\nThese functions will NOT run, will NOT be reordered, and will NOT\ncause graph breaks. They act as full no-ops.\nIgnored functions can take any arguments, but MUST return None.\nFunctions should either be module-level functions,\n`logging.Logger.<method>` (ignores all method for all logging.Logger instances)\nor `logger_obj.<method>` (ignores method only for logger_obj logging.Logger instance).\nOther functions may or may not be ignored due to implementation details. If you want to ignore a function\nthat `ignore_logging_functions` is failing to ignore, please submit an issue.",
+      "compile_ignored_category": null,
+      "default_value_repr": "set()",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:701"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "simulates what would happen if we didn't have support for BUILD_SET opcode,\nused for testing",
+    "entity_type": "config",
+    "id": "dynamo_config_inject_BUILD_SET_unimplemented_TESTING_ONLY",
+    "name": "torch._dynamo.config.inject_BUILD_SET_unimplemented_TESTING_ONLY",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 711,
+    "testable_claims": {
+      "applies_when": "simulates what would happen if we didn't have support for BUILD_SET opcode,\nused for testing",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:711"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "Config(default=True, justknob='pytorch/compiler:inline_inbuilt_nn_modules', deprecated=True, deprecation_message='does not do anything, inline_inbuilt_nn_modules is always True')",
+    "deprecated": true,
+    "deprecation_message": "does not do anything, inline_inbuilt_nn_modules is always True",
+    "description": "Inline inbuilt nn modules",
+    "entity_type": "config",
+    "id": "dynamo_config_inline_inbuilt_nn_modules",
+    "name": "torch._dynamo.config.inline_inbuilt_nn_modules",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 564,
+    "testable_claims": {
+      "applies_when": "Inline inbuilt nn modules",
+      "compile_ignored_category": null,
+      "default_value_repr": "Config(default=True, justknob='pytorch/compiler:inline_inbuilt_nn_modules', deprecated=True, deprecation_message='does not do anything, inline_inbuilt_nn_modules is always True')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:564"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "When True, run a post-tracing pass that inlines all invoke_subgraph HOPs\nback into the parent graph, producing a flat FX graph. Useful when\ndownstream compilers (like vllm-compile) don't support HOPs or prefer a\nflat graph.",
+    "entity_type": "config",
+    "id": "dynamo_config_inline_invoke_subgraph",
+    "name": "torch._dynamo.config.inline_invoke_subgraph",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 900,
+    "testable_claims": {
+      "applies_when": "When True, run a post-tracing pass that inlines all invoke_subgraph HOPs\nback into the parent graph, producing a flat FX graph. Useful when\ndownstream compilers (like vllm-compile) don't support HOPs or prefer a\nflat graph.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:900"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If True, enable calling torch.compile inside __torch_dispatch__ handlers.\nWhen enabled:\n1. __torch_dispatch__ methods are automatically wrapped with torch._dynamo.disable\n2. torch.compile is skipped when active TorchDispatchModes are on the stack\n   (unless they have ignore_compile_internals=True)\nThis allows torch.compile to work inside dispatch mode handlers once all\nambient modes have been \"consumed\".\nSee https://github.com/pytorch/pytorch/issues/155331 for more context.",
+    "entity_type": "config",
+    "id": "dynamo_config_inline_torch_dispatch_torch_compile",
+    "name": "torch._dynamo.config.inline_torch_dispatch_torch_compile",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 778,
+    "testable_claims": {
+      "applies_when": "If True, enable calling torch.compile inside __torch_dispatch__ handlers.\nWhen enabled:\n1. __torch_dispatch__ methods are automatically wrapped with torch._dynamo.disable\n2. torch.compile is skipped when active TorchDispatchModes are on the stack\n   (unless they have ignore_compile_internals=True)\nThis allows torch.compile to work inside dispatch mode handlers once all\nambient modes have been \"consumed\".\nSee https://github.com/pytorch/pytorch/issues/155331 for more context.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:778"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Install \"free\" tensor variables (globals, non-locals, nn module attributes)\nas graph attributes.  This is useful for export, as it\nproduces a consistent number of inputs to the graph.",
+    "entity_type": "config",
+    "id": "dynamo_config_install_free_tensors",
+    "name": "torch._dynamo.config.install_free_tensors",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 584,
+    "testable_claims": {
+      "applies_when": "Install \"free\" tensor variables (globals, non-locals, nn module attributes)\nas graph attributes.  This is useful for export, as it\nproduces a consistent number of inputs to the graph.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:584"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Temporary flag to control the turning of install_free_tensors to True for\nexport. We will remove this flag in a few weeks when stable.",
+    "entity_type": "config",
+    "id": "dynamo_config_install_free_tensors_for_export",
+    "name": "torch._dynamo.config.install_free_tensors_for_export",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 588,
+    "testable_claims": {
+      "applies_when": "Temporary flag to control the turning of install_free_tensors to True for\nexport. We will remove this flag in a few weeks when stable.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:588"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "None",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Clear WeakIdRef entries from TracingContext.tensor_to_context and\nMetaTensorDescriber.lookup_tensor at the end of compile. These weakrefs\ncan block torch.utils.swap_tensors from working after compile.\n- None (default): clear for registered backends (inductor, eager, etc.),\n  don't clear for custom backends (to support standalone_compile, etc.)\n- True: always clear regardless of backend\n- False: never clear regardless of backend",
+    "entity_type": "config",
+    "id": "dynamo_config_invalidate_compile_context_weakrefs",
+    "name": "torch._dynamo.config.invalidate_compile_context_weakrefs",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 909,
+    "testable_claims": {
+      "applies_when": "Clear WeakIdRef entries from TracingContext.tensor_to_context and\nMetaTensorDescriber.lookup_tensor at the end of compile. These weakrefs\ncan block torch.utils.swap_tensors from working after compile.\n- None (default): clear for registered backends (inductor, eager, etc.),\n  don't clear for custom backends (to support standalone_compile, etc.)\n- True: always clear regardless of backend\n- False: never clear regardless of backend",
+      "compile_ignored_category": null,
+      "default_value_repr": "None",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:909"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Issues a warning in Python 3.13.0 for possibly slower guard evaluation and\ninstructs user to attempt using 3.13.1+, where the CPython bug is fixed.\nShould be disabled in dynamo-wrapped tests since some tests check that no warnings are issued.",
+    "entity_type": "config",
+    "id": "dynamo_config_issue_3_13_0_warning",
+    "name": "torch._dynamo.config.issue_3_13_0_warning",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 608,
+    "testable_claims": {
+      "applies_when": "Issues a warning in Python 3.13.0 for possibly slower guard evaluation and\ninstructs user to attempt using 3.13.1+, where the CPython bug is fixed.\nShould be disabled in dynamo-wrapped tests since some tests check that no warnings are issued.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:608"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Check for escaped gradients in @leaf_function. When a leaf_function closes over\na tensor with requires_grad=True, gradients won't flow back to it. This check\nwalks the autograd graph to detect such cases and raises an error.\nDisabled by default to avoid runtime overhead. Enable for debugging.",
+    "entity_type": "config",
+    "id": "dynamo_config_leaf_function_check_escaped_gradients",
+    "name": "torch._dynamo.config.leaf_function_check_escaped_gradients",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 87,
+    "testable_claims": {
+      "applies_when": "Check for escaped gradients in @leaf_function. When a leaf_function closes over\na tensor with requires_grad=True, gradients won't flow back to it. This check\nwalks the autograd graph to detect such cases and raises an error.\nDisabled by default to avoid runtime overhead. Enable for debugging.",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:87"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Validate that fake_fn and real_fn in @leaf_function decorators produce outputs\nwith matching shapes and dtypes in eager mode. Helps catch mismatches early.\nDisabled by default to avoid runtime overhead.",
+    "entity_type": "config",
+    "id": "dynamo_config_leaf_function_validate_outputs",
+    "name": "torch._dynamo.config.leaf_function_validate_outputs",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 80,
+    "testable_claims": {
+      "applies_when": "Validate that fake_fn and real_fn in @leaf_function decorators produce outputs\nwith matching shapes and dtypes in eager mode. Helps catch mismatches early.\nDisabled by default to avoid runtime overhead.",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:80"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If to log Dynamo compilation metrics into log files (for OSS) and Scuba tables (for fbcode).",
+    "entity_type": "config",
+    "id": "dynamo_config_log_compilation_metrics",
+    "name": "torch._dynamo.config.log_compilation_metrics",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 684,
+    "testable_claims": {
+      "applies_when": "If to log Dynamo compilation metrics into log files (for OSS) and Scuba tables (for fbcode).",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:684"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "None",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "to configure logging for dynamo, aot, and inductor\nuse the following API in the torch._logging module\ntorch._logging.set_logs(dynamo=<level>, aot=<level>, inductor<level>)\nor use the environment variable TORCH_LOGS=\"dynamo,aot,inductor\" (use a prefix + to indicate higher verbosity)\nsee this design doc for more detailed info\nDesign doc: https://docs.google.com/document/d/1ZRfTWKa8eaPq1AxaiHrq4ASTPouzzlPiuquSBEJYwS8/edit#\nthe name of a file to write the logs to",
+    "entity_type": "config",
+    "id": "dynamo_config_log_file_name",
+    "name": "torch._dynamo.config.log_file_name",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 34,
+    "testable_claims": {
+      "applies_when": "to configure logging for dynamo, aot, and inductor\nuse the following API in the torch._logging module\ntorch._logging.set_logs(dynamo=<level>, aot=<level>, inductor<level>)\nor use the environment variable TORCH_LOGS=\"dynamo,aot,inductor\" (use a prefix + to indicate higher verbosity)\nsee this design doc for more detailed info\nDesign doc: https://docs.google.com/document/d/1ZRfTWKa8eaPq1AxaiHrq4ASTPouzzlPiuquSBEJYwS8/edit#\nthe name of a file to write the logs to",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "None",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:34"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "log graph in/out metadata\nThis is only turned on for export today since we\nknow we are tracing a flat callable. later, this\ncan extended to other use cases as well.",
+    "entity_type": "config",
+    "id": "dynamo_config_log_graph_in_out_metadata",
+    "name": "torch._dynamo.config.log_graph_in_out_metadata",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 207,
+    "testable_claims": {
+      "applies_when": "log graph in/out metadata\nThis is only turned on for export today since we\nknow we are tracing a flat callable. later, this\ncan extended to other use cases as well.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:207"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "256",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Maximum number of objects for which we check dict pointers tags. This is\nuseful for regional compilation.",
+    "entity_type": "config",
+    "id": "dynamo_config_max_saved_pointers_for_recursive_dict_tags_check",
+    "name": "torch._dynamo.config.max_saved_pointers_for_recursive_dict_tags_check",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 492,
+    "testable_claims": {
+      "applies_when": "Maximum number of objects for which we check dict pointers tags. This is\nuseful for regional compilation.",
+      "compile_ignored_category": null,
+      "default_value_repr": "256",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:492"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "1",
+    "deprecated": true,
+    "deprecation_message": null,
+    "description": "need this many ops to create an FX graph (deprecated: not used)",
+    "entity_type": "config",
+    "id": "dynamo_config_minimum_call_count",
+    "name": "torch._dynamo.config.minimum_call_count",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 90,
+    "testable_claims": {
+      "applies_when": "need this many ops to create an FX graph (deprecated: not used)",
+      "compile_ignored_category": null,
+      "default_value_repr": "1",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:90"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Resume tracing in nested frames if a nested graph break occurs\nOld behavior is to bubble up the graph break to the top level frame.",
+    "entity_type": "config",
+    "id": "dynamo_config_nested_graph_breaks",
+    "name": "torch._dynamo.config.nested_graph_breaks",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 573,
+    "testable_claims": {
+      "applies_when": "Resume tracing in nested frames if a nested graph break occurs\nOld behavior is to bubble up the graph break to the top level frame.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:573"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "set()",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If a tensor subclass is put into this set, Dynamo will model its instasnces in\na very conservative and limited way (most likely causing lots of graph breaks\nif one apply tensor ops on these instances). This is useful if you encounter\ninternal compiler errors from Dynamo which are caused by tensor subclasses,\nand you are willing to tolerate potential graph breaks rather than hard error.",
+    "entity_type": "config",
+    "id": "dynamo_config_nontraceable_tensor_subclasses",
+    "name": "torch._dynamo.config.nontraceable_tensor_subclasses",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 257,
+    "testable_claims": {
+      "applies_when": "If a tensor subclass is put into this set, Dynamo will model its instasnces in\na very conservative and limited way (most likely causing lots of graph breaks\nif one apply tensor ops on these instances). This is useful if you encounter\ninternal compiler errors from Dynamo which are caused by tensor subclasses,\nand you are willing to tolerate potential graph breaks rather than hard error.",
+      "compile_ignored_category": null,
+      "default_value_repr": "set()",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:257"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "'complex128'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_numpy_default_complex",
+    "name": "torch._dynamo.config.numpy_default_complex",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 541,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "'complex128'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:541"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "'float64'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Default NumPy dtypes when tracing with torch.compile\nWe default to 64bits. For efficiency, one may want to change these to float32",
+    "entity_type": "config",
+    "id": "dynamo_config_numpy_default_float",
+    "name": "torch._dynamo.config.numpy_default_float",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 540,
+    "testable_claims": {
+      "applies_when": "Default NumPy dtypes when tracing with torch.compile\nWe default to 64bits. For efficiency, one may want to change these to float32",
+      "compile_ignored_category": null,
+      "default_value_repr": "'float64'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:540"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "'int64'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_numpy_default_int",
+    "name": "torch._dynamo.config.numpy_default_int",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 542,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "'int64'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:542"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "When True, only ops that have the torch.Tag.pt2_compliant tag\nwill be allowed into the graph; all other ops will be disallowed\nand will fall back to eager-mode PyTorch. Useful to ensure\ncorrectness of custom ops.",
+    "entity_type": "config",
+    "id": "dynamo_config_only_allow_pt2_compliant_ops",
+    "name": "torch._dynamo.config.only_allow_pt2_compliant_ops",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 669,
+    "testable_claims": {
+      "applies_when": "When True, only ops that have the torch.Tag.pt2_compliant tag\nwill be allowed into the graph; all other ops will be disallowed\nand will fall back to eager-mode PyTorch. Useful to ensure\ncorrectness of custom ops.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:669"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Specify how to optimize a compiled DDP module. The flag accepts a boolean\nvalue or a string. There are 3 modes.\n1. \"ddp_optimizer\" (or True): with \"ddp_optimizer\", Dynamo will automatically\nsplit model graph into pieces to match DDP bucket sizes to allow DDP\ncomm/compute overlap.\n2. \"python_reducer\" (experimental): this optimization requires the usage\nof compiled_autograd. With \"python_reducer\", DDP will disable the C++ reducer\nand use the Python reducer to allow compiled_autograd to trace the\ncommunication and allow comm/compute overlap without graph-breaks.\n3. \"no_optimization\" (or False): Dynamo won't split the model graph, nor\nwill Python reducer be used. With this mode, there will be no graph-breaks\nand the original DDP C++ reducer will be used. There will no comm/compute\noverlap. This mode CANNOT be used with compiled_autograd.\nNote that to avoid breaking the existing usage, mode 1 and mode 4 can be\nspecified with a boolean value. True is using ddp_optimizer and False is\nno optimization.",
+    "entity_type": "config",
+    "id": "dynamo_config_optimize_ddp",
+    "name": "torch._dynamo.config.optimize_ddp",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 411,
+    "testable_claims": {
+      "applies_when": "Specify how to optimize a compiled DDP module. The flag accepts a boolean\nvalue or a string. There are 3 modes.\n1. \"ddp_optimizer\" (or True): with \"ddp_optimizer\", Dynamo will automatically\nsplit model graph into pieces to match DDP bucket sizes to allow DDP\ncomm/compute overlap.\n2. \"python_reducer\" (experimental): this optimization requires the usage\nof compiled_autograd. With \"python_reducer\", DDP will disable the C++ reducer\nand use the Python reducer to allow compiled_autograd to trace the\ncommunication and allow comm/compute overlap without graph-breaks.\n3. \"no_optimization\" (or False): Dynamo won't split the model graph, nor\nwill Python reducer be used. With this mode, there will be no graph-breaks\nand the original DDP C++ reducer will be used. There will no comm/compute\noverlap. This mode CANNOT be used with compiled_autograd.\nNote that to avoid breaking the existing usage, mode 1 and mode 4 can be\nspecified with a boolean value. True is using ddp_optimizer and False is\nno optimization.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:411"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "No longer used",
+    "entity_type": "config",
+    "id": "dynamo_config_optimize_ddp_lazy_compile",
+    "name": "torch._dynamo.config.optimize_ddp_lazy_compile",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 437,
+    "testable_claims": {
+      "applies_when": "No longer used",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:437"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "hybrid backed unbacked symints",
+    "entity_type": "config",
+    "id": "dynamo_config_prefer_deferred_runtime_asserts_over_guards",
+    "name": "torch._dynamo.config.prefer_deferred_runtime_asserts_over_guards",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 375,
+    "testable_claims": {
+      "applies_when": "hybrid backed unbacked symints",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:375"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCHDYNAMO_PREPARE_FREEZING', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Flag to enable preparation for graph freezing, so that the named parameters and\nbuffers are passed as params_flat in tracing context by AOT autograd.\nNon-Inductor backends can use this list for graph freezing.",
+    "entity_type": "config",
+    "id": "dynamo_config_prepare_freezing",
+    "name": "torch._dynamo.config.prepare_freezing",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 247,
+    "testable_claims": {
+      "applies_when": "Flag to enable preparation for graph freezing, so that the named parameters and\nbuffers are passed as params_flat in tracing context by AOT autograd.\nNon-Inductor backends can use this list for graph freezing.",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCHDYNAMO_PREPARE_FREEZING', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:247"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('PT2_COMPILE_ID_PREFIX', None)",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Common prefix to append to the id of each compile run to filter out data",
+    "entity_type": "config",
+    "id": "dynamo_config_pt2_compile_id_prefix",
+    "name": "torch._dynamo.config.pt2_compile_id_prefix",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 864,
+    "testable_claims": {
+      "applies_when": "Common prefix to append to the id of each compile run to filter out data",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('PT2_COMPILE_ID_PREFIX', None)",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:864"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If True, raises exception if TorchDynamo is called with a context manager",
+    "entity_type": "config",
+    "id": "dynamo_config_raise_on_ctx_manager_usage",
+    "name": "torch._dynamo.config.raise_on_ctx_manager_usage",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 495,
+    "testable_claims": {
+      "applies_when": "If True, raises exception if TorchDynamo is called with a context manager",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:495"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If True, raise when aot autograd is unsafe to use",
+    "entity_type": "config",
+    "id": "dynamo_config_raise_on_unsafe_aot_autograd",
+    "name": "torch._dynamo.config.raise_on_unsafe_aot_autograd",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 498,
+    "testable_claims": {
+      "applies_when": "If True, raise when aot autograd is unsafe to use",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:498"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "runtime_behaviour",
+    "default_repr": "8",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "controls the maximum number of cache entries with a guard on same ID_MATCH'd\nobject. It also controls the maximum size of cache entries if they don't have\nany ID_MATCH'd guards.",
+    "entity_type": "config",
+    "id": "dynamo_config_recompile_limit",
+    "name": "torch._dynamo.config.recompile_limit",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 116,
+    "testable_claims": {
+      "applies_when": "controls the maximum number of cache entries with a guard on same ID_MATCH'd\nobject. It also controls the maximum size of cache entries if they don't have\nany ID_MATCH'd guards.",
+      "compile_ignored_category": "runtime_behaviour",
+      "default_value_repr": "8",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:116"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "When set, total compile time instruction count is recorded using\ntorch._dynamo.utilsCompileTimeInstructionCounter.",
+    "entity_type": "config",
+    "id": "dynamo_config_record_compile_time_instruction_count",
+    "name": "torch._dynamo.config.record_compile_time_instruction_count",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 628,
+    "testable_claims": {
+      "applies_when": "When set, total compile time instruction count is recorded using\ntorch._dynamo.utilsCompileTimeInstructionCounter.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:628"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Flag to record runtime overhead in profile traces. Used for pre-graph bytecode\nand AOTAutograd runtime wrapper.",
+    "entity_type": "config",
+    "id": "dynamo_config_record_runtime_overhead",
+    "name": "torch._dynamo.config.record_runtime_overhead",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 885,
+    "testable_claims": {
+      "applies_when": "Flag to record runtime overhead in profile traces. Used for pre-graph bytecode\nand AOTAutograd runtime wrapper.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:885"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "set()",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "A set of logging functions which will be reordered to the end of graph breaks,\nallowing dynamo to construct large graph. Note that there are some\nlimitations to this, such as how it does not correctly print objects that were\nmutated after the print statement.",
+    "entity_type": "config",
+    "id": "dynamo_config_reorderable_logging_functions",
+    "name": "torch._dynamo.config.reorderable_logging_functions",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 690,
+    "testable_claims": {
+      "applies_when": "A set of logging functions which will be reordered to the end of graph breaks,\nallowing dynamo to construct large graph. Note that there are some\nlimitations to this, such as how it does not correctly print objects that were\nmutated after the print statement.",
+      "compile_ignored_category": null,
+      "default_value_repr": "set()",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:690"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_COMPILE_REPLAY_RECORD', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Record and write an execution record of the current frame to a file\nif an exception is encountered\n@compile_ignored[debug]",
+    "entity_type": "config",
+    "id": "dynamo_config_replay_record_enabled",
+    "name": "torch._dynamo.config.replay_record_enabled",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 269,
+    "testable_claims": {
+      "applies_when": "Record and write an execution record of the current frame to a file\nif an exception is encountered\n@compile_ignored[debug]",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_COMPILE_REPLAY_RECORD', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:269"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Enable or disable side effect replay after graph execution.\nWhen False, mutations to Python objects (lists, dicts, attributes) won't be\nreplayed after the compiled graph runs. This can cause correctness issues\nif your code depends on these mutations being visible. This should probably\nnever be False by default. At the moment, only export will need it.",
+    "entity_type": "config",
+    "id": "dynamo_config_replay_side_effects",
+    "name": "torch._dynamo.config.replay_side_effects",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 100,
+    "testable_claims": {
+      "applies_when": "Enable or disable side effect replay after graph execution.\nWhen False, mutations to Python objects (lists, dicts, attributes) won't be\nreplayed after the compiled graph runs. This can cause correctness issues\nif your code depends on these mutations being visible. This should probably\nnever be False by default. At the moment, only export will need it.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:100"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "True",
+    "deprecated": true,
+    "deprecation_message": null,
+    "description": "Whether to report any guard failures (deprecated: does not do anything)",
+    "entity_type": "config",
+    "id": "dynamo_config_report_guard_failures",
+    "name": "torch._dynamo.config.report_guard_failures",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 527,
+    "testable_claims": {
+      "applies_when": "Whether to report any guard failures (deprecated: does not do anything)",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:527"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "os.environ.get('TORCHDYNAMO_REPRO_AFTER', None)",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Debug Flag to try minifier at different stages. Possible values are {None, \"aot\", \"dynamo\"}\nNone - Minifier is switched off\ndynamo - Runs minifier on the TorchDynamo produced graphs, if compilation fails\naot - Runs minifier on the Aot Autograd produced graphs, if compilation fails",
+    "entity_type": "config",
+    "id": "dynamo_config_repro_after",
+    "name": "torch._dynamo.config.repro_after",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 320,
+    "testable_claims": {
+      "applies_when": "Debug Flag to try minifier at different stages. Possible values are {None, \"aot\", \"dynamo\"}\nNone - Minifier is switched off\ndynamo - Runs minifier on the TorchDynamo produced graphs, if compilation fails\naot - Runs minifier on the Aot Autograd produced graphs, if compilation fails",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "os.environ.get('TORCHDYNAMO_REPRO_AFTER', None)",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:320"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "os.environ.get('TORCHDYNAMO_REPRO_FORWARD_ONLY') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "By default, we try to detect accuracy failure by running both forward\nand backward of a torchdynamo produced graph (if you are using repro_after\n'dynamo').  This setting forces us to only test the forward graph and\nnot the backward graph.  This can be helpful if you're trying to debug\nan inference only problem, but the minifier seems to be choking on the\nbackwards step\nTODO: Detect this situation automatically so the user doesn't need\nto manually configure this",
+    "entity_type": "config",
+    "id": "dynamo_config_repro_forward_only",
+    "name": "torch._dynamo.config.repro_forward_only",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 339,
+    "testable_claims": {
+      "applies_when": "By default, we try to detect accuracy failure by running both forward\nand backward of a torchdynamo produced graph (if you are using repro_after\n'dynamo').  This setting forces us to only test the forward graph and\nnot the backward graph.  This can be helpful if you're trying to debug\nan inference only problem, but the minifier seems to be choking on the\nbackwards step\nTODO: Detect this situation automatically so the user doesn't need\nto manually configure this",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "os.environ.get('TORCHDYNAMO_REPRO_FORWARD_ONLY') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:339"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "os.environ.get('TORCHDYNAMO_REPRO_IGNORE_NON_FP') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Whether to ignore non-floating point values when checking accuracy.\nChecking accuracy of non-floating point values such as boolean tensors\ncan lead to false positives.",
+    "entity_type": "config",
+    "id": "dynamo_config_repro_ignore_non_fp",
+    "name": "torch._dynamo.config.repro_ignore_non_fp",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 351,
+    "testable_claims": {
+      "applies_when": "Whether to ignore non-floating point values when checking accuracy.\nChecking accuracy of non-floating point values such as boolean tensors\ncan lead to false positives.",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "os.environ.get('TORCHDYNAMO_REPRO_IGNORE_NON_FP') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:351"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "int(os.environ.get('TORCHDYNAMO_REPRO_LEVEL', 2))",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Compiler compilation debug info\n1: Dumps the original graph out to repro.py if compilation fails\n2: Dumps a minifier_launcher.py if compilation fails.\n3: Always dumps a minifier_launcher.py. Good for segfaults.\n4: Dumps a minifier_launcher.py if the accuracy fails.",
+    "entity_type": "config",
+    "id": "dynamo_config_repro_level",
+    "name": "torch._dynamo.config.repro_level",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 328,
+    "testable_claims": {
+      "applies_when": "Compiler compilation debug info\n1: Dumps the original graph out to repro.py if compilation fails\n2: Dumps a minifier_launcher.py if compilation fails.\n3: Always dumps a minifier_launcher.py. Good for segfaults.\n4: Dumps a minifier_launcher.py if the accuracy fails.",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "int(os.environ.get('TORCHDYNAMO_REPRO_LEVEL', 2))",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:328"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "0.001",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "The tolerance we should use when testing if a compiled graph\nhas diverged so that we should treat it as an accuracy failure",
+    "entity_type": "config",
+    "id": "dynamo_config_repro_tolerance",
+    "name": "torch._dynamo.config.repro_tolerance",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 344,
+    "testable_claims": {
+      "applies_when": "The tolerance we should use when testing if a compiled graph\nhas diverged so that we should treat it as an accuracy failure",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "0.001",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:344"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Rewrite assert statement in python with torch._assert",
+    "entity_type": "config",
+    "id": "dynamo_config_rewrite_assert_with_torch_assert",
+    "name": "torch._dynamo.config.rewrite_assert_with_torch_assert",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 272,
+    "testable_claims": {
+      "applies_when": "Rewrite assert statement in python with torch._assert",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:272"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "Config(default=sysconfig.get_config_var('Py_GIL_DISABLED') != 1, justknob='pytorch/compiler:enable_run_gc_after_compile', env_name_default='TORCH_DYNAMO_RUN_GC_AFTER_COMPILE')",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Run GC at the end of compilation",
+    "entity_type": "config",
+    "id": "dynamo_config_run_gc_after_compile",
+    "name": "torch._dynamo.config.run_gc_after_compile",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 867,
+    "testable_claims": {
+      "applies_when": "Run GC at the end of compilation",
+      "compile_ignored_category": null,
+      "default_value_repr": "Config(default=sysconfig.get_config_var('Py_GIL_DISABLED') != 1, justknob='pytorch/compiler:enable_run_gc_after_compile', env_name_default='TORCH_DYNAMO_RUN_GC_AFTER_COMPILE')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:867"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "runtime_behaviour",
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "If True, when testing if two models are the same, we will test them against\na third fp64 reference and only report a problem if the RMSE relative to the\nfp64 is greater.  However, this will use more memory; you may disable this\nif memory usage is too high.",
+    "entity_type": "config",
+    "id": "dynamo_config_same_two_models_use_fp64",
+    "name": "torch._dynamo.config.same_two_models_use_fp64",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 358,
+    "testable_claims": {
+      "applies_when": "If True, when testing if two models are the same, we will test them against\na third fp64 reference and only report a problem if the RMSE relative to the\nfp64 is greater.  However, this will use more memory; you may disable this\nif memory usage is too high.",
+      "compile_ignored_category": "runtime_behaviour",
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:358"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "'info'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Configure side effect warning level\nIf `info` (default): allow side effects and log to TORCH_LOGS=\"side_effects\" and tlparse\nIf `silent`, we allow side effects, no logs are made.\nIf `warn`, we allow side effects but issue warnings\nIf `error`, we error on side effects\nNOTE: it is NOT safe to change this config during compilation!",
+    "entity_type": "config",
+    "id": "dynamo_config_side_effect_replay_policy",
+    "name": "torch._dynamo.config.side_effect_replay_policy",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 108,
+    "testable_claims": {
+      "applies_when": "Configure side effect warning level\nIf `info` (default): allow side effects and log to TORCH_LOGS=\"side_effects\" and tlparse\nIf `silent`, we allow side effects, no logs are made.\nIf `warn`, we allow side effects but issue warnings\nIf `error`, we error on side effects\nNOTE: it is NOT safe to change this config during compilation!",
+      "compile_ignored_category": null,
+      "default_value_repr": "'info'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:108"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": "torch._dynamo.config.skip_code_recursive_on_recompile_limit_hit",
+    "compile_ignored_category": null,
+    "default_repr": "Config(alias='torch._dynamo.config.skip_code_recursive_on_recompile_limit_hit', deprecated=True, deprecation_message='does not do anything')",
+    "deprecated": true,
+    "deprecation_message": "does not do anything",
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_code_recursive_on_cache_limit_hit",
+    "name": "torch._dynamo.config.skip_code_recursive_on_cache_limit_hit",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 137,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "Config(alias='torch._dynamo.config.skip_code_recursive_on_recompile_limit_hit', deprecated=True, deprecation_message='does not do anything')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:137"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "Config(default=True, deprecated=True, deprecation_message='does not do anything')",
+    "deprecated": true,
+    "deprecation_message": "does not do anything",
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_code_recursive_on_recompile_limit_hit",
+    "name": "torch._dynamo.config.skip_code_recursive_on_recompile_limit_hit",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 121,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "Config(default=True, deprecated=True, deprecation_message='does not do anything')",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:121"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Whether to skip guarding on FSDP-managed modules",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_fsdp_guards",
+    "name": "torch._dynamo.config.skip_fsdp_guards",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 444,
+    "testable_claims": {
+      "applies_when": "Whether to skip guarding on FSDP-managed modules",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:444"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Whether to apply torch._dynamo.disable() to FSDP2 hooks.\nDefaults to True. If Traceable FSDP2 is used, set this to False.",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_fsdp_hooks",
+    "name": "torch._dynamo.config.skip_fsdp_hooks",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 447,
+    "testable_claims": {
+      "applies_when": "Whether to apply torch._dynamo.disable() to FSDP2 hooks.\nDefaults to True. If Traceable FSDP2 is used, set this to False.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:447"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Eager AC/SAC reapplies the mutations (like global dict mutations) in the\nbackward during the recomputation of forward. torch.compile has no easy way to\nreapply python mutations in the backward. But many users might be ok to skip\nreapplication of side effects in the backward. They can set this config flag\nto accept this eager and compile divergence.",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_fwd_side_effects_in_bwd_under_checkpoint",
+    "name": "torch._dynamo.config.skip_fwd_side_effects_in_bwd_under_checkpoint",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 785,
+    "testable_claims": {
+      "applies_when": "Eager AC/SAC reapplies the mutations (like global dict mutations) in the\nbackward during the recomputation of forward. torch.compile has no easy way to\nreapply python mutations in the backward. But many users might be ok to skip\nreapplication of side effects in the backward. They can set this config flag\nto accept this eager and compile divergence.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:785"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Skips guards on func.__defaults__ if the element to be guarded is a constant",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_guards_on_constant_func_defaults",
+    "name": "torch._dynamo.config.skip_guards_on_constant_func_defaults",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 465,
+    "testable_claims": {
+      "applies_when": "Skips guards on func.__defaults__ if the element to be guarded is a constant",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:465"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Make dynamo skip guarding on hooks on nn modules\nNote: unsafe: if your model actually has hooks and you remove them, or doesn't and  you add them,\ndynamo will not notice and will execute whichever version you first compiled.",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_nnmodule_hook_guards",
+    "name": "torch._dynamo.config.skip_nnmodule_hook_guards",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 452,
+    "testable_claims": {
+      "applies_when": "Make dynamo skip guarding on hooks on nn modules\nNote: unsafe: if your model actually has hooks and you remove them, or doesn't and  you add them,\ndynamo will not notice and will execute whichever version you first compiled.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:452"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Make dynamo skip no tensor aliasing guard on parameters\nNote: unsafe: if you compile a function with different parameters as inputs,\nand then later pass on the same parameter as two inputs, dynamo will not\nnotice and lead to incorrect result.",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_no_tensor_aliasing_guards_on_parameters",
+    "name": "torch._dynamo.config.skip_no_tensor_aliasing_guards_on_parameters",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 458,
+    "testable_claims": {
+      "applies_when": "Make dynamo skip no tensor aliasing guard on parameters\nNote: unsafe: if you compile a function with different parameters as inputs,\nand then later pass on the same parameter as two inputs, dynamo will not\nnotice and lead to incorrect result.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:458"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Considers a tensor immutable if it is one of the values of a dictionary, and\nthe dictionary tag is same across invocation calls.",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_tensor_guards_with_matching_dict_tags",
+    "name": "torch._dynamo.config.skip_tensor_guards_with_matching_dict_tags",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 462,
+    "testable_claims": {
+      "applies_when": "Considers a tensor immutable if it is one of the values of a dictionary, and\nthe dictionary tag is same across invocation calls.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:462"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Skip tracing the torchrec files added to trace_rules.FBCODE_SKIP_DIRS",
+    "entity_type": "config",
+    "id": "dynamo_config_skip_torchrec",
+    "name": "torch._dynamo.config.skip_torchrec",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 431,
+    "testable_claims": {
+      "applies_when": "Skip tracing the torchrec files added to trace_rules.FBCODE_SKIP_DIRS",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:431"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "{}",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Legacy config, does nothing now!",
+    "entity_type": "config",
+    "id": "dynamo_config_skipfiles_inline_module_allowlist",
+    "name": "torch._dynamo.config.skipfiles_inline_module_allowlist",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 287,
+    "testable_claims": {
+      "applies_when": "Legacy config, does nothing now!",
+      "compile_ignored_category": null,
+      "default_value_repr": "{}",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:287"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Whether or not to specialize on float inputs.  Dynamo will always promote\nfloat inputs into Tensor inputs, but at the moment, backends inconsistently\nsupport codegen on float (this is to be fixed).",
+    "entity_type": "config",
+    "id": "dynamo_config_specialize_float",
+    "name": "torch._dynamo.config.specialize_float",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 157,
+    "testable_claims": {
+      "applies_when": "Whether or not to specialize on float inputs.  Dynamo will always promote\nfloat inputs into Tensor inputs, but at the moment, backends inconsistently\nsupport codegen on float (this is to be fixed).",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:157"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "whether or not to specialize on int inputs.  This only has an effect with\ndynamic_shapes; when dynamic_shapes is False, we ALWAYS specialize on int\ninputs.  Note that assume_static_by_default will also cause ints to get\nspecialized, so this is mostly useful for export, where we want inputs\nto be dynamic, but accesses to ints should NOT get promoted into inputs.",
+    "entity_type": "config",
+    "id": "dynamo_config_specialize_int",
+    "name": "torch._dynamo.config.specialize_int",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 152,
+    "testable_claims": {
+      "applies_when": "whether or not to specialize on int inputs.  This only has an effect with\ndynamic_shapes; when dynamic_shapes is False, we ALWAYS specialize on int\ninputs.  Note that assume_static_by_default will also cause ints to get\nspecialized, so this is mostly useful for export, where we want inputs\nto be dynamic, but accesses to ints should NOT get promoted into inputs.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:152"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_STRICT_PRECOMPILE', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_strict_precompile",
+    "name": "torch._dynamo.config.strict_precompile",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 744,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_STRICT_PRECOMPILE', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:744"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "bool(os.environ.get('TORCHDYNAMO_SUPPRESS_ERRORS', False))",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Suppress errors in torch._dynamo.optimize, instead forcing a fallback to eager.\nThis is a good way to get your model to work one way or another, but you may\nlose optimization opportunities this way.  Devs, if your benchmark model is failing\nthis way, you should figure out why instead of suppressing it.\nThis flag is incompatible with: fail_on_recompile_limit_hit.",
+    "entity_type": "config",
+    "id": "dynamo_config_suppress_errors",
+    "name": "torch._dynamo.config.suppress_errors",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 264,
+    "testable_claims": {
+      "applies_when": "Suppress errors in torch._dynamo.optimize, instead forcing a fallback to eager.\nThis is a good way to get your model to work one way or another, but you may\nlose optimization opportunities this way.  Devs, if your benchmark model is failing\nthis way, you should figure out why instead of suppressing it.\nThis flag is incompatible with: fail_on_recompile_limit_hit.",
+      "compile_ignored_category": null,
+      "default_value_repr": "bool(os.environ.get('TORCHDYNAMO_SUPPRESS_ERRORS', False))",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:264"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Trace through torch.autograd.grad or graphbreak",
+    "entity_type": "config",
+    "id": "dynamo_config_trace_autograd_ops",
+    "name": "torch._dynamo.config.trace_autograd_ops",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 536,
+    "testable_claims": {
+      "applies_when": "Trace through torch.autograd.grad or graphbreak",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:536"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Trace through NumPy or graphbreak",
+    "entity_type": "config",
+    "id": "dynamo_config_trace_numpy",
+    "name": "torch._dynamo.config.trace_numpy",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 533,
+    "testable_claims": {
+      "applies_when": "Trace through NumPy or graphbreak",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:533"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "set()",
+    "deprecated": true,
+    "deprecation_message": null,
+    "description": "NOTE this has been deprecated, it does nothing now.",
+    "entity_type": "config",
+    "id": "dynamo_config_traceable_tensor_subclasses",
+    "name": "torch._dynamo.config.traceable_tensor_subclasses",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 250,
+    "testable_claims": {
+      "applies_when": "NOTE this has been deprecated, it does nothing now.",
+      "compile_ignored_category": null,
+      "default_value_repr": "set()",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:250"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Whether to track nodes for deduplication (testing only)\nThis flag is ignored if use_graph_deduplication is True",
+    "entity_type": "config",
+    "id": "dynamo_config_track_nodes_for_deduplication",
+    "name": "torch._dynamo.config.track_nodes_for_deduplication",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 599,
+    "testable_claims": {
+      "applies_when": "Whether to track nodes for deduplication (testing only)\nThis flag is ignored if use_graph_deduplication is True",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:599"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Whether to automatically find and replace identical graph\nregions with a call to invoke_subgraph",
+    "entity_type": "config",
+    "id": "dynamo_config_use_graph_deduplication",
+    "name": "torch._dynamo.config.use_graph_deduplication",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 595,
+    "testable_claims": {
+      "applies_when": "Whether to automatically find and replace identical graph\nregions with a call to invoke_subgraph",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:595"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "lambda guarding on object aliasing to improve opportunity for dict tag\noptimization",
+    "entity_type": "config",
+    "id": "dynamo_config_use_lamba_guard_for_object_aliasing",
+    "name": "torch._dynamo.config.use_lamba_guard_for_object_aliasing",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 441,
+    "testable_claims": {
+      "applies_when": "lambda guarding on object aliasing to improve opportunity for dict tag\noptimization",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:441"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "os.environ.get('TORCH_COMPILE_USE_LAZY_GRAPH_MODULE', '1') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "",
+    "entity_type": "config",
+    "id": "dynamo_config_use_lazy_graph_module",
+    "name": "torch._dynamo.config.use_lazy_graph_module",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 162,
+    "testable_claims": {
+      "applies_when": "",
+      "compile_ignored_category": null,
+      "default_value_repr": "os.environ.get('TORCH_COMPILE_USE_LAZY_GRAPH_MODULE', '1') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:162"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "use numpy's PRNG if True, pytorch otherwise",
+    "entity_type": "config",
+    "id": "dynamo_config_use_numpy_random_stream",
+    "name": "torch._dynamo.config.use_numpy_random_stream",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 545,
+    "testable_claims": {
+      "applies_when": "use numpy's PRNG if True, pytorch otherwise",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:545"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "True",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Speedup guard execution of nested nn modules by recursively checking for dict\ntags to avoid full guard execution.",
+    "entity_type": "config",
+    "id": "dynamo_config_use_recursive_dict_tags_for_guards",
+    "name": "torch._dynamo.config.use_recursive_dict_tags_for_guards",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 488,
+    "testable_claims": {
+      "applies_when": "Speedup guard execution of nested nn modules by recursively checking for dict\ntags to avoid full guard execution.",
+      "compile_ignored_category": null,
+      "default_value_repr": "True",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:488"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "debug",
+    "default_repr": "os.environ.get('TORCHDYNAMO_VERBOSE', '0') == '1'",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Verbose will print full stack traces on warnings and errors",
+    "entity_type": "config",
+    "id": "dynamo_config_verbose",
+    "name": "torch._dynamo.config.verbose",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 37,
+    "testable_claims": {
+      "applies_when": "Verbose will print full stack traces on warnings and errors",
+      "compile_ignored_category": "debug",
+      "default_value_repr": "os.environ.get('TORCHDYNAMO_VERBOSE', '0') == '1'",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:37"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": "runtime_behaviour",
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "verify the correctness of optimized backend",
+    "entity_type": "config",
+    "id": "dynamo_config_verify_correctness",
+    "name": "torch._dynamo.config.verify_correctness",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 40,
+    "testable_claims": {
+      "applies_when": "verify the correctness of optimized backend",
+      "compile_ignored_category": "runtime_behaviour",
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:40"
+    },
+    "visibility": "oss"
+  },
+  {
+    "alias_of": null,
+    "compile_ignored_category": null,
+    "default_repr": "False",
+    "deprecated": false,
+    "deprecation_message": null,
+    "description": "Takes the function/module decorated with torch.compile and passes it through a\nwrapper. This ensures that nn.module hooks are also compiled in the same frame.",
+    "entity_type": "config",
+    "id": "dynamo_config_wrap_top_frame",
+    "name": "torch._dynamo.config.wrap_top_frame",
+    "provenance": {
+      "extracted_at": "2026-04-14T12:34:35+00:00",
+      "extracted_by": "pytorch_source.config_docstrings@1.0.0",
+      "extracted_from": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py"
+    },
+    "source_line": 881,
+    "testable_claims": {
+      "applies_when": "Takes the function/module decorated with torch.compile and passes it through a\nwrapper. This ensures that nn.module hooks are also compiled in the same frame.",
+      "compile_ignored_category": null,
+      "default_value_repr": "False",
+      "verification_source": "pytorch@d7d048237959a3a51ad6b6dd68a5c4010826b141:torch/_dynamo/config.py:881"
+    },
+    "visibility": "oss"
+  }
+]
