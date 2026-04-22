@@ -1,0 +1,705 @@
+{
+  "_meta": {
+    "version": "0.1",
+    "scope": "graph_break failure_mode + 1-hop subgraph",
+    "purpose": "Structural validation of ontology against Beaver's audit needs (NOT high-coverage rubric)",
+    "produced_by": "Prof",
+    "produced_for": "Beaver (Phase 1 page-driven audit)",
+    "produced_date": "2026-04-21",
+    "ontology_version": "0.17.6",
+    "ontology_visibility_filter": "oss (no internal/confidential entries)"
+  },
+  "_structural_gaps_summary": {
+    "page_to_entity_map": "PARTIAL \u2014 built by grep on canonical_name/aliases. Many entities have no aliases, so coverage is conservative. Beaver should treat NO_MATCH_IN_4_PAGES as 'ontology can't tell'.",
+    "aliases_coverage": "6 / 25 entities have aliases listed.",
+    "testable_claims_coverage": "Configs are best-covered (have validation.source). Ops/Symptoms/Resolutions have NO source provenance in current ontology \u2014 major gap.",
+    "missing_entity_types": "No `page` entity type exists. v0.1 represents pages externally (not as ontology entities). Beaver: should `page` be a first-class entity type in v0.2?"
+  },
+  "pages": [
+    {
+      "page_id": "torch.compiler_dynamo_overview.md",
+      "source_path": "pytorch/pytorch:docs/source/user_guide/torch_compiler/torch.compiler_dynamo_overview.md",
+      "documented_entities": [
+        "graph_break",
+        "torchdynamo"
+      ]
+    },
+    {
+      "page_id": "torch.compiler_faq.md",
+      "source_path": "pytorch/pytorch:docs/source/user_guide/torch_compiler/torch.compiler_faq.md",
+      "documented_entities": [
+        "data_dependent_control",
+        "graph_break",
+        "torchdynamo"
+      ]
+    },
+    {
+      "page_id": "torch.compiler_troubleshooting.md",
+      "source_path": "pytorch/pytorch:docs/source/user_guide/torch_compiler/torch.compiler_troubleshooting.md",
+      "documented_entities": [
+        "data_dependent_control",
+        "dynamo_unsupported",
+        "graph_break",
+        "tensor_subclass",
+        "torchdynamo"
+      ]
+    },
+    {
+      "page_id": "torch.compiler_dynamo_deepdive.md",
+      "source_path": "pytorch/pytorch:docs/source/user_guide/torch_compiler/torch.compiler_dynamo_deepdive.md",
+      "documented_entities": [
+        "graph_break",
+        "torchdynamo"
+      ]
+    }
+  ],
+  "subgraph": {
+    "seed": "graph_break",
+    "neighbor_count": 24,
+    "edges": [
+      {
+        "from": "j1_first_compile",
+        "type": "enters_via",
+        "to": "graph_break",
+        "source_file": "journey.json"
+      },
+      {
+        "from": "j4_graph_breaks",
+        "type": "enters_via",
+        "to": "graph_break",
+        "source_file": "journey.json"
+      },
+      {
+        "from": "j8_custom_ops",
+        "type": "enters_via",
+        "to": "graph_break",
+        "source_file": "journey.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "affects",
+        "to": "torchdynamo",
+        "source_file": "other.json"
+      },
+      {
+        "from": "unsupported_op",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "data_dependent_control",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "third_party_lib",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "custom_autograd",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "tensor_subclass",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "distributed_interaction",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "dynamo_unsupported",
+        "type": "is_symptom_of",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "non_compliant_custom_op",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "cause_dynamic_output_shape",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "cause_scalar_return",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "cause_fancy_compile_wrapper",
+        "type": "causes",
+        "to": "graph_break",
+        "source_file": "diagnostic.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "fixed_by",
+        "to": "code_rewrite",
+        "source_file": "resolution.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "fixed_by",
+        "to": "op_replacement",
+        "source_file": "resolution.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "fixed_by",
+        "to": "skip_compile",
+        "source_file": "resolution.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "resolved_by",
+        "to": "resolution_use_fullgraph",
+        "source_file": "resolution.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "resolved_by",
+        "to": "resolution_use_torch_logs",
+        "source_file": "resolution.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "resolved_by",
+        "to": "pr_163677",
+        "source_file": "resolved_by_pr.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "resolved_by",
+        "to": "pr_124121",
+        "source_file": "resolved_by_pr.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "causes_symptom",
+        "to": "hang",
+        "source_file": "weighted_evidence.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "causes_symptom",
+        "to": "error_raised",
+        "source_file": "weighted_evidence.json"
+      },
+      {
+        "from": "graph_break",
+        "type": "affects_component",
+        "to": "torchdynamo",
+        "source_file": "weighted_evidence.json"
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "cause_dynamic_output_shape",
+      "name": "dynamic_output_shape",
+      "entity_type": "cause",
+      "canonical_name": "dynamic_output_shape",
+      "aliases": [
+        "data-dependent shape"
+      ],
+      "_aliases_status": "PROVIDED",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Ops like nonzero/unique have data-dependent output shapes, causing graph break without capture_dynamic_output_shape_ops",
+          "aliases": [
+            "data-dependent shape"
+          ],
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "cause_fancy_compile_wrapper",
+      "name": "fancy_compile_wrapper",
+      "entity_type": "cause",
+      "canonical_name": "fancy_compile_wrapper",
+      "aliases": [
+        "custom wrapper",
+        "config wrapper"
+      ],
+      "_aliases_status": "PROVIDED",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Custom compile wrappers that jam config options cause silent graph breaks (anti-pattern)",
+          "aliases": [
+            "custom wrapper",
+            "config wrapper"
+          ],
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "cause_scalar_return",
+      "name": "scalar_return",
+      "entity_type": "cause",
+      "canonical_name": "scalar_return",
+      "aliases": [
+        "scalar output"
+      ],
+      "_aliases_status": "PROVIDED",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Operations return scalar types (e.g., .item()) which cause graph break without capture_scalar_outputs",
+          "aliases": [
+            "scalar output"
+          ],
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "code_rewrite",
+      "name": "Code Pattern Change",
+      "entity_type": "resolution",
+      "canonical_name": "Code Pattern Change",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "resolution_type": "MISSING_IN_ONTOLOGY",
+        "applies_to": "MISSING_IN_ONTOLOGY",
+        "source": "MISSING_IN_ONTOLOGY (resolutions are derived from issue conversations, not source)"
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "custom_autograd",
+      "name": "Custom Autograd Function",
+      "entity_type": "cause",
+      "canonical_name": "Custom Autograd Function",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "User-defined torch.autograd.Function not traceable",
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "data_dependent_control",
+      "name": "Data-Dependent Control Flow",
+      "entity_type": "cause",
+      "canonical_name": "Data-Dependent Control Flow",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [
+        {
+          "page_id": "torch.compiler_faq.md",
+          "matched_term": "Data-Dependent Control Flow"
+        },
+        {
+          "page_id": "torch.compiler_troubleshooting.md",
+          "matched_term": "Data-Dependent Control Flow"
+        }
+      ],
+      "_documented_in_status": "DETECTED_BY_GREP",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Branching on tensor values (e.g., if x.item() > 0)",
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "distributed_interaction",
+      "name": "Distributed Interaction",
+      "entity_type": "cause",
+      "canonical_name": "Distributed Interaction",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Compile conflicts with DDP, FSDP, or tensor parallel",
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "dynamo_unsupported",
+      "name": "torch._dynamo.exc.Unsupported",
+      "entity_type": "symptom",
+      "canonical_name": "torch._dynamo.exc.Unsupported",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [
+        {
+          "page_id": "torch.compiler_troubleshooting.md",
+          "matched_term": "torch._dynamo.exc.Unsupported"
+        }
+      ],
+      "_documented_in_status": "DETECTED_BY_GREP",
+      "testable_claims": {
+        "observable_signal": "Dynamo explicitly doesn't support this construct",
+        "error_signature": "MISSING_IN_ONTOLOGY",
+        "source": "MISSING_IN_ONTOLOGY (symptoms are issue-derived; no canonical source)"
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "error_raised",
+      "name": "Error Raised",
+      "entity_type": "symptom",
+      "canonical_name": "Error Raised",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "observable_signal": "An exception or error message is raised during compilation or execution",
+        "error_signature": "MISSING_IN_ONTOLOGY",
+        "source": "MISSING_IN_ONTOLOGY (symptoms are issue-derived; no canonical source)"
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "graph_break",
+      "name": "Graph Break",
+      "entity_type": "failure_mode",
+      "canonical_name": "Graph Break",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [
+        {
+          "page_id": "torch.compiler_dynamo_overview.md",
+          "matched_term": "Graph Break"
+        },
+        {
+          "page_id": "torch.compiler_faq.md",
+          "matched_term": "Graph Break"
+        },
+        {
+          "page_id": "torch.compiler_troubleshooting.md",
+          "matched_term": "Graph Break"
+        },
+        {
+          "page_id": "torch.compiler_dynamo_deepdive.md",
+          "matched_term": "Graph Break"
+        }
+      ],
+      "_documented_in_status": "DETECTED_BY_GREP",
+      "testable_claims": {
+        "_note": "Type 'failure_modes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Dynamo cannot trace through a code pattern \u2014 splits the graph",
+          "severity": "medium",
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "hang",
+      "name": "Hang / Deadlock",
+      "entity_type": "symptom",
+      "canonical_name": "Hang / Deadlock",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "observable_signal": "Process hangs during compilation or execution",
+        "error_signature": "MISSING_IN_ONTOLOGY",
+        "source": "MISSING_IN_ONTOLOGY (symptoms are issue-derived; no canonical source)"
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "j1_first_compile",
+      "name": "J1: First Compile",
+      "entity_type": "user_journey",
+      "canonical_name": "J1: First Compile",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'user_journeys' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "User wraps model with torch.compile() and hits first errors, crashes, or isn't sure they did it right",
+          "tier": "symptom",
+          "question": "How do I get torch.compile to work on my model?",
+          "issue_count": 193,
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "j4_graph_breaks",
+      "name": "J4: Graph Breaks",
+      "entity_type": "user_journey",
+      "canonical_name": "J4: Graph Breaks",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'user_journeys' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Parts of model fall back to eager unexpectedly, causing slowdowns \u2014 excessive breaks fragment compiled regions",
+          "tier": "root_cause",
+          "question": "Parts of my model fall back to eager \u2014 or it's unexpectedly slow and I don't know why.",
+          "issue_count": 495,
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "j8_custom_ops",
+      "name": "J8: Custom & Higher-Order Ops",
+      "entity_type": "user_journey",
+      "canonical_name": "J8: Custom & Higher-Order Ops",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'user_journeys' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Custom operators or advanced patterns (vmap, checkpoint, torch.cond, flex attention) don't work with compile",
+          "tier": "root_cause",
+          "question": "My custom operator or advanced pattern doesn't work with torch.compile.",
+          "issue_count": 533,
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "non_compliant_custom_op",
+      "name": "Non-Compliant Custom Operator",
+      "entity_type": "cause",
+      "canonical_name": "Non-Compliant Custom Operator",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Custom op not registered via torch.library or missing FakeTensor/meta kernel",
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "op_replacement",
+      "name": "Op Replacement",
+      "entity_type": "resolution",
+      "canonical_name": "Op Replacement",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "resolution_type": "MISSING_IN_ONTOLOGY",
+        "applies_to": "MISSING_IN_ONTOLOGY",
+        "source": "MISSING_IN_ONTOLOGY (resolutions are derived from issue conversations, not source)"
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "pr_124121",
+      "_status": "MISSING_FROM_ONTOLOGY (referenced in relationships but no entity definition)"
+    },
+    {
+      "id": "pr_163677",
+      "_status": "MISSING_FROM_ONTOLOGY (referenced in relationships but no entity definition)"
+    },
+    {
+      "id": "resolution_use_fullgraph",
+      "name": "use_fullgraph",
+      "entity_type": "resolution",
+      "canonical_name": "use_fullgraph",
+      "aliases": [
+        "enforce no breaks"
+      ],
+      "_aliases_status": "PROVIDED",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "resolution_type": "MISSING_IN_ONTOLOGY",
+        "applies_to": "MISSING_IN_ONTOLOGY",
+        "source": "MISSING_IN_ONTOLOGY (resolutions are derived from issue conversations, not source)"
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "resolution_use_torch_logs",
+      "name": "use_torch_logs",
+      "entity_type": "resolution",
+      "canonical_name": "use_torch_logs",
+      "aliases": [
+        "enable logging"
+      ],
+      "_aliases_status": "PROVIDED",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "resolution_type": "MISSING_IN_ONTOLOGY",
+        "applies_to": "MISSING_IN_ONTOLOGY",
+        "source": "MISSING_IN_ONTOLOGY (resolutions are derived from issue conversations, not source)"
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "skip_compile",
+      "name": "Skip Compilation",
+      "entity_type": "resolution",
+      "canonical_name": "Skip Compilation",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "resolution_type": "MISSING_IN_ONTOLOGY",
+        "applies_to": "MISSING_IN_ONTOLOGY",
+        "source": "MISSING_IN_ONTOLOGY (resolutions are derived from issue conversations, not source)"
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "tensor_subclass",
+      "name": "Tensor Subclass",
+      "entity_type": "cause",
+      "canonical_name": "Tensor Subclass",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [
+        {
+          "page_id": "torch.compiler_troubleshooting.md",
+          "matched_term": "Tensor Subclass"
+        }
+      ],
+      "_documented_in_status": "DETECTED_BY_GREP",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Custom tensor subclasses with non-standard behavior",
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "third_party_lib",
+      "name": "Third-Party Library Call",
+      "entity_type": "cause",
+      "canonical_name": "Third-Party Library Call",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "Calls to libraries dynamo cannot trace into",
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "torchdynamo",
+      "name": "TorchDynamo",
+      "entity_type": "component",
+      "canonical_name": "TorchDynamo",
+      "aliases": [
+        "dynamo",
+        "torch._dynamo"
+      ],
+      "_aliases_status": "PROVIDED",
+      "documented_in": [
+        {
+          "page_id": "torch.compiler_dynamo_overview.md",
+          "matched_term": "TorchDynamo"
+        },
+        {
+          "page_id": "torch.compiler_faq.md",
+          "matched_term": "TorchDynamo"
+        },
+        {
+          "page_id": "torch.compiler_troubleshooting.md",
+          "matched_term": "TorchDynamo"
+        },
+        {
+          "page_id": "torch.compiler_dynamo_deepdive.md",
+          "matched_term": "TorchDynamo"
+        }
+      ],
+      "_documented_in_status": "DETECTED_BY_GREP",
+      "testable_claims": {
+        "module_path": "dynamo",
+        "lifecycle_status": "current",
+        "source": "MISSING_IN_ONTOLOGY (component module paths not encoded as testable; could grep PyTorch source)"
+      },
+      "visibility": "oss"
+    },
+    {
+      "id": "unsupported_op",
+      "name": "Unsupported Operation",
+      "entity_type": "cause",
+      "canonical_name": "Unsupported Operation",
+      "aliases": [],
+      "_aliases_status": "MISSING_IN_ONTOLOGY (no aliases listed)",
+      "documented_in": [],
+      "_documented_in_status": "NO_MATCH_IN_4_PAGES (entity may need new aliases or may not be doc-coverage relevant)",
+      "testable_claims": {
+        "_note": "Type 'causes' has no defined testable_claims schema in v0.1",
+        "raw_fields": {
+          "description": "PyTorch op or Python construct not supported by dynamo",
+          "visibility": "oss"
+        }
+      },
+      "visibility": "oss"
+    }
+  ]
+}
