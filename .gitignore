@@ -10,5 +10,22 @@ data/pt2_comments.jsonl
 data/pt2_comments_diagnostic.jsonl
 data/diagnostic_extractions.json
 
+# Raw extraction dumps — derived intermediate data, may contain internal
+# cross-references (Workplace links, paste IDs, SEV refs) that appeared in
+# public GitHub issue comments. Not source-of-truth ontology.
+data/diagnostic_extractions_v2.json
+data/phase2_candidates.json
+data/phase2_candidates_refined.json
+data/phase2_extractions.json
+extraction/j3_extraction_results.json
+extraction/j6_extraction_results.json
+extraction/j3_issues.jsonl
+extraction/j6_issues.jsonl
+extraction/j6_manual_classifications.json
+extraction/issue_pr_edges.json
+validation/holdout_extraction_results.json
+validation/holdout_issues.json
+validation/holdout_issues.jsonl
+
 # Old monolithic backup (replaced by modular files)
 ontology/skeleton.json

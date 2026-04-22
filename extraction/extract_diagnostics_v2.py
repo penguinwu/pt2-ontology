@@ -22,7 +22,7 @@ from datetime import datetime
 from pathlib import Path
 
 DATA_DIR = Path(__file__).parent.parent / "data"
-GITHUB_DATA = Path("/home/pengwu/projects/pt2-github-issues/pytorch-issues-pt2-all.json")
+GITHUB_DATA = Path.home() / "projects" / "pt2-github-issues" / "pytorch-issues-pt2-all.json"
 
 # --- Resolution Type Classification ---
 RESOLUTION_CLASSIFIERS = [

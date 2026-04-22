@@ -13,44 +13,46 @@ Manage the oncall:pt2 GitHub issue corpus for ontology development.
 
 ### Fetch issues from GitHub
 
+All paths below are relative to the repo root.
+
 ```bash
 # Full refresh (all ~9,300 issues, takes ~5 min)
-bash /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/fetch.sh
+bash skills/pt2-oss-issues/scripts/fetch.sh
 
 # Incremental (only new issues since date)
-bash /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/fetch.sh --since 2026-04-14
+bash skills/pt2-oss-issues/scripts/fetch.sh --since 2026-04-14
 
 # Count how many issues exist vs local
-bash /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/fetch.sh --count
+bash skills/pt2-oss-issues/scripts/fetch.sh --count
 ```
 
 ### Filter candidates for Phase 2 extraction
 
 ```bash
 # Full filtering pipeline (label-based)
-python3 /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/filter.py
+python3 skills/pt2-oss-issues/scripts/filter.py
 
 # Stats only (don't overwrite output)
-python3 /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/filter.py --stats
+python3 skills/pt2-oss-issues/scripts/filter.py --stats
 
 # Adjust comment threshold
-python3 /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/filter.py --min-comments 7
+python3 skills/pt2-oss-issues/scripts/filter.py --min-comments 7
 
 # Include export issues (for Phase 2 ontology work)
-python3 /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/filter.py --include-export
+python3 skills/pt2-oss-issues/scripts/filter.py --include-export
 
 # Include CPU inductor issues
-python3 /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/filter.py --include-cpu-inductor
+python3 skills/pt2-oss-issues/scripts/filter.py --include-cpu-inductor
 ```
 
 ### Run Phase 1 heuristic extraction
 
 ```bash
 # Full extraction
-bash /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/extract.sh
+bash skills/pt2-oss-issues/scripts/extract.sh
 
 # Stats only
-bash /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/extract.sh --stats-only
+bash skills/pt2-oss-issues/scripts/extract.sh --stats-only
 ```
 
 ## Pipeline
@@ -99,19 +101,21 @@ Filtered-out sets are preserved in the full corpus for future phases:
 
 ## Data Locations
 
+Defaults assume `~/projects/pt2-github-issues` for the corpus and `~/projects/pt2-ontology` for the ontology repo. Override with `PT2_OSS_ISSUES_DIR` and `PT2_ONTOLOGY_DIR` env vars.
+
 | File | Description |
 |------|-------------|
-| `/home/pengwu/projects/pt2-github-issues/pytorch-issues-pt2-all.json` | Raw issue corpus (120 MB, ~9,300 issues with inline comments) |
-| `/home/pengwu/projects/pt2-ontology/data/diagnostic_extractions_v2.json` | Phase 1 extraction results (7,347 issues) |
-| `/home/pengwu/projects/pt2-ontology/data/phase2_candidates_refined.json` | Filtered Phase 2 candidates (~400 issues) |
-| `/home/pengwu/projects/pt2-ontology/data/phase2_extractions.json` | Phase 2 deep extractions (iterative) |
-| `/home/pengwu/projects/pt2-ontology/data/phase2_iteration_log.md` | Extraction iteration quality log |
+| `~/projects/pt2-github-issues/pytorch-issues-pt2-all.json` | Raw issue corpus (120 MB, ~9,300 issues with inline comments) |
+| `data/diagnostic_extractions_v2.json` | Phase 1 extraction results (7,347 issues) |
+| `data/phase2_candidates_refined.json` | Filtered Phase 2 candidates (~400 issues) |
+| `data/phase2_extractions.json` | Phase 2 deep extractions (iterative) |
+| `data/phase2_iteration_log.md` | Extraction iteration quality log |
 
 ### Validate ontology freshness
 
 ```bash
 # Full validation report
-python /home/pengwu/projects/pt2-ontology/skills/pt2-oss-issues/scripts/validate.py
+python skills/pt2-oss-issues/scripts/validate.py
 
 # Summary stats only
 python validate.py --stats

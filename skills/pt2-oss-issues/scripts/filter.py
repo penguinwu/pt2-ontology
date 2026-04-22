@@ -36,7 +36,7 @@ from collections import Counter
 from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent.parent.parent.parent / "data"
-GITHUB_DATA = Path("/home/pengwu/projects/pt2-github-issues/pytorch-issues-pt2-all.json")
+GITHUB_DATA = Path.home() / "projects" / "pt2-github-issues" / "pytorch-issues-pt2-all.json"
 PHASE1_DATA = DATA_DIR / "diagnostic_extractions_v2.json"
 OUTPUT = DATA_DIR / "phase2_candidates_refined.json"
 

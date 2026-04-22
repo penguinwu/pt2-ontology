@@ -10,8 +10,8 @@
 
 set -euo pipefail
 
-DATA_DIR="${PT2_OSS_ISSUES_DIR:-/home/pengwu/projects/pt2-github-issues}"
-ONTOLOGY_DIR="/home/pengwu/projects/pt2-ontology"
+DATA_DIR="${PT2_OSS_ISSUES_DIR:-$HOME/projects/pt2-github-issues}"
+ONTOLOGY_DIR="${PT2_ONTOLOGY_DIR:-$HOME/projects/pt2-ontology}"
 EXTRACTOR="$ONTOLOGY_DIR/extraction/extract_diagnostics_v2.py"
 
 if [[ ! -f "$DATA_DIR/pytorch-issues-pt2-all.json" ]]; then

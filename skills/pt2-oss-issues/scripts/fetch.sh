@@ -11,7 +11,7 @@
 
 set -euo pipefail
 
-DATA_DIR="${PT2_OSS_ISSUES_DIR:-/home/pengwu/projects/pt2-github-issues}"
+DATA_DIR="${PT2_OSS_ISSUES_DIR:-$HOME/projects/pt2-github-issues}"
 OUTFILE="$DATA_DIR/pytorch-issues-pt2-all.json"
 REPO="pytorch/pytorch"
 LABEL="oncall: pt2"
