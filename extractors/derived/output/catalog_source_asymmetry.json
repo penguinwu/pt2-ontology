@@ -4951,7 +4951,7 @@
       }
     ],
     "provenance": {
-      "extracted_at": "2026-04-22T02:46:56+00:00",
+      "extracted_at": "2026-04-22T02:47:54+00:00",
       "extracted_by": "derived.catalog_source_asymmetry@1.0.0",
       "extracted_from": "catalog@217c51812f68 ⟂ causes@c2d8394b634f"
     },

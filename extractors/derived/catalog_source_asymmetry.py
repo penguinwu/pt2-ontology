@@ -75,17 +75,21 @@ class CatalogSourceAsymmetryView(Extractor):
         )
 
     def extracted_at(self) -> str:
-        # Bound to inputs' content hashes via source_ref; the file mtime of
-        # whichever input is older gives a stable timestamp.
-        from datetime import datetime, timezone
-
-        oldest = min(
-            self.catalog_file.stat().st_mtime,
-            self.causes_file.stat().st_mtime,
-        )
-        return datetime.fromtimestamp(oldest, tz=timezone.utc).replace(
-            microsecond=0
-        ).isoformat()
+        # Anchor to the *latest* extracted_at across the two input JSONs.
+        # Their provenance is content-derived (source_sha / commit timestamp),
+        # so this is stable across reruns even if file mtimes churn.
+        catalog = read_json(self.catalog_file)
+        causes = read_json(self.causes_file)
+        ts_candidates: list[str] = []
+        for arr in (catalog, causes):
+            for e in arr:
+                t = e.get("provenance", {}).get("extracted_at")
+                if t:
+                    ts_candidates.append(t)
+                    break  # one per input is enough; provenance is uniform
+        if not ts_candidates:
+            return "unknown"
+        return max(ts_candidates)
 
     def extract(self) -> list[dict]:
         catalog = read_json(self.catalog_file)
