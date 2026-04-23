@@ -1,150 +1,149 @@
 [
   {
+    "description": "PyTorch op or Python construct not supported by dynamo",
     "id": "unsupported_op",
     "name": "Unsupported Operation",
-    "description": "PyTorch op or Python construct not supported by dynamo",
     "visibility": "oss"
   },
   {
+    "description": "Branching on tensor values (e.g., if x.item() > 0)",
     "id": "data_dependent_control",
     "name": "Data-Dependent Control Flow",
-    "description": "Branching on tensor values (e.g., if x.item() > 0)",
     "visibility": "oss"
   },
   {
+    "description": "Shape expressions too complex for symbolic reasoning",
     "id": "dynamic_shapes_issue",
     "name": "Dynamic Shapes Complexity",
-    "description": "Shape expressions too complex for symbolic reasoning",
     "visibility": "oss"
   },
   {
+    "description": "In-place ops that violate functional semantics",
     "id": "inplace_mutation",
     "name": "In-Place Mutation",
-    "description": "In-place ops that violate functional semantics",
     "visibility": "oss"
   },
   {
+    "description": "Custom tensor subclasses with non-standard behavior",
     "id": "tensor_subclass",
     "name": "Tensor Subclass",
-    "description": "Custom tensor subclasses with non-standard behavior",
     "visibility": "oss"
   },
   {
+    "description": "User-defined torch.autograd.Function not traceable",
     "id": "custom_autograd",
     "name": "Custom Autograd Function",
-    "description": "User-defined torch.autograd.Function not traceable",
     "visibility": "oss"
   },
   {
+    "description": "Calls to libraries dynamo cannot trace into",
     "id": "third_party_lib",
     "name": "Third-Party Library Call",
-    "description": "Calls to libraries dynamo cannot trace into",
     "visibility": "oss"
   },
   {
+    "description": "Input doesn't match cached guards — triggers recompile",
     "id": "guard_mismatch",
     "name": "Guard Mismatch",
-    "description": "Input doesn't match cached guards \u2014 triggers recompile",
     "visibility": "oss"
   },
   {
+    "description": "Bug in inductor, triton, or other compilation backend",
     "id": "backend_bug",
     "name": "Backend Bug",
-    "description": "Bug in inductor, triton, or other compilation backend",
     "visibility": "oss"
   },
   {
+    "description": "Op lacks a decomposition into supported primitives",
     "id": "decomposition_gap",
     "name": "Missing Decomposition",
-    "description": "Op lacks a decomposition into supported primitives",
     "visibility": "oss"
   },
   {
+    "description": "Compile conflicts with DDP, FSDP, or tensor parallel",
     "id": "distributed_interaction",
     "name": "Distributed Interaction",
-    "description": "Compile conflicts with DDP, FSDP, or tensor parallel",
     "visibility": "oss"
   },
   {
+    "description": "Custom op not registered via torch.library or missing FakeTensor/meta kernel",
     "id": "non_compliant_custom_op",
     "name": "Non-Compliant Custom Operator",
-    "description": "Custom op not registered via torch.library or missing FakeTensor/meta kernel",
     "visibility": "oss"
   },
   {
+    "description": "Default triton config heuristics (tile sizes, num_warps) produce suboptimal kernel performance",
     "id": "suboptimal_heuristics",
     "name": "Suboptimal Inductor Heuristics",
-    "description": "Default triton config heuristics (tile sizes, num_warps) produce suboptimal kernel performance",
     "visibility": "oss"
   },
   {
+    "description": "Debug logging (e.g., everstore uploads, graph dumps) causing compile time bloat",
     "id": "excessive_logging",
     "name": "Excessive Logging/Debug Overhead",
-    "description": "Debug logging (e.g., everstore uploads, graph dumps) causing compile time bloat",
     "visibility": "oss"
   },
   {
+    "description": "Custom op libraries (flash attention, xformers) not ABI-compatible with PyTorch version",
     "id": "abi_incompatibility",
     "name": "ABI Incompatibility",
-    "description": "Custom op libraries (flash attention, xformers) not ABI-compatible with PyTorch version",
     "visibility": "oss"
   },
   {
+    "description": "Dynamo's automatic shape dynamism causing unexpected recompilation or suboptimal code",
     "id": "automatic_dynamic_shapes",
     "name": "Automatic Dynamic Shapes",
-    "description": "Dynamo's automatic shape dynamism causing unexpected recompilation or suboptimal code",
     "visibility": "oss"
   },
   {
-    "id": "cause_shape_wobble",
-    "name": "shape_wobble",
-    "description": "Input shapes change across iterations, triggering automatic_dynamic_shapes recompilation",
     "aliases": [
       "changing shapes",
       "variable shapes"
     ],
+    "description": "Input shapes change across iterations, triggering automatic_dynamic_shapes recompilation",
+    "id": "cause_shape_wobble",
+    "name": "shape_wobble",
     "visibility": "oss"
   },
   {
-    "id": "cause_unspecialized_int",
-    "name": "unspecialized_int",
-    "description": "Int members on nn.Module change values (e.g., step count) causing recompilation without allow_unspec_int_on_nn_module",
     "aliases": [
       "changing int attributes"
     ],
+    "description": "Int members on nn.Module change values (e.g., step count) causing recompilation without allow_unspec_int_on_nn_module",
+    "id": "cause_unspecialized_int",
+    "name": "unspecialized_int",
     "visibility": "oss"
   },
   {
-    "id": "cause_dynamic_output_shape",
-    "name": "dynamic_output_shape",
-    "description": "Ops like nonzero/unique have data-dependent output shapes, causing graph break without capture_dynamic_output_shape_ops",
     "aliases": [
       "data-dependent shape"
     ],
+    "description": "Ops like nonzero/unique have data-dependent output shapes, causing graph break without capture_dynamic_output_shape_ops",
+    "id": "cause_dynamic_output_shape",
+    "name": "dynamic_output_shape",
     "visibility": "oss"
   },
   {
-    "id": "cause_scalar_return",
-    "name": "scalar_return",
-    "description": "Operations return scalar types (e.g., .item()) which cause graph break without capture_scalar_outputs",
     "aliases": [
       "scalar output"
     ],
+    "description": "Operations return scalar types (e.g., .item()) which cause graph break without capture_scalar_outputs",
+    "id": "cause_scalar_return",
+    "name": "scalar_return",
     "visibility": "oss"
   },
   {
-    "id": "cause_fancy_compile_wrapper",
-    "name": "fancy_compile_wrapper",
-    "description": "Custom compile wrappers that jam config options cause silent graph breaks (anti-pattern)",
     "aliases": [
       "custom wrapper",
       "config wrapper"
     ],
+    "description": "Custom compile wrappers that jam config options cause silent graph breaks (anti-pattern)",
+    "id": "cause_fancy_compile_wrapper",
+    "name": "fancy_compile_wrapper",
     "visibility": "oss"
   },
   {
-    "id": "custom_backend_config",
-    "name": "Custom Backend Config",
+    "confidence": "high",
     "description": "Subcause of fancy compile wrapper (evidence from 938 issues)",
     "evidence_count": 938,
     "example_issues": [
@@ -154,12 +153,12 @@
       93468,
       93492
     ],
-    "confidence": "high",
+    "id": "custom_backend_config",
+    "name": "Custom Backend Config",
     "visibility": "oss"
   },
   {
-    "id": "config_int_attribute",
-    "name": "Config Int Attribute",
+    "confidence": "high",
     "description": "Subcause of unspecialized int (evidence from 889 issues)",
     "evidence_count": 889,
     "example_issues": [
@@ -169,12 +168,12 @@
       93735,
       93748
     ],
-    "confidence": "high",
+    "id": "config_int_attribute",
+    "name": "Config Int Attribute",
     "visibility": "oss"
   },
   {
-    "id": "cache_miss_recompile",
-    "name": "Cache Miss Recompile",
+    "confidence": "high",
     "description": "Subcause of guard mismatch (evidence from 444 issues)",
     "evidence_count": 444,
     "example_issues": [
@@ -184,12 +183,12 @@
       93761,
       93774
     ],
-    "confidence": "high",
+    "id": "cache_miss_recompile",
+    "name": "Cache Miss Recompile",
     "visibility": "oss"
   },
   {
-    "id": "numpy_call",
-    "name": "Numpy Call",
+    "confidence": "high",
     "description": "Subcause of third party lib (evidence from 428 issues)",
     "evidence_count": 428,
     "example_issues": [
@@ -199,12 +198,12 @@
       93766,
       93778
     ],
-    "confidence": "high",
+    "id": "numpy_call",
+    "name": "Numpy Call",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_introspection",
-    "name": "Unsupported Introspection",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 405 issues)",
     "evidence_count": 405,
     "example_issues": [
@@ -214,12 +213,12 @@
       93672,
       93721
     ],
-    "confidence": "high",
+    "id": "unsupported_introspection",
+    "name": "Unsupported Introspection",
     "visibility": "oss"
   },
   {
-    "id": "fake_tensor_mode",
-    "name": "Fake Tensor Mode",
+    "confidence": "high",
     "description": "Subcause of tensor subclass (evidence from 329 issues)",
     "evidence_count": 329,
     "example_issues": [
@@ -229,12 +228,12 @@
       93688,
       93711
     ],
-    "confidence": "high",
+    "id": "fake_tensor_mode",
+    "name": "Fake Tensor Mode",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_builtin_getattr",
-    "name": "Unsupported Builtin Getattr",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 327 issues)",
     "evidence_count": 327,
     "example_issues": [
@@ -244,12 +243,12 @@
       93676,
       93796
     ],
-    "confidence": "high",
+    "id": "unsupported_builtin_getattr",
+    "name": "Unsupported Builtin Getattr",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_system_module",
-    "name": "Unsupported System Module",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 286 issues)",
     "evidence_count": 286,
     "example_issues": [
@@ -259,12 +258,12 @@
       93935,
       95939
     ],
-    "confidence": "high",
+    "id": "unsupported_system_module",
+    "name": "Unsupported System Module",
     "visibility": "oss"
   },
   {
-    "id": "huggingface_transformers",
-    "name": "Huggingface Transformers",
+    "confidence": "high",
     "description": "Subcause of third party lib (evidence from 274 issues)",
     "evidence_count": 274,
     "example_issues": [
@@ -274,12 +273,12 @@
       93767,
       93773
     ],
-    "confidence": "high",
+    "id": "huggingface_transformers",
+    "name": "Huggingface Transformers",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_context_manager",
-    "name": "Unsupported Context Manager",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 267 issues)",
     "evidence_count": 267,
     "example_issues": [
@@ -289,12 +288,12 @@
       93781,
       93782
     ],
-    "confidence": "high",
+    "id": "unsupported_context_manager",
+    "name": "Unsupported Context Manager",
     "visibility": "oss"
   },
   {
-    "id": "item_method",
-    "name": "Item Method",
+    "confidence": "high",
     "description": "Subcause of scalar return (evidence from 258 issues)",
     "evidence_count": 258,
     "example_issues": [
@@ -304,12 +303,12 @@
       95770,
       97339
     ],
-    "confidence": "high",
+    "id": "item_method",
+    "name": "Item Method",
     "visibility": "oss"
   },
   {
-    "id": "custom_compile_mode",
-    "name": "Custom Compile Mode",
+    "confidence": "high",
     "description": "Subcause of fancy compile wrapper (evidence from 255 issues)",
     "evidence_count": 255,
     "example_issues": [
@@ -319,12 +318,12 @@
       93495,
       93498
     ],
-    "confidence": "high",
+    "id": "custom_compile_mode",
+    "name": "Custom Compile Mode",
     "visibility": "oss"
   },
   {
-    "id": "shape_query_to_scalar",
-    "name": "Shape Query To Scalar",
+    "confidence": "high",
     "description": "Subcause of scalar return (evidence from 212 issues)",
     "evidence_count": 212,
     "example_issues": [
@@ -334,12 +333,12 @@
       93686,
       93689
     ],
-    "confidence": "high",
+    "id": "shape_query_to_scalar",
+    "name": "Shape Query To Scalar",
     "visibility": "oss"
   },
   {
-    "id": "vision_library",
-    "name": "Vision Library",
+    "confidence": "high",
     "description": "Subcause of third party lib (evidence from 169 issues)",
     "evidence_count": 169,
     "example_issues": [
@@ -349,12 +348,12 @@
       93777,
       93787
     ],
-    "confidence": "high",
+    "id": "vision_library",
+    "name": "Vision Library",
     "visibility": "oss"
   },
   {
-    "id": "conditional_tensor_operation",
-    "name": "Conditional Tensor Operation",
+    "confidence": "high",
     "description": "Subcause of data dependent control (evidence from 164 issues)",
     "evidence_count": 164,
     "example_issues": [
@@ -364,12 +363,12 @@
       93723,
       93805
     ],
-    "confidence": "high",
+    "id": "conditional_tensor_operation",
+    "name": "Conditional Tensor Operation",
     "visibility": "oss"
   },
   {
-    "id": "collective_ops_issue",
-    "name": "Collective Ops Issue",
+    "confidence": "high",
     "description": "Subcause of distributed interaction (evidence from 157 issues)",
     "evidence_count": 157,
     "example_issues": [
@@ -379,12 +378,12 @@
       93566,
       93649
     ],
-    "confidence": "high",
+    "id": "collective_ops_issue",
+    "name": "Collective Ops Issue",
     "visibility": "oss"
   },
   {
-    "id": "torch_dispatch_protocol",
-    "name": "Torch Dispatch Protocol",
+    "confidence": "high",
     "description": "Subcause of tensor subclass (evidence from 140 issues)",
     "evidence_count": 140,
     "example_issues": [
@@ -394,12 +393,12 @@
       93723,
       93805
     ],
-    "confidence": "high",
+    "id": "torch_dispatch_protocol",
+    "name": "Torch Dispatch Protocol",
     "visibility": "oss"
   },
   {
-    "id": "triton_crash",
-    "name": "Triton Crash",
+    "confidence": "high",
     "description": "Subcause of backend bug (evidence from 138 issues)",
     "evidence_count": 138,
     "example_issues": [
@@ -409,12 +408,12 @@
       93544,
       93647
     ],
-    "confidence": "high",
+    "id": "triton_crash",
+    "name": "Triton Crash",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_numpy_api",
-    "name": "Unsupported Numpy Api",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 133 issues)",
     "evidence_count": 133,
     "example_issues": [
@@ -424,12 +423,12 @@
       93658,
       93766
     ],
-    "confidence": "high",
+    "id": "unsupported_numpy_api",
+    "name": "Unsupported Numpy Api",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_property_decorator",
-    "name": "Unsupported Property Decorator",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 130 issues)",
     "evidence_count": 130,
     "example_issues": [
@@ -439,12 +438,12 @@
       97691,
       100386
     ],
-    "confidence": "high",
+    "id": "unsupported_property_decorator",
+    "name": "Unsupported Property Decorator",
     "visibility": "oss"
   },
   {
-    "id": "module_int_member",
-    "name": "Module Int Member",
+    "confidence": "high",
     "description": "Subcause of unspecialized int (evidence from 130 issues)",
     "evidence_count": 130,
     "example_issues": [
@@ -454,12 +453,12 @@
       93357,
       95846
     ],
-    "confidence": "high",
+    "id": "module_int_member",
+    "name": "Module Int Member",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_generator",
-    "name": "Unsupported Generator",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 126 issues)",
     "evidence_count": 126,
     "example_issues": [
@@ -469,12 +468,12 @@
       93781,
       93796
     ],
-    "confidence": "high",
+    "id": "unsupported_generator",
+    "name": "Unsupported Generator",
     "visibility": "oss"
   },
   {
-    "id": "custom_autograd_function",
-    "name": "Custom Autograd Function",
+    "confidence": "high",
     "description": "Subcause of custom autograd (evidence from 112 issues)",
     "evidence_count": 112,
     "example_issues": [
@@ -484,12 +483,12 @@
       91469,
       93721
     ],
-    "confidence": "high",
+    "id": "custom_autograd_function",
+    "name": "Custom Autograd Function",
     "visibility": "oss"
   },
   {
-    "id": "ddp_compile_conflict",
-    "name": "Ddp Compile Conflict",
+    "confidence": "high",
     "description": "Subcause of distributed interaction (evidence from 92 issues)",
     "evidence_count": 92,
     "example_issues": [
@@ -499,12 +498,12 @@
       93672,
       93773
     ],
-    "confidence": "high",
+    "id": "ddp_compile_conflict",
+    "name": "Ddp Compile Conflict",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_functools",
-    "name": "Unsupported Functools",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 89 issues)",
     "evidence_count": 89,
     "example_issues": [
@@ -514,12 +513,12 @@
       94851,
       95445
     ],
-    "confidence": "high",
+    "id": "unsupported_functools",
+    "name": "Unsupported Functools",
     "visibility": "oss"
   },
   {
-    "id": "fsdp_compile_conflict",
-    "name": "Fsdp Compile Conflict",
+    "confidence": "high",
     "description": "Subcause of distributed interaction (evidence from 86 issues)",
     "evidence_count": 86,
     "example_issues": [
@@ -529,12 +528,12 @@
       93688,
       93756
     ],
-    "confidence": "high",
+    "id": "fsdp_compile_conflict",
+    "name": "Fsdp Compile Conflict",
     "visibility": "oss"
   },
   {
-    "id": "custom_op_registration",
-    "name": "Custom Op Registration",
+    "confidence": "high",
     "description": "Subcause of non compliant custom op (evidence from 86 issues)",
     "evidence_count": 86,
     "example_issues": [
@@ -544,12 +543,12 @@
       126201,
       127561
     ],
-    "confidence": "high",
+    "id": "custom_op_registration",
+    "name": "Custom Op Registration",
     "visibility": "oss"
   },
   {
-    "id": "inplace_arithmetic",
-    "name": "Inplace Arithmetic",
+    "confidence": "high",
     "description": "Subcause of inplace mutation (evidence from 82 issues)",
     "evidence_count": 82,
     "example_issues": [
@@ -559,12 +558,12 @@
       92129,
       93363
     ],
-    "confidence": "high",
+    "id": "inplace_arithmetic",
+    "name": "Inplace Arithmetic",
     "visibility": "oss"
   },
   {
-    "id": "excessive_memory_usage",
-    "name": "Excessive Memory Usage",
+    "confidence": "high",
     "description": "Subcause of suboptimal heuristics (evidence from 81 issues)",
     "evidence_count": 81,
     "example_issues": [
@@ -574,12 +573,12 @@
       93699,
       93807
     ],
-    "confidence": "high",
+    "id": "excessive_memory_usage",
+    "name": "Excessive Memory Usage",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_random_module",
-    "name": "Unsupported Random Module",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 80 issues)",
     "evidence_count": 80,
     "example_issues": [
@@ -589,12 +588,12 @@
       96118,
       98561
     ],
-    "confidence": "high",
+    "id": "unsupported_random_module",
+    "name": "Unsupported Random Module",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_autocast",
-    "name": "Unsupported Autocast",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 72 issues)",
     "evidence_count": 72,
     "example_issues": [
@@ -604,12 +603,12 @@
       93694,
       93711
     ],
-    "confidence": "high",
+    "id": "unsupported_autocast",
+    "name": "Unsupported Autocast",
     "visibility": "oss"
   },
   {
-    "id": "torch_function_protocol",
-    "name": "Torch Function Protocol",
+    "confidence": "high",
     "description": "Subcause of tensor subclass (evidence from 65 issues)",
     "evidence_count": 65,
     "example_issues": [
@@ -619,12 +618,12 @@
       93723,
       93748
     ],
-    "confidence": "high",
+    "id": "torch_function_protocol",
+    "name": "Torch Function Protocol",
     "visibility": "oss"
   },
   {
-    "id": "inplace_copy",
-    "name": "Inplace Copy",
+    "confidence": "high",
     "description": "Subcause of inplace mutation (evidence from 65 issues)",
     "evidence_count": 65,
     "example_issues": [
@@ -634,12 +633,12 @@
       93654,
       93685
     ],
-    "confidence": "high",
+    "id": "inplace_copy",
+    "name": "Inplace Copy",
     "visibility": "oss"
   },
   {
-    "id": "inductor_wrong_output",
-    "name": "Inductor Wrong Output",
+    "confidence": "high",
     "description": "Subcause of backend bug (evidence from 63 issues)",
     "evidence_count": 63,
     "example_issues": [
@@ -649,12 +648,12 @@
       109105,
       111133
     ],
-    "confidence": "high",
+    "id": "inductor_wrong_output",
+    "name": "Inductor Wrong Output",
     "visibility": "oss"
   },
   {
-    "id": "unbacked_symint",
-    "name": "Unbacked Symint",
+    "confidence": "high",
     "description": "Subcause of dynamic shapes issue (evidence from 63 issues)",
     "evidence_count": 63,
     "example_issues": [
@@ -664,12 +663,12 @@
       111950,
       112347
     ],
-    "confidence": "high",
+    "id": "unbacked_symint",
+    "name": "Unbacked Symint",
     "visibility": "oss"
   },
   {
-    "id": "dtensor_subclass",
-    "name": "Dtensor Subclass",
+    "confidence": "high",
     "description": "Subcause of tensor subclass (evidence from 61 issues)",
     "evidence_count": 61,
     "example_issues": [
@@ -679,12 +678,12 @@
       116712,
       117670
     ],
-    "confidence": "high",
+    "id": "dtensor_subclass",
+    "name": "Dtensor Subclass",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_jit_script",
-    "name": "Unsupported Jit Script",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 56 issues)",
     "evidence_count": 56,
     "example_issues": [
@@ -694,12 +693,12 @@
       93702,
       93742
     ],
-    "confidence": "high",
+    "id": "unsupported_jit_script",
+    "name": "Unsupported Jit Script",
     "visibility": "oss"
   },
   {
-    "id": "item_in_condition",
-    "name": "Item In Condition",
+    "confidence": "high",
     "description": "Subcause of data dependent control (evidence from 56 issues)",
     "evidence_count": 56,
     "example_issues": [
@@ -709,12 +708,12 @@
       135161,
       136306
     ],
-    "confidence": "high",
+    "id": "item_in_condition",
+    "name": "Item In Condition",
     "visibility": "oss"
   },
   {
-    "id": "cuda_backend_error",
-    "name": "Cuda Backend Error",
+    "confidence": "high",
     "description": "Subcause of backend bug (evidence from 53 issues)",
     "evidence_count": 53,
     "example_issues": [
@@ -724,12 +723,12 @@
       93638,
       93647
     ],
-    "confidence": "high",
+    "id": "cuda_backend_error",
+    "name": "Cuda Backend Error",
     "visibility": "oss"
   },
   {
-    "id": "nonzero_op",
-    "name": "Nonzero Op",
+    "confidence": "high",
     "description": "Subcause of dynamic output shape (evidence from 49 issues)",
     "evidence_count": 49,
     "example_issues": [
@@ -739,12 +738,12 @@
       105534,
       109861
     ],
-    "confidence": "high",
+    "id": "nonzero_op",
+    "name": "Nonzero Op",
     "visibility": "oss"
   },
   {
-    "id": "where_op",
-    "name": "Where Op",
+    "confidence": "high",
     "description": "Subcause of dynamic output shape (evidence from 45 issues)",
     "evidence_count": 45,
     "example_issues": [
@@ -754,12 +753,12 @@
       106580,
       117807
     ],
-    "confidence": "high",
+    "id": "where_op",
+    "name": "Where Op",
     "visibility": "oss"
   },
   {
-    "id": "slow_compilation",
-    "name": "Slow Compilation",
+    "confidence": "high",
     "description": "Subcause of suboptimal heuristics (evidence from 43 issues)",
     "evidence_count": 43,
     "example_issues": [
@@ -769,12 +768,12 @@
       95501,
       95660
     ],
-    "confidence": "high",
+    "id": "slow_compilation",
+    "name": "Slow Compilation",
     "visibility": "oss"
   },
   {
-    "id": "tolist_method",
-    "name": "Tolist Method",
+    "confidence": "high",
     "description": "Subcause of scalar return (evidence from 42 issues)",
     "evidence_count": 42,
     "example_issues": [
@@ -784,12 +783,12 @@
       114231,
       114483
     ],
-    "confidence": "high",
+    "id": "tolist_method",
+    "name": "Tolist Method",
     "visibility": "oss"
   },
   {
-    "id": "unique_op",
-    "name": "Unique Op",
+    "confidence": "high",
     "description": "Subcause of dynamic output shape (evidence from 36 issues)",
     "evidence_count": 36,
     "example_issues": [
@@ -799,12 +798,12 @@
       102375,
       105075
     ],
-    "confidence": "high",
+    "id": "unique_op",
+    "name": "Unique Op",
     "visibility": "oss"
   },
   {
-    "id": "saved_tensor_hooks",
-    "name": "Saved Tensor Hooks",
+    "confidence": "high",
     "description": "Subcause of custom autograd (evidence from 33 issues)",
     "evidence_count": 33,
     "example_issues": [
@@ -814,12 +813,12 @@
       106388,
       106389
     ],
-    "confidence": "high",
+    "id": "saved_tensor_hooks",
+    "name": "Saved Tensor Hooks",
     "visibility": "oss"
   },
   {
-    "id": "ragged_tensor_shapes",
-    "name": "Ragged Tensor Shapes",
+    "confidence": "high",
     "description": "Subcause of dynamic shapes issue (evidence from 32 issues)",
     "evidence_count": 32,
     "example_issues": [
@@ -829,12 +828,12 @@
       94167,
       106064
     ],
-    "confidence": "high",
+    "id": "ragged_tensor_shapes",
+    "name": "Ragged Tensor Shapes",
     "visibility": "oss"
   },
   {
-    "id": "inplace_initialization",
-    "name": "Inplace Initialization",
+    "confidence": "high",
     "description": "Subcause of inplace mutation (evidence from 31 issues)",
     "evidence_count": 31,
     "example_issues": [
@@ -844,12 +843,12 @@
       127561,
       127572
     ],
-    "confidence": "high",
+    "id": "inplace_initialization",
+    "name": "Inplace Initialization",
     "visibility": "oss"
   },
   {
-    "id": "numerical_accuracy",
-    "name": "Numerical Accuracy",
+    "confidence": "high",
     "description": "Subcause of backend bug (evidence from 30 issues)",
     "evidence_count": 30,
     "example_issues": [
@@ -859,12 +858,12 @@
       93708,
       93777
     ],
-    "confidence": "high",
+    "id": "numerical_accuracy",
+    "name": "Numerical Accuracy",
     "visibility": "oss"
   },
   {
-    "id": "shape_specialization_needed",
-    "name": "Shape Specialization Needed",
+    "confidence": "high",
     "description": "Subcause of dynamic shapes issue (evidence from 30 issues)",
     "evidence_count": 30,
     "example_issues": [
@@ -874,12 +873,12 @@
       93380,
       93829
     ],
-    "confidence": "high",
+    "id": "shape_specialization_needed",
+    "name": "Shape Specialization Needed",
     "visibility": "oss"
   },
   {
-    "id": "inplace_fill",
-    "name": "Inplace Fill",
+    "confidence": "high",
     "description": "Subcause of inplace mutation (evidence from 26 issues)",
     "evidence_count": 26,
     "example_issues": [
@@ -889,12 +888,12 @@
       98265,
       103139
     ],
-    "confidence": "high",
+    "id": "inplace_fill",
+    "name": "Inplace Fill",
     "visibility": "oss"
   },
   {
-    "id": "pillow_call",
-    "name": "Pillow Call",
+    "confidence": "high",
     "description": "Subcause of third party lib (evidence from 25 issues)",
     "evidence_count": 25,
     "example_issues": [
@@ -904,12 +903,12 @@
       96287,
       98045
     ],
-    "confidence": "high",
+    "id": "pillow_call",
+    "name": "Pillow Call",
     "visibility": "oss"
   },
   {
-    "id": "custom_op_implementation",
-    "name": "Custom Op Implementation",
+    "confidence": "high",
     "description": "Subcause of non compliant custom op (evidence from 25 issues)",
     "evidence_count": 25,
     "example_issues": [
@@ -919,12 +918,12 @@
       124918,
       127821
     ],
-    "confidence": "high",
+    "id": "custom_op_implementation",
+    "name": "Custom Op Implementation",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_itertools",
-    "name": "Unsupported Itertools",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 22 issues)",
     "evidence_count": 22,
     "example_issues": [
@@ -934,12 +933,12 @@
       107232,
       107682
     ],
-    "confidence": "high",
+    "id": "unsupported_itertools",
+    "name": "Unsupported Itertools",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_einops",
-    "name": "Unsupported Einops",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 22 issues)",
     "evidence_count": 22,
     "example_issues": [
@@ -949,12 +948,12 @@
       93905,
       94598
     ],
-    "confidence": "high",
+    "id": "unsupported_einops",
+    "name": "Unsupported Einops",
     "visibility": "oss"
   },
   {
-    "id": "dtensor_compile_conflict",
-    "name": "Dtensor Compile Conflict",
+    "confidence": "high",
     "description": "Subcause of distributed interaction (evidence from 22 issues)",
     "evidence_count": 22,
     "example_issues": [
@@ -964,12 +963,12 @@
       118596,
       118600
     ],
-    "confidence": "high",
+    "id": "dtensor_compile_conflict",
+    "name": "Dtensor Compile Conflict",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_collections",
-    "name": "Unsupported Collections",
+    "confidence": "high",
     "description": "Subcause of unsupported op (evidence from 20 issues)",
     "evidence_count": 20,
     "example_issues": [
@@ -979,12 +978,12 @@
       111713,
       114674
     ],
-    "confidence": "high",
+    "id": "unsupported_collections",
+    "name": "Unsupported Collections",
     "visibility": "oss"
   },
   {
-    "id": "topk_ops",
-    "name": "Topk Ops",
+    "confidence": "medium",
     "description": "Subcause of dynamic output shape (evidence from 18 issues)",
     "evidence_count": 18,
     "example_issues": [
@@ -994,12 +993,12 @@
       105569,
       108830
     ],
-    "confidence": "medium",
+    "id": "topk_ops",
+    "name": "Topk Ops",
     "visibility": "oss"
   },
   {
-    "id": "sparse_tensor_subclass",
-    "name": "Sparse Tensor Subclass",
+    "confidence": "medium",
     "description": "Subcause of tensor subclass (evidence from 17 issues)",
     "evidence_count": 17,
     "example_issues": [
@@ -1009,12 +1008,12 @@
       117188,
       118856
     ],
-    "confidence": "medium",
+    "id": "sparse_tensor_subclass",
+    "name": "Sparse Tensor Subclass",
     "visibility": "oss"
   },
   {
-    "id": "index_assignment",
-    "name": "Index Assignment",
+    "confidence": "medium",
     "description": "Subcause of inplace mutation (evidence from 17 issues)",
     "evidence_count": 17,
     "example_issues": [
@@ -1024,12 +1023,12 @@
       123589,
       126027
     ],
-    "confidence": "medium",
+    "id": "index_assignment",
+    "name": "Index Assignment",
     "visibility": "oss"
   },
   {
-    "id": "scipy_call",
-    "name": "Scipy Call",
+    "confidence": "medium",
     "description": "Subcause of third party lib (evidence from 15 issues)",
     "evidence_count": 15,
     "example_issues": [
@@ -1039,12 +1038,12 @@
       98510,
       115953
     ],
-    "confidence": "medium",
+    "id": "scipy_call",
+    "name": "Scipy Call",
     "visibility": "oss"
   },
   {
-    "id": "parallelism_conflict",
-    "name": "Parallelism Conflict",
+    "confidence": "medium",
     "description": "Subcause of distributed interaction (evidence from 15 issues)",
     "evidence_count": 15,
     "example_issues": [
@@ -1054,12 +1053,12 @@
       113895,
       116430
     ],
-    "confidence": "medium",
+    "id": "parallelism_conflict",
+    "name": "Parallelism Conflict",
     "visibility": "oss"
   },
   {
-    "id": "inplace_scatter",
-    "name": "Inplace Scatter",
+    "confidence": "medium",
     "description": "Subcause of inplace mutation (evidence from 14 issues)",
     "evidence_count": 14,
     "example_issues": [
@@ -1069,12 +1068,12 @@
       114686,
       126614
     ],
-    "confidence": "medium",
+    "id": "inplace_scatter",
+    "name": "Inplace Scatter",
     "visibility": "oss"
   },
   {
-    "id": "auto_dynamic_enabled",
-    "name": "Auto Dynamic Enabled",
+    "confidence": "medium",
     "description": "Subcause of automatic dynamic shapes (evidence from 14 issues)",
     "evidence_count": 14,
     "example_issues": [
@@ -1084,12 +1083,12 @@
       118798,
       120080
     ],
-    "confidence": "medium",
+    "id": "auto_dynamic_enabled",
+    "name": "Auto Dynamic Enabled",
     "visibility": "oss"
   },
   {
-    "id": "opencv_call",
-    "name": "Opencv Call",
+    "confidence": "medium",
     "description": "Subcause of third party lib (evidence from 11 issues)",
     "evidence_count": 11,
     "example_issues": [
@@ -1099,12 +1098,12 @@
       115534,
       127188
     ],
-    "confidence": "medium",
+    "id": "opencv_call",
+    "name": "Opencv Call",
     "visibility": "oss"
   },
   {
-    "id": "codegen_error",
-    "name": "Codegen Error",
+    "confidence": "medium",
     "description": "Subcause of backend bug (evidence from 10 issues)",
     "evidence_count": 10,
     "example_issues": [
@@ -1114,12 +1113,12 @@
       95082,
       104759
     ],
-    "confidence": "medium",
+    "id": "codegen_error",
+    "name": "Codegen Error",
     "visibility": "oss"
   },
   {
-    "id": "pandas_call",
-    "name": "Pandas Call",
+    "confidence": "medium",
     "description": "Subcause of third party lib (evidence from 9 issues)",
     "evidence_count": 9,
     "example_issues": [
@@ -1129,12 +1128,12 @@
       133079,
       135675
     ],
-    "confidence": "medium",
+    "id": "pandas_call",
+    "name": "Pandas Call",
     "visibility": "oss"
   },
   {
-    "id": "masked_select_op",
-    "name": "Masked Select Op",
+    "confidence": "medium",
     "description": "Subcause of dynamic output shape (evidence from 8 issues)",
     "evidence_count": 8,
     "example_issues": [
@@ -1144,12 +1143,12 @@
       109871,
       145874
     ],
-    "confidence": "medium",
+    "id": "masked_select_op",
+    "name": "Masked Select Op",
     "visibility": "oss"
   },
   {
-    "id": "dynamic_padding",
-    "name": "Dynamic Padding",
+    "confidence": "medium",
     "description": "Subcause of shape wobble (evidence from 8 issues)",
     "evidence_count": 8,
     "example_issues": [
@@ -1159,12 +1158,12 @@
       169760,
       175831
     ],
-    "confidence": "medium",
+    "id": "dynamic_padding",
+    "name": "Dynamic Padding",
     "visibility": "oss"
   },
   {
-    "id": "inplace_resize",
-    "name": "Inplace Resize",
+    "confidence": "medium",
     "description": "Subcause of inplace mutation (evidence from 7 issues)",
     "evidence_count": 7,
     "example_issues": [
@@ -1174,12 +1173,12 @@
       104020,
       110699
     ],
-    "confidence": "medium",
+    "id": "inplace_resize",
+    "name": "Inplace Resize",
     "visibility": "oss"
   },
   {
-    "id": "primtorch_lowering_gap",
-    "name": "Primtorch Lowering Gap",
+    "confidence": "medium",
     "description": "Subcause of decomposition gap (evidence from 6 issues)",
     "evidence_count": 6,
     "example_issues": [
@@ -1189,12 +1188,12 @@
       108204,
       108205
     ],
-    "confidence": "medium",
+    "id": "primtorch_lowering_gap",
+    "name": "Primtorch Lowering Gap",
     "visibility": "oss"
   },
   {
-    "id": "nested_tensor_subclass",
-    "name": "Nested Tensor Subclass",
+    "confidence": "medium",
     "description": "Subcause of tensor subclass (evidence from 6 issues)",
     "evidence_count": 6,
     "example_issues": [
@@ -1204,12 +1203,12 @@
       134873,
       146707
     ],
-    "confidence": "medium",
+    "id": "nested_tensor_subclass",
+    "name": "Nested Tensor Subclass",
     "visibility": "oss"
   },
   {
-    "id": "double_backward_issue",
-    "name": "Double Backward Issue",
+    "confidence": "medium",
     "description": "Subcause of custom autograd (evidence from 5 issues)",
     "evidence_count": 5,
     "example_issues": [
@@ -1219,12 +1218,12 @@
       167729,
       174165
     ],
-    "confidence": "medium",
+    "id": "double_backward_issue",
+    "name": "Double Backward Issue",
     "visibility": "oss"
   },
   {
-    "id": "variable_sequence_length",
-    "name": "Variable Sequence Length",
+    "confidence": "medium",
     "description": "Subcause of shape wobble (evidence from 5 issues)",
     "evidence_count": 5,
     "example_issues": [
@@ -1234,12 +1233,12 @@
       169290,
       178260
     ],
-    "confidence": "medium",
+    "id": "variable_sequence_length",
+    "name": "Variable Sequence Length",
     "visibility": "oss"
   },
   {
-    "id": "control_flow_ops",
-    "name": "Control Flow Ops",
+    "confidence": "medium",
     "description": "Subcause of data dependent control (evidence from 5 issues)",
     "evidence_count": 5,
     "example_issues": [
@@ -1249,12 +1248,12 @@
       123155,
       138689
     ],
-    "confidence": "medium",
+    "id": "control_flow_ops",
+    "name": "Control Flow Ops",
     "visibility": "oss"
   },
   {
-    "id": "loop_over_tensor_value",
-    "name": "Loop Over Tensor Value",
+    "confidence": "medium",
     "description": "Subcause of data dependent control (evidence from 5 issues)",
     "evidence_count": 5,
     "example_issues": [
@@ -1264,12 +1263,12 @@
       155690,
       162817
     ],
-    "confidence": "medium",
+    "id": "loop_over_tensor_value",
+    "name": "Loop Over Tensor Value",
     "visibility": "oss"
   },
   {
-    "id": "opcheck_validation_failure",
-    "name": "Opcheck Validation Failure",
+    "confidence": "medium",
     "description": "Subcause of non compliant custom op (evidence from 5 issues)",
     "evidence_count": 5,
     "example_issues": [
@@ -1279,12 +1278,12 @@
       142410,
       144514
     ],
-    "confidence": "medium",
+    "id": "opcheck_validation_failure",
+    "name": "Opcheck Validation Failure",
     "visibility": "oss"
   },
   {
-    "id": "unsupported_async",
-    "name": "Unsupported Async",
+    "confidence": "medium",
     "description": "Subcause of unsupported op (evidence from 4 issues)",
     "evidence_count": 219,
     "example_issues": [
@@ -1294,12 +1293,12 @@
       164701,
       164563
     ],
-    "confidence": "medium",
+    "id": "unsupported_async",
+    "name": "Unsupported Async",
     "visibility": "oss"
   },
   {
-    "id": "slow_triton_kernel",
-    "name": "Slow Triton Kernel",
+    "confidence": "medium",
     "description": "Subcause of suboptimal heuristics (evidence from 4 issues)",
     "evidence_count": 55,
     "example_issues": [
@@ -1309,12 +1308,12 @@
       157363,
       151156
     ],
-    "confidence": "medium",
+    "id": "slow_triton_kernel",
+    "name": "Slow Triton Kernel",
     "visibility": "oss"
   },
   {
-    "id": "assume_static_false",
-    "name": "Assume Static False",
+    "confidence": "low",
     "description": "Subcause of automatic dynamic shapes (evidence from 4 issues)",
     "evidence_count": 4,
     "example_issues": [
@@ -1323,13 +1322,13 @@
       137527,
       168937
     ],
-    "confidence": "low",
+    "id": "assume_static_false",
+    "name": "Assume Static False",
     "validation_note": "entity verified in source; issue curation has false positives",
     "visibility": "oss"
   },
   {
-    "id": "stride_specialization",
-    "name": "Stride Specialization",
+    "confidence": "medium",
     "description": "Subcause of dynamic shapes issue (evidence from 4 issues)",
     "evidence_count": 21,
     "example_issues": [
@@ -1339,12 +1338,12 @@
       150021,
       143670
     ],
-    "confidence": "medium",
+    "id": "stride_specialization",
+    "name": "Stride Specialization",
     "visibility": "oss"
   },
   {
-    "id": "shape_guard_failure",
-    "name": "Shape Guard Failure",
+    "confidence": "medium",
     "description": "Subcause of guard mismatch (evidence from 3 issues)",
     "evidence_count": 19,
     "example_issues": [
@@ -1354,12 +1353,12 @@
       141589,
       138813
     ],
-    "confidence": "medium",
+    "id": "shape_guard_failure",
+    "name": "Shape Guard Failure",
     "visibility": "oss"
   },
   {
-    "id": "missing_aten_decomposition",
-    "name": "Missing Aten Decomposition",
+    "confidence": "medium",
     "description": "Subcause of decomposition gap (evidence from 3 issues)",
     "evidence_count": 3,
     "example_issues": [
@@ -1367,12 +1366,12 @@
       133057,
       177505
     ],
-    "confidence": "medium",
+    "id": "missing_aten_decomposition",
+    "name": "Missing Aten Decomposition",
     "visibility": "oss"
   },
   {
-    "id": "cpp_custom_op_registration",
-    "name": "Cpp Custom Op Registration",
+    "confidence": "medium",
     "description": "Subcause of non compliant custom op (evidence from 3 issues)",
     "evidence_count": 27,
     "example_issues": [
@@ -1382,12 +1381,12 @@
       128071,
       109074
     ],
-    "confidence": "medium",
+    "id": "cpp_custom_op_registration",
+    "name": "Cpp Custom Op Registration",
     "visibility": "oss"
   },
   {
-    "id": "sklearn_call",
-    "name": "Sklearn Call",
+    "confidence": "low",
     "description": "Subcause of third party lib (evidence from 3 issues)",
     "evidence_count": 3,
     "example_issues": [
@@ -1395,47 +1394,47 @@
       148003,
       169178
     ],
-    "confidence": "low",
+    "id": "sklearn_call",
+    "name": "Sklearn Call",
     "validation_note": "entity verified in source; issue curation has false positives",
     "visibility": "oss"
   },
   {
-    "id": "quantized_tensor_subclass",
-    "name": "Quantized Tensor Subclass",
+    "confidence": "medium",
     "description": "Subcause of tensor subclass (evidence from 2 issues)",
     "evidence_count": 2,
     "example_issues": [
       93642,
       136287
     ],
-    "confidence": "medium",
+    "id": "quantized_tensor_subclass",
+    "name": "Quantized Tensor Subclass",
     "visibility": "oss"
   },
   {
-    "id": "poor_autotuning",
-    "name": "Poor Autotuning",
+    "confidence": "medium",
     "description": "Subcause of suboptimal heuristics (evidence from 1 issues)",
     "evidence_count": 1,
     "example_issues": [
       93475
     ],
-    "confidence": "medium",
+    "id": "poor_autotuning",
+    "name": "Poor Autotuning",
     "visibility": "oss"
   },
   {
-    "id": "batch_size_change",
-    "name": "Batch Size Change",
+    "confidence": "medium",
     "description": "Subcause of shape wobble (evidence from 1 issues)",
     "evidence_count": 1,
     "example_issues": [
       96274
     ],
-    "confidence": "medium",
+    "id": "batch_size_change",
+    "name": "Batch Size Change",
     "visibility": "oss"
   },
   {
-    "id": "lowering_failure",
-    "name": "Lowering Failure",
+    "confidence": "medium",
     "description": "Subcause of decomposition gap (evidence from 1 issues)",
     "evidence_count": 41,
     "example_issues": [
@@ -1445,66 +1444,136 @@
       113180,
       180164
     ],
-    "confidence": "medium",
+    "id": "lowering_failure",
+    "name": "Lowering Failure",
     "visibility": "oss"
   },
   {
-    "id": "explicit_mutation",
-    "name": "Explicit Mutation",
+    "confidence": "medium",
     "description": "Subcause of inplace mutation (evidence from 1 issues)",
     "evidence_count": 1,
     "example_issues": [
       120802
     ],
-    "confidence": "medium",
+    "id": "explicit_mutation",
+    "name": "Explicit Mutation",
     "visibility": "oss"
   },
   {
+    "description": "Compiled code produces NaN, Inf, or numerically incorrect results compared to eager",
     "id": "numerical_issue",
     "name": "Numerical Issue",
-    "description": "Compiled code produces NaN, Inf, or numerically incorrect results compared to eager",
     "visibility": "oss"
   },
   {
+    "description": "Bug in inductor code generation producing incorrect kernels",
     "id": "codegen_issue",
     "name": "Codegen Issue",
-    "description": "Bug in inductor code generation producing incorrect kernels",
     "visibility": "oss"
   },
   {
+    "description": "Compiled tensor has different strides than eager, causing incorrect results",
     "id": "stride_mismatch",
     "name": "Stride Mismatch",
-    "description": "Compiled tensor has different strides than eager, causing incorrect results",
     "visibility": "oss"
   },
   {
+    "description": "Internal assert fails during compilation or execution",
     "id": "internal_assertion",
     "name": "Internal Assertion Failure",
-    "description": "Internal assert fails during compilation or execution",
     "visibility": "oss"
   },
   {
+    "description": "Compilation cache miss, corruption, or stale cache causing incorrect behavior",
     "id": "cache_issue",
     "name": "Cache Issue",
-    "description": "Compilation cache miss, corruption, or stale cache causing incorrect behavior",
     "visibility": "oss"
   },
   {
+    "description": "Compilation or runtime OOM during torch.compile",
     "id": "oom",
     "name": "Out of Memory",
-    "description": "Compilation or runtime OOM during torch.compile",
     "visibility": "oss"
   },
   {
+    "description": "torch.export fails to capture the model or produces incorrect exported program",
     "id": "export_issue",
     "name": "Export Issue",
-    "description": "torch.export fails to capture the model or produces incorrect exported program",
     "visibility": "oss"
   },
   {
+    "description": "Compiler over-specializes on shapes, preventing cache reuse",
     "id": "shape_specialization",
     "name": "Shape Specialization",
-    "description": "Compiler over-specializes on shapes, preventing cache reuse",
     "visibility": "oss"
+  },
+  {
+    "description": "Root cause of the cache miss during AC recompute — Dynamo appears to be mutating the device_mesh attribute on user code.",
+    "id": "dynamo_mutating_device_mesh_attribute",
+    "name": "Dynamo mutating device_mesh attribute",
+    "provenance": {
+      "approved_at": "2026-04-22T20:34:00Z",
+      "approved_by": "Peng Wu",
+      "audited_at": "2026-04-22T20:34:00Z",
+      "audited_by": "Prof (review-prep v0.1)",
+      "edited": false,
+      "evidence": "Could someone help investigate why Dynamo seems to be mutating the user code's device_mesh attribute?",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "source_type": "llm_distilled"
+    },
+    "visibility": "internal"
+  },
+  {
+    "description": "Overguarding on frames with no graph output may cause unnecessary recompilations, e.g. when optimized bytecode is identical across invocations.",
+    "id": "overguarding_causing_spurious_recompiles",
+    "name": "overguarding causing spurious recompiles",
+    "provenance": {
+      "approved_at": "2026-04-22T20:34:00Z",
+      "approved_by": "Peng Wu",
+      "audited_at": "2026-04-22T20:34:00Z",
+      "audited_by": "Prof (review-prep v0.1)",
+      "edited": false,
+      "evidence": "maybe we are overguarding in such cases",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "source_type": "llm_distilled"
+    },
+    "visibility": "internal"
+  },
+  {
+    "description": "The TorchScriptObject (TorchComm object) is identified as the entity causing the graph break on object.__getattribute__.",
+    "id": "torchscriptobject_triggering_graph_break",
+    "name": "TorchScriptObject triggering graph break",
+    "provenance": {
+      "approved_at": "2026-04-22T20:34:00Z",
+      "approved_by": "Peng Wu",
+      "audited_at": "2026-04-22T20:34:00Z",
+      "audited_by": "Prof (review-prep v0.1)",
+      "edited": false,
+      "evidence": "TorchScriptObject - so yeah - torchcomm object",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "source_type": "llm_distilled"
+    },
+    "visibility": "internal"
   }
 ]
