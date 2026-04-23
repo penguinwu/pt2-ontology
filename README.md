@@ -20,7 +20,7 @@ Build an ontology that enables agents and humans to:
 |------|------:|------|
 | Causes | 118 | `entities/causes.json` |
 | Symptoms | 62 | `entities/symptoms.json` |
-| Components | 43 | `entities/components.json` |
+| Components | 46 | `entities/components.json` (incl. status enum: 42 active, 1 paused, 3 deprecated) |
 | Configs | 40 | `entities/configs.json` |
 | User fix shortcuts (workarounds) | 33 | `entities/user_fix_shortcuts.json` |
 | Experts | 27 | `entities/experts.json` |
@@ -32,7 +32,6 @@ Build an ontology that enables agents and humans to:
 | Ecosystem | 8 | `entities/ecosystem.json` |
 | Backends | 6 | `entities/backends.json` |
 | Optimizations | 5 | `entities/optimizations.json` |
-| Deprecated components | 4 | `entities/deprecated_components.json` |
 
 **Relationships — 1,161 total across 13 layers:**
 

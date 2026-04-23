@@ -1,54 +1,5 @@
 [
   {
-    "id": "torch_compile",
-    "name": "torch.compile",
-    "description": "Top-level compilation API \u2014 entry point for PT2",
-    "aliases": [
-      "compile",
-      "torch compile",
-      "pt2"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "torchdynamo",
-    "name": "TorchDynamo",
-    "description": "Python bytecode analysis and graph capture engine",
-    "aliases": [
-      "dynamo",
-      "torch._dynamo"
-    ],
-    "sto": "Engineer 01",
-    "github_labels": [
-      "module: dynamo",
-      "module: guards",
-      "module: graph breaks",
-      "module: multithreading",
-      "module: pytree"
-    ],
-    "sto_scope": "foundational_frontend",
-    "visibility": "oss"
-  },
-  {
-    "id": "torchinductor",
-    "name": "TorchInductor",
-    "description": "Default compiler backend \u2014 generates Triton/C++ kernels",
-    "aliases": [
-      "inductor",
-      "torch._inductor"
-    ],
-    "sto": "Engineer 02",
-    "github_labels": [
-      "module: inductor",
-      "module: flex attention",
-      "module: sdpa",
-      "module: memory usage",
-      "module: codegen"
-    ],
-    "sto_scope": "foundational_backend",
-    "visibility": "oss"
-  },
-  {
     "id": "aot_autograd",
     "name": "AOTAutograd",
     "description": "Ahead-of-time autograd tracing for backward pass capture",
@@ -62,12 +13,13 @@
       "module: aotdispatch"
     ],
     "sto_scope": "foundational_frontend",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
   },
   {
     "id": "aot_inductor",
     "name": "AOT Inductor",
-    "description": "Ahead-of-time compilation for deployment \u2014 generates standalone artifacts",
+    "description": "Ahead-of-time compilation for deployment — generates standalone artifacts",
     "aliases": [
       "aoti",
       "aot inductor",
@@ -78,102 +30,20 @@
       "module: aotinductor"
     ],
     "sto_scope": "foundational_backend",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
   },
   {
-    "id": "fx_graph",
-    "name": "FX Graph / FX IR",
-    "description": "Intermediate representation used between dynamo and backends",
+    "id": "combo_kernels",
+    "name": "Combo Kernels",
+    "description": "Inductor technique for combining multiple small kernels into a single kernel to reduce launch overhead",
     "aliases": [
-      "fx",
-      "torch.fx",
-      "fx ir",
-      "graph ir"
+      "combo kernels",
+      "combo kernel",
+      "combined kernels"
     ],
-    "github_labels": [
-      "module: fx"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "triton",
-    "name": "Triton",
-    "description": "GPU kernel language used by inductor backend",
-    "aliases": [
-      "openai triton",
-      "triton kernels"
-    ],
-    "github_labels": [
-      "module: user triton"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "export",
-    "name": "torch.export",
-    "description": "Model export for deployment \u2014 produces ExportedProgram",
-    "aliases": [
-      "export",
-      "torch export",
-      "pt2 export"
-    ],
-    "sto": "Engineer 05",
-    "github_labels": [
-      "oncall: export",
-      "module: serialization"
-    ],
-    "sto_scope": "foundational_frontend",
-    "visibility": "oss"
-  },
-  {
-    "id": "guards",
-    "name": "Guard System",
-    "description": "Validates assumptions about tensor shapes, dtypes, values for cache reuse",
-    "aliases": [
-      "guards",
-      "guard",
-      "shape guards",
-      "dynamo guards"
-    ],
-    "github_labels": [
-      "module: guards"
-    ],
-    "sto_note": "Covered under Dynamo (Engineer 01)",
-    "visibility": "oss"
-  },
-  {
-    "id": "dynamic_shapes",
-    "name": "Dynamic Shapes",
-    "description": "System for handling variable-length dimensions without recompilation",
-    "aliases": [
-      "dynamic shapes",
-      "symbolic shapes",
-      "symint"
-    ],
-    "sto": "Engineer 06",
-    "github_labels": [
-      "module: dynamic shapes"
-    ],
-    "sto_scope": "holistic",
-    "visibility": "oss"
-  },
-  {
-    "id": "pt2_cudagraph",
-    "name": "PT2 CUDAGraph",
-    "description": "CUDA graph capture and replay integration with torch.compile",
-    "aliases": [
-      "cudagraph",
-      "cuda graphs",
-      "cudagraph trees"
-    ],
-    "sto": "Engineer 07",
-    "github_labels": [
-      "module: cuda graphs",
-      "module: compiled streams",
-      "module: cuda"
-    ],
-    "sto_scope": "foundational_backend",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
   },
   {
     "id": "compilation_cache",
@@ -191,7 +61,112 @@
     ],
     "sto_scope": "foundational_backend",
     "sto_note": "Engineer 15 as co-STO for PT-D",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "compile_profiler",
+    "name": "Compile Time Profiler",
+    "description": "Profiling infrastructure for compile time breakdown — identifying where compile time is spent",
+    "aliases": [
+      "compile profiler",
+      "compile time breakdown",
+      "dynamo_timed"
+    ],
+    "github_labels": [
+      "module: compile-time"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "compiled_optimizer",
+    "name": "Compiled Optimizer",
+    "description": "torch.compile applied to optimizer step for fused parameter updates",
+    "aliases": [
+      "compiled optimizer",
+      "compiled optim"
+    ],
+    "sto": "Engineer 10",
+    "github_labels": [
+      "module: pt2 optimizer"
+    ],
+    "sto_scope": "holistic",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "compiled_tensor_subclass",
+    "name": "Compiled Tensor Subclass",
+    "description": "Support for tensor subclasses (DTensor, NF4Tensor, etc.) through compilation",
+    "aliases": [
+      "compiled tensor subclass",
+      "tensor subclass compile"
+    ],
+    "sto": "Engineer 03",
+    "github_labels": [
+      "module: meta tensors",
+      "module: floatx (formerly float8)",
+      "module: dtensor",
+      "module: nestedtensor"
+    ],
+    "sto_note": "Under PT2-Dispatch umbrella",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "compiler_toolkit",
+    "name": "Compiler Toolkit",
+    "description": "Toolkit-style usage of compiler stack — AOT full joint-graph capture with user-controlled passes, regional inductor, bucketing",
+    "aliases": [
+      "compiler toolkit",
+      "toolkit",
+      "compiler as toolkit"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "compute_comm_overlap",
+    "name": "Compute/Comm Overlap",
+    "description": "Inductor passes for reordering compute and communication ops to overlap them in distributed training",
+    "aliases": [
+      "compute comm overlap",
+      "comm overlap",
+      "compute/comm reordering",
+      "bucketing reordering"
+    ],
+    "github_labels": [
+      "module: ddp",
+      "module: c10d",
+      "module: nccl"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "coordinate_descent_tuning",
+    "name": "Coordinate Descent Tuning",
+    "description": "Advanced autotuning that searches the config space via coordinate descent for optimal kernel performance",
+    "aliases": [
+      "coordinate descent",
+      "coord descent tuning",
+      "CDT"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "custom_fx_passes",
+    "name": "Custom FX Passes",
+    "description": "User-defined or built-in FX graph transformation passes",
+    "aliases": [
+      "fx passes",
+      "custom passes",
+      "graph passes"
+    ],
+    "visibility": "oss",
+    "status": "active"
   },
   {
     "id": "custom_ops",
@@ -206,7 +181,193 @@
       "module: custom-operators"
     ],
     "sto_note": "Covered under PT2-Dispatch (Engineer 03)",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "cutedsl_backend",
+    "name": "Inductor CuteDSL Backend",
+    "description": "CuteDSL-based kernel generation backend for inductor",
+    "aliases": [
+      "cutedsl",
+      "cute dsl",
+      "cutlass backend"
+    ],
+    "sto": "Engineer 10",
+    "sto_scope": "foundational_backend",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "decompositions",
+    "name": "Decompositions",
+    "description": "Operator decomposition layer — breaks complex ops into simpler primitives for backend consumption",
+    "aliases": [
+      "decompositions",
+      "decomps",
+      "op decomposition"
+    ],
+    "github_labels": [
+      "module: decompositions"
+    ],
+    "sto_note": "Covered under PT2-Dispatch (Engineer 03)",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "dynamic_shapes",
+    "name": "Dynamic Shapes",
+    "description": "System for handling variable-length dimensions without recompilation",
+    "aliases": [
+      "dynamic shapes",
+      "symbolic shapes",
+      "symint"
+    ],
+    "sto": "Engineer 06",
+    "github_labels": [
+      "module: dynamic shapes"
+    ],
+    "sto_scope": "holistic",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "export",
+    "name": "torch.export",
+    "description": "Model export for deployment — produces ExportedProgram",
+    "aliases": [
+      "export",
+      "torch export",
+      "pt2 export"
+    ],
+    "sto": "Engineer 05",
+    "github_labels": [
+      "oncall: export",
+      "module: serialization"
+    ],
+    "sto_scope": "foundational_frontend",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "fake_tensor",
+    "name": "Fake Tensor",
+    "description": "Meta-device tensor proxy used during tracing to track shapes without data",
+    "aliases": [
+      "fake tensor",
+      "faketensor",
+      "meta tensor",
+      "torch._subclasses.fake_tensor"
+    ],
+    "github_labels": [
+      "module: fakeTensor",
+      "module: meta tensors"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "flexattention",
+    "name": "FlexAttention",
+    "description": "Flexible attention API compiled through inductor for custom attention patterns",
+    "aliases": [
+      "flex attention",
+      "flex_attention",
+      "torch.nn.attention.flex_attention"
+    ],
+    "github_labels": [
+      "module: flex attention"
+    ],
+    "sto_note": "Covered under Inductor (Engineer 02)",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "functionalization",
+    "name": "Functionalization",
+    "description": "Pass that converts in-place and view ops to functional equivalents for tracing",
+    "aliases": [
+      "functionalization",
+      "functionalize"
+    ],
+    "github_labels": [
+      "module: functionalization"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "fusion_optimization",
+    "name": "Fusion Optimization",
+    "description": "Inductor fusion strategies — horizontal fusion, vertical fusion, and fusion policies for combining operations",
+    "aliases": [
+      "fusion optimization",
+      "fusion policy",
+      "horizontal fusion",
+      "vertical fusion"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "fx_graph",
+    "name": "FX Graph / FX IR",
+    "description": "Intermediate representation used between dynamo and backends",
+    "aliases": [
+      "fx",
+      "torch.fx",
+      "fx ir",
+      "graph ir"
+    ],
+    "github_labels": [
+      "module: fx"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "graph_partitioner",
+    "name": "Graph Partitioner",
+    "description": "Partitions captured graphs into subgraphs for regional compilation, CUDAGraph splitting, etc.",
+    "aliases": [
+      "graph partitioner",
+      "partitioner"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "guards",
+    "name": "Guard System",
+    "description": "Validates assumptions about tensor shapes, dtypes, values for cache reuse",
+    "aliases": [
+      "guards",
+      "guard",
+      "shape guards",
+      "dynamo guards"
+    ],
+    "github_labels": [
+      "module: guards"
+    ],
+    "sto_note": "Covered under Dynamo (Engineer 01)",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "helion",
+    "name": "Helion",
+    "description": "Next-generation kernel language — separate repo (pytorch/helion). Out of scope for torch.compile ontology; will have its own ontology in phase 2",
+    "aliases": [
+      "helion"
+    ],
+    "sto": "Engineer 14",
+    "sto_scope": "foundational_backend",
+    "phase": 2,
+    "github_labels": [
+      "module: helion"
+    ],
+    "visibility": "oss",
+    "status": "active"
   },
   {
     "id": "higher_order_ops",
@@ -223,35 +384,33 @@
       "module: higher order operators"
     ],
     "sto_note": "Under PT2-Dispatch umbrella (Engineer 03)",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
   },
   {
-    "id": "flexattention",
-    "name": "FlexAttention",
-    "description": "Flexible attention API compiled through inductor for custom attention patterns",
+    "id": "inductor_on_demand",
+    "name": "Inductor On Demand",
+    "description": "Applying inductor compilation to specific annotated regions rather than the full graph — formerly 'regional compilation'",
     "aliases": [
-      "flex attention",
-      "flex_attention",
-      "torch.nn.attention.flex_attention"
+      "inductor on demand",
+      "regional inductor",
+      "regional compilation",
+      "regional compile"
     ],
-    "github_labels": [
-      "module: flex attention"
-    ],
-    "sto_note": "Covered under Inductor (Engineer 02)",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
   },
   {
-    "id": "cutedsl_backend",
-    "name": "Inductor CuteDSL Backend",
-    "description": "CuteDSL-based kernel generation backend for inductor",
+    "id": "inductor_scheduler",
+    "name": "Inductor Scheduler",
+    "description": "Schedules and fuses kernels in the inductor backend — decides what to fuse, reorder, and overlap",
     "aliases": [
-      "cutedsl",
-      "cute dsl",
-      "cutlass backend"
+      "scheduler",
+      "inductor scheduler",
+      "fusion decisions"
     ],
-    "sto": "Engineer 10",
-    "sto_scope": "foundational_backend",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
   },
   {
     "id": "max_autotune",
@@ -264,22 +423,39 @@
     ],
     "sto": "Engineer 11",
     "sto_scope": "foundational_backend",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
   },
   {
-    "id": "compiled_optimizer",
-    "name": "Compiled Optimizer",
-    "description": "torch.compile applied to optimizer step for fused parameter updates",
+    "id": "pattern_matcher",
+    "name": "Pattern Matcher",
+    "description": "Inductor's pattern matching system for graph-level optimizations (fusion, lowering)",
     "aliases": [
-      "compiled optimizer",
-      "compiled optim"
+      "pattern matcher",
+      "pattern matching",
+      "inductor patterns"
     ],
-    "sto": "Engineer 10",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "pt2_cudagraph",
+    "name": "PT2 CUDAGraph",
+    "description": "CUDA graph capture and replay integration with torch.compile",
+    "aliases": [
+      "cudagraph",
+      "cuda graphs",
+      "cudagraph trees"
+    ],
+    "sto": "Engineer 07",
     "github_labels": [
-      "module: pt2 optimizer"
+      "module: cuda graphs",
+      "module: compiled streams",
+      "module: cuda"
     ],
-    "sto_scope": "holistic",
-    "visibility": "oss"
+    "sto_scope": "foundational_backend",
+    "visibility": "oss",
+    "status": "active"
   },
   {
     "id": "pt2_debug_observability",
@@ -299,262 +475,8 @@
       "module: correctness (silent)"
     ],
     "sto_scope": "holistic",
-    "visibility": "oss"
-  },
-  {
-    "id": "compiled_tensor_subclass",
-    "name": "Compiled Tensor Subclass",
-    "description": "Support for tensor subclasses (DTensor, NF4Tensor, etc.) through compilation",
-    "aliases": [
-      "compiled tensor subclass",
-      "tensor subclass compile"
-    ],
-    "sto": "Engineer 03",
-    "github_labels": [
-      "module: meta tensors",
-      "module: floatx (formerly float8)",
-      "module: dtensor",
-      "module: nestedtensor"
-    ],
-    "sto_note": "Under PT2-Dispatch umbrella",
-    "visibility": "oss"
-  },
-  {
-    "id": "custom_fx_passes",
-    "name": "Custom FX Passes",
-    "description": "User-defined or built-in FX graph transformation passes",
-    "aliases": [
-      "fx passes",
-      "custom passes",
-      "graph passes"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "pattern_matcher",
-    "name": "Pattern Matcher",
-    "description": "Inductor's pattern matching system for graph-level optimizations (fusion, lowering)",
-    "aliases": [
-      "pattern matcher",
-      "pattern matching",
-      "inductor patterns"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "fake_tensor",
-    "name": "Fake Tensor",
-    "description": "Meta-device tensor proxy used during tracing to track shapes without data",
-    "aliases": [
-      "fake tensor",
-      "faketensor",
-      "meta tensor",
-      "torch._subclasses.fake_tensor"
-    ],
-    "github_labels": [
-      "module: fakeTensor",
-      "module: meta tensors"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "functionalization",
-    "name": "Functionalization",
-    "description": "Pass that converts in-place and view ops to functional equivalents for tracing",
-    "aliases": [
-      "functionalization",
-      "functionalize"
-    ],
-    "github_labels": [
-      "module: functionalization"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "decompositions",
-    "name": "Decompositions",
-    "description": "Operator decomposition layer \u2014 breaks complex ops into simpler primitives for backend consumption",
-    "aliases": [
-      "decompositions",
-      "decomps",
-      "op decomposition"
-    ],
-    "github_labels": [
-      "module: decompositions"
-    ],
-    "sto_note": "Covered under PT2-Dispatch (Engineer 03)",
-    "visibility": "oss"
-  },
-  {
-    "id": "inductor_scheduler",
-    "name": "Inductor Scheduler",
-    "description": "Schedules and fuses kernels in the inductor backend \u2014 decides what to fuse, reorder, and overlap",
-    "aliases": [
-      "scheduler",
-      "inductor scheduler",
-      "fusion decisions"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "triton_heuristics",
-    "name": "Triton Heuristics",
-    "description": "Heuristic system for selecting Triton kernel configs (tile sizes, num_warps, RBLOCK, XBLOCK)",
-    "aliases": [
-      "triton heuristics",
-      "autotune configs",
-      "tile size heuristics",
-      "triton_heuristics.py"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "coordinate_descent_tuning",
-    "name": "Coordinate Descent Tuning",
-    "description": "Advanced autotuning that searches the config space via coordinate descent for optimal kernel performance",
-    "aliases": [
-      "coordinate descent",
-      "coord descent tuning",
-      "CDT"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "selective_checkpointing",
-    "name": "Selective Activation Checkpointing",
-    "description": "Fine-grained activation checkpointing integrated with torch.compile to reduce memory",
-    "aliases": [
-      "selective checkpointing",
-      "selective AC",
-      "activation checkpointing",
-      "checkpoint"
-    ],
-    "github_labels": [
-      "module: activation checkpointing"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "simplefsdp",
-    "name": "SimpleFSDP",
-    "description": "Compiler-friendly version of FSDP designed for full graph capture and compiler toolkit workflows",
-    "aliases": [
-      "simplefsdp",
-      "simple fsdp",
-      "compiler-friendly fsdp"
-    ],
-    "github_labels": [
-      "module: fsdp"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "compiler_toolkit",
-    "name": "Compiler Toolkit",
-    "description": "Toolkit-style usage of compiler stack \u2014 AOT full joint-graph capture with user-controlled passes, regional inductor, bucketing",
-    "aliases": [
-      "compiler toolkit",
-      "toolkit",
-      "compiler as toolkit"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "graph_partitioner",
-    "name": "Graph Partitioner",
-    "description": "Partitions captured graphs into subgraphs for regional compilation, CUDAGraph splitting, etc.",
-    "aliases": [
-      "graph partitioner",
-      "partitioner"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "standalone_compile",
-    "name": "Standalone Compile",
-    "description": "torch._inductor.standalone_compile \u2014 simplified compile entry point for specific use cases like vLLM",
-    "aliases": [
-      "standalone compile",
-      "standalone_compile"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "tlparse",
-    "name": "tlparse",
-    "description": "Log parsing and visualization tool for torch.compile debug logs",
-    "aliases": [
-      "tlparse",
-      "tl parse",
-      "log parser"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "compile_profiler",
-    "name": "Compile Time Profiler",
-    "description": "Profiling infrastructure for compile time breakdown \u2014 identifying where compile time is spent",
-    "aliases": [
-      "compile profiler",
-      "compile time breakdown",
-      "dynamo_timed"
-    ],
-    "github_labels": [
-      "module: compile-time"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "compute_comm_overlap",
-    "name": "Compute/Comm Overlap",
-    "description": "Inductor passes for reordering compute and communication ops to overlap them in distributed training",
-    "aliases": [
-      "compute comm overlap",
-      "comm overlap",
-      "compute/comm reordering",
-      "bucketing reordering"
-    ],
-    "github_labels": [
-      "module: ddp",
-      "module: c10d",
-      "module: nccl"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "combo_kernels",
-    "name": "Combo Kernels",
-    "description": "Inductor technique for combining multiple small kernels into a single kernel to reduce launch overhead",
-    "aliases": [
-      "combo kernels",
-      "combo kernel",
-      "combined kernels"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "fusion_optimization",
-    "name": "Fusion Optimization",
-    "description": "Inductor fusion strategies \u2014 horizontal fusion, vertical fusion, and fusion policies for combining operations",
-    "aliases": [
-      "fusion optimization",
-      "fusion policy",
-      "horizontal fusion",
-      "vertical fusion"
-    ],
-    "visibility": "oss"
-  },
-  {
-    "id": "inductor_on_demand",
-    "name": "Inductor On Demand",
-    "description": "Applying inductor compilation to specific annotated regions rather than the full graph \u2014 formerly 'regional compilation'",
-    "aliases": [
-      "inductor on demand",
-      "regional inductor",
-      "regional compilation",
-      "regional compile"
-    ],
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
   },
   {
     "id": "pt2_dispatch",
@@ -580,12 +502,146 @@
       "module: __torch_function__"
     ],
     "sto_scope": "foundational_frontend",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "selective_checkpointing",
+    "name": "Selective Activation Checkpointing",
+    "description": "Fine-grained activation checkpointing integrated with torch.compile to reduce memory",
+    "aliases": [
+      "selective checkpointing",
+      "selective AC",
+      "activation checkpointing",
+      "checkpoint"
+    ],
+    "github_labels": [
+      "module: activation checkpointing"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "simplefsdp",
+    "name": "SimpleFSDP",
+    "description": "Compiler-friendly version of FSDP designed for full graph capture and compiler toolkit workflows",
+    "aliases": [
+      "simplefsdp",
+      "simple fsdp",
+      "compiler-friendly fsdp"
+    ],
+    "github_labels": [
+      "module: fsdp"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "standalone_compile",
+    "name": "Standalone Compile",
+    "description": "torch._inductor.standalone_compile — simplified compile entry point for specific use cases like vLLM",
+    "aliases": [
+      "standalone compile",
+      "standalone_compile"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "tlparse",
+    "name": "tlparse",
+    "description": "Log parsing and visualization tool for torch.compile debug logs",
+    "aliases": [
+      "tlparse",
+      "tl parse",
+      "log parser"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "torch_compile",
+    "name": "torch.compile",
+    "description": "Top-level compilation API — entry point for PT2",
+    "aliases": [
+      "compile",
+      "torch compile",
+      "pt2"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "torchdynamo",
+    "name": "TorchDynamo",
+    "description": "Python bytecode analysis and graph capture engine",
+    "aliases": [
+      "dynamo",
+      "torch._dynamo"
+    ],
+    "sto": "Engineer 01",
+    "github_labels": [
+      "module: dynamo",
+      "module: guards",
+      "module: graph breaks",
+      "module: multithreading",
+      "module: pytree"
+    ],
+    "sto_scope": "foundational_frontend",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "torchinductor",
+    "name": "TorchInductor",
+    "description": "Default compiler backend — generates Triton/C++ kernels",
+    "aliases": [
+      "inductor",
+      "torch._inductor"
+    ],
+    "sto": "Engineer 02",
+    "github_labels": [
+      "module: inductor",
+      "module: flex attention",
+      "module: sdpa",
+      "module: memory usage",
+      "module: codegen"
+    ],
+    "sto_scope": "foundational_backend",
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "triton",
+    "name": "Triton",
+    "description": "GPU kernel language used by inductor backend",
+    "aliases": [
+      "openai triton",
+      "triton kernels"
+    ],
+    "github_labels": [
+      "module: user triton"
+    ],
+    "visibility": "oss",
+    "status": "active"
+  },
+  {
+    "id": "triton_heuristics",
+    "name": "Triton Heuristics",
+    "description": "Heuristic system for selecting Triton kernel configs (tile sizes, num_warps, RBLOCK, XBLOCK)",
+    "aliases": [
+      "triton heuristics",
+      "autotune configs",
+      "tile size heuristics",
+      "triton_heuristics.py"
+    ],
+    "visibility": "oss",
+    "status": "active"
   },
   {
     "id": "vllm_compile",
     "name": "vLLM Compile",
-    "description": "torch.compile integration for vLLM inference serving \u2014 performance, TPU, Helion/custom ops",
+    "description": "torch.compile integration for vLLM inference serving — performance, TPU, Helion/custom ops",
     "aliases": [
       "vllm compile",
       "vllm"
@@ -597,36 +653,66 @@
     ],
     "sto_scope": "holistic",
     "sto_note": "Sub-STOs: perf (Engineer 02), TPU (Engineer 05), Helion/custom ops (Engineer 16)",
-    "visibility": "oss"
+    "visibility": "oss",
+    "status": "active"
   },
   {
     "id": "compiled_autograd",
     "name": "Compiled Autograd",
-    "description": "Compiling the backward pass autograd graph through dynamo for full graph capture in training",
+    "status": "paused",
+    "description": "Compiles the backward pass through autograd engine for full graph capture in training. Development is paused; functional but not actively recommended for new use.",
     "aliases": [
-      "compiled autograd",
-      "compiled_autograd"
+      "compiled autograd"
+    ],
+    "loose_aliases": [
+      "compiled backward"
     ],
     "github_labels": [
       "module: compiled autograd",
       "module: autograd"
     ],
     "sto_note": "Covered under PT2-Dispatch (Engineer 03)",
+    "note": "Peng (2026-04-22): development paused, not widely used, not recommended — but not officially deprecated upstream",
     "visibility": "oss"
   },
   {
-    "id": "helion",
-    "name": "Helion",
-    "description": "Next-generation kernel language \u2014 separate repo (pytorch/helion). Out of scope for torch.compile ontology; will have its own ontology in phase 2",
+    "id": "ddp_compiler",
+    "name": "DDPOptimizer",
+    "description": "Optimizes compiled graphs for distributed data parallel training — not recommended",
     "aliases": [
-      "helion"
+      "ddp optimizer",
+      "ddp compiler",
+      "compiled ddp"
     ],
-    "sto": "Engineer 14",
-    "sto_scope": "foundational_backend",
-    "phase": 2,
-    "github_labels": [
-      "module: helion"
-    ],
+    "status": "deprecated",
+    "note": "Peng: not used much, not recommended",
     "visibility": "oss"
+  },
+  {
+    "id": "fsdp_compiler",
+    "name": "Compiled FSDP",
+    "description": "torch.compile integration with FSDP — project approach abandoned",
+    "aliases": [
+      "compiled fsdp",
+      "fsdp2 compile"
+    ],
+    "status": "deprecated",
+    "note": "Peng: deprecated — project approach abandoned",
+    "visibility": "oss"
+  },
+  {
+    "id": "prim_torch",
+    "name": "PrimTorch",
+    "description": "DEPRECATED branding for the operator decomposition layer. The concept of decompositions is still valid (see 'decompositions' in active components).",
+    "aliases": [
+      "primtorch",
+      "prim torch"
+    ],
+    "status": "deprecated",
+    "note": "Peng: PrimTorch is deprecated. Decompositions as a concept remains valid. Flagged to Beaver for research on deprecation status in official docs.",
+    "visibility": "oss",
+    "replacements": [
+      "decompositions"
+    ]
   }
 ]

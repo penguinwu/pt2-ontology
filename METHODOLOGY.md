@@ -94,7 +94,7 @@ not data — it should be stable before a rebuild.
 |------|------:|--------|-------------------|
 | causes | 118 | Beaver bootstrap + heuristic extraction | **Needs rebuild** — no evidence_issues |
 | symptoms | 62 | Mixed: 40 with evidence_issues (Phase 2), 22 from bootstrap | **Partial** — 22 still need backfill |
-| components | 43 | STO structure + codebase | Well-provenanced |
+| components | 46 | STO structure + codebase | Well-provenanced; carries `status` enum (active/paused/deprecated/removed) |
 | configs | 40 | Mixed: codebase grep + Phase 2 extraction | Source-validated; only 8 carry evidence_issues |
 | user_fix_shortcuts | 33 | Phase 2 extraction | Fully provenanced |
 | experts | 27 | STO structure | Stable |
@@ -106,9 +106,8 @@ not data — it should be stable before a rebuild.
 | ecosystem | 8 | Manual curation | Stable |
 | backends | 6 | Manual curation | Stable |
 | optimizations | 5 | Manual curation | Stable |
-| deprecated_components | 4 | Historical record | Stable |
 
-**Total: 405 entities.** A clean rebuild would primarily benefit causes (118), the 22 unprovenanced symptoms, and the 32 unprovenanced configs.
+**Total: 422 entities.** A clean rebuild would primarily benefit causes (118), the 22 unprovenanced symptoms, and the 32 unprovenanced configs.
 
 ### 2.2 Relationship Types (16)
 
