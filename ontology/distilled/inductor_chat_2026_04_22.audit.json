@@ -1,0 +1,25 @@
+{
+  "audit_for": "ontology/distilled/inductor_chat_2026_04_22.json",
+  "audited_by": "Prof (review-prep v0.1)",
+  "audited_at": "2026-04-22T22:15:00Z",
+  "approved_by": "Peng Wu",
+  "approved_at": "2026-04-22T22:15:00Z",
+  "decisions": {
+    "0": {"decision": "approve"},
+    "1": {
+      "decision": "edit",
+      "patch": {
+        "evidence": "the subworker timeout is due to too much work and subworkers timing out after 300s"
+      },
+      "reason": "Strip internal report URL (sensitive internal link)."
+    },
+    "2": {"decision": "approve"},
+    "3": {
+      "decision": "edit",
+      "patch": {
+        "detail": "Intermittent timeout failures in Inductor compilation reported as a production stack incident."
+      },
+      "reason": "Replace internal product/incident terminology with generic phrasing."
+    }
+  }
+}

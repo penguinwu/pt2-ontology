@@ -1,0 +1,265 @@
+{
+  "entries": [
+    {
+      "confidence": "high",
+      "detail": "This flag has been deprecated.",
+      "entity_type": "config",
+      "evidence": "inline_inbulit_nn_modules flag is deprecated (internal diff reference removed)",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "inline_inbulit_nn_modules",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Environment variable that enables patched TorchComms code for torch.compile integration.",
+      "entity_type": "config",
+      "evidence": "TORCHCOMMS_PATCH_FOR_COMPILE",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "TORCHCOMMS_PATCH_FOR_COMPILE",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Environment variable to bypass PyTorch version check when using TorchComms compile integration.",
+      "entity_type": "config",
+      "evidence": "set TORCHCOMMS_COMPILE_IGNORE_PYTORCH_VERSION_REQUIREMENT as well.",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "TORCHCOMMS_COMPILE_IGNORE_PYTORCH_VERSION_REQUIREMENT",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Graph break occurring when tracing TorchComms (TorchScriptObject) with torch.compile after enabling TORCHCOMMS_PATCH_FOR_COMPILE.",
+      "entity_type": "symptom",
+      "evidence": "graph break on object.__getattribute__  - most likely needs to fixed in Dynamo proper and not in the patched comms-Dynamo code",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "graph break on object.__getattribute__",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Spurious recompilations occurring on frames where there is no graph between the start of the function and the graph break bytecode.",
+      "entity_type": "symptom",
+      "evidence": "I am seeing some recompilations on these frames, and while Dynamo is possibly giving optimized bytecodes here, these are very low value. Skipping them will remove recomps, and also more importantly, will make tlparse more readable.",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "recompilation on frames with no graph",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Cache miss in torchtitan CI related to Dynamo mutating user code's device_mesh attribute during activation checkpointing recompute.",
+      "entity_type": "symptom",
+      "evidence": "we're seeing an issue on torchtitan CI where we have a cache miss during AC recompute (looks related to opaque types and DeviceMesh)",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "cache miss during AC recompute with DeviceMesh",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "medium",
+      "detail": "Root cause of the cache miss during AC recompute — Dynamo appears to be mutating the device_mesh attribute on user code.",
+      "entity_type": "cause",
+      "evidence": "Could someone help investigate why Dynamo seems to be mutating the user code's device_mesh attribute?",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "Dynamo mutating device_mesh attribute",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "entity_type": "relationship",
+      "evidence": "This seems to fix the issue -- https://github.com/pytorch/pytorch/pull/179047",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "PR #179047 fixes DeviceMesh cache miss",
+      "relationship_kind": "fixes",
+      "relationship_to": "cache miss during AC recompute with DeviceMesh",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Dynamo exception messages do not match CPython's specificity, e.g. generic 'not hashable' vs CPython's 'list is not hashable'.",
+      "entity_type": "symptom",
+      "evidence": "a repro where Dynamo reports \"one of the elements is not hashable,\" while CPython specifically says \"list is not hashable.\"",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "exception message fidelity mismatch between Dynamo and CPython",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "medium",
+      "detail": "Historical graph break encountered during Export user empathy day, related to context managers.",
+      "entity_type": "symptom",
+      "evidence": "the only break we hit was around context managers (which an external contributor fixed)",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "graph break on context managers",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Recompile avoidance was identified as a major pain point in a training model effort.",
+      "entity_type": "symptom",
+      "evidence": "I think a lot of what was bad for the training model was recompile avoidance specifically, which is a different bucket of issues",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "recompile avoidance issues in a training model",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "medium",
+      "detail": "Overguarding on frames with no graph output may cause unnecessary recompilations, e.g. when optimized bytecode is identical across invocations.",
+      "entity_type": "cause",
+      "evidence": "maybe we are overguarding in such cases",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "overguarding causing spurious recompiles",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Torch.compile overhead dominates when wrapping a small compiled region called repeatedly in a loop (e.g., GPTQ column-wise quantization).",
+      "entity_type": "symptom",
+      "evidence": "I'm being asked about a workflow for the following, where there is a huge overhead before invoking a relatively small operator.",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "huge overhead before invoking small operator",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "The TorchScriptObject (TorchComm object) is identified as the entity causing the graph break on object.__getattribute__.",
+      "entity_type": "cause",
+      "evidence": "TorchScriptObject - so yeah - torchcomm object",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "TorchScriptObject triggering graph break",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "entity_type": "relationship",
+      "evidence": "graph break on object.__getattribute__  - most likely needs to fixed in Dynamo proper and not in the patched comms-Dynamo code",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "TorchScriptObject causes graph break on object.__getattribute__",
+      "relationship_kind": "causes",
+      "relationship_to": "graph break on object.__getattribute__",
+      "source_type": "llm_distilled"
+    }
+  ],
+  "extracted_at": "snapshot:cf71d029773d",
+  "extractor_id": "llm_distill.dynamo_chat_entities",
+  "extractor_version": "v0.1",
+  "source_ref": "snapshot@cf71d029773d + prompt@19eb50798629 + schema@0574c5532ac9 + model=claude-4-6-opus-genai"
+}

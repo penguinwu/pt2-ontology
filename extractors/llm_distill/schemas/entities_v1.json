@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "llm_distill_entities_v1",
+  "description": "Output schema for LLM entity-extraction. Pinned in repo so cache key changes when schema changes.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["entity_type", "name", "evidence"],
+    "additionalProperties": false,
+    "properties": {
+      "entity_type": {
+        "type": "string",
+        "enum": ["config", "symptom", "cause", "relationship"]
+      },
+      "name": {
+        "type": "string",
+        "description": "Canonical name as it appears in source (e.g., 'torch._dynamo.config.suppress_errors' for a config; a short symptom phrase for a symptom)."
+      },
+      "evidence": {
+        "type": "string",
+        "description": "Verbatim quote from input text supporting this extraction. REQUIRED for audit. Must literally appear in the input."
+      },
+      "detail": {
+        "type": "string",
+        "description": "Optional one-sentence interpretation of the entity in context."
+      },
+      "id_hint": {
+        "type": "string",
+        "description": "Optional suggested entity id (snake_case). Auto-derived from name during promotion if missing.",
+        "pattern": "^[a-z0-9_]+$"
+      },
+      "relationship_to": {
+        "type": "string",
+        "description": "Required for entity_type=relationship. The other entity's name."
+      },
+      "relationship_kind": {
+        "type": "string",
+        "enum": ["fixes", "causes", "alias_of", "supersedes"],
+        "description": "Required for entity_type=relationship."
+      },
+      "confidence": {
+        "type": "string",
+        "enum": ["high", "medium", "low"],
+        "description": "LLM's self-reported confidence. Used to prioritize human review."
+      }
+    }
+  }
+}

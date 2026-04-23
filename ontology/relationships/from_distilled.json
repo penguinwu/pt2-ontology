@@ -1,0 +1,50 @@
+[
+  {
+    "description": "This seems to fix the issue -- https://github.com/pytorch/pytorch/pull/179047",
+    "from": "pr_179047_fixes_devicemesh_cache_miss",
+    "provenance": {
+      "approved_at": "2026-04-22T20:34:00Z",
+      "approved_by": "Peng Wu",
+      "audited_at": "2026-04-22T20:34:00Z",
+      "audited_by": "Prof (review-prep v0.1)",
+      "edited": false,
+      "evidence": "This seems to fix the issue -- https://github.com/pytorch/pytorch/pull/179047",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "source_type": "llm_distilled"
+    },
+    "to": "cache_miss_during_ac_recompute_with_devicemesh",
+    "type": "fixes",
+    "visibility": "internal"
+  },
+  {
+    "description": "graph break on object.__getattribute__  - most likely needs to fixed in Dynamo proper and not in the patched comms-Dynamo code",
+    "from": "torchscriptobject_causes_graph_break_on_object_getattribute",
+    "provenance": {
+      "approved_at": "2026-04-22T20:34:00Z",
+      "approved_by": "Peng Wu",
+      "audited_at": "2026-04-22T20:34:00Z",
+      "audited_by": "Prof (review-prep v0.1)",
+      "edited": false,
+      "evidence": "graph break on object.__getattribute__  - most likely needs to fixed in Dynamo proper and not in the patched comms-Dynamo code",
+      "llm_provenance": {
+        "cache_key": "2aec0054d785dad607637b9c5b104e07e194f1afdffddad263dfd1b9ce5a0ae7",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "cf71d029773d",
+        "temperature": 0.0
+      },
+      "source_type": "llm_distilled"
+    },
+    "to": "graph_break_on_object_getattribute",
+    "type": "causes",
+    "visibility": "internal"
+  }
+]

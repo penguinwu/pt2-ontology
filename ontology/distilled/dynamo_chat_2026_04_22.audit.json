@@ -1,0 +1,49 @@
+{
+  "audited_by": "Prof (review-prep v0.1)",
+  "audited_at": "2026-04-22T20:34:00Z",
+  "approved_by": "Peng Wu",
+  "approved_at": "2026-04-22T20:34:00Z",
+  "decisions": {
+    "0": {
+      "decision": "edit",
+      "patch": {
+        "evidence": "inline_inbulit_nn_modules flag is deprecated"
+      },
+      "reason": "scrub internal Phabricator diff link"
+    },
+    "1": {"decision": "approve"},
+    "2": {"decision": "approve"},
+    "3": {"decision": "approve"},
+    "4": {"decision": "approve"},
+    "5": {"decision": "approve"},
+    "6": {"decision": "approve"},
+    "7": {"decision": "approve"},
+    "8": {
+      "decision": "edit",
+      "patch": {
+        "evidence": "a repro where Dynamo reports 'one of the elements is not hashable,' while CPython specifically says 'list is not hashable'"
+      },
+      "reason": "scrub contributor first name"
+    },
+    "9": {
+      "decision": "edit",
+      "patch": {
+        "evidence": "the only break we hit was around context managers (which an external contributor fixed)"
+      },
+      "reason": "scrub contributor name + company affiliation"
+    },
+    "10": {
+      "decision": "edit",
+      "patch": {
+        "name": "recompile avoidance issues in a training model",
+        "detail": "Recompile avoidance was identified as a major pain point in a training model effort.",
+        "evidence": "I think a lot of what was bad for the training model was recompile avoidance specifically, which is a different bucket of issues"
+      },
+      "reason": "scrub internal model codename"
+    },
+    "11": {"decision": "approve"},
+    "12": {"decision": "approve"},
+    "13": {"decision": "approve"},
+    "14": {"decision": "approve"}
+  }
+}

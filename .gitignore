@@ -29,3 +29,13 @@ validation/holdout_issues.jsonl
 
 # Old monolithic backup (replaced by modular files)
 ontology/skeleton.json
+
+# LLM distillation pipeline — internal-only intermediate artifacts.
+# Snapshots and cache contain raw chat content with real names, internal
+# Workplace/GChat space IDs, and unsanitized message bodies. INPUTS.md
+# declares those internal sources by name. Pipeline code is OSS-safe;
+# its inputs/outputs at this layer are not.
+extractors/llm_distill/snapshots/
+extractors/llm_distill/cache/
+extractors/llm_distill/INPUTS.md
+extractors/llm_distill/__pycache__/

@@ -1,0 +1,80 @@
+{
+  "entries": [
+    {
+      "confidence": "high",
+      "detail": "Environment variable controlling the number of Inductor compile threads; setting to 1 disables parallel compilation in process pool workers.",
+      "entity_type": "config",
+      "evidence": "TORCHINDUCTOR_COMPILE_THREADS=1",
+      "id_hint": "torchinductor_compile_threads",
+      "llm_provenance": {
+        "cache_key": "1e7209099682ae35476f14c9d472d6293b5c0e653925cb9c554dad236b1637ec",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "d9e45a4496ba",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "TORCHINDUCTOR_COMPILE_THREADS",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Inductor process pool subworkers time out after 300 seconds, causing flaky compilation failures.",
+      "entity_type": "symptom",
+      "evidence": "subworker timeout (internal report reference removed) is due to too much work and subworkers timing out after 300s",
+      "id_hint": "inductor_subworker_timeout",
+      "llm_provenance": {
+        "cache_key": "1e7209099682ae35476f14c9d472d6293b5c0e653925cb9c554dad236b1637ec",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "d9e45a4496ba",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "subworker timeout",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "medium",
+      "detail": "Inductor compilation hangs during process pool worker execution; related to pytorch/pytorch#162199.",
+      "entity_type": "symptom",
+      "evidence": "we're somehow hanging like in https://github.com/pytorch/pytorch/issues/162199 which we couldn't get a good repro for",
+      "id_hint": "inductor_compile_hang",
+      "llm_provenance": {
+        "cache_key": "1e7209099682ae35476f14c9d472d6293b5c0e653925cb9c554dad236b1637ec",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "d9e45a4496ba",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "inductor compile hang",
+      "source_type": "llm_distilled"
+    },
+    {
+      "confidence": "high",
+      "detail": "Intermittent timeout failures in Inductor compilation reported as a high-severity production incident.",
+      "entity_type": "symptom",
+      "evidence": "The SEV issue is very flaky timeouts as well",
+      "id_hint": "flaky_inductor_timeouts",
+      "llm_provenance": {
+        "cache_key": "1e7209099682ae35476f14c9d472d6293b5c0e653925cb9c554dad236b1637ec",
+        "model": "claude-4-6-opus-genai",
+        "prompt_sha12": "19eb50798629",
+        "schema_sha12": "0574c5532ac9",
+        "snapshot_sha12": "d9e45a4496ba",
+        "temperature": 0.0
+      },
+      "manually_curated": false,
+      "name": "flaky timeouts",
+      "source_type": "llm_distilled"
+    }
+  ],
+  "extracted_at": "snapshot:d9e45a4496ba",
+  "extractor_id": "llm_distill.inductor_chat_entities",
+  "extractor_version": "v0.1",
+  "source_ref": "snapshot@d9e45a4496ba + prompt@19eb50798629 + schema@0574c5532ac9 + model=claude-4-6-opus-genai"
+}
